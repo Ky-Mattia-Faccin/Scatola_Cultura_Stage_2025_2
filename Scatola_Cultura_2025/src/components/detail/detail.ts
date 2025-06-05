@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { RouterLink, RouterModule } from '@angular/router';
+import { Struttura } from '../../interfaces/Istruttura';
 
 @Component({
-  selector: 'app-detail',
   standalone: true,
-  imports: [],
+  selector: 'app-detail',
+  imports: [RouterModule, RouterLink, CommonModule],
   templateUrl: './detail.html',
-  styleUrl: './detail.css'
+  styleUrls: ['./detail.css'],
 })
 export class Detail {
-
+  @Input() struttura!: Struttura;
 }

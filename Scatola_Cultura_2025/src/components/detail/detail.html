@@ -1,1 +1,31 @@
-<p>detail works!</p>
+<div class="pagina">
+  <div class="container box">
+    <div class="header">
+      <div class="button box" routerLink="/homepage">
+        <span>⬅️</span>
+      </div>
+      <div class="title box">
+        <span>{{this.struttura.nome}}</span>
+      </div>
+    </div>
+    <div class="mid">
+      <div class="img box">
+        <img src="" alt="(to-do)" />
+      </div>
+      <div class="desc box">
+        <span>{{this.struttura.descrizione}} </span>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="social box">
+        <span>social+pos (to-do)</span>
+      </div>
+
+      <div class="accs box">
+        <div *ngFor="let acc of this.struttura.disabilita">
+          {{ acc.categoria }} - {{ acc.descrizione }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
