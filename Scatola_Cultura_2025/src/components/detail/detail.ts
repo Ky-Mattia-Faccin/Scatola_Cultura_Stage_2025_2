@@ -10,6 +10,7 @@ import { Struttura } from '../../interfaces/Istruttura';
   templateUrl: './detail.html',
   styleUrls: ['./detail.css'],
 })
+
 export class Detail {
   @Input() struttura!: Struttura;
 }

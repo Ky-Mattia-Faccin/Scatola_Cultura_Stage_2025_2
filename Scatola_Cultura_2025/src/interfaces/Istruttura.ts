@@ -1,7 +1,7 @@
 import { DisabilitaStruttura } from "./IDisabilitàStruttura";
 
 export interface Struttura{
-   id: number;
+  id: number;
   nome: string;
   descrizione: string;
   posizione: {
