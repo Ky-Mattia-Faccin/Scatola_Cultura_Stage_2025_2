@@ -1,7 +1,7 @@
  export interface DisabilitaStruttura {
   disabilitaStruttura: number;
   categoria: string;
-  //idStruttura:number;
+  idStruttura:number;
   descrizione: string;
   dataInserimento: Date;
   flgDisabilita: boolean;
