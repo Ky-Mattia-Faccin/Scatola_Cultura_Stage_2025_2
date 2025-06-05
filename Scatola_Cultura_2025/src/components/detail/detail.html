@@ -1,27 +1,27 @@
 <div class="pagina">
-  <div class="container box">
+  <div class="container">
     <div class="header">
-      <div class="button box" routerLink="/homepage">
+      <div class="button" routerLink="/homepage">
         <span>⬅️</span>
       </div>
-      <div class="title box">
+      <div class="title">
         <span>{{this.struttura.nome}}</span>
       </div>
     </div>
     <div class="mid">
-      <div class="img box">
+      <div class="img">
         <img src="" alt="(to-do)" />
       </div>
-      <div class="desc box">
+      <div class="desc">
         <span>{{this.struttura.descrizione}} </span>
       </div>
     </div>
     <div class="footer">
-      <div class="social box">
+      <div class="social">
         <span>social+pos (to-do)</span>
       </div>
 
-      <div class="accs box">
+      <div class="accs">
         <div *ngFor="let acc of this.struttura.disabilita">
           {{ acc.categoria }} - {{ acc.descrizione }}
         </div>
