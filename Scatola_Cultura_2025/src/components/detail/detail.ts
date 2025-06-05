@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
-
+import { DisabilitaStruttura } from '../../interfaces/IDisabilitàStruttura';
+import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
 @Component({
   standalone: true,
   selector: 'app-detail',
@@ -11,6 +12,88 @@ import { Struttura } from '../../interfaces/Istruttura';
   styleUrls: ['./detail.css'],
 })
 
-export class Detail {
+export class Detail implements OnInit {
+  
   @Input() struttura!: Struttura;
+
+
+  //-------------------
+  
+  MOCK_DISABILITA: DisabilitaStruttura[] = [
+  {
+    disabilitaStruttura: 1,
+    categoria: 'Mobilità',
+    descrizione: 'Accesso facilitato per sedie a rotelle',
+    dataInserimento: new Date('2023-01-15'),
+    flgDisabilita: true,
+  },
+  {
+    disabilitaStruttura: 2,
+    categoria: 'Udito',
+    descrizione: 'Servizio di interpretariato LIS disponibile',
+    dataInserimento: new Date('2023-03-22'),
+    flgDisabilita: false,
+  },
+  {
+    disabilitaStruttura: 3,
+    categoria: 'Vista',
+    descrizione: 'Materiali in braille e audioguide',
+    dataInserimento: new Date('2023-05-10'),
+    flgDisabilita: true,
+  }
+];
+
+  MOCK_STRUTTURA: Struttura = {
+  id: 101,
+  nome: 'Museo della Cultura Locale',
+  descrizione: 'Un museo dedicato alla storia e tradizioni locali',
+  posizione: {
+    indirizzo: 'Via Roma 25',
+    citta: 'Torino',
+    provincia: 'TO',
+    via: 'Via Roma',
+  },
+  ambito: 'Culturale',
+  dataInserimeto: new Date('2022-12-01'),
+  flgDisabilita: false,
+  disabilita: this.MOCK_DISABILITA
+};
+
+//--------------
+
+  constructor(private sanitizer:DomSanitizer){}
+
+  ngOnInit(): void {
+    this.struttura=this.MOCK_STRUTTURA
+  }
+
+
+
+  getIcon(categoria: string): SafeHtml {
+  switch (categoria) {
+    case 'Mobilità': return this.sanitizer.bypassSecurityTrustHtml(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-wheelchair" viewBox="0 0 16 16">
+      <path d="M12 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-.663 2.146a1.5 1.5 0 0 0-.47-2.115l-2.5-1.508a1.5 1.5 0 0 0-1.676.086l-2.329 1.75a.866.866 0 0 0 1.051 1.375L7.361 3.37l.922.71-2.038 2.445A4.73 4.73 0 0 0 2.628 7.67l1.064 1.065a3.25 3.25 0 0 1 4.574 4.574l1.064 1.063a4.73 4.73 0 0 0 1.09-3.998l1.043-.292-.187 2.991a.872.872 0 1 0 1.741.098l.206-4.121A1 1 0 0 0 12.224 8h-2.79zM3.023 9.48a3.25 3.25 0 0 0 4.496 4.496l1.077 1.077a4.75 4.75 0 0 1-6.65-6.65z"/>
+      </svg>`);
+    case 'Udito': return this.sanitizer.bypassSecurityTrustHtml(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ear-fill" viewBox="0 0 16 16">
+      <path d="M8.5 0A5.5 5.5 0 0 0 3 5.5v7.047a3.453 3.453 0 0 0 6.687 1.212l.51-1.363a4.6 4.6 0 0 1 .67-1.197l2.008-2.581A5.34 5.34 0 0 0 8.66 0zM7 5.5v2.695q.168-.09.332-.192c.327-.208.577-.44.72-.727a.5.5 0 1 1 .895.448c-.256.513-.673.865-1.079 1.123A9 9 0 0 1 7 9.313V11.5a.5.5 0 0 1-1 0v-6a2.5 2.5 0 0 1 5 0V6a.5.5 0 0 1-1 0v-.5a1.5 1.5 0 1 0-3 0"/>
+      </svg>`);
+    case 'Vista': return this.sanitizer.bypassSecurityTrustHtml(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+      <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+      <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+      </svg>
+      `);
+    case 'Cognitiva': return this.sanitizer.bypassSecurityTrustHtml(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+      <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+      </svg>`);
+    default: return '';
+  }
 }
+
+}
+
+
+
