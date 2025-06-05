@@ -1,0 +1,58 @@
+/*i div si chiamano home, filtri e musei*/
+.home{
+    overflow: hidden;
+}
+.filtri{
+    display: flex;
+    border: 3px solid red;    
+}
+.musei {
+  margin: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 1em;
+  border: 3px solid #ccc; 
+  width: 95%;
+  max-width: 95%;
+  height: 50.5em;
+  border-radius: 15px;
+  flex-wrap: wrap;
+  gap: 3rem;
+  font-size:medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+  /*blocco scorrimento della pagina*/
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.museo {
+    border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30em;
+  height: 30em;
+  padding: 1rem;
+  border: 1px solid red;
+  transition: 350ms;
+  box-sizing: border-box;
+  text-align: center;           /* centra il testo */
+  margin : 1%;
+}
+
+.museo:hover {
+  background-color: aliceblue;
+  transform: scale(1.05);
+  font-size: 1.05em;
+  transition: 350ms;
+}
+
+.museo img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto 0.5rem auto;   /* centra l'immagine */
+  
+}

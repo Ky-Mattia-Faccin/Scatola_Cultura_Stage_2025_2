@@ -1,1 +1,15 @@
-<p>homepage works!</p>
+<!--Simone Negro, 05/06/25, inserimento dei div -->
+<div class="home">
+    <div class="filtri">
+        <!--deve contenere tutti i filtri-->
+    </div>
+
+    <div class="musei">
+        <div class="museo" *ngFor="let item of items">
+            <div class="interno">
+                <img [src]="item.immagine" [alt]="item.nome" width="300">
+                <span>{{ item.nome }}</span>
+            </div>
+        </div>
+    </div>
+</div>
