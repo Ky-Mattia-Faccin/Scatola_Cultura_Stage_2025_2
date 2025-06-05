@@ -13,7 +13,7 @@ import { TbDisabilitaCategorie } from '../../strutture/tbDisabilitaCategorie';
 })
 export class Homepage {
   items = [{nome: 'Musei Vaticani - Città del Vaticano', immagine: 'assets/prova.avif'},
-    {nome: 'Galleria degli Uffizi - Firenze', immagine: 'assets/prova.avif'},
+    {nome: 'Galleria degli Uffizi - Firenze', immagine: 'assets/esempio.jpg'},
     {nome:'Museo Egizio - Torino', immagine: 'assets/prova.avif'},
     {nome:'Galleria dell\'Accademia - Firenze',immagine: 'assets/prova.avif'},
     {nome:'Museo Nazionale di Castel Sant\'Angelo - Roma', immagine: 'assets/prova.avif'},

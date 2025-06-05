@@ -7,7 +7,7 @@
     <div class="sc-homepage-musei-container">
         <div class="sc-homepage-museo-card" *ngFor="let item of items">
             <div class="sc-homepage-card-img">
-                <img src="https://picsum.photos/200/300" [alt]="item.nome" width="300">
+                <img [src]="item.immagine" [alt]="item.nome" width="300">
             </div>
             <div class="sc-homepage-card-title">
                 <span>{{ item.nome }}</span>
