@@ -6,7 +6,7 @@
     display: flex;
     border: 3px solid red;    
 }
-.musei {
+.sc-homepage-musei-container {
   margin: 2%;
   display: flex;
   justify-content: space-around;
@@ -28,13 +28,13 @@
   overflow-x: hidden;
 }
 
-.museo {
+.sc-homepage-museo-card {
     border-radius: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30em;
-  height: 30em;
+  width: 25%;
+  height: 30%;
   padding: 1rem;
   border: 1px solid red;
   transition: 350ms;
@@ -43,16 +43,17 @@
   margin : 1%;
 }
 
-.museo:hover {
+.sc-homepage-museo-card:hover {
   background-color: aliceblue;
   transform: scale(1.05);
   font-size: 1.05em;
   transition: 350ms;
 }
 
-.museo img {
+.sc-homepage-museo-card img {
   display: block;
-  max-width: 100%;
+  max-width: 50%;
+  max-height: 50%;
   margin: 0 auto 0.5rem auto;   /* centra l'immagine */
   
 }

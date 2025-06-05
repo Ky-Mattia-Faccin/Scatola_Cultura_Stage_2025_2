@@ -4,10 +4,10 @@
         <!--deve contenere tutti i filtri-->
     </div>
 
-    <div class="musei">
-        <div class="museo" *ngFor="let item of items">
+    <div class="sc-homepage-musei-container">
+        <div class="sc-homepage-museo-card" *ngFor="let item of items">
             <div class="interno">
-                <img [src]="item.immagine" [alt]="item.nome" width="300">
+                <img src="https://picsum.photos/200/300" [alt]="item.nome" width="300">
                 <span>{{ item.nome }}</span>
             </div>
         </div>
