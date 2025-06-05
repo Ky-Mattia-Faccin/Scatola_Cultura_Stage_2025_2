@@ -4,6 +4,8 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
 import { DisabilitaStruttura } from '../../interfaces/IDisabilitàStruttura';
 import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
+
+
 @Component({
   standalone: true,
   selector: 'app-detail',
@@ -21,6 +23,7 @@ export class Detail implements OnInit {
   
   MOCK_DISABILITA: DisabilitaStruttura[] = [
   {
+    idStruttura:1,
     disabilitaStruttura: 1,
     categoria: 'Mobilità',
     descrizione: 'Accesso facilitato per sedie a rotelle',
@@ -28,6 +31,47 @@ export class Detail implements OnInit {
     flgDisabilita: true,
   },
   {
+    idStruttura:1,
+    disabilitaStruttura: 1,
+    categoria: 'Mobilità',
+    descrizione: 'Accesso facilitato per sedie a rotelle',
+    dataInserimento: new Date('2023-01-15'),
+    flgDisabilita: true,
+  },
+  {
+    idStruttura:1,
+    disabilitaStruttura: 1,
+    categoria: 'Mobilità',
+    descrizione: 'Accesso facilitato per sedie a rotelle',
+    dataInserimento: new Date('2023-01-15'),
+    flgDisabilita: true,
+  },
+  {
+    idStruttura:1,
+    disabilitaStruttura: 1,
+    categoria: 'Mobilità',
+    descrizione: 'Accesso facilitato per sedie a rotelle',
+    dataInserimento: new Date('2023-01-15'),
+    flgDisabilita: true,
+  },
+  {
+    idStruttura:1,
+    disabilitaStruttura: 1,
+    categoria: 'Mobilità',
+    descrizione: 'Accesso facilitato per sedie a rotelle',
+    dataInserimento: new Date('2023-01-15'),
+    flgDisabilita: true,
+  },
+  {
+    idStruttura:1,
+    disabilitaStruttura: 1,
+    categoria: 'Mobilità',
+    descrizione: 'Accesso facilitato per sedie a rotelle',
+    dataInserimento: new Date('2023-01-15'),
+    flgDisabilita: true,
+  },
+  {
+    idStruttura:2,
     disabilitaStruttura: 2,
     categoria: 'Udito',
     descrizione: 'Servizio di interpretariato LIS disponibile',
@@ -35,6 +79,7 @@ export class Detail implements OnInit {
     flgDisabilita: false,
   },
   {
+    idStruttura:3,
     disabilitaStruttura: 3,
     categoria: 'Vista',
     descrizione: 'Materiali in braille e audioguide',

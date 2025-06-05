@@ -45,6 +45,34 @@
   transform: translateY(-5%);
 }
 
+.sc-detail-back-button:hover span{
+  animation: slide-left 1s ease forwards;
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  49% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
 .sc-detail-header-title {
   position: absolute;
   left: 50%;
@@ -58,13 +86,11 @@
   color: #333;
   padding: 0.25em 1em;
   border-radius: 0.5em;
-  white-space: nowrap;
 }
 
 .sc-detail-center {
   max-height: 50%;
   display: flex;
-  flex: 1;
   padding: 1.5em 2em;
   gap: 2em;
   border-bottom: 1px solid #ddd;
@@ -121,8 +147,6 @@
 
 .sc-detail-footer-accessibility {
 
-  max-width: 75%;
-  max-height: 100%;
   width: 75%;
   height: 100%;
   background-color: #f9f9f9;
@@ -136,9 +160,11 @@
 }
 
 @media (max-width: 768px) {
-  .sc-detail-container {
+    .sc-detail-container {
     width: 85%;
     height: 95%;
+    overflow-y: auto; 
+    overflow-x: hidden;
   }
 
   .sc-detail-header {
@@ -163,8 +189,9 @@
   .sc-detail-center {
     padding: 1em;
     flex-direction: column;
-    gap: 1em;
     max-height: 50%;
+    align-items: center;
+    min-height: 50%;
   }
 
   .sc-detail-center-img {
@@ -174,30 +201,29 @@
 
   .sc-detail-center-desc {
     width: 100%;
-    max-height: 20%;
+    max-height: 35%;
+    height: 35%;
     overflow-y: scroll;
     
   }
 
-  .sc-detail-footer {
-    flex-direction: column;
-    align-items: stretch;
-    flex-direction: row-reverse;
-    gap: 1em;
+   .sc-detail-footer {
+    display: flex;
+    flex-direction: column; 
     padding: 1em;
-    height: 30%;
-    max-height: 99%;
-    
+    align-items: center;
+    min-height: 80%
   }
 
-  .sc-detail-social,
-  .sc-detail-footer-accessibility {
-    width: 100%;
-    height: auto;
-  }
-
-  .sc-detail-footer-accessibility {
-    max-height: 99%;
-    overflow-y: scroll;
-  }
+.sc-detail-footer-accessibility{
+    width: 90%;
+    overflow: visible;
 }
+.sc-detail-social{
+  padding: 6%;
+  margin-top: 5%;
+  height: 12%;
+  width: 90%;
+}
+}
+
