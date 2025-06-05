@@ -1,32 +1,34 @@
-.pagina {
-  height: 100vh;
-  width: 100vw;
-  padding: 2em;
+.sc-detail-pagina {
+  height: 97vh;
+  width: 99vw;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.container {
-  width: 80em;
-  max-width: 100%;
-  height: 50em;
-  max-height: 98%;
+.sc-detail-container{
+  width: 95%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0.5em 1.2em rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
   background-color: #fff;
+  overflow: hidden;
 }
 
-.header {
+.sc-detail-header{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2em;
+  padding: 1.5em 2em;
   border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
-.button {
+.sc-detail-back-button{
   height: 2.5em;
   width: 2.5em;
   font-size: 1.5em;
@@ -37,63 +39,76 @@
   box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.1);
   border-radius: 0.25em;
 }
-.button:hover{
-   box-shadow: inset 6px 6px 10px #bebebe,
-                inset -6px -6px 10px #ffffff;
+
+.sc-detail-back-button:hover {
+  background-color: #33333324;
+  transform: translateY(-5%);
 }
 
-.title {
+.sc-detail-header-title {
   position: absolute;
-  left: 40%;
+  left: 50%;
+  transform: translateX(-50%);
   height: 2em;
-  width: 7em;
+  width: auto;
   font-size: 2em;
   font-weight: 400;
   text-align: center;
   background-color: #f9f9f9;
-  color:#333;
-  border-radius: 12%;
+  color: #333;
+  padding: 0.25em 1em;
+  border-radius: 0.5em;
+  white-space: nowrap;
 }
 
-
-.mid {
+.sc-detail-center {
+  max-height: 50%;
   display: flex;
-  padding: 2em;
+  flex: 1;
+  padding: 1.5em 2em;
   gap: 2em;
-  height: 20em;
   border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.img {
-  width: 17em;
-  height: 17em;
-  background-color: #f3f3f3;
+.sc-detail-center-img{
+  max-width: 28%;
+  max-height: 98%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0.5em;
-
+}
+.sc-detail-center-img img{
+  object-fit: contain;
+  max-width: 98%;
+  max-height: 90%;
 }
 
-
-.desc {
-  padding: 0.5em 1em;
-  background-color: #f9f9f9; ;
-  width: 55em;
+.sc-detail-center-desc{
+  width: 70%;
+  max-height: 97%;
+  background-color: #f9f9f9;
+  padding: 1em;
+  font-size: 1em;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
-
-.footer {
+.sc-detail-footer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
-  padding: 2em;
-  gap: 2em;
+  padding: 1.5em 2em;
+  height: 38%;
+  box-sizing: border-box;
+  padding-right: 8%;
 }
 
-.social {
-  width: 17em;
-  height: 12em;
+.sc-detail-social {
+  width: 23%;
+  height: 95%;
   background-color: #f0f0f0;
   border-radius: 0.5em;
   display: flex;
@@ -101,16 +116,88 @@
   align-items: center;
   font-size: 1em;
   color: #333;
+  overflow: hidden;
 }
 
-.accs {
-  width: 55em;
-  height: 12em;
-  max-height: 12em;
+.sc-detail-footer-accessibility {
+
+  max-width: 75%;
+  max-height: 100%;
+  width: 75%;
+  height: 100%;
   background-color: #f9f9f9;
   border-radius: 0.5em;
   padding: 1em;
   overflow-y: auto;
   font-size: 1em;
   color: #333;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .sc-detail-container {
+    width: 85%;
+    height: 95%;
+  }
+
+  .sc-detail-header {
+    flex-direction: row;
+    padding: 1em;
+  }
+  .sc-detail-back-button{
+    max-width: 14%;
+    max-height: 70%;
+  }
+  .sc-detail-header-title {
+    font-size: 1.2em;
+    max-width: 75%;
+    white-space: normal;
+    text-align: center;
+    position: static;
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sc-detail-center {
+    padding: 1em;
+    flex-direction: column;
+    gap: 1em;
+    max-height: 50%;
+  }
+
+  .sc-detail-center-img {
+    max-width: 80%;
+    max-height: 65%;
+  }
+
+  .sc-detail-center-desc {
+    width: 100%;
+    max-height: 20%;
+    overflow-y: scroll;
+    
+  }
+
+  .sc-detail-footer {
+    flex-direction: column;
+    align-items: stretch;
+    flex-direction: row-reverse;
+    gap: 1em;
+    padding: 1em;
+    height: 30%;
+    max-height: 99%;
+    
+  }
+
+  .sc-detail-social,
+  .sc-detail-footer-accessibility {
+    width: 100%;
+    height: auto;
+  }
+
+  .sc-detail-footer-accessibility {
+    max-height: 99%;
+    overflow-y: scroll;
+  }
 }

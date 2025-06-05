@@ -1,35 +1,41 @@
-<div class="pagina">
-  <div class="container">
-    <div class="header">
-      <div class="button" routerLink="/homepage">
+<div class="sc-detail-pagina">
+  <div class="sc-detail-container">
+    <div class="sc-detail-header">
+      <div class="sc-detail-back-button" routerLink="/homepage">
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
           </svg>
         </span>
       </div>
-      <div class="title">
+      <div class="sc-detail-header-title">
         <span>{{this.struttura.nome}}</span>
       </div>
     </div>
-    <div class="mid">
-      <div class="img">
-        <img src="https://picsum.photos/200/300" alt="(to-do)" />
+    <div class="sc-detail-center">
+      <div class="sc-detail-center-img">
+        <img src="https://picsum.photos/seed/picsum/200/300" alt="(to-do)" />
       </div>
-      <div class="desc">
+      <div class="sc-detail-center-desc">
         <span>{{this.struttura.descrizione}} </span>
       </div>
     </div>
-    <div class="footer">
-      <div class="social">
+    <div class="sc-detail-footer">
+      <div class="sc-detail-social">
         <span>social+pos (to-do)</span>
       </div>
 
-      <div class="accs">
+      <div class="sc-detail-footer-accessibility">
         <div *ngFor="let acc of this.struttura.disabilita">
-          {{ acc.categoria }} - {{ acc.descrizione }}
+            <span [innerHTML]="getIcon(acc.categoria)"></span>
+            <span>{{ acc.categoria }} - {{ acc.descrizione }}</span>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
