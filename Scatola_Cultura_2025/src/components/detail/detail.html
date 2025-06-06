@@ -1,22 +1,15 @@
+<div *ngIf="showZoom" class="sc-detail-zoom">
+  <span>{{testoZoom}}</span>
+  <div class="sc-detail-dezoom-button" (click)="toggleZoom('')">
+    <span [innerHTML]="Icone.getIcon('zoomOut')"></span>
+  </div>
+</div>
+
 <div class="sc-detail-pagina">
   <div class="sc-detail-container">
     <div class="sc-detail-header">
       <div class="sc-detail-back-button" routerLink="/homepage">
-        <span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-arrow-left"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
-            />
-          </svg>
-        </span>
+          <div [innerHTML]="Icone.getIcon('BackArrow')"></div>
       </div>
       <div class="sc-detail-header-title">
         <span>{{this.struttura.nome}}</span>
@@ -27,18 +20,15 @@
         <img src="https://picsum.photos/seed/picsum/200/300" alt="(to-do)" />
       </div>
       <div class="sc-detail-center-desc">
-        <span>{{this.struttura.descrizione}} </span>
+        <app-detail-testo [testo]="this.struttura.descrizione" class="sc-detail-testo" (zoomClicked)="toggleZoom($event)"></app-detail-testo>
       </div>
     </div>
     <div class="sc-detail-footer">
       <div class="sc-detail-footer-accessibility">
-        <div *ngFor="let acc of this.struttura.disabilita">
-          <span [innerHTML]="getIcon(acc.categoria)"></span>
-          <span>{{ acc.categoria }} - {{ acc.descrizione }}</span>
-        </div>
+          <app-detail-testo [testo]="this.struttura.descrizione" class="sc-detail-testo" (zoomClicked)="toggleZoom($event)"></app-detail-testo>   
       </div>
       <div class="sc-detail-social">
-          <span>social+pos (to-do)</span>
+        <span>social+pos (to-do)</span>
       </div>
     </div>
   </div>
