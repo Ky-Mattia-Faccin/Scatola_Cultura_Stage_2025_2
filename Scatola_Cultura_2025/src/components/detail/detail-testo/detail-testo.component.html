@@ -2,11 +2,16 @@
     
 
     <div *ngIf="hasAccessibilita; else normale" class="sc-detail-testo-text" >
-        <div *ngFor="let item of accessibilita"></div>
+        <div *ngFor="let item of accessibilita">
+            <span [innerHTML]="Icone.getIcon(item.categoria)"></span>
+            <span> {{item.categoria}} - {{item.descrizione}}</span>
+        </div>
     </div>
     <ng-template #normale><div  class="sc-detail-testo-text">{{testo}}</div></ng-template>
+    <div>
+         <div class="sc-detail-testo-button" (click)="onZoomClick($event)" [innerHTML]="Icone.getIcon('zoomIn')" ></div>
+    </div>
 
 
-
-    <div class="sc-detail-testo-button" (click)="onZoomClick()" [innerHTML]="Icone.getIcon('zoomIn')" ></div>
+   
 </div>
