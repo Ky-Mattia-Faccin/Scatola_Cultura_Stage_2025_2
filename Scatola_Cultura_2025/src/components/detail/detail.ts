@@ -30,7 +30,10 @@ export class Detail implements OnInit {
   
 
   toggleZoom(container:HTMLElement){
-    container.classList.toggle('sc-zoomed');
+    let element=container.closest('.sc-detail-center-desc')?.classList.toggle('sc-zoomed');
+    if(!element)
+      element=container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
+    document.querySelector('pagina')
   }
 
 
