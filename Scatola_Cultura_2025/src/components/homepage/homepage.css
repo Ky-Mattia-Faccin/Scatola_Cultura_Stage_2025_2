@@ -12,10 +12,11 @@
     border: 3px solid #ccc;    
 }
 .sc-homepage-musei-container {
-  margin-top: 1%;
+  
+  
   display: flex;
   justify-content: space-between;
-  padding: 1em;
+  padding:1em;
   border: 3px solid #ccc; 
   height: 92vh;
   border-radius: 15px;
@@ -25,7 +26,22 @@
   /*blocco scorrimento della pagina*/
   overflow-y: scroll;
   overflow-x: hidden;
-  background-color: #f9f9f9;
+  backdrop-filter: blur(10px);
+}
+.sc-homepage-img-container{
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+  height: 92vh;
+  border-radius: 15px;
+  flex-wrap: wrap;
+  font-size:medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url("../../assets/sc-background.webp");
+  background-size: cover;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  
 }
 /*mettere il background color a f9*/
 
@@ -40,6 +56,7 @@
   box-sizing: border-box;
   margin-bottom : 2%;
   overflow: hidden;
+  background-color: #f9f9f9;
 }
 .sc-homepage-card-img div{
   overflow: hidden;
@@ -100,12 +117,11 @@ Sistemare la versione mobile
     border: 3px solid #ccc;    
 }
 .sc-homepage-musei-container {
-  margin-top: 1%;
   display: flex;
   justify-content: space-between;
   padding: 1em;
   border: 3px solid #ccc; 
-  height: 90vh;
+  height: 93vh;
   border-radius: 15px;
   flex-wrap: wrap;
   font-size:medium;
@@ -113,7 +129,7 @@ Sistemare la versione mobile
   /*blocco scorrimento della pagina*/
   overflow-y: scroll;
   overflow-x: hidden;
-  background-color: #f9f9f9;
+  backdrop-filter: blur(10px);
 }
 /*mettere il background color a f9*/
 
@@ -122,18 +138,19 @@ Sistemare la versione mobile
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 48%;
+  height: 50%;
   border: 1px solid red;
   transition: 350ms;
   box-sizing: border-box;
-  margin : 3%;
+  margin-bottom : 7%;
   overflow: hidden;
+  cursor: pointer;
 }
 .sc-homepage-card-img div{
   overflow: hidden;
-  min-width: 85vw;
+  min-width: 90vw;
   min-height: 30vh;
-  max-width: 85vw;
+  max-width: 90vw;
   max-height: 30vh;
 }
 
@@ -146,18 +163,18 @@ Sistemare la versione mobile
 }
 .sc-homepage-card-img{
   display: flex;
-  width: 85vw;
+  width: 90vw;
   height: 30vh;
-  max-width: 85vw;
+  max-width: 90vw;
   max-height: 30vh;
   justify-content: flex-start;
 
 }
 .sc-homepage-card-img img{
   object-fit: cover;
-  max-width: 85vw;
+  max-width: 90vw;
   max-height: 30vh;
-  width:85vw;
+  width:90vw;
   
 }
 .sc-homepage-card-title{
@@ -165,4 +182,17 @@ Sistemare la versione mobile
   max-width: 100%;
   align-self: center;
 }
+.sc-homepage-img-container{
+  background-image: url("../../assets/sc-background.webp");
+  background-size: cover;
+  height:96vh;
 }
+}
+
+
+
+/* cose rimanenti da fare : 
+*app
+*filtri
+*collegamento alla pagina dei dettagli
+*/
