@@ -1,7 +1,7 @@
 .sc-detail-testo-button {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 2%;
+    right: 2%;
     border-radius: 12%;
     cursor: pointer;
 
@@ -15,23 +15,31 @@
 
 .sc-detail-testo-container {
     position: relative; 
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
 
-    height: 98%;
-    width: 98%;
+    display: flex;
+    flex-flow: column wrap;
+
+    height: 99%;
+    width: 97%;
 
     margin: 2%;
 
     overflow: hidden;
-    
+}
+
+.sc-detail-testo-text{
+    column-count: 2;
+    overflow: hidden;
+
 }
 
 .sc-detail-testo-button:hover{
      background-color: #33333324;
   transform: translateY(-5%);
 }
+
+
+
 
 
 @media (max-width: 768px) {

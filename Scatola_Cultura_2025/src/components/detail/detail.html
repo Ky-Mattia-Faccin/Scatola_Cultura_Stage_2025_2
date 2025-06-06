@@ -1,15 +1,8 @@
-<div *ngIf="showZoom" class="sc-detail-zoom">
-  <span>{{testoZoom}}</span>
-  <div class="sc-detail-dezoom-button" (click)="toggleZoom('')">
-    <span [innerHTML]="Icone.getIcon('zoomOut')"></span>
-  </div>
-</div>
-
 <div class="sc-detail-pagina">
   <div class="sc-detail-container">
     <div class="sc-detail-header">
       <div class="sc-detail-back-button" routerLink="/homepage">
-          <div [innerHTML]="Icone.getIcon('BackArrow')"></div>
+        <div [innerHTML]="Icone.getIcon('BackArrow')"></div>
       </div>
       <div class="sc-detail-header-title">
         <span>{{this.struttura.nome}}</span>
@@ -20,12 +13,20 @@
         <img src="https://picsum.photos/seed/picsum/200/300" alt="(to-do)" />
       </div>
       <div class="sc-detail-center-desc">
-        <app-detail-testo [testo]="this.struttura.descrizione" class="sc-detail-testo" (zoomClicked)="toggleZoom($event)"></app-detail-testo>
+        <app-detail-testo
+          [testo]="this.struttura.descrizione"
+          class="sc-detail-testo"
+          (zoomClicked)="toggleZoom($event)"
+        ></app-detail-testo>
       </div>
     </div>
     <div class="sc-detail-footer">
       <div class="sc-detail-footer-accessibility">
-          <app-detail-testo [accessibilita]="this.struttura.disabilita" class="sc-detail-testo" (zoomClicked)="toggleZoom($event)"></app-detail-testo>   
+        <app-detail-testo
+          [accessibilita]="this.struttura.disabilita"
+          class="sc-detail-testo"
+          (zoomClicked)="toggleZoom($event)"
+        ></app-detail-testo>
       </div>
       <div class="sc-detail-social">
         <span>social+pos (to-do)</span>

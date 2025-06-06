@@ -28,21 +28,13 @@ export class Detail implements OnInit {
 
   Icone=this.iconeManager
   
-  
 
-  showZoom: boolean = false;
-  testoZoom: string = '';
-
-
-
-  toggleZoom(testo: string) {
-    this.showZoom = !this.showZoom;
-
-    this.testoZoom = testo;
-
-    document.querySelector('.sc-detail-pagina')?.classList.toggle('blur');
+  toggleZoom(container:HTMLElement){
+    container.classList.toggle('sc-zoomed');
   }
 
+
+  
   getAccessibilityText(): string {
     const acc = document.querySelector('.sc-detail-footer-accessibility');
     const testo = acc?.textContent?.toString();
