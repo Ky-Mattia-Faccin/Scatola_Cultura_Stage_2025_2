@@ -28,7 +28,7 @@ export class DetailTestoComponent implements OnChanges{
   Icone=this.iconeManager
   
   onZoomClick(event:MouseEvent){
-    const parent=(event.target as HTMLElement).closest('.sc-detail-testo-container');
+    let parent=(event.target as HTMLElement).closest('.sc-detail-testo-container');
     this.zoomClicked.emit(parent as HTMLElement)
   }
 

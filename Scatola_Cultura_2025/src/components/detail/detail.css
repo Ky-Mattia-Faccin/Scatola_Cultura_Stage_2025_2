@@ -17,8 +17,8 @@
   height: 95%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0.5em 1.2em rgba(0, 0, 0, 0.2);
-  border-radius: 0.5em;
+  box-shadow: 0 2% 2% rgba(0, 0, 0, 0.2);
+  border-radius: 1%;
   background-color: #fff;
   overflow: hidden;
 
@@ -30,21 +30,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5em 2em;
+  padding: 2% 3%;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
 }
 
 .sc-detail-back-button {
-  height: 2.5em;
-  width: 2.5em;
-  font-size: 1.5em;
+  height: 100%;
+  width: 3%;
+  font-size: 150%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.1);
-  border-radius: 0.25em;
+  box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.1);
+  border-radius:10%;
 }
 
 .sc-detail-back-button:hover {
@@ -52,9 +52,11 @@
   transform: translateY(-5%);
 }
 
-.sc-detail-back-button:hover span {
+.sc-detail-back-button:hover{
   animation: slide-left 1s ease forwards;
 }
+
+
 @keyframes slide-left {
   0% {
     transform: translateX(0%);
@@ -78,15 +80,15 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  height: 2em;
+  height: 6%;
   width: auto;
-  font-size: 2em;
+  font-size: 200%;
   font-weight: 400;
   text-align: center;
   background-color: #f9f9f9;
   color: #333;
-  padding: 0.25em 1em;
-  border-radius: 0.5em;
+  padding:  0.5% 2%;
+  border-radius: 2%;
 }
 
 /* center */
@@ -173,19 +175,29 @@
 /* zoom */
 .sc-zoomed{
 
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   z-index: 9999;
 
   background-color: white;
   box-shadow: 0 0 2em rgba(0, 0, 0, 0.4);
 
+  
+
   height: 80%;
   width: 80%;
+  padding: 2%;
   max-height: none;
   max-width: none;
 
   font-size: x-large;
   overflow: auto;
 
+
+  
   
 }
 

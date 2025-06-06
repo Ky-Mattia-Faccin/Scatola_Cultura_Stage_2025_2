@@ -19,7 +19,7 @@
     display: flex;
     flex-flow: column wrap;
 
-    height: 99%;
+    height: 90%;
     width: 97%;
 
     margin: 2%;
@@ -30,6 +30,7 @@
 .sc-detail-testo-text{
     column-count: 2;
     overflow: hidden;
+
 
 }
 
