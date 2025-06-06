@@ -1,4 +1,3 @@
-<!--Simone Negro, 05/06/25, inserimento dei div -->
 <div class="sc-homepage-start">
     <div class="sc-homepage-blur">
         <div class="sc-homepage-filter-container">
@@ -9,7 +8,7 @@
         </div>
         <div class="sc-homepage-musei-container">
             <div class="sc-homepage-museo-card" *ngFor="let item of items">
-                <div class="sc-homepage-card-img">
+                <div class="sc-homepage-card-img" routerLink="/detail">
                     <img [src]="item.immagine" [alt]="item.nome" width="300">\
                 </div>
                 <div class="sc-homepage-card-title">
