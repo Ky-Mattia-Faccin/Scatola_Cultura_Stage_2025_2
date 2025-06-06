@@ -69,7 +69,6 @@
   border-radius: 5%;
   width: 29%;
   height: 48%;
-  border: 1px solid red;
   transition: 350ms;
   box-sizing: border-box;
   margin-bottom : 2%;
@@ -211,10 +210,9 @@ Sistemare la versione mobile
 }
 }
 
-
-
 /* cose rimanenti da fare : 
 *app
 *filtri
-*collegamento alla pagina dei dettagli
+*collegamento alla pagina dei dettagli           //uso del server
+*al ritorno i filtri impostati devono rimanere   //uso del server
 */
