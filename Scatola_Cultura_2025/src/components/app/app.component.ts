@@ -19,12 +19,14 @@ export class AppComponent  {
   
   title = 'Scatola_Cultura_2025';
   
+  brightness:number=100
+  contrast:number=100
   
   strutture:Struttura[]=[];
 
   constructor(private httpClient:HttpClient ){}
 
-  
+  //all avvio richiede i dati in formato json li converte e li salva nello storage del browser
   ngOnInit(): void {
     this.getStrutture().subscribe(dati=>{
       this.strutture=dati;
@@ -41,7 +43,16 @@ export class AppComponent  {
   }
 
 
+  //applica i filtri di luminosità e contrasto
+  applyFilter(){
+    const pagina= document.querySelector('.sc-pagina') as HTMLElement
 
+    if(pagina){
+      pagina.style.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%)`;
+    }
+
+   
+  }
 
 
 }
