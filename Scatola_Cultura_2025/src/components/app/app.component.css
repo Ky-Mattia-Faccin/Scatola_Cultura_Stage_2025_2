@@ -11,12 +11,12 @@
   align-content: center;
   justify-content: space-around;
   align-items: center;
-  padding: 1%;
+  padding: 1vw;
   background-color: #f9f9f9;
   border-bottom: 2px solid gray;
 
-  height: 5%;
-  width: 98%;
+  height: 5vh;
+  width: 98vw;
 }
 .sc-navbar-logo-space {
   background-color: #f9f9f9;
