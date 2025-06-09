@@ -2,8 +2,8 @@
 .sc-homepage-start{
   overflow: hidden;
   width: 100vw;
-  height: 100vh;
-    
+  height: 97.7vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   max-width: 100vw;
   max-height: 100vh;
 
@@ -114,6 +114,7 @@
   display: flex;
   max-width: 100%;
   align-self: center;
+  color: #333;
 }
 /*se si vuole modificare la grandezza dell'immagine bisogna modificare:
 * sc-homepage-card-img img
@@ -126,14 +127,18 @@
 .sc-homepage-start{
   margin-top: 0;
   overflow: hidden;
-  max-width: 91vw;
+  max-width: 100vw;
   max-height: 100vh;
   background-color: #f0f0f0;
 }
 /*filtri*/
 .sc-homepage-filter{
   display: flex;
-  border: 3px solid #ccc;    
+  border: 3px solid #ccc; 
+  width: 80vw   
+}
+.sc-homepage-blur{
+  align-items:flex-start;
 }
 /*contenitore di tutti i musei*/
 .sc-homepage-musei-container {
@@ -154,7 +159,7 @@
   border-radius: 5%;
   display: flex;
   flex-direction: column;
-  width: 70vw;
+  width: 80vw;
   height: 50%;
   transition: 350ms;
   box-sizing: border-box;
@@ -194,7 +199,6 @@
   max-width: 90vw;
   max-height: 30vh;
   width:90vw;
-  
 }
 /*configurazione titolo immagine*/
 .sc-homepage-card-title{
@@ -209,10 +213,3 @@
   height:96vh;
 }
 }
-
-/* cose rimanenti da fare : 
-*app
-*filtri
-*collegamento alla pagina dei dettagli           //uso del server
-*al ritorno i filtri impostati devono rimanere   //uso del server
-*/
