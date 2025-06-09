@@ -2,7 +2,7 @@
   margin: 0;
 }
 .sc-detail-pagina {
-  height: 100vh;
+  height: 93vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@
   overflow: hidden;
   box-sizing: border-box;
 
-  padding: 1%;
+  padding: 1vh;
 
 
   background-image: url(https://images.pexels.com/photos/69903/pexels-photo-69903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
