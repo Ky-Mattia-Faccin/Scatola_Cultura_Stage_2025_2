@@ -6,9 +6,9 @@
             </div>
             <!--deve contenere tutti i filtri-->
         </div>
-        <div class="sc-homepage-musei-container">
-            <div class="sc-homepage-museo-card" *ngFor="let item of strutture">
-                <div class="sc-homepage-card-img" [routerLink]="['/detail', item.id]" >
+        <div class="sc-homepage-musei-container" >
+            <div class="sc-homepage-museo-card" *ngFor="let item of strutture" [routerLink]="['/detail', item.id]" >
+                <div class="sc-homepage-card-img" >
                     <img [src]="" alt="{{item.nome}}" width="300">\
                 </div>
                 <div class="sc-homepage-card-title">
