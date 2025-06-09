@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TbStruttura } from '../../strutture/TbStruttura';
 import { TbDisabilitaStruttura } from '../../strutture/tbDisabilitàStruttura'
 import { TbDisabilitaCategorie } from '../../strutture/tbDisabilitaCategorie';
+
 @Component({
   standalone:true,
   selector: 'app-homepage',
@@ -11,8 +12,10 @@ import { TbDisabilitaCategorie } from '../../strutture/tbDisabilitaCategorie';
   templateUrl: './homepage.html',
   styleUrl: './homepage.css'
 })
+
 export class Homepage {
-  items = [{nome: 'Musei Vaticani - Città del Vaticano', immagine: 'assets/prova.avif'},
+  items = [
+    {nome: 'Musei Vaticani - Città del Vaticano', immagine: 'assets/prova.avif'},
     {nome: 'Galleria degli Uffizi - Firenze', immagine: 'assets/esempio.jpg'},
     {nome:'Museo Egizio - Torino', immagine: 'assets/prova.avif'},
     {nome:'Galleria dell\'Accademia - Firenze',immagine: 'assets/prova.avif'},
@@ -31,7 +34,9 @@ export class Homepage {
     {nome:'Gallerie dell\'Accademia - Venezia',immagine: 'assets/prova.avif'},
     {nome:'Museo Archeologico Nazionale - Taranto', immagine: 'assets/prova.avif'},
     {nome:'Museo Storico Italiano della Guerra - Rovereto',immagine: 'assets/prova.avif'},
-    {nome:'Museo Ferrari - Maranello',immagine: 'assets/prova.avif'}];
+    {nome:'Museo Ferrari - Maranello',immagine: 'assets/prova.avif'}
+  ];
+
   strutture: TbStruttura[] = [
   {
     idStruttura: 1,
