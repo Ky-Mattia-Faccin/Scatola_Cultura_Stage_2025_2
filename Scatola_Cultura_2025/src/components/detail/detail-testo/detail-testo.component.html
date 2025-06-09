@@ -5,6 +5,7 @@
         <div *ngFor="let item of accessibilita">
             <span [innerHTML]="Icone.getIcon(item.categoria)"></span>
             <span> {{item.categoria}} - {{item.descrizione}}</span>
+            <br>
         </div>
     </div>
     <ng-template #normale><div  class="sc-detail-testo-text">{{testo}}</div></ng-template>
