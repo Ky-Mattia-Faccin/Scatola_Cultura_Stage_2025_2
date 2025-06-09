@@ -1,8 +1,33 @@
+/* Contenitore principale del componente testo */
+.sc-detail-testo-container {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  width: 97%;
+  overflow: hidden; 
+}
+
+/* Contenitore per il testo normale */
+.sc-detail-testo-text,
+.sc-detail-testo-text-accessibilita {
+  overflow: hidden;
+  line-height: 1.6;
+}
+
+/* Testo di accessibilità: mostrato a colonne */
+.sc-detail-testo-text-accessibilita {
+  flex-flow: column wrap;
+  column-count: 2;      
+  column-gap: 8vw;      
+}
+
+/* Pulsante per zoomare il testo */
 .sc-detail-testo-button {
-  position: absolute;
+  position: absolute;     
   bottom: 2%;
   right: 2%;
-  border-radius: 12%;
+  border-radius: 12%;    
   cursor: pointer;
 
   height: 11%;
@@ -13,29 +38,18 @@
   justify-content: center;
 }
 
-.sc-detail-testo-container {
-  position: relative;
-  display: flex;
-  flex-flow: row wrap;
-  height: 100%;
-  width: 97%;
-  overflow: hidden;
-}
-
-.sc-detail-testo-text {
-  overflow: hidden;
-  line-height: 1.6;
-}
-
+/* Effetto hover sul pulsante */
 .sc-detail-testo-button:hover {
   transform: translateY(-5%);
 }
 
+/* Versione responsive per schermi piccoli */
 @media (max-width: 768px) {
   .sc-detail-testo-button {
-    height: 8%;
+    height: 8%;   
     width: 7%;
   }
+
   .sc-detail-testo-container {
     height: 90%;
     width: 90%;
