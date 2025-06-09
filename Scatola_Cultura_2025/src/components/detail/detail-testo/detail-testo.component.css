@@ -1,51 +1,43 @@
 .sc-detail-testo-button {
-    position: absolute;
-    bottom: 2%;
-    right: 2%;
-    border-radius: 12%;
-    cursor: pointer;
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  border-radius: 12%;
+  cursor: pointer;
 
-    height: 11%;
-    width: 3%;
+  height: 11%;
+  width: 3%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sc-detail-testo-container {
-    position: relative; 
-
-    display: flex;
-    flex-flow: column wrap;
-
-    height: 90%;
-    width: 97%;
-
-    margin: 2%;
-
-    overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+  width: 97%;
+  overflow: hidden;
 }
 
-.sc-detail-testo-text{
-    column-count: 2;
-    overflow: hidden;
-
-
+.sc-detail-testo-text {
+  overflow: hidden;
+  line-height: 1.6;
 }
 
-.sc-detail-testo-button:hover{
-     background-color: #33333324;
+.sc-detail-testo-button:hover {
   transform: translateY(-5%);
 }
 
-
-
-
-
 @media (max-width: 768px) {
-    .sc-detail-testo-button{
-        height: 15%;
-        width: 7%;
-    }
+  .sc-detail-testo-button {
+    height: 8%;
+    width: 7%;
+  }
+  .sc-detail-testo-container {
+    height: 90%;
+    width: 90%;
+  }
 }

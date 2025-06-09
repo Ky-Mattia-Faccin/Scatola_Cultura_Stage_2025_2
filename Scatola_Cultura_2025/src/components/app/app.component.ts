@@ -7,10 +7,16 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Detail],
+  imports: [RouterOutlet, Detail,RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Scatola_Cultura_2025';
+
+
+
+  toggleMenu(){
+    document.querySelector('sc-navbar-dropdown-menu')?.classList.toggle('hidden');
+  }
 }

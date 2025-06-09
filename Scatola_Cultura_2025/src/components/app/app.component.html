@@ -1,1 +1,32 @@
-<router-outlet></router-outlet>
+<div class="sc-pagina">
+  <div class="sc-navbar">
+    <div class="sc-navbar-logo-space">
+      <img src="" alt="Logo 1" class="logo" />
+      <img src="" alt="Logo 2" class="logo" />
+    </div>
+
+    <div class="sc-navbar-search-container">
+      <input
+        type="text"
+        placeholder="Cerca..."
+        class="sc-navbar-search-input"
+      />
+    </div>
+
+    <div class="sc-navbar-home">
+      <a routerLink="/homepage">Home</a>
+    </div>
+
+    <div class="sc-navbar-dropdown-wrapper">
+      <div class="sc-navbar-dropdown-button" (click)="toggleMenu()">
+        Accessibilità
+      </div>
+      <div class="sc-navbar-dropdown-menu hidden">
+        <span>Contrasto</span>
+        <span>Luminosità</span>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+>>>>>>> e6a7b01 (navbar)
