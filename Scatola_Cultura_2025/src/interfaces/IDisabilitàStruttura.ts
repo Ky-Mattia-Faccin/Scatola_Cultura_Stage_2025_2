@@ -1,6 +1,6 @@
  export interface DisabilitaStruttura {
   disabilitaStruttura: number;
-  categoria: string;
+  idCategoria: string;
   idStruttura:number; //stesso id della struttura
   descrizione: string;
   dataInserimento: Date;

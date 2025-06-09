@@ -3,18 +3,17 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
 import { SearchFilterService } from '../../services/search-filter.service';
-
+import { Observable } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 @Component({
   standalone: true,
   selector: 'app-homepage',
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule,CommonModule,HttpClientModule],
   templateUrl: './homepage.html',
   styleUrl: './homepage.css'
 })
 export class Homepage {
-
-  // Iniezione del servizio per la gestione del filtro di ricerca
-  constructor(private searchFilter: SearchFilterService) {}
 
   // Array contenente tutte le strutture caricate
   strutture: Struttura[] = [];
@@ -33,8 +32,9 @@ export class Homepage {
   ngOnInit(): void {
     // Recupero delle strutture salvate nel localStorage
     this.strutture = JSON.parse(localStorage.getItem('strutture') || '[]');
-
+    this.strutture$.subscribe();
     // Sottoscrizione all’osservabile per aggiornare il filtro di ricerca
+    /*
     this.searchFilter.filtroRicerca$.subscribe(value => {
       this.filtro = value;
 
@@ -47,6 +47,15 @@ export class Homepage {
           s.nome.toLowerCase().includes(this.filtro.toLowerCase())
         );
     });
+    */
   }
 
+
+  constructor(private httpClient:HttpClient ){}
+  strutture$=this.getStrutture();    
+
+  getStrutture():Observable<Struttura[]>{
+    return this.httpClient.get<Struttura[]>('http://192.168.123.150:5000/api/Struttura/get');
+  }
 }
+

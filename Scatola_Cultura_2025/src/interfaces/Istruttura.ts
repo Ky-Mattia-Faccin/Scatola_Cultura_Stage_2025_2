@@ -1,14 +1,17 @@
 
 
 export interface Struttura {
-  id: number;
-  nome: string;
-  descrizione: string;
-  indirizzo: string;
-  citta: string;
-  provincia: string;
-  via: string;
-  ambito: string;
-  dataInserimeto: Date;
-  flgDisabilita: boolean;
+        idStruttura: number,
+        nomeStruttura: string,
+        descrizione: string,
+        indirizzoCompleto: string,
+        citta: string,
+        provincia: string,
+        via: string,
+        ambito: string,
+        disabilita:
+            {
+                categoria: string,
+                descrizione: string
+            }
 }

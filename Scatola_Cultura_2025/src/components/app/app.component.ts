@@ -23,30 +23,28 @@ export class AppComponent {
   contrast: number = 100;
 
   // Array per contenere le strutture caricate dal file JSON
-  strutture: Struttura[] = [];
-
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
-  constructor(private httpClient: HttpClient) {}
-
   /*
    * OnInit:
    * - Carica i dati delle strutture dal file JSON
    * - Li salva nel localStorage per l'utilizzo successivo
   */
-  ngOnInit(): void {
-    this.getStrutture().subscribe(dati => {
-      this.strutture = dati;
 
-      // Serializzazione in JSON e salvataggio nel localStorage
-      const strutturaJson = JSON.stringify(this.strutture);
-      if (strutturaJson != null)
-        localStorage.setItem('strutture', strutturaJson);
+  constructor(private httpClient:HttpClient ){}
+  strutture:Struttura[]=[];
+  strutture$: Observable<Struttura[]> = this.getStrutture();
+  
+  ngOnInit(): void {
+    this.strutture$.subscribe();
+    this.getStrutture().subscribe(dati=>{
+
     });
   }
 
+
   // Metodo per ottenere le strutture dal file JSON locale
-  getStrutture(): Observable<Struttura[]> {
-    return this.httpClient.get<Struttura[]>('./assets/struttura.json');
+   getStrutture():Observable<Struttura[]>{
+    return this.httpClient.get<Struttura[]>('http://192.168.123.150:5000/api/Struttura/get');
   }
 
   /*
@@ -61,5 +59,4 @@ export class AppComponent {
       pagina.style.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%)`;
     }
   }
-
 }

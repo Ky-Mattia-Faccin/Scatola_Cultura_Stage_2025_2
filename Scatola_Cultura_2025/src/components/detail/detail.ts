@@ -45,9 +45,9 @@ export class Detail implements OnInit {
   */
   ngOnInit(): void {
     const parametroId = this.route.snapshot.paramMap.get('id');
-
-    if (parametroId != null) {
-      this.idStruttura = parseInt(parametroId, 10);
+      //caricamento strutture da localstorage
+      const strutture:Struttura[]=JSON.parse(localStorage.getItem('strutture')||'[]');
+      const trovata=strutture.find((s:Struttura)=>s.idStruttura===this.idStruttura)
 
       // Caricamento delle strutture dal localStorage
       const strutture: Struttura[] = JSON.parse(localStorage.getItem('strutture') || '[]');
