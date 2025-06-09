@@ -1,30 +1,64 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
 import { DisabilitaStruttura } from '../../interfaces/IDisabilitàStruttura';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IconeManager } from './IconeManager';
 import { DetailTestoComponent } from './detail-testo/detail-testo.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 
 @Component({
   standalone: true,
   selector: 'app-detail',
-  imports: [RouterModule, RouterLink, CommonModule, DetailTestoComponent],
+  imports: [RouterModule, RouterLink, CommonModule, DetailTestoComponent,HttpClientModule],
   templateUrl: './detail.html',
   styleUrls: ['./detail.css'],
 })
 
 export class Detail implements OnInit {
-  @Input() struttura!: Struttura;
 
+  constructor(private sanitizer: DomSanitizer, private iconeManager:IconeManager,
+              private route:ActivatedRoute,private httpsClient:HttpClient) {}
+
+
+  idStruttura!:number;
+  struttura!:Struttura;
+  disabilitaStruttura!:DisabilitaStruttura[];
+  
   ngOnInit(): void {
-    this.struttura = MOCK_STRUTTURA;
+    const parametroId=this.route.snapshot.paramMap.get('id');
+    if(parametroId!=null){
+      this.idStruttura=parseInt(parametroId,10)
+
+      //caricamento strutture da localstorage
+      const strutture:Struttura[]=JSON.parse(localStorage.getItem('strutture')||'[]');
+      const trovata=strutture.find((s:Struttura)=>s.id===this.idStruttura)
+
+      if(trovata)
+        this.struttura=trovata
+      else{
+        console.error(`struttura con id: ${this.idStruttura} non trovata`);
+      }
+      //richiesta dei dati sulle disabilita della struttura con quell id
+      this.getDisabilita().subscribe(dato=>{
+        this.disabilitaStruttura=dato;
+      })
+      //da salvere in locale??
+
+
+
+    }else{
+      console.error(`la struttura con id: ${this.idStruttura} non esiste`);
+    }
   }
 
-  constructor(private sanitizer: DomSanitizer, private iconeManager:IconeManager) {}
+  getDisabilita():Observable<DisabilitaStruttura[]>{
+    return this.httpsClient.get<DisabilitaStruttura[]>('./assets/disabilita_struttura.json')
+  }
 
   Icone=this.iconeManager
   
@@ -37,182 +71,5 @@ export class Detail implements OnInit {
   }
 
 
-  
-  getAccessibilityText(): string {
-    const acc = document.querySelector('.sc-detail-footer-accessibility');
-    const testo = acc?.textContent?.toString();
 
-    return testo!;
-  }
 }
-
-const MOCK_DISABILITA: DisabilitaStruttura[] = [
-  {
-    idStruttura: 1,
-    disabilitaStruttura: 1,
-    categoria: 'Mobilità',
-    descrizione: 'Accesso facilitato per sedie a rotelle',
-    dataInserimento: new Date('2023-01-15'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 1,
-    disabilitaStruttura: 1,
-    categoria: 'Mobilità',
-    descrizione: 'Accesso facilitato per sedie a rotelle',
-    dataInserimento: new Date('2023-01-15'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 1,
-    disabilitaStruttura: 1,
-    categoria: 'Mobilità',
-    descrizione: 'Accesso facilitato per sedie a rotelle',
-    dataInserimento: new Date('2023-01-15'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 1,
-    disabilitaStruttura: 1,
-    categoria: 'Mobilità',
-    descrizione: 'Accesso facilitato per sedie a rotelle',
-    dataInserimento: new Date('2023-01-15'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 1,
-    disabilitaStruttura: 1,
-    categoria: 'Mobilità',
-    descrizione: 'Accesso facilitato per sedie a rotelle',
-    dataInserimento: new Date('2023-01-15'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 1,
-    disabilitaStruttura: 1,
-    categoria: 'Mobilità',
-    descrizione: 'Accesso facilitato per sedie a rotelle',
-    dataInserimento: new Date('2023-01-15'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 2,
-    disabilitaStruttura: 2,
-    categoria: 'Udito',
-    descrizione: 'Servizio di interpretariato LIS disponibile',
-    dataInserimento: new Date('2023-03-22'),
-    flgDisabilita: false,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-  {
-    idStruttura: 3,
-    disabilitaStruttura: 3,
-    categoria: 'Vista',
-    descrizione: 'Materiali in braille e audioguide',
-    dataInserimento: new Date('2023-05-10'),
-    flgDisabilita: true,
-  },
-];
-
-const MOCK_STRUTTURA: Struttura = {
-  id: 101,
-  nome: 'Museo della Cultura Locale',
-  descrizione: 'Un museo dedicato alla storia e tradizioni locali',
-  posizione: {
-    indirizzo: 'Via Roma 25',
-    citta: 'Torino',
-    provincia: 'TO',
-    via: 'Via Roma',
-  },
-  ambito: 'Culturale',
-  dataInserimeto: new Date('2022-12-01'),
-  flgDisabilita: false,
-  disabilita: MOCK_DISABILITA,
-};

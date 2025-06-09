@@ -11,8 +11,10 @@
 /* Contenitore per il testo normale */
 .sc-detail-testo-text,
 .sc-detail-testo-text-accessibilita {
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   line-height: 1.6;
+  max-height: 100%;
 }
 
 /* Testo di accessibilità: mostrato a colonne */
