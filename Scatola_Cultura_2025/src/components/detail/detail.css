@@ -1,6 +1,9 @@
-*{
+/* Rimuove margini di default da tutti gli elementi */
+* {
   margin: 0;
 }
+
+/* Contenitore principale della pagina dettaglio */
 .sc-detail-pagina {
   height: 93vh;
   width: 100vw;
@@ -9,28 +12,28 @@
   align-items: center;
   overflow: hidden;
   box-sizing: border-box;
-
   padding: 1vh;
 
-
+  /* Immagine di sfondo della pagina */
   background-image: url(https://images.pexels.com/photos/69903/pexels-photo-69903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
   background-size: cover;
 }
 
+/* Contenitore interno con card bianca */
 .sc-detail-container {
-  width: 95%;
-  height: 95%;
+  width: 90vw;
+  height: 85vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.2); /* ombra */
   border-radius: 1%;
   background-color: #fff;
   overflow: hidden;
-
 }
 
-/*header*/
+/* ===== HEADER ===== */
 
+/* Barra superiore con pulsante back e titolo */
 .sc-detail-header {
   display: flex;
   align-items: center;
@@ -40,6 +43,7 @@
   box-sizing: border-box;
 }
 
+/* Pulsante "indietro" */
 .sc-detail-back-button {
   height: 100%;
   width: 3%;
@@ -49,19 +53,21 @@
   align-items: center;
   cursor: pointer;
   box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.235);
-  border-radius:10%;
+  border-radius: 10%;
 }
 
+/* Effetto hover per il pulsante "indietro" */
 .sc-detail-back-button:hover {
   background-color: #33333324;
   transform: translateY(-5%);
 }
 
-.sc-detail-back-button:hover div{
+/* Anima il contenuto interno al passaggio del mouse */
+.sc-detail-back-button:hover div {
   animation: slide-left 1s ease forwards;
 }
 
-
+/* Animazione che fa "scivolare" l'icona da sinistra a destra */
 @keyframes slide-left {
   0% {
     transform: translateX(0%);
@@ -81,6 +87,7 @@
   }
 }
 
+/* Titolo centrato in mezzo all'header */
 .sc-detail-header-title {
   position: absolute;
   left: 50%;
@@ -92,12 +99,13 @@
   text-align: center;
   background-color: #f9f9f9;
   color: #333;
-  padding:  0.5% 2%;
+  padding: 0.5% 2%;
   border-radius: 2%;
 }
 
-/* center */
+/* ===== CENTRO ===== */
 
+/* Sezione centrale con immagine e descrizione */
 .sc-detail-center {
   max-height: 50%;
   display: flex;
@@ -108,6 +116,7 @@
   overflow: hidden;
 }
 
+/* Contenitore per l'immagine */
 .sc-detail-center-img {
   max-width: 28%;
   max-height: 98%;
@@ -116,12 +125,15 @@
   align-items: center;
   border-radius: 0.5em;
 }
+
+/* Immagine con scaling contenuto */
 .sc-detail-center-img img {
   object-fit: contain;
   max-width: 98%;
   max-height: 90%;
 }
 
+/* Contenitore per il testo descrittivo */
 .sc-detail-center-desc {
   position: relative;
   width: 80%;
@@ -130,96 +142,77 @@
   padding: 1em;
   font-size: 1em;
   box-sizing: border-box;
-
 }
 
-/* footer */
+/* ===== FOOTER ===== */
 
+/* Parte inferiore della scheda */
 .sc-detail-footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
   height: 38%;
-
   box-sizing: border-box;
   padding-right: 5%;
-
   padding: 2%;
 }
 
+/* Sezione per social/posizione */
 .sc-detail-social {
   width: 23%;
   height: 95%;
-
   background-color: #f0f0f0;
   border-radius: 0.5em;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 1em;
   color: #333;
   overflow: hidden;
 }
 
+/* Sezione dedicata all’accessibilità */
 .sc-detail-footer-accessibility {
   width: 70%;
   max-width: 70%;
   height: 100%;
   max-height: 95%;
-  
   background-color: #f9f9f9;
 }
-.sc-detail-testo{
+
+/* Contenitore di testo generico */
+.sc-detail-testo {
   height: 100%;
   width: 100%;
 }
 
-/* zoom */
-.sc-zoomed{
+/* ===== ZOOM ===== */
 
-  position: fixed; 
+/* Stile per versione ingrandita del testo */
+.sc-zoomed {
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   z-index: 9999;
-
   background-color: white;
   box-shadow: 0 0 2em rgba(0, 0, 0, 0.4);
-
-  
-
   height: 80%;
   width: 80%;
   padding: 2%;
   max-height: none;
   max-width: none;
-
   font-size: x-large;
   overflow: auto;
-
-
   border-radius: 5%;
-  
 }
 
-
-
-.blur {
-  filter: blur(2px);
-  pointer-events: none;
-}
-
-/*responsive*/
-
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   .sc-detail-container {
     width: 85%;
     height: 95%;
-    max-height: 95% ;
+    max-height: 95%;
     overflow: hidden;
   }
 
@@ -228,10 +221,12 @@
     padding: 1em;
     justify-content: center;
   }
+
   .sc-detail-back-button {
     height: 80%;
     width: 10%;
   }
+
   .sc-detail-header-title {
     font-size: 1.2em;
     max-width: 75%;
@@ -273,22 +268,20 @@
   }
 
   .sc-detail-footer-accessibility {
-
     max-height: 70%;
     max-width: 100%;
-
     width: 95%;
     height: 70%;
-    
-
   }
+
   .sc-detail-social {
     padding: 6%;
     margin-top: 5%;
     height: 12%;
     width: 90%;
   }
-  .sc-zoomed{
+
+  .sc-zoomed {
     max-width: 80%;
     width: 80%;
     padding: 5%;
