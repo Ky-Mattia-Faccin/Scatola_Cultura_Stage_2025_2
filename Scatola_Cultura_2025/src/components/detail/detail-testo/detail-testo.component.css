@@ -16,6 +16,8 @@
   overflow-x: hidden;
   line-height: 1.6;
   max-height: 100%;
+  font-size: 22.5px;
+  font-family: sans-serif;
 }
 
 /* Testo di accessibilità: mostrato a colonne */
@@ -34,8 +36,8 @@
   border-radius: 12%;    
   cursor: pointer;
 
-  height: 11%;
-  width: 3%;
+  height: 15%;
+  width: 5%;
 
   display: flex;
   align-items: center;
