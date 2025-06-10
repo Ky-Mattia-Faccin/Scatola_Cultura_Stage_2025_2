@@ -1,10 +1,11 @@
 import { Component, EventEmitter, HostListener, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterService } from '../../services/search-filter.service';
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,RouterLink],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })

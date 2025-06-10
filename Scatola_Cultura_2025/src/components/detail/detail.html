@@ -5,7 +5,7 @@
         <div [innerHTML]="Icone.getIcon('BackArrow')"></div>
       </div>
       <div class="sc-detail-header-title">
-        <span>{{this.struttura.nome}}</span>
+        <span>{{this.struttura.nomeStruttura}}</span>
       </div>
     </div>
     <div class="sc-detail-center">
@@ -23,13 +23,13 @@
     <div class="sc-detail-footer">
       <div class="sc-detail-footer-accessibility">
         <app-detail-testo
-          [accessibilita]="this.disabilitaStruttura"
+          [struttura]="this.struttura"
           class="sc-detail-testo"
           (zoomClicked)="toggleZoom($event)"
         ></app-detail-testo>
       </div>
       <div class="sc-detail-social">
-        <!-- From Uiverse.io by Praashoo7 -->
+
         <div class="main">
           <div class="up">
             <div class="card1">

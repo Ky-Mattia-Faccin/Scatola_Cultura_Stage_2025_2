@@ -2,7 +2,7 @@
     
 
     <div *ngIf="hasAccessibilita; else normale" class="sc-detail-testo-text-accessibilita" >
-        <div *ngFor="let item of accessibilita">
+        <div *ngFor="let item of struttura?.disabilita">
             <span [innerHTML]="Icone.getIcon(item.categoria)"></span>
             <span> {{item.categoria}} - {{item.descrizione}}</span>
             <br>

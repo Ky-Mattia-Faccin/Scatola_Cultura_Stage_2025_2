@@ -7,6 +7,7 @@ import { IconeManager } from '../../services/IconeManager';
 import { DetailTestoComponent } from './detail-testo/detail-testo.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { StrutturaService } from '../../services/struttura.service';
 
 @Component({
   standalone: true,
@@ -25,7 +26,8 @@ export class Detail implements OnInit {
   constructor(
     private iconeManager: IconeManager,
     private route: ActivatedRoute,
-    private httpsClient: HttpClient
+    private httpsClient: HttpClient,
+    private servizioStruttura:StrutturaService
   ) {}
 
   // ID della struttura corrente (ottenuto dalla route)
@@ -34,8 +36,7 @@ export class Detail implements OnInit {
   // Oggetto Struttura da visualizzare nel dettaglio
   struttura!: Struttura;
 
-  // Array contenente i dati di accessibilità/disabilità della struttura
-  disabilitaStruttura!: DisabilitaStruttura[];
+
 
   /*
    * OnInit:
@@ -53,7 +54,7 @@ export class Detail implements OnInit {
       const strutture: Struttura[] = JSON.parse(localStorage.getItem('strutture') || '[]');
 
       // Ricerca della struttura con l'ID specificato
-      const trovata = strutture.find((s: Struttura) => s.id === this.idStruttura);
+      const trovata = strutture.find((s: Struttura) => s.idStruttura === this.idStruttura);
 
       if (trovata)
         this.struttura = trovata;
@@ -62,19 +63,17 @@ export class Detail implements OnInit {
       }
 
       // Recupero dei dati di accessibilità/disabilità associati alla struttura
-      this.getDisabilita().subscribe(dato => {
+      /* in caso di seconda chiamata per ricevere le disabilità
+      this.servizioStruttura.getDisabilita(this.idStruttura).subscribe(dato => {
         this.disabilitaStruttura = dato;
       });
-
+      */
     } else {
       console.error(`La struttura con id: ${this.idStruttura} non esiste`);
     }
   }
 
-  // Metodo per recuperare i dati di disabilità dal file JSON
-  getDisabilita(): Observable<DisabilitaStruttura[]> {
-    return this.httpsClient.get<DisabilitaStruttura[]>('./assets/disabilita_struttura.json');
-  }
+  
 
   // Accesso alle icone tramite IconeManager
   Icone = this.iconeManager;
