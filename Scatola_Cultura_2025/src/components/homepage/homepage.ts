@@ -53,7 +53,6 @@ export class Homepage {
 
   constructor(private httpClient:HttpClient ){}
   strutture$=this.getStrutture();    
-
   getStrutture():Observable<Struttura[]>{
     return this.httpClient.get<Struttura[]>('http://192.168.123.150:5000/api/Struttura/get');
   }
