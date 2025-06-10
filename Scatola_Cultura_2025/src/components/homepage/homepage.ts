@@ -12,15 +12,20 @@ import { StrutturaService } from '../../services/struttura.service';
   templateUrl: './homepage.html',
   styleUrl: './homepage.css'
 })
-export class Homepage  implements OnInit{
+export class Homepage implements OnInit {
 
-  // Iniezione del servizio per la gestione del filtro di ricerca
-  constructor(private searchFilter: SearchFilterService,private servizioStruttura:StrutturaService) {}
+  // Iniezione dei servizi:
+  // - SearchFilterService per gestire il filtro di ricerca
+  // - StrutturaService per recuperare le strutture da API
+  constructor(
+    private searchFilter: SearchFilterService,
+    private servizioStruttura: StrutturaService
+  ) {}
 
-  // Array contenente tutte le strutture caricate
+  // Array contenente tutte le strutture caricate da API
   strutture: Struttura[] = [];
 
-  // Array contenente le strutture filtrate in base al testo di ricerca
+  // Array delle strutture filtrate da visualizzare
   struttureFiltrate: Struttura[] = this.strutture;
 
   // Testo attuale del filtro di ricerca
@@ -28,28 +33,35 @@ export class Homepage  implements OnInit{
 
   /*
    * OnInit:
-   * - Carica le strutture dal localStorage
-   * - Sottoscrive l’osservabile filtroRicerca$ per aggiornare la lista filtrata in base al testo inserito
+   * - Recupera i dati delle strutture dal servizio (chiamata API)
+   * - Li salva nel localStorage in formato JSON
+   * - Applica il filtro iniziale (se presente)
+   * - Sottoscrive al filtroRicerca$ per aggiornare la lista filtrata dinamicamente
   */
- 
+  ngOnInit(): void {
+    this.servizioStruttura.getStrutture().subscribe(s => {
+      this.strutture = s;
 
- 
- ngOnInit(): void {
-    
-    this.servizioStruttura.getStrutture().subscribe(s=>{
-      this.strutture=s
-      const struttureJSON=JSON.stringify(this.strutture)
+      const struttureJSON = JSON.stringify(this.strutture);
       console.log(struttureJSON);
-      localStorage.setItem('strutture',struttureJSON)
-      this.filtraStrutture()
-    })
 
-    // Sottoscrizione all’osservabile per aggiornare il filtro di ricerca
+      localStorage.setItem('strutture', struttureJSON);
+
+      this.filtraStrutture(); // Applica filtro iniziale
+    });
+
+    // Ascolta le modifiche al filtro di ricerca ed aggiorna la lista filtrata
     this.searchFilter.filtroRicerca$.subscribe(value => {
       this.filtro = value;
-      this.filtraStrutture()
+      this.filtraStrutture(); // Ricalcola l’elenco filtrato
     });
   }
+
+  /*
+   * Metodo privato per filtrare le strutture in base al testo del filtro:
+   * - Se il filtro è vuoto, mostra tutte le strutture
+   * - Altrimenti, filtra per nomeStruttura (case insensitive)
+  */
   private filtraStrutture(): void {
     this.struttureFiltrate = this.filtro === ''
       ? this.strutture
@@ -57,5 +69,4 @@ export class Homepage  implements OnInit{
           s.nomeStruttura.toLowerCase().includes(this.filtro.toLowerCase())
         );
   }
-
 }
