@@ -22,12 +22,13 @@ export class Detail implements OnInit {
      - IconeManager per gestire le icone
      - ActivatedRoute per leggere i parametri dalla URL
      - HttpClient per effettuare richieste HTTP
+     - StrutturaService per recuperare dati strutture e disabilità
   */
   constructor(
     private iconeManager: IconeManager,
     private route: ActivatedRoute,
     private httpsClient: HttpClient,
-    private servizioStruttura:StrutturaService
+    private servizioStruttura: StrutturaService
   ) {}
 
   // ID della struttura corrente (ottenuto dalla route)
@@ -35,8 +36,6 @@ export class Detail implements OnInit {
 
   // Oggetto Struttura da visualizzare nel dettaglio
   struttura!: Struttura;
-
-
 
   /*
    * OnInit:
@@ -73,13 +72,13 @@ export class Detail implements OnInit {
     }
   }
 
-  
-
   // Accesso alle icone tramite IconeManager
   Icone = this.iconeManager;
 
-
-  //Metodo per attivare/disattivare lo zoom sui contenitori di dettaglio.
+  /*
+   * Metodo per attivare/disattivare lo zoom sui contenitori di dettaglio.
+   * Cerca il contenitore padre più vicino con classi specifiche e ne attiva/disattiva la classe 'sc-zoomed'
+   */
   toggleZoom(container: HTMLElement) {
     let element = container.closest('.sc-detail-center-desc')?.classList.toggle('sc-zoomed');
     if (!element)
