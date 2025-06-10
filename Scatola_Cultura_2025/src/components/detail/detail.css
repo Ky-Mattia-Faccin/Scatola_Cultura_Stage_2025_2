@@ -14,11 +14,21 @@
 
   overflow: hidden;
   box-sizing: border-box;
-  padding: 1vh;
 
   /* Immagine di sfondo della pagina */
-  background-image: url(https://images.pexels.com/photos/69903/pexels-photo-69903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  background-image: url("../../assets/sc-background.webp");
   background-size: cover;
+}
+/*blur della immagine*/
+.sc-detail-blur{
+  height: 93vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
 }
 
 /* Contenitore interno con card bianca */
