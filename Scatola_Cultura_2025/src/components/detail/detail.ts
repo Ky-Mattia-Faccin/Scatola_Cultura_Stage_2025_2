@@ -9,67 +9,83 @@ import { DetailTestoComponent } from './detail-testo/detail-testo.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
-
 @Component({
   standalone: true,
   selector: 'app-detail',
-  imports: [RouterModule, RouterLink, CommonModule, DetailTestoComponent,HttpClientModule],
+  imports: [RouterModule, RouterLink, CommonModule, DetailTestoComponent, HttpClientModule],
   templateUrl: './detail.html',
   styleUrls: ['./detail.css'],
 })
-
 export class Detail implements OnInit {
 
-  constructor(private sanitizer: DomSanitizer, private iconeManager:IconeManager,
-              private route:ActivatedRoute,private httpsClient:HttpClient) {}
+  /* Costruttore con dipendenze iniettate:
+     - IconeManager per gestire le icone
+     - ActivatedRoute per leggere i parametri dalla URL
+     - HttpClient per effettuare richieste HTTP
+  */
+  constructor(
+    private iconeManager: IconeManager,
+    private route: ActivatedRoute,
+    private httpsClient: HttpClient
+  ) {}
 
+  // ID della struttura corrente (ottenuto dalla route)
+  idStruttura!: number;
 
-  idStruttura!:number;
-  struttura!:Struttura;
-  disabilitaStruttura!:DisabilitaStruttura[];
-  
+  // Oggetto Struttura da visualizzare nel dettaglio
+  struttura!: Struttura;
+
+  // Array contenente i dati di accessibilità/disabilità della struttura
+  disabilitaStruttura!: DisabilitaStruttura[];
+
+  /*
+   * OnInit:
+   * - Recupera l'ID della struttura dalla route
+   * - Carica la struttura dal localStorage
+   * - Esegue richiesta HTTP per ottenere i dati delle disabilità
+  */
   ngOnInit(): void {
-    const parametroId=this.route.snapshot.paramMap.get('id');
-    if(parametroId!=null){
-      this.idStruttura=parseInt(parametroId,10)
+    const parametroId = this.route.snapshot.paramMap.get('id');
 
-      //caricamento strutture da localstorage
-      const strutture:Struttura[]=JSON.parse(localStorage.getItem('strutture')||'[]');
-      const trovata=strutture.find((s:Struttura)=>s.id===this.idStruttura)
+    if (parametroId != null) {
+      this.idStruttura = parseInt(parametroId, 10);
 
-      if(trovata)
-        this.struttura=trovata
-      else{
-        console.error(`struttura con id: ${this.idStruttura} non trovata`);
+      // Caricamento delle strutture dal localStorage
+      const strutture: Struttura[] = JSON.parse(localStorage.getItem('strutture') || '[]');
+
+      // Ricerca della struttura con l'ID specificato
+      const trovata = strutture.find((s: Struttura) => s.id === this.idStruttura);
+
+      if (trovata)
+        this.struttura = trovata;
+      else {
+        console.error(`Struttura con id: ${this.idStruttura} non trovata`);
       }
-      //richiesta dei dati sulle disabilita della struttura con quell id
-      this.getDisabilita().subscribe(dato=>{
-        this.disabilitaStruttura=dato;
-      })
-      //da salvere in locale??
 
+      // Recupero dei dati di accessibilità/disabilità associati alla struttura
+      this.getDisabilita().subscribe(dato => {
+        this.disabilitaStruttura = dato;
+      });
 
-
-    }else{
-      console.error(`la struttura con id: ${this.idStruttura} non esiste`);
+    } else {
+      console.error(`La struttura con id: ${this.idStruttura} non esiste`);
     }
   }
 
-  getDisabilita():Observable<DisabilitaStruttura[]>{
-    return this.httpsClient.get<DisabilitaStruttura[]>('./assets/disabilita_struttura.json')
+  // Metodo per recuperare i dati di disabilità dal file JSON
+  getDisabilita(): Observable<DisabilitaStruttura[]> {
+    return this.httpsClient.get<DisabilitaStruttura[]>('./assets/disabilita_struttura.json');
   }
 
-  Icone=this.iconeManager
-  
+  // Accesso alle icone tramite IconeManager
+  Icone = this.iconeManager;
 
-  toggleZoom(container:HTMLElement){
-    let element=container.closest('.sc-detail-center-desc')?.classList.toggle('sc-zoomed');
-    if(!element)
-      element=container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
-    document.querySelector('pagina')
+
+  //Metodo per attivare/disattivare lo zoom sui contenitori di dettaglio.
+  toggleZoom(container: HTMLElement) {
+    let element = container.closest('.sc-detail-center-desc')?.classList.toggle('sc-zoomed');
+    if (!element)
+      element = container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
   }
-
-
 
 }

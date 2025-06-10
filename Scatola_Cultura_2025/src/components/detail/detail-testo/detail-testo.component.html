@@ -10,7 +10,11 @@
     </div>
     <ng-template #normale><div  class="sc-detail-testo-text">{{testo}}</div></ng-template>
     <div>
-         <div class="sc-detail-testo-button" (click)="onZoomClick($event)" [innerHTML]="Icone.getIcon('zoomIn')" ></div>
+         <div *ngIf="!parentHasZoomClass; else zoomOut" class="sc-detail-testo-button" (click)="onZoomClick($event)" [innerHTML]="Icone.getIcon('zoomIn')" ></div>
+         <ng-template #zoomOut> 
+         <div class="sc-detail-testo-button" (click)="onZoomClick($event)" [innerHTML]="Icone.getIcon('zoomOut')" ></div>
+        </ng-template>
+         
     </div>
 
 
