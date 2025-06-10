@@ -19,10 +19,9 @@
   width: 100vw;
 
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
   align-items: center;
-
+  backdrop-filter: blur(10px);
 }
 /*contenitore dei filtri*/
 .sc-homepage-filter-container {
@@ -30,10 +29,10 @@
   justify-content: center;
   align-items: center;
 
-  height: 15vh;
+  height:11vh;
   width: 90vw;
 
-  padding: 3vh;
+  padding: 1.5vh;
 }
 /*filtri*/
 .sc-homepage-filter{
@@ -53,7 +52,7 @@
   padding:1em;
   font-size:medium;
 
-  height: 100vh;
+  height: 75vh;
   width: 90vw;
 
   overflow-y: scroll;
@@ -63,20 +62,20 @@
 .sc-homepage-museo-card {
   border-radius: 5%;
   width: 25vw;
-  height: 40vh;
+  height: 47%;
   transition: 350ms;
   box-sizing: border-box;
   margin-bottom : 2%;
   overflow: hidden;
-  background-color: #f0f0f0;
-
-
+  background-color:rgb(28, 156, 217,255);
+  border:2px solid white;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 /*animazione dell'intero museo, immagine e testo*/
 .sc-homepage-museo-card:hover {
-  background-color: aliceblue;
+  background-color: rgb(28, 156, 217,255);
   transform: scale(1.05);
   font-size: 1.05em;
   transition: 350ms;
@@ -116,10 +115,11 @@
 .sc-homepage-card-title{
   display: flex;
   align-self: center;
-
   max-width: 100vw;
 
-  color: #333;
+  color: white;
+  align-self: center;
+
 }
 
 
@@ -146,7 +146,11 @@
   width: 80vw   
 }
 
-
+.sc-homepage-filter-container{
+      padding-top: 3vh;
+    padding-left: 2vh;
+    padding-bottom: 3vh;
+}
 .sc-homepage-blur{
   align-items:flex-start;
 }

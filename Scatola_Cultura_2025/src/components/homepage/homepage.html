@@ -8,6 +8,18 @@
           (ProvinceSelected)="FiltriProvince = $event; filtraStrutture()"
         ></app-filtri>
       </div>
+        </div>
+        <div class="sc-homepage-musei-container" >
+            <div class="sc-homepage-museo-card" *ngFor="let item of struttureFiltrate" [routerLink]="['/detail', item.idStruttura]" >
+                <div class="sc-homepage-card-img" >
+                    <img [src]="" alt="{{item.nomeStruttura}}" width="300">
+                </div>
+                <div class="sc-homepage-card-title">
+                    <span>{{ item.nomeStruttura }}</span>
+                </div>
+                <div class="sc-homepage-card-info"></div>
+            </div>
+        </div>
     </div>
     <div
       class="sc-homepage-musei-container"
@@ -31,4 +43,3 @@
       <p>nessuna struttura con i filtri selezionati</p>
     </ng-template>
   </div>
-</div>
