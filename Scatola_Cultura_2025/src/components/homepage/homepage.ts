@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
 import { SearchFilterService } from '../../services/search-filter.service';

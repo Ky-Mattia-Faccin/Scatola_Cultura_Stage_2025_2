@@ -1,4 +1,4 @@
-import { DisabilitaStruttura } from './IDisabilitàStruttura';
+
 
 export interface Struttura {
   id: number;

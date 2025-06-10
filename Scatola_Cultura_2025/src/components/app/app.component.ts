@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { Homepage } from '../homepage/homepage';
-import { Detail } from '../detail/detail';
-import { RouterLink } from '@angular/router';
+import {  RouterOutlet } from '@angular/router';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { Struttura } from '../../interfaces/Istruttura';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, map, tap } from 'rxjs';
+import {  Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Detail, RouterLink, NavBarComponent, HttpClientModule],
+  imports: [RouterOutlet, NavBarComponent, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

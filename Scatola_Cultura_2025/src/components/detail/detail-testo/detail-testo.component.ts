@@ -1,7 +1,7 @@
-import { Component, ElementRef, EventEmitter, Input,  OnChanges,  Output, Renderer2, SimpleChanges } from '@angular/core';
-import { IconeManager } from '../IconeManager';
+import { Component, EventEmitter, Input,  OnChanges,  Output, SimpleChanges } from '@angular/core';
+import { IconeManager } from '../../../services/IconeManager';
 import { DisabilitaStruttura } from '../../../interfaces/IDisabilitàStruttura';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 @Component({
