@@ -5,6 +5,7 @@ import { Struttura } from '../../interfaces/Istruttura';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {  Observable} from 'rxjs';
+import { StrutturaService } from '../../services/struttura.service';
 
 @Component({
   selector: 'app-root',
@@ -33,21 +34,14 @@ export class AppComponent {
    * - Carica i dati delle strutture dal file JSON
    * - Li salva nel localStorage per l'utilizzo successivo
   */
+
   ngOnInit(): void {
-    this.getStrutture().subscribe(dati => {
-      this.strutture = dati;
-
-      // Serializzazione in JSON e salvataggio nel localStorage
-      const strutturaJson = JSON.stringify(this.strutture);
-      if (strutturaJson != null)
-        localStorage.setItem('strutture', strutturaJson);
-    });
+    // Recupero delle strutture salvate nel localStorage
+    this.strutture = JSON.parse(localStorage.getItem('strutture') || '[]');
   }
 
-  // Metodo per ottenere le strutture dal file JSON locale
-  getStrutture(): Observable<Struttura[]> {
-    return this.httpClient.get<Struttura[]>('./assets/struttura.json');
-  }
+  
+  
 
   /*
    * Applica i filtri di luminosità e contrasto alla pagina:

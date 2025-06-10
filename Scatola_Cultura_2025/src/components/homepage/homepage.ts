@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
 import { SearchFilterService } from '../../services/search-filter.service';
+import { StrutturaService } from '../../services/struttura.service';
 
 @Component({
   standalone: true,
@@ -11,10 +12,10 @@ import { SearchFilterService } from '../../services/search-filter.service';
   templateUrl: './homepage.html',
   styleUrl: './homepage.css'
 })
-export class Homepage {
+export class Homepage  implements OnInit{
 
   // Iniezione del servizio per la gestione del filtro di ricerca
-  constructor(private searchFilter: SearchFilterService) {}
+  constructor(private searchFilter: SearchFilterService,private servizioStruttura:StrutturaService) {}
 
   // Array contenente tutte le strutture caricate
   strutture: Struttura[] = [];
@@ -30,23 +31,31 @@ export class Homepage {
    * - Carica le strutture dal localStorage
    * - Sottoscrive l’osservabile filtroRicerca$ per aggiornare la lista filtrata in base al testo inserito
   */
-  ngOnInit(): void {
-    // Recupero delle strutture salvate nel localStorage
-    this.strutture = JSON.parse(localStorage.getItem('strutture') || '[]');
+ 
+
+ 
+ ngOnInit(): void {
+    
+    this.servizioStruttura.getStrutture().subscribe(s=>{
+      this.strutture=s
+      const struttureJSON=JSON.stringify(this.strutture)
+      console.log(struttureJSON);
+      localStorage.setItem('strutture',struttureJSON)
+      this.filtraStrutture()
+    })
 
     // Sottoscrizione all’osservabile per aggiornare il filtro di ricerca
     this.searchFilter.filtroRicerca$.subscribe(value => {
       this.filtro = value;
-
-      // Se il filtro è vuoto, mostra tutte le strutture
-      if (this.filtro === '')
-        this.struttureFiltrate = this.strutture;
-      else
-        // Filtra le strutture che contengono il testo inserito (case insensitive)
-        this.struttureFiltrate = this.strutture.filter(s =>
-          s.nome.toLowerCase().includes(this.filtro.toLowerCase())
-        );
+      this.filtraStrutture()
     });
+  }
+  private filtraStrutture(): void {
+    this.struttureFiltrate = this.filtro === ''
+      ? this.strutture
+      : this.strutture.filter(s =>
+          s.nomeStruttura.toLowerCase().includes(this.filtro.toLowerCase())
+        );
   }
 
 }

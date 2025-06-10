@@ -3,6 +3,7 @@ import { IconeManager } from '../../../services/IconeManager';
 import { DisabilitaStruttura } from '../../../interfaces/IDisabilitàStruttura';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { Struttura } from '../../../interfaces/Istruttura';
 
 @Component({
   selector: 'app-detail-testo',
@@ -20,7 +21,7 @@ export class DetailTestoComponent implements OnChanges{
   @Input() testo:string='';
 
    // Input: array di oggetti DisabilitaStruttura per indicare eventuali accessibilità
-  @Input() accessibilita:DisabilitaStruttura[]|null=null;
+  @Input() struttura:Struttura|null=null;
 
   // Output: emette l'elemento genitore (container) quando viene cliccato il pulsante di zoom
   @Output() zoomClicked=new EventEmitter<HTMLElement>();
@@ -37,9 +38,8 @@ export class DetailTestoComponent implements OnChanges{
    // OnChanges: aggiorna il flag 'hasAccessibilita' se cambiano i dati in ingresso
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.hasAccessibilita=!!(this.accessibilita && this.accessibilita.length>0);
+    this.hasAccessibilita=!!this.struttura
 
-    
   }
   
 
@@ -47,7 +47,8 @@ export class DetailTestoComponent implements OnChanges{
   Icone=this.iconeManager
   
 
-   // Handler per il click sul pulsante zoom: trova il container e lo emette
+   
+  // Handler per il click sul pulsante zoom: trova il container e lo emette
   onZoomClick(event:MouseEvent){
     let parent=(event.target as HTMLElement).closest('.sc-detail-testo-container');
     this.zoomClicked.emit(parent as HTMLElement)
