@@ -67,7 +67,9 @@
   box-sizing: border-box;
   margin-bottom : 2%;
   overflow: hidden;
+
   background-color:#1C9CD9;
+
   border:2px solid white;
   display: flex;
   flex-direction: column;
@@ -113,13 +115,11 @@
 }
 /*configurazione titolo immagine*/
 .sc-homepage-card-title{
+
   display: flex;
-  align-self: center;
-  max-width: 100vw;
 
   color: white;
   align-self: center;
-
 }
 
 

@@ -124,7 +124,9 @@
   justify-content: center;
 
   transition: background-color 0.3s;
+
   border:2px solid #00b9ee;
+
 }
 
 .sc-navbar-dropdown-button:hover {
@@ -289,10 +291,8 @@
   height: calc(var(--slider-height) * 2);
 }
 
-
-
-
 /* ====== ANIMAZIONE MENU ====== */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -304,7 +304,6 @@
   }
 }
 
-
 /*===== DESCRIZIONE =====*/
 .container{
   display: flex;
@@ -315,8 +314,9 @@
 }
 
 .label {
-  height: 2.5vh;
-  width: 6vw;
+
+  height: 20px;
+  width: 110px;
   background-color: #ffffff;
   border-radius: 30px;
   -webkit-box-shadow: inset 0 0 5px 4px rgba(255, 255, 255, 1),
@@ -374,6 +374,8 @@
     #726f6f 62%
   );
   left: 0vw;
+
+  left: 0px;
   -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3),
     10px 10px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3), 10px 10px 10px rgba(0, 0, 0, 0.3);

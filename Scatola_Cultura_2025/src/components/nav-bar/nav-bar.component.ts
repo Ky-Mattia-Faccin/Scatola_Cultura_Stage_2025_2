@@ -27,6 +27,7 @@ export class NavBarComponent {
   @Output() contrastChanged = new EventEmitter<number>();
 
 
+
   // Iniezione del servizio SearchFilterService per aggiornare il filtro di ricerca
   constructor(public searchService: SearchFilterService) {}
 
