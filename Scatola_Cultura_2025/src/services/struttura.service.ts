@@ -39,4 +39,12 @@ export class StrutturaService {
     );
   }
 
+  getFiltro(soggetto:string):Observable<string[]>{
+     return this.httpClient.get<string[]>(
+      'http://192.168.123.150:5000/api/Struttura/get' + `${soggetto}`)
+  }
+
+
+
+
 }
