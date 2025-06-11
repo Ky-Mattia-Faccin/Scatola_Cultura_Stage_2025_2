@@ -230,6 +230,15 @@
 
   transition: 0.2s ease-in-out;
 }
+.card2{
+  border-radius: 5px 90px 5px 5px;
+}
+.card3{
+  border-radius: 5px 5px 5px 90px;
+}
+.card4{
+  border-radius: 5px 5px 90px 5px;
+}
 
 .instagram {
   fill: #cc39a4;
