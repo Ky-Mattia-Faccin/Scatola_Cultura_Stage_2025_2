@@ -13,6 +13,10 @@
             <div class="sc-homepage-museo-card" *ngFor="let item of struttureFiltrate" [routerLink]="['/detail', item.idStruttura]" >
                 <div class="sc-homepage-card-img" >
                     <img [src]="" alt="{{item.nomeStruttura}}" width="300">
+                    
+                </div>
+                <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">                    
+                    <span>{{item.descrizione}}</span>
                 </div>
                 <div class="sc-homepage-card-title">
                     <span>{{ item.nomeStruttura }}</span>

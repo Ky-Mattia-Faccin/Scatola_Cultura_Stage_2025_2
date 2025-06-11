@@ -1,7 +1,9 @@
-import { Component, EventEmitter, HostListener, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnChanges, Output, SimpleChanges, ViewChild,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { Router, RouterLink } from '@angular/router';
+
+import { TextimgTsService } from '../../services/textimg.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +12,10 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })
-export class NavBarComponent {
+export class NavBarComponent{
+sendTheNewValue($event: Event) {
+throw new Error('Method not implemented.');
+}
 
   //michael
 
@@ -20,16 +25,22 @@ export class NavBarComponent {
    // Valore del contrasto impostato tramite slider
   contrast!: number;
 
-  // Output: emette il nuovo valore di luminosità per il componente genitore
+
+  // Output: emette il nuovo valore di luminosità verso il componente genitore
+
   @Output() brightnessChanged = new EventEmitter<number>();
 
   // Output: emette il nuovo valore di contrasto per il componente genitore
   @Output() contrastChanged = new EventEmitter<number>();
+text: any;
+
+  constructor(public searchService:SearchFilterService, private textService:TextimgTsService){}
+
 
 
 
   // Iniezione del servizio SearchFilterService per aggiornare il filtro di ricerca
-  constructor(public searchService: SearchFilterService) {}
+
 
   // Testo inserito dall'utente nel campo input della barra di ricerca
   FiltroInput!: string;
@@ -53,5 +64,16 @@ export class NavBarComponent {
   toggleMenu() {
     const dropDownMenu = document.querySelector('.sc-navbar-dropdown-menu');
     dropDownMenu?.classList.toggle('hidden');
+  }
+
+
+  //simone + michael 
+
+  //valore attuale della descrizione
+  isDescriptionActive: boolean = false;
+  onCheck(){
+    this.isDescriptionActive=!this.isDescriptionActive;
+    console.log(this.isDescriptionActive);
+    this.textService.triggerChange(this.isDescriptionActive);
   }
 }

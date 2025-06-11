@@ -1,10 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { StrutturaService } from '../../services/struttura.service';
+import { FiltriComponent } from '../filtri/filtri.component';
+import { Component,OnChanges, SimpleChanges } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
 import { SearchFilterService } from '../../services/search-filter.service';
-import { StrutturaService } from '../../services/struttura.service';
-import { FiltriComponent } from '../filtri/filtri.component';
+import { TextimgTsService } from '../../services/textimg.service';
+
 
 @Component({
   standalone: true,
@@ -15,15 +18,16 @@ import { FiltriComponent } from '../filtri/filtri.component';
 })
 export class Homepage implements OnInit {
 
-  
-  //michael
+  // michael: Iniezione del servizio per la gestione del filtro di ricerca
+  //simone:  Iniezione del servizio per la geststione del booleano per la descrizione
 
   // Iniezione dei servizi:
   // - SearchFilterService per gestire il filtro di ricerca
   // - StrutturaService per recuperare le strutture da API
   constructor(
     private searchFilter: SearchFilterService,
-    private servizioStruttura: StrutturaService
+    private servizioStruttura: StrutturaService,
+    private textService: TextimgTsService
   ) {}
 
    // Lista completa delle strutture ottenute da API
@@ -47,8 +51,18 @@ export class Homepage implements OnInit {
    * - Ascolta i cambiamenti del filtro testuale
    */
   ngOnInit(): void {
+    //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
+    this.textService.isDescriptionActive$.subscribe(value=>{
+      this.isDescriptionActive=value;
+      }
+    )
     this.servizioStruttura.getStrutture().subscribe((s) => {
       this.strutture = s;
+    
+    
+  // Recupero delle strutture salvate nel localStorage
+    this.strutture = JSON.parse(localStorage.getItem('strutture') || '[]');
+
 
       const struttureJSON = JSON.stringify(this.strutture);
 
@@ -62,6 +76,17 @@ export class Homepage implements OnInit {
       this.filtro = value;
       this.filtraStrutture(); 
     });
+  }
+  //simone + michael
+
+  isDescriptionActive:boolean=false
+
+
+
+  //al cambiamento del checkbox se false non deve mostare la descrizione altrimenti al passaggio sopra una immagine (hover) deve inviare il valore
+  toggleMenu(){
+    const dropDownImg  = document.querySelector('.sc-homepage-card-img-text')
+    dropDownImg?.classList.toggle('hidden');
   }
 
   /*
@@ -99,3 +124,9 @@ export class Homepage implements OnInit {
       
   }
 }
+/*
+toggleMenu() {
+    const dropDownMenu = document.querySelector('.sc-navbar-dropdown-menu');
+    dropDownMenu?.classList.toggle('hidden');
+  }
+*/
