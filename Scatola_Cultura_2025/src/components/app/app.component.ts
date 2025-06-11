@@ -18,9 +18,10 @@ export class AppComponent {
   // Titolo dell'applicazione
   title = 'Scatola_Cultura_2025';
 
-  // Valori dei filtri di luminosità e contrasto (di default 100%)
+  // Valori dei filtri di luminosità e contrasto (di default 100%), valore di text size (Default:18)
   brightness: number = 100;
   contrast: number = 100;
+  textsize: number = 18;
 
   // Array per contenere le strutture caricate dal file JSON/localStorage
   strutture: Struttura[] = [];
@@ -46,6 +47,7 @@ export class AppComponent {
 
     if (pagina) {
       pagina.style.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%) `;
+
     }
   }
 

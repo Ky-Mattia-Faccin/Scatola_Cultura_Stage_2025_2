@@ -16,6 +16,7 @@
 
 /* Spazio per il logo e relativo layout */
 .sc-navbar-logo-space{
+
   width: 17vw;
   height: 8vh;
 
@@ -68,6 +69,7 @@
 
 /* Contenitore per il link alla home */
 .sc-navbar-home {
+  all: initial;
   background-color: #f9f9f9;
 
   height: 70%;
@@ -110,6 +112,7 @@
 
 /* Bottone del menu a discesa */
 .sc-navbar-dropdown-button {
+  all: initial;
   background-color: #f3f4f6;
 
   cursor: pointer;
@@ -304,7 +307,7 @@
   }
 }
 
-/*===== DESCRIZIONE =====*/
+/*===== DESCRIZIONE (Simone)=====*/
 .container{
   display: flex;
     flex-direction: row;

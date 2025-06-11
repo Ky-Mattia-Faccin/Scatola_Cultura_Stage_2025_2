@@ -1,6 +1,7 @@
 <div class="sc-pagina">
   <app-nav-bar
   (brightnessChanged)="brightness=$event; applyFilter()"
-  (contrastChanged)="contrast=$event; applyFilter()"></app-nav-bar>
+  (contrastChanged)="contrast=$event; applyFilter()"
+  (textsizeChanged)="textsize=$event; applyFilter()"></app-nav-bar>
   <router-outlet></router-outlet>
 </div>

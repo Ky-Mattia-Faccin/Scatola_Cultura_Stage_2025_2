@@ -25,6 +25,9 @@ throw new Error('Method not implemented.');
    // Valore del contrasto impostato tramite slider
   contrast!: number;
 
+  //Valore attuale del textsize : Simone
+  textsize! : number;
+
 
   // Output: emette il nuovo valore di luminosità verso il componente genitore
 
@@ -32,7 +35,9 @@ throw new Error('Method not implemented.');
 
   // Output: emette il nuovo valore di contrasto per il componente genitore
   @Output() contrastChanged = new EventEmitter<number>();
-text: any;
+
+  // Output: emette il nuovo valore di text size verso il componente genitore :Simone
+   @Output() textsizeChanged = new EventEmitter<number>();
 
   constructor(public searchService:SearchFilterService, private textService:TextimgTsService){}
 
@@ -67,7 +72,7 @@ text: any;
   }
 
 
-  //simone + michael 
+  //simone  
 
   //valore attuale della descrizione
   isDescriptionActive: boolean = false;

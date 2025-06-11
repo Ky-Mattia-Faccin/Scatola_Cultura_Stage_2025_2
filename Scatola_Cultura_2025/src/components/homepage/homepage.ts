@@ -77,17 +77,14 @@ export class Homepage implements OnInit {
       this.filtraStrutture(); 
     });
   }
-  //simone + michael
-
+  //simone
   isDescriptionActive:boolean=false
-
-
-
   //al cambiamento del checkbox se false non deve mostare la descrizione altrimenti al passaggio sopra una immagine (hover) deve inviare il valore
   toggleMenu(){
     const dropDownImg  = document.querySelector('.sc-homepage-card-img-text')
     dropDownImg?.classList.toggle('hidden');
   }
+
 
   /*
    * Metodo principale per filtrare la lista delle strutture:
@@ -130,3 +127,5 @@ toggleMenu() {
     dropDownMenu?.classList.toggle('hidden');
   }
 */
+
+
