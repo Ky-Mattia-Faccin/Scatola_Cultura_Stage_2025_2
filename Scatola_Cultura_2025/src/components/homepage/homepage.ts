@@ -14,6 +14,8 @@ import { FiltriComponent } from '../filtri/filtri.component';
   styleUrl: './homepage.css',
 })
 export class Homepage implements OnInit {
+
+  
   //michael
 
   // Iniezione dei servizi:
@@ -24,26 +26,25 @@ export class Homepage implements OnInit {
     private servizioStruttura: StrutturaService
   ) {}
 
-  // Array contenente tutte le strutture caricate da API
+   // Lista completa delle strutture ottenute da API
   strutture: Struttura[] = [];
 
-  // Array delle strutture filtrate da visualizzare
+  // Lista filtrata da mostrare nell'interfaccia
   struttureFiltrate: Struttura[] = this.strutture;
 
-  // Testo attuale del filtro di ricerca
+  // Valore corrente del filtro testuale (ricerca)
   filtro!: string;
 
-  //Array che contengono i filtri
+  // Filtri selezionati dai componenti figli (checkbox)
   FiltriDisabilita: string[] = [];
   FiltriTipi: string[] = [];
   FiltriProvince: string[] = [];
 
-  /*
-   * OnInit:
-   * - Recupera i dati delle strutture dal servizio (chiamata API)
-   * - Li salva nel localStorage in formato JSON
-   * - Applica il filtro iniziale (se presente)
-   * - Sottoscrive al filtroRicerca$ per aggiornare la lista filtrata dinamicamente
+    /*
+   * ngOnInit:
+   * - Recupera tutte le strutture e le salva in localStorage
+   * - Applica i filtri iniziali
+   * - Ascolta i cambiamenti del filtro testuale
    */
   ngOnInit(): void {
     this.servizioStruttura.getStrutture().subscribe((s) => {
@@ -53,24 +54,22 @@ export class Homepage implements OnInit {
 
       localStorage.setItem('strutture', struttureJSON);
 
-      this.filtraStrutture(); // Applica filtro iniziale
+      this.filtraStrutture(); 
     });
 
     // Ascolta le modifiche al filtro di ricerca ed aggiorna la lista filtrata
     this.searchFilter.filtroRicerca$.subscribe((value) => {
       this.filtro = value;
-      this.filtraStrutture(); // Ricalcola l’elenco filtrato
+      this.filtraStrutture(); 
     });
   }
 
   /*
-   * Metodo privato per filtrare le strutture in base al testo del filtro:
-   * - Se il filtro è vuoto, mostra tutte le strutture
-   * - Altrimenti, filtra per nomeStruttura (case insensitive)
+   * Metodo principale per filtrare la lista delle strutture:
+   * - Applica il filtro di testo (ricerca)
+   * - Applica i filtri checkbox (ambito, disabilità, provincia)
    */
-
   filtraStrutture(): void {
-    //filtra per ricerca
     this.struttureFiltrate =
       this.filtro === ''
         ? this.strutture
@@ -78,17 +77,19 @@ export class Homepage implements OnInit {
             s.nomeStruttura.toLowerCase().includes(this.filtro.toLowerCase())
           );
 
-    //filtra per filtri
+     // Filtro per provincia
     if (this.FiltriProvince && this.FiltriProvince.length > 0) {
       this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
         this.FiltriProvince.includes(s.provincia)
       );
     }
+     // Filtro per disabilità
     if (this.FiltriDisabilita && this.FiltriDisabilita.length > 0) {
       this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
         s.disabilita.some((d) => this.FiltriDisabilita.includes(d.categoria))
       );
     }
+     // Filtro per ambito/tipo
     if (this.FiltriTipi && this.FiltriTipi.length > 0) {
       this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
         this.FiltriTipi.includes(s.ambito)

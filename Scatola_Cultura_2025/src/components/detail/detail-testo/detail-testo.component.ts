@@ -12,6 +12,9 @@ import { Struttura } from '../../../interfaces/Istruttura';
 })
 export class DetailTestoComponent implements OnChanges {
 
+
+  //michael 
+
   // Flag per indicare se il container genitore ha la classe 'zoomed'
   parentHasZoomClass = false;
 
@@ -33,7 +36,7 @@ export class DetailTestoComponent implements OnChanges {
   /*
    * Metodo OnChanges:
    * Viene chiamato quando cambiano gli Input
-   * Qui aggiorna il flag hasAccessibilita in base alla presenza o meno di struttura
+   * aggiorna il flag hasAccessibilita in base alla presenza o meno di struttura
    */
   ngOnChanges(changes: SimpleChanges): void {
     this.hasAccessibilita = !!this.struttura;

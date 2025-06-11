@@ -9,14 +9,17 @@ import { DisabilitaStruttura } from '../interfaces/IDisabilitàStruttura';
 })
 export class StrutturaService {
 
+  //michael
+
+
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
   constructor(private httpClient: HttpClient) {}
 
   /*
-   * Metodo per ottenere tutte le strutture dal server:
-   * - Effettua una GET verso l'API
-   * - In caso di errore, cattura l’eccezione e restituisce un array vuoto
-  */
+   * Recupera tutte le strutture dal server tramite GET:
+   * - Effettua la richiesta all'endpoint API specificato
+   * - In caso di errore stampa l'errore su console e restituisce un array vuoto per non bloccare l'app
+   */
   getStrutture(): Observable<Struttura[]> {
     return this.httpClient
       .get<Struttura[]>('http://192.168.123.150:5000/api/Struttura/get')
@@ -29,16 +32,22 @@ export class StrutturaService {
   }
 
   /*
-   * Metodo per ottenere i dati di disabilità di una singola struttura:
-   * - Riceve l'ID della struttura come parametro
-   * - Restituisce un Observable con i dati delle disabilità
-  */
+   * Recupera i dati di disabilità di una struttura specifica:
+   * - Riceve come parametro l'ID della struttura
+   * - Restituisce un Observable con i dati delle disabilità associati a quella struttura
+   * - da decidere su utilizzare o no
+   */
   getDisabilita(id: number): Observable<DisabilitaStruttura[]> {
     return this.httpClient.get<DisabilitaStruttura[]>(
       'http://192.168.123.150:5000/api/Struttura/getById?id=' + `${id}`
     );
   }
 
+  /*
+   * Metodo per ottenere i filtri
+   * - Riceve una stringa 'soggetto'
+   * - Esegue una chiamata GET per ottenere un array di stringhe corrispondenti
+   */
   getFiltro(soggetto:string):Observable<string[]>{
      return this.httpClient.get<string[]>(
       'http://192.168.123.150:5000/api/Struttura/get' + `${soggetto}`)

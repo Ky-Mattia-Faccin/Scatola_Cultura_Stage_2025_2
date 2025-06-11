@@ -18,6 +18,9 @@ import { StrutturaService } from '../../services/struttura.service';
 })
 export class Detail implements OnInit {
 
+  //michael
+
+
   /* Costruttore con dipendenze iniettate:
      - IconeManager per gestire le icone
      - ActivatedRoute per leggere i parametri dalla URL
@@ -41,7 +44,7 @@ export class Detail implements OnInit {
    * OnInit:
    * - Recupera l'ID della struttura dalla route
    * - Carica la struttura dal localStorage
-   * - Esegue richiesta HTTP per ottenere i dati delle disabilità
+   * - Esegue richiesta HTTP per ottenere i dati delle disabilità (decidere se va usato)
   */
   ngOnInit(): void {
     const parametroId = this.route.snapshot.paramMap.get('id');

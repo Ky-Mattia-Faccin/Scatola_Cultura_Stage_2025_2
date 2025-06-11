@@ -13,6 +13,8 @@ import { Struttura } from '../../interfaces/Istruttura';
 })
 export class AppComponent {
 
+  //michael
+
   // Titolo dell'applicazione
   title = 'Scatola_Cultura_2025';
 
@@ -43,7 +45,7 @@ export class AppComponent {
     const pagina = document.querySelector('.sc-pagina') as HTMLElement;
 
     if (pagina) {
-      pagina.style.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%)`;
+      pagina.style.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%) `;
     }
   }
 
