@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
 import { TypeaheadComponent } from './typeahead/typeahead.component';
 import { StrutturaService } from '../../services/struttura.service';
 import { Observable, EMPTY } from 'rxjs';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-filtri',
@@ -10,17 +11,26 @@ import { Observable, EMPTY } from 'rxjs';
   templateUrl: './filtri.component.html',
   styleUrl: './filtri.component.css',
 })
-export class FiltriComponent {
+export class FiltriComponent implements AfterViewInit{
 
   //michael
 
   // Iniezione del servizio per recuperare i dati dei filtri
   constructor(private servizioStruttura: StrutturaService) {}
+  
 
   // Observable che conterranno i dati da mostrare nei filtri
   DatiDisabilita: Observable<string[]> = EMPTY;
   DatiTipo: Observable<string[]> = EMPTY;
   DatiProvince: Observable<string[]> = EMPTY;
+
+
+
+  @ViewChild('disabilitaComp') disabilitaComponent!: TypeaheadComponent;
+  @ViewChild('tipoComp') tipoComponent!: TypeaheadComponent;
+  @ViewChild('provinciaComp') provinciaComponent!: TypeaheadComponent;
+
+
 
   // Output: emette le selezioni effettuate dagli utenit al componente padre
   @Output() DisabilitaSelected = new EventEmitter<string[]>();
@@ -31,6 +41,16 @@ export class FiltriComponent {
   DisabilitaSelectedLocal!: string[];
   TipiSelectedLocal!: string[];
   ProvinceSelectedLocal!: string[];
+
+
+  // per inizializzare i componenti figli
+  ngAfterViewInit(): void {
+    
+  }
+
+
+
+
 
   /*
    * Metodi per ottenere i dati dei vari filtri
@@ -72,4 +92,19 @@ export class FiltriComponent {
     this.TipiSelected.emit(this.TipiSelectedLocal);
     this.ProvinceSelected.emit(this.ProvinceSelectedLocal);
   }
+
+
+  
+  resetFilters() {
+  this.DisabilitaSelectedLocal = [];
+  this.ProvinceSelectedLocal = [];
+  this.TipiSelectedLocal = [];
+
+  
+  this.disabilitaComponent.reset();
+  this.tipoComponent.reset();
+  this.provinciaComponent.reset();
+}
+
+
 }

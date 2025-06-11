@@ -19,11 +19,17 @@
   align-items: center;
   justify-content: space-around;
 }
+.buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
 
 /* Bottone dei filtri*/
-.filters-button {
-  height: 15%;
-  width: 10%;
+.filters-button-apply,.filters-button-reset {
+  height: 10%;
+  width: 80%;
   padding: 0.5em 1em;
 
   cursor: pointer;
@@ -38,11 +44,12 @@
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
+
 /* Effetto hover sul bottone:*/
-.filters-button:hover {
+.filters-button-apply:hover,.filters-button-reset:hover {
     transform: translateY(-5%);
   background-color: #00b9ee;
   color:white;

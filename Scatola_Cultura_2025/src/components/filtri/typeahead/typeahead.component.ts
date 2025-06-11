@@ -156,4 +156,14 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     }
     this.ArrayChecked.emit(this.ArrayCheckedLocal);
   }
+
+
+  reset() {
+  this.ArrayCheckedLocal = [];
+  this.filtro = null;
+  this.filteredOptionsArray = this.OptionsArray; 
+  this.ArrayChecked.emit(this.ArrayCheckedLocal); 
 }
+
+}
+

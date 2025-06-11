@@ -88,4 +88,8 @@ export class Detail implements OnInit {
       element = container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
   }
 
+
+  prova(){
+    prompt("premuto");
+  }
 }
