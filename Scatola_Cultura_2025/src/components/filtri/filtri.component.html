@@ -1,5 +1,21 @@
 <div class="sc-filters-container">
-    <app-typeahead (Evento)="getDati('Disabilita')" [Array$]="DatiRicevuti"></app-typeahead>
-    <app-typeahead (Evento)="getDati('Tipo')" [Array$]="DatiRicevuti"></app-typeahead>
-    <app-typeahead (Evento)="getDati('Provincia')" [Array$]="DatiRicevuti"></app-typeahead>
+  <app-typeahead
+    nomeFiltro="Disabilita"
+    (evento)="getDatiDisabilita($event)"
+    [Array$]="DatiDisabilita"
+    (ArrayChecked)="setDisabilitaSelected($event)"
+  ></app-typeahead>
+  <app-typeahead
+    nomeFiltro="Tipo"
+    (evento)="getDatiTipo($event)"
+    [Array$]="DatiTipo"
+    (ArrayChecked)="setTipiSelected($event)"
+  ></app-typeahead>
+  <app-typeahead
+    nomeFiltro="Province"
+    (evento)="getDatiProvince($event)"
+    [Array$]="DatiProvince"
+    (ArrayChecked)="setProvinceSelected($event)"
+  ></app-typeahead>
+    <div (click)="applyFilter()" class="filters-button"> applica</div>
 </div>

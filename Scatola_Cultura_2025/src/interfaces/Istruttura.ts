@@ -1,5 +1,3 @@
-
-
 export interface Struttura {
   idStruttura: number;
   nomeStruttura: string;
