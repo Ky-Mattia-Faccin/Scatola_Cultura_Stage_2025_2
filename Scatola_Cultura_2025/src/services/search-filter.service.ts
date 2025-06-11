@@ -33,8 +33,4 @@ export class SearchFilterService {
     this.oggettoRicerca.next(filtro)
   }
 
-
-
-
-
 }
