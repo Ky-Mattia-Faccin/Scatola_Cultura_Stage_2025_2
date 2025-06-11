@@ -115,6 +115,7 @@
 }
 /*configurazione della descrizione*/
 .sc-homepage-card-img-text {
+  display: none;
   width: 10vw;
   height: 10vh;
   overflow: hidden;
