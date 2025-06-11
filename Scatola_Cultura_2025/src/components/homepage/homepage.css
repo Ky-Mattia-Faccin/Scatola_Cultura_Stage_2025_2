@@ -37,19 +37,12 @@
 }
 /*filtri*/
 .sc-homepage-filter{
-  width: 100vw; 
+  width: 90vw; 
   height: 10vh;
 
   border-radius: 25px;
   background-color: #f0f0f0;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.filtri{
-  width: 100%;
-    height: 100%;
 }
 /*contenitore di tutti i musei*/
 .sc-homepage-musei-container {

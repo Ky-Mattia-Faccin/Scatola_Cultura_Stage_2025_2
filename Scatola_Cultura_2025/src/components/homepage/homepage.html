@@ -3,13 +3,11 @@
     <div class="sc-homepage-filter-container">
       <div class="sc-homepage-filter">
         <app-filtri
-          class="filtri"
           (DisabilitaSelected)="FiltriDisabilita = $event"
           (TipiSelected)="FiltriTipi = $event"
           (ProvinceSelected)="FiltriProvince = $event; filtraStrutture()"
         ></app-filtri>
       </div>
-      <!--deve contenere tutti i filtri-->
     </div>
     <div
       class="sc-homepage-musei-container"
