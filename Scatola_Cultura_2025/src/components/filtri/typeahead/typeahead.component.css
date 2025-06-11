@@ -26,6 +26,9 @@
 
   width: 100%;
 }
+.selected input{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 .arrow {
   position: relative;
