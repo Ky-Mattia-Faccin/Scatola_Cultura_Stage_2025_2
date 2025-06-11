@@ -1,21 +1,36 @@
 <div class="sc-homepage-start">
-    <div class="sc-homepage-blur">
-        <div class="sc-homepage-filter-container">
-            <div class="sc-homepage-filter">
-                <span> Qui conterrà i filtri</span>
-            </div>
-            <!--deve contenere tutti i filtri-->
-        </div>
-        <div class="sc-homepage-musei-container" >
-            <div class="sc-homepage-museo-card" *ngFor="let item of struttureFiltrate" [routerLink]="['/detail', item.idStruttura]" >
-                <div class="sc-homepage-card-img" >
-                    <img [src]="" alt="{{item.nomeStruttura}}" width="300">\
-                </div>
-                <div class="sc-homepage-card-title">
-                    <span>{{ item.nomeStruttura }}</span>
-                </div>
-                <div class="sc-homepage-card-info"></div>
-            </div>
-        </div>
+  <div class="sc-homepage-blur">
+    <div class="sc-homepage-filter-container">
+      <div class="sc-homepage-filter">
+        <app-filtri
+          class="filtri"
+          (DisabilitaSelected)="FiltriDisabilita = $event"
+          (TipiSelected)="FiltriTipi = $event"
+          (ProvinceSelected)="FiltriProvince = $event; filtraStrutture()"
+        ></app-filtri>
+      </div>
+      <!--deve contenere tutti i filtri-->
     </div>
+    <div
+      class="sc-homepage-musei-container"
+      *ngIf="struttureFiltrate.length > 0; else nessunaStruttura"
+    >
+      <div
+        class="sc-homepage-museo-card"
+        *ngFor="let item of struttureFiltrate"
+        [routerLink]="['/detail', item.idStruttura]"
+      >
+        <div class="sc-homepage-card-img">
+          <img [src]="" alt="{{item.nomeStruttura}}" width="300" />
+        </div>
+        <div class="sc-homepage-card-title">
+          <span>{{ item.nomeStruttura }}</span>
+        </div>
+        <div class="sc-homepage-card-info"></div>
+      </div>
+    </div>
+    <ng-template #nessunaStruttura>
+      <p>nessuna struttura con i filtri selezionati</p>
+    </ng-template>
+  </div>
 </div>

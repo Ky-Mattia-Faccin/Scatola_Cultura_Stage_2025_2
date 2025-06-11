@@ -18,10 +18,6 @@ export const routes: Routes = [
         path:'detail/:id',
         component:Detail
     },
-    {
-        path:'filtri',
-        component:FiltriComponent
-    },
    
     
 ];

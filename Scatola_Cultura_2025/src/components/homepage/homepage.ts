@@ -4,15 +4,18 @@ import { RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { StrutturaService } from '../../services/struttura.service';
+import { FiltriComponent } from '../filtri/filtri.component';
 
 @Component({
   standalone: true,
   selector: 'app-homepage',
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FiltriComponent],
   templateUrl: './homepage.html',
-  styleUrl: './homepage.css'
+  styleUrl: './homepage.css',
 })
 export class Homepage implements OnInit {
+
+  //michael
 
   // Iniezione dei servizi:
   // - SearchFilterService per gestire il filtro di ricerca
@@ -31,19 +34,23 @@ export class Homepage implements OnInit {
   // Testo attuale del filtro di ricerca
   filtro!: string;
 
+  //Array che contengono i filtri
+  FiltriDisabilita: string[] = [];
+  FiltriTipi: string[] = [];
+  FiltriProvince: string[] = [];
+
   /*
    * OnInit:
    * - Recupera i dati delle strutture dal servizio (chiamata API)
    * - Li salva nel localStorage in formato JSON
    * - Applica il filtro iniziale (se presente)
    * - Sottoscrive al filtroRicerca$ per aggiornare la lista filtrata dinamicamente
-  */
+   */
   ngOnInit(): void {
-    this.servizioStruttura.getStrutture().subscribe(s => {
+    this.servizioStruttura.getStrutture().subscribe((s) => {
       this.strutture = s;
 
       const struttureJSON = JSON.stringify(this.strutture);
-      console.log(struttureJSON);
 
       localStorage.setItem('strutture', struttureJSON);
 
@@ -51,7 +58,7 @@ export class Homepage implements OnInit {
     });
 
     // Ascolta le modifiche al filtro di ricerca ed aggiorna la lista filtrata
-    this.searchFilter.filtroRicerca$.subscribe(value => {
+    this.searchFilter.filtroRicerca$.subscribe((value) => {
       this.filtro = value;
       this.filtraStrutture(); // Ricalcola l’elenco filtrato
     });
@@ -61,12 +68,32 @@ export class Homepage implements OnInit {
    * Metodo privato per filtrare le strutture in base al testo del filtro:
    * - Se il filtro è vuoto, mostra tutte le strutture
    * - Altrimenti, filtra per nomeStruttura (case insensitive)
-  */
-  private filtraStrutture(): void {
-    this.struttureFiltrate = this.filtro === ''
-      ? this.strutture
-      : this.strutture.filter(s =>
-          s.nomeStruttura.toLowerCase().includes(this.filtro.toLowerCase())
-        );
+   */
+
+
+   filtraStrutture(): void {
+    //filtra per ricerca
+    this.struttureFiltrate =
+      this.filtro === ''
+        ? this.strutture
+        : this.strutture.filter((s) =>
+            s.nomeStruttura.toLowerCase().includes(this.filtro.toLowerCase())
+          );
+    //filtra per filtri
+    if (this.FiltriProvince && this.FiltriProvince.length > 0) {
+      this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
+        this.FiltriProvince.includes(s.provincia)
+      );
+    }
+    if (this.FiltriDisabilita && this.FiltriDisabilita.length > 0) {
+      this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
+        s.disabilita.some((d) => this.FiltriDisabilita.includes(d.categoria))
+      );
+    }
+    if (this.FiltriTipi && this.FiltriTipi.length > 0) {
+      this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
+        this.FiltriTipi.includes(s.ambito)
+      );
+    }
   }
 }
