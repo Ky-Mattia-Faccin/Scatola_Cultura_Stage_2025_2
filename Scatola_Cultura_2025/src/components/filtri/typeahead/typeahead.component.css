@@ -2,23 +2,29 @@
 .select {
   width: fit-content;
   cursor: pointer;
-  position: relative;
   transition: 300ms;
   color: white;
-  overflow: hidden;
+  overflow: visible;
+
+  display: inline-block;
+  position: relative;
+  min-width: 4vw;
 }
 
+
 .selected {
-  background-color: #2a2f3b;
+  background-color: #47b4e7;
   padding: 5px;
   margin-bottom: 3px;
   border-radius: 5px;
   position: relative;
-  z-index: 100000;
+  z-index: 2;
   font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  width: 100%;
 }
 
 .arrow {
@@ -33,21 +39,33 @@
 }
 
 .options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+
   display: flex;
   flex-direction: column;
   border-radius: 5px;
   padding: 5px;
-  background-color: #2a2f3b;
-  position: relative;
-  top: -100px;
-  opacity: 0;
-  transition: 300ms;
-}
+  background-color:#47b4e7;
 
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease, visibility 300ms ease;
+}
+.options label {
+   display: flex;             
+  justify-content: space-between; 
+  align-items: center;      
+  width: 100%;
+}
 .select:hover > .options {
   opacity: 1;
-  top: 0;
+  visibility: visible;
 }
+
 
 .select:hover > .selected .arrow {
   transform: rotate(0deg);
@@ -57,21 +75,18 @@
   border-radius: 5px;
   padding: 5px;
   transition: 300ms;
-  background-color: #2a2f3b;
+  background-color: #47b4e7;
   width: 150px;
   font-size: 15px;
 }
 .option:hover {
-  background-color: #323741;
+  background-color: #fbfbfb;
 }
 
 .options input[type="radio"] {
   display: none;
 }
 
-.options label {
-  display: inline-block;
-}
 .options label::before {
   content: attr(data-txt);
 }

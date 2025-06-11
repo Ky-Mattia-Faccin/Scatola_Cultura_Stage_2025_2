@@ -14,7 +14,6 @@ import { FiltriComponent } from '../filtri/filtri.component';
   styleUrl: './homepage.css',
 })
 export class Homepage implements OnInit {
-
   //michael
 
   // Iniezione dei servizi:
@@ -70,8 +69,7 @@ export class Homepage implements OnInit {
    * - Altrimenti, filtra per nomeStruttura (case insensitive)
    */
 
-
-   filtraStrutture(): void {
+  filtraStrutture(): void {
     //filtra per ricerca
     this.struttureFiltrate =
       this.filtro === ''
@@ -79,6 +77,7 @@ export class Homepage implements OnInit {
         : this.strutture.filter((s) =>
             s.nomeStruttura.toLowerCase().includes(this.filtro.toLowerCase())
           );
+
     //filtra per filtri
     if (this.FiltriProvince && this.FiltriProvince.length > 0) {
       this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
