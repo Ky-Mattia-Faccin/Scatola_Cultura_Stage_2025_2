@@ -20,37 +20,73 @@ import { Observable, Subscription } from 'rxjs';
   styleUrl: './typeahead.component.css',
 })
 export class TypeaheadComponent implements OnInit, OnDestroy {
+
+
   //michael
 
+   // Nome filtro da mostrare o usare come riferimento
   @Input() nomeFiltro!: string;
+
+// Observable che fornisce l'array di stringhe da filtrare e mostrare
   @Input() Array$!: Observable<string[]>;
+
+ // Evento che emette il nome filtro selezionato (una volta al caricamento)
   @Output() evento = new EventEmitter<string>();
+
+// Evento che emette l'array di elementi selezionati con checkbox
   @Output() ArrayChecked = new EventEmitter<string[]>();
 
+ // Array locale degli elementi selezionati (checkbox)
   ArrayCheckedLocal: string[] = [];
 
+    // Filtro testo inserito per ricerca
   filtro!: string | null;
+
+ // Array completo delle opzioni ricevute
   OptionsArray: string[] = [];
+
+ // Array filtrato in base al filtro testo
   filteredOptionsArray: string[] = [];
 
+   // Flag per evitare emissioni multiple dell'evento "evento"
   loaded: boolean = false;
 
+   // Subscription per l'Observable Array$
   private subscription?: Subscription;
 
+  /*
+   * OnInit:
+   * - Sottoscrive all'Observable Array$ per ricevere dati
+   * - Inizializza la lista opzioni filtrate
+   */
   ngOnInit(): void {
     this.subscribeToArray$();
   }
 
+  /*
+   * OnChanges:
+   * - Se cambia l'Observable Array$, aggiorna la sottoscrizione
+   */
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['Array$'] && this.Array$) {
       this.subscribeToArray$();
     }
   }
 
+  /*
+   * OnDestroy:
+   * - Disiscrive la subscription per evitare memory leak
+   */
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
 
+  
+  /*
+   * Gestisce la sottoscrizione all'Observable Array$
+   * - Aggiorna OptionsArray con i nuovi dati
+   * - Aggiorna filteredOptionsArray filtrando in base a filtro
+   */
   private subscribeToArray$() {
     this.subscription?.unsubscribe(); // evita duplicati
     this.subscription = this.Array$?.subscribe((value) => {
@@ -59,6 +95,11 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     });
   }
 
+  
+  /*
+   * Filtra OptionsArray in base al filtro testuale
+   * - Se filtro è vuoto, mostra tutte le opzioni
+   */
   private filterArray() {
     if (!this.filtro) {
       this.filteredOptionsArray = this.OptionsArray;
@@ -70,6 +111,9 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     }
   }
 
+  /*
+   * Invia evento con nomeFiltro (una sola volta)
+   */
   InviaEvento(nomeFiltro: string) {
     if (!this.loaded) {
       this.evento.emit(nomeFiltro);
@@ -77,15 +121,27 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     }
   }
 
+   /*
+   * Imposta il filtro testo al valore cliccato
+   */
   setFiltro(event: Event) {
     const target = event.target as HTMLElement;
     this.filtro = target.textContent;
   }
 
+    /*
+   * Gestore per il cambio del filtro (input text)
+   * - Aggiorna la lista filtrata
+   */
   onFiltroChange() {
     this.filterArray();
   }
 
+  /*
+   * Gestore per il cambio checkbox
+   * - Aggiunge o rimuove il valore dall'array locale
+   * - Emette l'array aggiornato tramite ArrayChecked
+   */
   onCheckboxChanges(event: Event, valore: string) {
     const checked = (event.target as HTMLInputElement).checked;
 

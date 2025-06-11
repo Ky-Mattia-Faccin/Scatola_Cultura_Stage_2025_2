@@ -1,46 +1,56 @@
-
+/* Container principale del select personalizzato */
 .select {
   width: fit-content;
+  min-width: 4vw;
+
   cursor: pointer;
-  transition: 300ms;
   color: white;
   overflow: visible;
-
+  
   display: inline-block;
   position: relative;
-  min-width: 4vw;
+  
+  transition: 300ms;
 }
 
-
+/* Container principale del select personalizzato */
 .selected {
   background-color: #47b4e7;
+
   padding: 5px;
   margin-bottom: 3px;
   border-radius: 5px;
   position: relative;
+
   z-index: 2;
   font-size: 15px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   width: 100%;
 }
+/* Input di testo all'interno della selezione */
 .selected input{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* Icona freccia per l'espansione delle opzioni */
 .arrow {
   position: relative;
   right: 0px;
   height: 10px;
-  transform: rotate(-90deg);
   width: 25px;
+
   fill: white;
+  
   z-index: 100000;
   transition: 300ms;
+  transform: rotate(-90deg);
 }
 
+/* Contenitore delle opzioni a discesa */
 .options {
   position: absolute;
   top: 100%;
@@ -58,59 +68,57 @@
   visibility: hidden;
   transition: opacity 300ms ease, visibility 300ms ease;
 }
+/* Etichette delle opzioni (testo + checkbox) */
 .options label {
-   display: flex;             
+  display: flex;             
   justify-content: space-between; 
   align-items: center;      
+
   width: 100%;
 }
+
+/* Quando si passa sopra il select: mostra le opzioni */
 .select:hover > .options {
   opacity: 1;
   visibility: visible;
 }
 
-
+/* Ruota la freccia quando il menu è espanso */
 .select:hover > .selected .arrow {
   transform: rotate(0deg);
 }
 
+/* Singola opzione nella lista */
 .option {
-  border-radius: 5px;
-  padding: 5px;
-  transition: 300ms;
-  background-color: #47b4e7;
   width: 150px;
+  padding: 5px;
+
+  border-radius: 5px;
   font-size: 15px;
+  transition: 300ms;
+  
+  background-color: #47b4e7;
 }
+
+/* Effetto hover su una singola opzione */
 .option:hover {
   background-color: #fbfbfb;
 }
 
+
+/* Nasconde i radio per opzioni filtrate */
 .options input[type="radio"] {
   display: none;
 }
 
+/* Mostra il testo dell'opzione tramite attributo custom */
 .options label::before {
   content: attr(data-txt);
 }
 
+/* Nasconde l’etichetta dell’opzione selezionata */
 .options input[type="radio"]:checked + label {
   display: none;
 }
 
-.options input[type="radio"]#all:checked + label {
-  display: none;
-}
-
-.select:has(.options input[type="radio"]#all:checked) .selected::before {
-  content: attr(data-default);
-}
-.select:has(.options input[type="radio"]#option-1:checked) .selected::before {
-  content: attr(data-one);
-}
-.select:has(.options input[type="radio"]#option-2:checked) .selected::before {
-  content: attr(data-two);
-}
-.select:has(.options input[type="radio"]#option-3:checked) .selected::before {
-  content: attr(data-three);
-}
+  

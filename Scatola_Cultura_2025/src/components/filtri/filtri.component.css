@@ -1,28 +1,38 @@
+/* Contenitore principale dei filtri*/
 .sc-filters-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
   gap: 1rem;
+
   height: 100%;
   width: 100%;
 }
+/* Contenitore interno dei filtri*/
 .sc-filters {
   height: 100%;
   width: 80%;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+
+/* Bottone dei filtri*/
 .filters-button {
   height: 15%;
   width: 10%;
-  color: white;
-  cursor: pointer;
   padding: 0.5em 1em;
+
+  cursor: pointer;
+
+  color: white;
   background-color: #f3f4f6;
   border:2px solid #00b9ee;
   color: black;
+
   border-radius: 8px;
   transition: 200ms;
 
@@ -30,6 +40,8 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Effetto hover sul bottone:*/
 .filters-button:hover {
     transform: translateY(-5%);
   background-color: #00b9ee;

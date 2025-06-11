@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class IconeManager{
 
+  //michael
 
  private Icone:{[key: string]: string }= {
   zoomIn: `<svg
@@ -73,18 +74,23 @@ export class IconeManager{
             />
           </svg>`
 };
+
+  // Mappa contenente le versioni "sicure" delle icone da usare nei template HTML
  sanitizedIcons: { [key: string]: SafeHtml } = {};
 
+ // Inietta DomSanitizer (per evitare problemi di sicurezza nel rendering HTML dinamico)
   constructor(private sanitizer: DomSanitizer) {
     this.sanitizeIcons();
   }
 
+   // Converte tutte le icone SVG raw in versioni SafeHtml affidabili
   private sanitizeIcons(): void {
     for (const key in this.Icone) {
       this.sanitizedIcons[key] = this.sanitizer.bypassSecurityTrustHtml(this.Icone[key]);
     }
   }
 
+  // Restituisce l’HTML sanificato per una determinata categoria (es. "zoomIn", "visiva", ecc.)
   getIcon(categoria: string): SafeHtml | undefined {
     return this.sanitizedIcons[categoria];
   }

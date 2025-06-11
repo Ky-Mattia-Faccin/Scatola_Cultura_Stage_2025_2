@@ -11,21 +11,31 @@ import { Observable, EMPTY } from 'rxjs';
   styleUrl: './filtri.component.css',
 })
 export class FiltriComponent {
+
+  //michael
+
+  // Iniezione del servizio per recuperare i dati dei filtri
   constructor(private servizioStruttura: StrutturaService) {}
 
+  // Observable che conterranno i dati da mostrare nei filtri
   DatiDisabilita: Observable<string[]> = EMPTY;
   DatiTipo: Observable<string[]> = EMPTY;
   DatiProvince: Observable<string[]> = EMPTY;
 
-  //output degli array dei filtri
+  // Output: emette le selezioni effettuate dagli utenit al componente padre
   @Output() DisabilitaSelected = new EventEmitter<string[]>();
   @Output() TipiSelected = new EventEmitter<string[]>();
   @Output() ProvinceSelected = new EventEmitter<string[]>();
 
-  //array locali che contengono i filtri selezionati
+  // Array locali per salvare le selezioni effettuate dagli utenti
   DisabilitaSelectedLocal!: string[];
   TipiSelectedLocal!: string[];
   ProvinceSelectedLocal!: string[];
+
+  /*
+   * Metodi per ottenere i dati dei vari filtri
+   * Vengono chiamati al focus sul rispettivo campo
+   */
 
   getDatiDisabilita(nome: string) {
     this.DatiDisabilita = this.servizioStruttura.getFiltro(nome);
@@ -36,6 +46,10 @@ export class FiltriComponent {
   getDatiProvince(nome: string) {
     this.DatiProvince = this.servizioStruttura.getFiltro(nome);
   }
+
+  /*
+   * Metodi per aggiornare i valori locali dei filtri selezionati
+   */
 
   setDisabilitaSelected(array: string[]) {
     this.DisabilitaSelectedLocal = array;
@@ -49,6 +63,10 @@ export class FiltriComponent {
     this.ProvinceSelectedLocal = array;
   }
 
+  /*
+   * Metodo per applicare tutti i filtri:
+   * emette i valori locali aggiornati verso il componente padre
+   */
   applyFilter() {
     this.DisabilitaSelected.emit(this.DisabilitaSelectedLocal);
     this.TipiSelected.emit(this.TipiSelectedLocal);

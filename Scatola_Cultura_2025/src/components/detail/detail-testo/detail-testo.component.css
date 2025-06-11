@@ -3,8 +3,10 @@
   position: relative;
   display: flex;
   flex-flow: row wrap;
+
   height: 100%;
   width: 97%;
+
   overflow: hidden; 
 }
 
@@ -28,6 +30,7 @@
   position: absolute;     
   bottom: 2%;
   right: 2%;
+  
   border-radius: 12%;    
   cursor: pointer;
 
