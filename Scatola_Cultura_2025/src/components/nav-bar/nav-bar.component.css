@@ -315,8 +315,8 @@
 }
 
 .label {
-  height: 20px;
-  width: 110px;
+  height: 2.5vh;
+  width: 6vw;
   background-color: #ffffff;
   border-radius: 30px;
   -webkit-box-shadow: inset 0 0 5px 4px rgba(255, 255, 255, 1),
@@ -353,7 +353,7 @@
 }
 
 #checkbox:checked ~ .label::before {
-  left: 90px;
+  left: 4.35vw;
   background-color: #000000;
   background-image: linear-gradient(315deg, #000000 0%, #414141 70%);
   -webkit-transition: 0.4s;
@@ -373,7 +373,7 @@
     #ffffff 11%,
     #726f6f 62%
   );
-  left: 0px;
+  left: 0vw;
   -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3),
     10px 10px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3), 10px 10px 10px rgba(0, 0, 0, 0.3);
