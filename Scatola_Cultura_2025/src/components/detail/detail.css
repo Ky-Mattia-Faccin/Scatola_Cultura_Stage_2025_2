@@ -78,7 +78,9 @@
   border : 3px;
   background-color: white;
 }
-
+.sc-detail-header-title{
+  font-size: x-large;
+}
 /* Effetto hover per il pulsante "indietro" */
 .sc-detail-back-button:hover {
   background-color:white;
