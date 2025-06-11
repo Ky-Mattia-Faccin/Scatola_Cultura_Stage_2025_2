@@ -78,6 +78,7 @@ export class Homepage implements OnInit {
     });
   }
   //simone
+  //creazione del booleano
   isDescriptionActive:boolean=false
   //al cambiamento del checkbox se false non deve mostare la descrizione altrimenti al passaggio sopra una immagine (hover) deve inviare il valore
   toggleMenu(){
