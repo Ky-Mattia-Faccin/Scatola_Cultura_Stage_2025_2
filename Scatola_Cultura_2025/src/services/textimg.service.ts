@@ -9,11 +9,11 @@ export class TextimgTsService {
   
   //simone + michael
 
-  // 🔐 Attributo privato che mantiene lo stato (true/false)
+  //  Attributo privato che mantiene lo stato (true/false)
  
   private isDescriptionActive = new BehaviorSubject<boolean>(false);
   isDescriptionActive$ = this.isDescriptionActive.asObservable();
-
+  //ogni volta che cambia il valore dalla nav bar glielo passa a homepage e detail
   triggerChange(value: boolean) {
     this.isDescriptionActive.next(value);
   }
