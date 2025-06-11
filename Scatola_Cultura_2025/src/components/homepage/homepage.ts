@@ -70,13 +70,14 @@ export class Homepage implements OnInit {
    * - Applica i filtri checkbox (ambito, disabilità, provincia)
    */
   filtraStrutture(): void {
+
     this.struttureFiltrate =
       this.filtro === ''
         ? this.strutture
         : this.strutture.filter((s) =>
             s.nomeStruttura.toLowerCase().includes(this.filtro.toLowerCase())
           );
-
+    
      // Filtro per provincia
     if (this.FiltriProvince && this.FiltriProvince.length > 0) {
       this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
@@ -95,5 +96,6 @@ export class Homepage implements OnInit {
         this.FiltriTipi.includes(s.ambito)
       );
     }
+      
   }
 }

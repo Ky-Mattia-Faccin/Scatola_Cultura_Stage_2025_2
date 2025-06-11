@@ -29,6 +29,7 @@
           type="checkbox"
           laceholder=".."
           [value]="element"
+          [checked]="ArrayCheckedLocal.includes(element)" 
           (change)="onCheckboxChanges($event, element)"
         />
       </label>
