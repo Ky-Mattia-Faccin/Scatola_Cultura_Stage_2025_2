@@ -30,7 +30,7 @@ export class Homepage implements OnInit {
     private textService: TextimgTsService
   ) {}
 
-   // Lista completa delle strutture ottenute da API
+  // Lista completa delle strutture ottenute da API
   strutture: Struttura[] = [];
 
   // Lista filtrata da mostrare nell'interfaccia
@@ -38,7 +38,9 @@ export class Homepage implements OnInit {
 
   // Valore corrente del filtro testuale (ricerca)
   filtro!: string;
-  // Filtri selezionati dai componenti figli (checkbox)
+
+  
+  // Filtri selezionati dai componenti figli 
   FiltriDisabilita: string[] = [];
   FiltriTipi: string[] = [];
   FiltriProvince: string[] = [];
@@ -131,7 +133,9 @@ export class Homepage implements OnInit {
         this.FiltriTipi.includes(s.ambito)
       );
     }
-      
+    
+
+    
   }
 }
 /*

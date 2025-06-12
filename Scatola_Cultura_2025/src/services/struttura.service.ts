@@ -49,8 +49,14 @@ export class StrutturaService {
    * - Esegue una chiamata GET per ottenere un array di stringhe corrispondenti
    */
   getFiltro(soggetto:string):Observable<string[]>{
-     return this.httpClient.get<string[]>(
-      'http://192.168.123.150:5000/api/Struttura/get' + `${soggetto}`)
+    let ret
+
+    if(soggetto==='Disabilita')
+       ret=this.httpClient.get<string[]>('http://192.168.123.150:5000/api/Disabilita/get' + `${soggetto}`);
+    else
+      ret=this.httpClient.get<string[]>('http://192.168.123.150:5000/api/StrutturaTB/get' + `${soggetto}`);
+
+    return ret
   }
 
 

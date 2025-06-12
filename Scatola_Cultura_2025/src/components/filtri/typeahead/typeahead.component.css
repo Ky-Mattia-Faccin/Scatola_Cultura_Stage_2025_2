@@ -78,13 +78,15 @@
 }
 
 /* Quando si passa sopra il select: mostra le opzioni */
-.select:hover > .options {
+.select:hover > .options,
+.select.aperto > .options {
   opacity: 1;
   visibility: visible;
 }
 
 /* Ruota la freccia quando il menu è espanso */
-.select:hover > .selected .arrow {
+.select:hover > .selected .arrow,
+.select.aperto > .selected .arrow {
   transform: rotate(0deg);
 }
 

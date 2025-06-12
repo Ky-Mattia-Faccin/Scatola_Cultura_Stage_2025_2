@@ -107,10 +107,33 @@ export class Detail implements OnInit {
     if (!element)
       element = container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
   }
+
   toggleMenu(){
     const dropDownImg  = document.querySelector('.sc-detail-center-desc-img');
     dropDownImg?.classList.toggle('hidden');
   }
   //da sistemare in base a come viene sistemato in homepage
+
+  //proprietà calcolate per collegare i link (da completare appena si avranno i dati)
+
+  get linkInstagram(){
+    return 
+  }
+
+  get linkSito(){
+    return
+  }
+
+  get linkPosizione(){
+    return
+  }
+
+  get linkTwitter(){
+    return
+  }
+
+
+
+
 }
 
