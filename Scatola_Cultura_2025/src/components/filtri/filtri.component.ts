@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
 import { TypeaheadComponent } from './typeahead/typeahead.component';
 import { StrutturaService } from '../../services/struttura.service';
-import { Observable, EMPTY, catchError, of } from 'rxjs';
+import { Observable, EMPTY, catchError, of, tap } from 'rxjs';
 import { ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
@@ -46,6 +46,7 @@ export class FiltriComponent implements AfterViewInit {
    */
 
   getDatiDisabilita(nome: string) {
+     console.log('getDatiDisabilita chiamato con:', nome);
     this.DatiDisabilita = this.loadFilter(nome, 'filtro-disabilita');
   }
 
@@ -64,40 +65,25 @@ export class FiltriComponent implements AfterViewInit {
    * Se i dati sono già presenti in sessionStorage, li usa direttamente.
    * Altrimenti li recupera dal servizio, con gestione errori.
    */
-  private loadFilter(nome: string, chiave: string): Observable<string[]> {
-    const datiSalvati = sessionStorage.getItem(chiave);
-    if (datiSalvati) {
-      // Ritorna i dati salvati localmente
-      return of(JSON.parse(datiSalvati));
-    }
-
-    // Recupera i dati dal servizio
-    const obs = this.servizioStruttura.getFiltro(nome).pipe(
-      catchError((err) => {
-        const riprova = window.confirm(
-          `Errore nel caricamento del filtro ${nome}. Vuoi riprovare?`
-        );
-        if (riprova) {
-          // Mappa i nomi ai rispettivi metodi
-          const retryMap: Record<string, () => void> = {
-            disabilita: () => this.getDatiDisabilita(nome),
-            tipo: () => this.getDatiTipo(nome),
-            province: () => this.getDatiProvince(nome),
-          };
-           // Se esiste un metodo di retry, lo esegue
-          if (retryMap[nome]) retryMap[nome]();
-        }
-        return EMPTY;
-      })
-    );
-
-    // Salva i dati in sessionStorage una volta ricevuti
-    obs.subscribe((val) => {
-      sessionStorage.setItem(chiave, JSON.stringify(val));
-    });
-
-    return obs;
+ private loadFilter(nome: string, chiave: string): Observable<string[]> {
+  const datiSalvati = sessionStorage.getItem(chiave);
+  if (datiSalvati) {
+    return of(JSON.parse(datiSalvati));
   }
+
+  return this.servizioStruttura.getFiltro(nome).pipe(
+    tap(val => {
+      sessionStorage.setItem(chiave, JSON.stringify(val));
+    }),
+    catchError(err => {
+      const riprova = window.confirm(`Errore nel caricamento del filtro ${nome}. Vuoi riprovare?`);
+      if (riprova) {
+        return this.loadFilter(nome, chiave);
+      }
+      return EMPTY;
+    })
+  );
+}
 
   /*
    * Metodi per aggiornare i valori locali dei filtri selezionati
