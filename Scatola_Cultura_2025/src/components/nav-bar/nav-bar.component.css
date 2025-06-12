@@ -16,10 +16,8 @@
 
 /* Spazio per il logo e relativo layout */
 .sc-navbar-logo-space{
-
-  width: 17vw;
   height: 8vh;
-
+  width: 10vw;
   display: flex;
   align-items: center;
   justify-content:space-between ;
@@ -69,7 +67,6 @@
 
 /* Contenitore per il link alla home */
 .sc-navbar-home {
-  all: initial;
   background-color: #f9f9f9;
 
   height: 70%;
@@ -112,7 +109,6 @@
 
 /* Bottone del menu a discesa */
 .sc-navbar-dropdown-button {
-  all: initial;
   background-color: #f3f4f6;
 
   cursor: pointer;
@@ -164,9 +160,7 @@
 }
 
 
-
-/* Voci del menu dropdown */
-.sc-navbar-dropdown-menu span {
+.sc-navbar-dropdown-menu>span {
   padding: 6% 10%;
   font-size: 90%;
 
@@ -175,10 +169,13 @@
   cursor: pointer;
 
   transition: background-color 0.3s, color 0.3s;
+  display: flex;
 }
+
 
 .sc-navbar-dropdown-menu span:hover {
   background-color: #167BAA;
+
   color: #2563eb;
 
   font-weight: 500;
@@ -188,6 +185,7 @@
 
 
 /* Nascondi elementi */
+
 .hidden {
   display: none;
 }
@@ -307,20 +305,16 @@
   }
 }
 
-/*===== DESCRIZIONE (Simone)=====*/
-.container{
-  display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: baseline;
-    --icon-margin: 30px;
-}
+
 
 .label {
 
-  height: 10px;
-  width: 75px;
+  height: 1.5vh;
+  width: 6.8vw;
   background-color: #ffffff;
+
+  margin-left: 4%;
+
   border-radius: 30px;
 
   display: -webkit-box;
@@ -354,11 +348,8 @@
 
 #checkbox:checked ~ .label::before {
 
-  left: 4.35vw;
-
-  /*dice quanto può andare a destra*/
-
-  background-color: #818181;
+  left: 4.70vw;
+  background-color: #00f74e;
   /* background-image: linear-gradient(315deg, #000000 0%, #414141 70%); */
 
   -webkit-transition: 0.4s;
@@ -371,10 +362,9 @@
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  background-color: #000000;
-
+  background-color: #ff0000;
   /*dice da dove parte*/
-  left: 0px;
+  left: 0.1vw;
   /* -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3),
     10px 10px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3), 10px 10px 10px rgba(0, 0, 0, 0.3); */

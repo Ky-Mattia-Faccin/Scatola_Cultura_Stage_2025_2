@@ -108,7 +108,7 @@ export class Detail implements OnInit {
       element = container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
   }
   toggleMenu(){
-    const dropDownImg  = document.querySelector('');
+    const dropDownImg  = document.querySelector('.sc-detail-center-desc-img');
     dropDownImg?.classList.toggle('hidden');
   }
   //da sistemare in base a come viene sistemato in homepage

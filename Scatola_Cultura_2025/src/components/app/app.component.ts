@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { Struttura } from '../../interfaces/Istruttura';
+import {  Observable} from 'rxjs';
+import { SearchFilterService } from '../../services/search-filter.service';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +36,24 @@ export class AppComponent {
    * - Carica le strutture dal localStorage
   */
   ngOnInit(): void {
+
     this.strutture = JSON.parse(localStorage.getItem('strutture') || '[]');
+
+    this.getStrutture().subscribe(dati => {
+      this.strutture = dati;
+
+      // Serializzazione in JSON e salvataggio nel localStorage
+      const strutturaJson = JSON.stringify(this.strutture);
+      if (strutturaJson != null)
+        localStorage.setItem('strutture', strutturaJson);
+    });
+
+  }
+
+  // Metodo per ottenere le strutture dal file JSON locale
+  getStrutture(): Observable<Struttura[]> {
+    return this.httpClient.get<Struttura[]>('./assets/struttura.json');
+
   }
 
   /*
@@ -50,5 +69,4 @@ export class AppComponent {
 
     }
   }
-
 }

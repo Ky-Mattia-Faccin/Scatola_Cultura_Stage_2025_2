@@ -61,6 +61,7 @@
 
 /* Pulsante "indietro" */
 .sc-detail-back-button {
+  
   height: 150%;
   width: 10%;
   font-size: 150%;
@@ -80,6 +81,7 @@
 }
 .sc-detail-header-title{
   font-size: x-large;
+
 }
 /* Effetto hover per il pulsante "indietro" */
 .sc-detail-back-button:hover {
@@ -175,6 +177,43 @@
   padding: 1em;
   font-size: 1em;
   box-sizing: border-box;
+}
+.sc-detail-center-desc-img{
+  display: none;
+  font-size: 1.05em;
+  width: 12vw;
+  height: 12vh;
+
+  color: transparent;
+  transition: all 350ms ease;
+}
+/* ====DIDASCALIA==== */
+.sc-detail-center-img:hover~.sc-detail-center-desc-img  {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    background-color: white;
+    color: black;
+    transition: all 350ms ease;
+    top: 25%;
+    left: 9%;
+    border-radius: 25px;
+    position: absolute;
+    flex-direction: column;
+}
+.sc-detail-center-desc-img:hover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+  color: black; 
+  transition: all 350ms ease;
+  top:25%;
+  left:9%;
+  border-radius: 25px;
+
+  position: absolute;
 }
 
 /* ===== FOOTER ===== */
