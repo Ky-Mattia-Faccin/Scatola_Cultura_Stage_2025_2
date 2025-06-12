@@ -7,7 +7,10 @@ import { IconeManager } from '../../services/IconeManager';
 import { DetailTestoComponent } from './detail-testo/detail-testo.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { StrutturaService } from '../../services/struttura.service';
+
+import { TextimgTsService } from '../../services/textimg.service';
 
 @Component({
   standalone: true,
@@ -31,7 +34,11 @@ export class Detail implements OnInit {
     private iconeManager: IconeManager,
     private route: ActivatedRoute,
     private httpsClient: HttpClient,
-    private servizioStruttura: StrutturaService
+
+    private servizioStruttura: StrutturaService,
+
+    private textService: TextimgTsService
+
   ) {}
 
   // ID della struttura corrente (ottenuto dalla route)
@@ -40,6 +47,13 @@ export class Detail implements OnInit {
   // Oggetto Struttura da visualizzare nel dettaglio
   struttura!: Struttura;
 
+  // Array contenente i dati di accessibilità/disabilità della struttura
+  disabilitaStruttura!: DisabilitaStruttura[];
+
+  //simone
+  //creazione del booleano
+  isDescriptionActive:boolean=false
+
   /*
    * OnInit:
    * - Recupera l'ID della struttura dalla route
@@ -47,6 +61,12 @@ export class Detail implements OnInit {
    * - Esegue richiesta HTTP per ottenere i dati delle disabilità (decidere se va usato)
   */
   ngOnInit(): void {
+     //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
+    this.textService.isDescriptionActive$.subscribe(value=>{
+      this.isDescriptionActive=value;
+      }
+    )
+
     const parametroId = this.route.snapshot.paramMap.get('id');
 
     if (parametroId != null) {
@@ -87,9 +107,10 @@ export class Detail implements OnInit {
     if (!element)
       element = container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
   }
-
-
-  prova(){
-    prompt("premuto");
+  toggleMenu(){
+    const dropDownImg  = document.querySelector('');
+    dropDownImg?.classList.toggle('hidden');
   }
+  //da sistemare in base a come viene sistemato in homepage
 }
+
