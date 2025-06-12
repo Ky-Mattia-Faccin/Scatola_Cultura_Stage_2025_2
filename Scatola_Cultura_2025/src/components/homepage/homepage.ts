@@ -82,7 +82,7 @@ export class Homepage implements OnInit {
   isDescriptionActive:boolean=false
   //al cambiamento del checkbox se false non deve mostare la descrizione altrimenti al passaggio sopra una immagine (hover) deve inviare il valore
   toggleMenu(){
-    const dropDownImg  = document.querySelector('.sc-homepage-card-img-text')
+    const dropDownImg  = document.querySelector('.sc-homepage-card-img-text');
     dropDownImg?.classList.toggle('hidden');
   }
 
