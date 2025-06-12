@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { IconeManager } from '../../../services/IconeManager';
 import { CommonModule } from '@angular/common';
 import { Struttura } from '../../../interfaces/Istruttura';
+import { SearchFilterService } from '../../../services/search-filter.service';
+
 
 @Component({
   selector: 'app-detail-testo',
@@ -30,8 +32,14 @@ export class DetailTestoComponent implements OnChanges {
   // Flag per indicare se esistono dati di accessibilità (struttura non nulla)
   hasAccessibilita: boolean = false;
 
-  // Iniezione delle dipendenze: IconeManager per gestire icone, DomSanitizer per sicurezza HTML
-  constructor(private iconeManager: IconeManager) {}
+   // Iniezione delle dipendenze: gestore icone
+  constructor(private iconeManager:IconeManager,private searchFilter: SearchFilterService
+  ){}
+
+
+
+   // OnChanges: aggiorna il flag 'hasAccessibilita' se cambiano i dati in ingresso
+
 
   /*
    * Metodo OnChanges:
@@ -56,4 +64,13 @@ export class DetailTestoComponent implements OnChanges {
     this.parentHasZoomClass = !this.parentHasZoomClass;
   }
 
+
+  //=====SIMONE=====//
+  //prende il valore di text size
+  textSize !:number;
+  ngOnInit(): void {
+    this.searchFilter.textSize$.subscribe(value=>{
+      this.textSize = value;
+  })
+}
 }

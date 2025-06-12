@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, OnChanges, Output, SimpleChanges, ViewChild,Input } from '@angular/core';
+import { Component,Renderer2, EventEmitter, HostListener, OnChanges, Output, SimpleChanges, ViewChild,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { Router, RouterLink } from '@angular/router';
@@ -13,9 +13,7 @@ import { TextimgTsService } from '../../services/textimg.service';
   styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent{
-sendTheNewValue($event: Event) {
-throw new Error('Method not implemented.');
-}
+  constructor(public searchService:SearchFilterService, private textService:TextimgTsService,private renderer:Renderer2){}
 
   //michael
 
@@ -26,7 +24,7 @@ throw new Error('Method not implemented.');
   contrast!: number;
 
   //Valore attuale del textsize : Simone
-  textsize! : number;
+  fontSize! : number;
 
 
   // Output: emette il nuovo valore di luminosità verso il componente genitore
@@ -35,13 +33,6 @@ throw new Error('Method not implemented.');
 
   // Output: emette il nuovo valore di contrasto per il componente genitore
   @Output() contrastChanged = new EventEmitter<number>();
-
-  // Output: emette il nuovo valore di text size verso il componente genitore :Simone
-   @Output() textsizeChanged = new EventEmitter<number>();
-
-  constructor(public searchService:SearchFilterService, private textService:TextimgTsService){}
-
-
 
 
   // Iniezione del servizio SearchFilterService per aggiornare il filtro di ricerca
@@ -61,6 +52,7 @@ throw new Error('Method not implemented.');
     this.searchService.setSearchFilter(target.value);
   }
 
+
    /*
    * - Mostra o nasconde il menu a discesa (dropdown)
    * - Agisce sull'elemento con classe ‘sc-navbar-dropdown-menu’
@@ -72,13 +64,22 @@ throw new Error('Method not implemented.');
   }
 
 
-  //simone  
+  //=====SIMONE======//
 
   //valore attuale della descrizione
   isDescriptionActive: boolean = false;
   onCheck(){
     this.isDescriptionActive=!this.isDescriptionActive;
-    console.log(this.isDescriptionActive);
     this.textService.triggerChange(this.isDescriptionActive);
+  }
+
+
+
+  //ottiene a ogni cambio il valore del textsize
+  onInputSizeChange(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.fontSize = +value;
+    this.renderer.setStyle(document.documentElement, '--font-size', `${this.fontSize}px`);
+    console.log(this.renderer);
   }
 }

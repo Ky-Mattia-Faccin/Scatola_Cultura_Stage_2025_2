@@ -38,7 +38,6 @@ export class Homepage implements OnInit {
 
   // Valore corrente del filtro testuale (ricerca)
   filtro!: string;
-
   // Filtri selezionati dai componenti figli (checkbox)
   FiltriDisabilita: string[] = [];
   FiltriTipi: string[] = [];
@@ -50,12 +49,24 @@ export class Homepage implements OnInit {
    * - Applica i filtri iniziali
    * - Ascolta i cambiamenti del filtro testuale
    */
+
+  // Grandezza testo
+  textSize!: number;
+
+  /*
+   * OnInit:
+   * - Carica le strutture dal localStorage
+   * - Sottoscrive l’osservabile filtroRicerca$ per aggiornare la lista filtrata in base al testo inserito
+  */
   ngOnInit(): void {
     //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
     this.textService.isDescriptionActive$.subscribe(value=>{
       this.isDescriptionActive=value;
       }
     )
+    this.searchFilter.textSize$.subscribe(value=>{
+      this.textSize = value;
+    })
 
     this.servizioStruttura.getStrutture().subscribe((s) => {
       this.strutture = s;

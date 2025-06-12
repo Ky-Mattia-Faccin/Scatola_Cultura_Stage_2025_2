@@ -33,4 +33,11 @@ export class SearchFilterService {
     this.oggettoRicerca.next(filtro)
   }
 
+  //Dimensione testi 
+  private textSizeSubject = new BehaviorSubject<number>(16); // default iniziale    
+  textSize$ = this.textSizeSubject.asObservable();
+   
+  setTextSize(size: number) {
+    this.textSizeSubject.next(size);
+  }
 }
