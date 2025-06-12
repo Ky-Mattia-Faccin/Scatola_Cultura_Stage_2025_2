@@ -1,4 +1,6 @@
+
 /* ====== NAVBAR PRINCIPALE ====== */
+
 .sc-navbar {
   display: flex;
   align-content: center;
@@ -162,8 +164,7 @@
 
 .sc-navbar-dropdown-menu>span {
   padding: 6% 10%;
-  font-size: 90%;
-
+  /* font-size: 90%; */
   color: #1f2937;
 
   cursor: pointer;
