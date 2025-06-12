@@ -8,9 +8,7 @@ import { DisabilitaStruttura } from '../interfaces/IDisabilitàStruttura';
   providedIn: 'root',
 })
 export class StrutturaService {
-
   //michael
-
 
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
   constructor(private httpClient: HttpClient) {}
@@ -22,7 +20,9 @@ export class StrutturaService {
    */
   getStrutture(): Observable<Struttura[]> {
     return this.httpClient
-      .get<Struttura[]>('http://192.168.123.150:5000/api/Struttura/get')
+      .get<Struttura[]>(
+        'http://192.168.123.150:5000/api/DisabilitaStruttura/get'
+      )
       .pipe(
         catchError((error) => {
           console.error('Errore nel recupero delle strutture:', error);
@@ -48,18 +48,53 @@ export class StrutturaService {
    * - Riceve una stringa 'soggetto'
    * - Esegue una chiamata GET per ottenere un array di stringhe corrispondenti
    */
-  getFiltro(soggetto:string):Observable<string[]>{
-    let ret
+  getFiltro(soggetto: string): Observable<string[]> {
+    let ret;
 
-    if(soggetto==='Disabilita')
-       ret=this.httpClient.get<string[]>('http://192.168.123.150:5000/api/Disabilita/get' + `${soggetto}`);
+    if (soggetto === 'Disabilita')
+      ret = this.httpClient.get<string[]>(
+        'http://192.168.123.150:5000/api/Disabilita/get' + `${soggetto}`
+      );
     else
-      ret=this.httpClient.get<string[]>('http://192.168.123.150:5000/api/StrutturaTB/get' + `${soggetto}`);
+      ret = this.httpClient.get<string[]>(
+        'http://192.168.123.150:5000/api/Struttura/get' + `${soggetto}`
+      );
 
-    return ret
+    return ret;
   }
 
+  getStruttureFiltrate(
+    FiltriDisabilita: string[],
+    FiltriAmbito: string[],
+    FiltriProvince: string[]
+  ): Observable<Struttura[]> {
 
 
 
+    //http://localhost:5000/api/DisabilitaStruttura/get?Disabilita=nuovo&Disabilita=nuovo1
+
+    let url = `http://192.168.123.150:5000/api/DisabilitaStruttura/get?`;
+
+
+    if (FiltriDisabilita.length > 0 && !!FiltriDisabilita)
+      FiltriDisabilita.forEach((value: string) => {
+        url += `Disabilita=${encodeURIComponent(value)}&`;
+      });
+
+    if (FiltriProvince.length > 0 && !!FiltriProvince)
+      FiltriProvince.forEach((value: string) => {
+        url += `Province=${encodeURIComponent(value)}&`;
+      });
+
+    if (FiltriAmbito.length > 0 && !!FiltriAmbito)
+      FiltriAmbito.forEach((value) => {
+        url += `Ambito=${encodeURIComponent(value)}&`;
+      });
+
+    if (url.endsWith('&')) {
+      url = url.slice(0, -1);
+    }
+
+    return this.httpClient.get<Struttura[]>(url);
+  }
 }

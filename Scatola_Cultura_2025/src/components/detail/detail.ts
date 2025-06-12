@@ -73,7 +73,7 @@ export class Detail implements OnInit {
       this.idStruttura = parseInt(parametroId, 10);
 
       // Caricamento delle strutture dal localStorage
-      const strutture: Struttura[] = JSON.parse(localStorage.getItem('strutture') || '[]');
+      const strutture: Struttura[] = JSON.parse(sessionStorage.getItem('strutture') || '[]');
 
       // Ricerca della struttura con l'ID specificato
       const trovata = strutture.find((s: Struttura) => s.idStruttura === this.idStruttura);

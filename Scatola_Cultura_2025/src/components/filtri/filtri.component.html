@@ -23,7 +23,13 @@
     ></app-typeahead>
   </div>
   <div class="buttons">
-    <div (click)="applyFilter()" class="filters-button-apply" role="button" tabindex="0"  (keydown.enter)="applyFilter()" >
+    <div
+      (click)="applyFilter()"
+      class="filters-button-apply"
+      role="button"
+      tabindex="0"
+      (keydown.enter)="applyFilter()"
+    >
       <span>applica</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +45,13 @@
       </svg>
     </div>
 
-    <div (click)="resetFilters()" class="filters-button-reset" role="button" tabindex="0"  (keydown.enter)="applyFilter()">
+    <div
+      (click)="resetFilters()"
+      class="filters-button-reset"
+      role="button"
+      tabindex="0"
+      (keydown.enter)="resetFilters()"
+    >
       <span>resetta</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"

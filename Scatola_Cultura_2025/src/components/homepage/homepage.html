@@ -10,7 +10,7 @@
       </div>
         </div>
         <div class="sc-homepage-musei-container" >
-            <div class="sc-homepage-museo-card" *ngFor="let item of struttureFiltrate" [routerLink]="['/detail', item.idStruttura]" >
+            <div class="sc-homepage-museo-card" *ngFor="let item of strutture" [routerLink]="['/detail', item.idStruttura]" >
                 <div class="sc-homepage-card-img" >
                     <img [src]="" alt="{{item.nomeStruttura}}" width="300">
                 </div>
@@ -26,7 +26,7 @@
     </div>
     <div
       class="sc-homepage-musei-container"
-      *ngIf="struttureFiltrate.length > 0; else nessunaStruttura"
+      *ngIf="strutture.length > 0; else nessunaStruttura"
     >
       <div
         class="sc-homepage-museo-card"

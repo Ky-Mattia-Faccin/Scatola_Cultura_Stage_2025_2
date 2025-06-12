@@ -20,10 +20,6 @@ export class Homepage implements OnInit {
 
   // michael: Iniezione del servizio per la gestione del filtro di ricerca
   //simone:  Iniezione del servizio per la geststione del booleano per la descrizione
-
-  // Iniezione dei servizi:
-  // - SearchFilterService per gestire il filtro di ricerca
-  // - StrutturaService per recuperare le strutture da API
   constructor(
     private searchFilter: SearchFilterService,
     private servizioStruttura: StrutturaService,
@@ -39,55 +35,44 @@ export class Homepage implements OnInit {
   // Valore corrente del filtro testuale (ricerca)
   filtro!: string;
 
-  
-  // Filtri selezionati dai componenti figli 
+
+  // Filtri selezionati dai componenti figli
+
   FiltriDisabilita: string[] = [];
   FiltriTipi: string[] = [];
   FiltriProvince: string[] = [];
 
-    /*
+  /*
    * ngOnInit:
-   * - Recupera tutte le strutture e le salva in localStorage
-   * - Applica i filtri iniziali
-   * - Ascolta i cambiamenti del filtro testuale
    */
 
   // Grandezza testo
   textSize!: number;
 
-  /*
-   * OnInit:
-   * - Carica le strutture dal localStorage
-   * - Sottoscrive l’osservabile filtroRicerca$ per aggiornare la lista filtrata in base al testo inserito
-  */
+
   ngOnInit(): void {
+    // carica filtri dal servizio
+    const savedFilters = sessionStorage.getItem('filtri');
+    if (savedFilters) {
+      const parsed = JSON.parse(savedFilters);
+      this.FiltriDisabilita = parsed.disabilita || [];
+      this.FiltriTipi = parsed.tipi || [];
+      this.FiltriProvince = parsed.province || [];
+      this.filtro = parsed.filtroTestuale || '';
+    }
+    //carica strutture dal session storage
+    this.checkSessionStorage();
+
+
+    //carica il filtro di ricerca dal servizio
+    this.searchFilter.filtroRicerca$.subscribe((value) => {
+      this.filtro = value;
+      this.applySearchFilter();
+    });
     //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
     this.textService.isDescriptionActive$.subscribe(value=>{
       this.isDescriptionActive=value;
-      }
-    )
-
-    this.servizioStruttura.getStrutture().subscribe((s) => {
-      this.strutture = s;
-    
-    
-  // Recupero delle strutture salvate nel localStorage
-
-    this.strutture = JSON.parse(localStorage.getItem('strutture') || '[]');
-
-
-      const struttureJSON = JSON.stringify(this.strutture);
-
-      localStorage.setItem('strutture', struttureJSON);
-
-      this.filtraStrutture(); 
-    });
-
-    // Ascolta le modifiche al filtro di ricerca ed aggiorna la lista filtrata
-    this.searchFilter.filtroRicerca$.subscribe((value) => {
-      this.filtro = value;
-      this.filtraStrutture(); 
-    });
+    })
   }
 
   //simone
@@ -101,41 +86,103 @@ export class Homepage implements OnInit {
   }
 
 
+
   /*
-   * Metodo principale per filtrare la lista delle strutture:
-   * - Applica il filtro di testo (ricerca)
-   * - Applica i filtri checkbox (ambito, disabilità, provincia)
+   * Metodo chiamato dal bottone 'applica filtri
    */
   filtraStrutture(): void {
 
-    this.struttureFiltrate =
-      this.filtro === ''
-        ? this.strutture
-        : this.strutture.filter((s) =>
-            s.nomeStruttura.toLowerCase().includes(this.filtro.toLowerCase())
-          );
     
-     // Filtro per provincia
-    if (this.FiltriProvince && this.FiltriProvince.length > 0) {
-      this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
-        this.FiltriProvince.includes(s.provincia)
-      );
-    }
-     // Filtro per disabilità
-    if (this.FiltriDisabilita && this.FiltriDisabilita.length > 0) {
-      this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
-        s.disabilita.some((d) => this.FiltriDisabilita.includes(d.categoria))
-      );
-    }
-     // Filtro per ambito/tipo
-    if (this.FiltriTipi && this.FiltriTipi.length > 0) {
-      this.struttureFiltrate = this.struttureFiltrate.filter((s) =>
-        this.FiltriTipi.includes(s.ambito)
-      );
-    }
-    
+    sessionStorage.setItem(
+      'filtri',
+      JSON.stringify({
+        disabilita: this.FiltriDisabilita,
+        tipi: this.FiltriTipi,
+        province: this.FiltriProvince,
+        filtroTestuale: this.filtro,
+      })
+    );
 
-    
+    /*
+    const filtriVuoti =
+      this.FiltriDisabilita.length === 0 &&
+      this.FiltriTipi.length === 0 &&
+      this.FiltriProvince.length === 0;
+
+    if (filtriVuoti) {
+      const struttureJSON = sessionStorage.getItem('strutture');
+      if (struttureJSON) {
+        this.strutture = JSON.parse(struttureJSON);
+        this.applySearchFilter();
+        return;
+      }
+    }
+    */
+
+    //chiamata API
+
+    this.servizioStruttura
+      .getStruttureFiltrate(
+        this.FiltriDisabilita,
+        this.FiltriTipi,
+        this.FiltriProvince
+      )
+      .subscribe({
+        next: (s) => {
+          if (s.length === 0) {
+            window.alert('Nessuna struttura con questi filtri trovata');
+          } else {
+            this.strutture = s;
+            sessionStorage.setItem('strutture', JSON.stringify(s));
+            this.applySearchFilter();
+          }
+        } /* gestione errore */,
+        error: (err) => {
+          console.error('Errore nel caricamento delle strutture');
+          const riprova = window.confirm(
+            'Errore nel caricamento delle strutture, vuoi riprovare?'
+          );
+          if (riprova) this.filtraStrutture();
+        },
+      });
+  }
+
+  //metodo per cerca le strutture in base al contenuto del "cerca" nella navbar
+  private applySearchFilter() {
+    if (!this.filtro) {
+      this.struttureFiltrate = this.strutture;
+    } else {
+      const filtroLower = this.filtro.toLowerCase();
+      this.struttureFiltrate = this.strutture.filter((s) =>
+        s.nomeStruttura.toLowerCase().includes(filtroLower)
+      );
+    }
+  }
+
+  //metodo per conrollare il session storage e salvare se è vuoto
+  private checkSessionStorage() {
+    const struttureJSON = sessionStorage.getItem('strutture');
+    if (struttureJSON) {
+      this.strutture = JSON.parse(struttureJSON);
+      this.struttureFiltrate = this.strutture;
+      this.applySearchFilter();
+    } else {
+      this.servizioStruttura.getStrutture().subscribe({
+        next: (s) => {
+          this.strutture = s;
+          this.struttureFiltrate = s;
+          sessionStorage.setItem('strutture', JSON.stringify(s));
+          this.applySearchFilter();
+        } /* gestire l'errore*/,
+        error: (err) => {
+          console.error(err);
+          const riprova = window.confirm(
+            'errore nel caricamento delle strutture, riprovare'
+          );
+          if (riprova) this.checkSessionStorage();
+        },
+      });
+    }
   }
 }
 /*
