@@ -76,17 +76,17 @@ export class StrutturaService {
     let url = `http://192.168.123.150:5000/api/DisabilitaStruttura/get?`;
 
 
-    if (FiltriDisabilita.length > 0 && !!FiltriDisabilita)
+    if (FiltriDisabilita?.length > 0 && !!FiltriDisabilita)
       FiltriDisabilita.forEach((value: string) => {
         url += `Disabilita=${encodeURIComponent(value)}&`;
       });
 
-    if (FiltriProvince.length > 0 && !!FiltriProvince)
+    if (FiltriProvince?.length > 0 && !!FiltriProvince)
       FiltriProvince.forEach((value: string) => {
         url += `Province=${encodeURIComponent(value)}&`;
       });
 
-    if (FiltriAmbito.length > 0 && !!FiltriAmbito)
+    if (FiltriAmbito?.length > 0 && !!FiltriAmbito)
       FiltriAmbito.forEach((value) => {
         url += `Ambito=${encodeURIComponent(value)}&`;
       });
