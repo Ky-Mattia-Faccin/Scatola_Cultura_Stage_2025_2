@@ -67,7 +67,7 @@
   box-sizing: border-box;
   margin-bottom : 2%;
   overflow: hidden;
-  background-color:rgb(28, 156, 217,255);
+  background-color:#1C9CD9;
   border:2px solid white;
   display: flex;
   flex-direction: column;
