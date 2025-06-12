@@ -29,6 +29,7 @@
   overflow: hidden;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* Contenitore interno con card bianca */
@@ -75,11 +76,11 @@
   cursor: pointer;
   box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.235);
 
-
   border-radius: 25px;
 
   border : 3px;
   background-color: white;
+
 }
 
 /* Effetto hover per il pulsante "indietro" */

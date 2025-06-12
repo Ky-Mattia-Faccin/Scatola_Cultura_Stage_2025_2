@@ -104,6 +104,8 @@ export class FiltriComponent implements AfterViewInit{
   this.disabilitaComponent.reset();
   this.tipoComponent.reset();
   this.provinciaComponent.reset();
+
+  this.applyFilter();
 }
 
 

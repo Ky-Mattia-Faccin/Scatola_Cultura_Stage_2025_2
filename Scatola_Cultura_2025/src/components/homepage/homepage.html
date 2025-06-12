@@ -32,6 +32,7 @@
         class="sc-homepage-museo-card"
         *ngFor="let item of struttureFiltrate"
         [routerLink]="['/detail', item.idStruttura]"
+        role="button"
       >
         <div class="sc-homepage-card-img">
           <img [src]="" alt="{{item.nomeStruttura}}" width="300" />

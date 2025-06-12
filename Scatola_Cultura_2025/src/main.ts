@@ -5,5 +5,5 @@ import { appConfig } from './components/app/app.config';
 import { AppComponent } from './components/app/app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-bootstrapApplication(AppComponent, appConfig,)
+bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));

@@ -1,5 +1,7 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
@@ -7,6 +9,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -19,10 +22,17 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './typeahead.component.html',
   styleUrl: './typeahead.component.css',
 })
-export class TypeaheadComponent implements OnInit, OnDestroy {
+export class TypeaheadComponent implements OnInit, OnDestroy , AfterViewInit{
+ 
 
 
   //michael
+
+  ngAfterViewInit(): void {
+
+  }
+  @ViewChild('selectContainer') selectContainer?:ElementRef<HTMLElement>;
+  //Riferimento al container `.select` nel template
 
    // Nome filtro da mostrare o usare come riferimento
   @Input() nomeFiltro!: string;
@@ -32,8 +42,8 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
 
  // Evento che emette il nome filtro selezionato (una volta al caricamento)
   @Output() evento = new EventEmitter<string>();
-
-// Evento che emette l'array di elementi selezionati con checkbox
+  
+  // Evento che emette l'array di elementi selezionati con checkbox
   @Output() ArrayChecked = new EventEmitter<string[]>();
 
  // Array locale degli elementi selezionati (checkbox)
@@ -50,6 +60,11 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
 
    // Flag per evitare emissioni multiple dell'evento "evento"
   loaded: boolean = false;
+
+
+  //flag per controllare l'apertura del menu
+  menuAperto: boolean = false;
+
 
    // Subscription per l'Observable Array$
   private subscription?: Subscription;
@@ -157,13 +172,32 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     this.ArrayChecked.emit(this.ArrayCheckedLocal);
   }
 
-
+  //metodo per resettare le selezioni fatte
   reset() {
   this.ArrayCheckedLocal = [];
   this.filtro = null;
   this.filteredOptionsArray = this.OptionsArray; 
-  this.ArrayChecked.emit(this.ArrayCheckedLocal); 
-}
+  this.ArrayChecked.emit(this.ArrayCheckedLocal);
+  }
+  
+
+
+  //metodi per gestire l'apertura dei menù 
+    openMenu(){
+      this.menuAperto=true;
+    }
+
+  //Chiude il menu solo se il focus esce completamente dal componente
+    onfocusOut(event:FocusEvent){
+      const related=event.relatedTarget as HTMLElement
+      if(!this.selectContainer?.nativeElement.contains(related)){
+        this.menuAperto=false
+      }
+    }
+
+
 
 }
+
+
 
