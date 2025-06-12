@@ -1,13 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
 :root{
-    --font-size: 16px;
+    --fontSize: 16px;
 }
+
 body{
     margin: 0px;
     height: 100%;
     width: 100%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: var(--fontSize);
 }
+
 .content{
     line-height: 1.6;
 }

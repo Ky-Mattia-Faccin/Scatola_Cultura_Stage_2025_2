@@ -72,14 +72,14 @@ export class NavBarComponent{
     this.isDescriptionActive=!this.isDescriptionActive;
     this.textService.triggerChange(this.isDescriptionActive);
   }
+ 
 
-
-
-  //ottiene a ogni cambio il valore del textsize
-  onInputSizeChange(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
-    this.fontSize = +value;
-    this.renderer.setStyle(document.documentElement, '--font-size', `${this.fontSize}px`);
-    console.log(this.renderer);
+  /***
+   * Simone
+   * Evento lanciato al cambiamento della dimensione del testo, da dropdown Accessibilità.
+   * Ottiene il valore e lo imposta sulla variabile CSS: "--font-size"
+   */
+  textSizeChange(event: Event): void {
+    document.documentElement.style.setProperty('--fontSize', this.fontSize.toString() + 'px');
   }
 }
