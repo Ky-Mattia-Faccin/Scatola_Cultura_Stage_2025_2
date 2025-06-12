@@ -82,7 +82,6 @@
   background-color: white;
 }
 
-
 /* Effetto hover per il pulsante "indietro" */
 .sc-detail-back-button:hover {
   background-color:white;
@@ -178,42 +177,58 @@
   /* font-size: 1em; */
   box-sizing: border-box;
 }
+/* ====DIDASCALIA==== */
 .sc-detail-center-desc-img{
-  display: none;
-  /* font-size: 1.05em; */
-  width: 12vw;
-  height: 12vh;
+  width: 0px;
+  height: 0px;
+  opacity: 0;
 
   color: transparent;
-  transition: all 350ms ease;
 }
-/* ====DIDASCALIA==== */
+/*hover sulla immagine*/
 .sc-detail-center-img:hover~.sc-detail-center-desc-img  {
     display: flex;
     justify-content: center;
-    align-items: baseline;
-    background-color: white;
-    color: black;
-    transition: all 350ms ease;
-    top: 25%;
-    left: 9%;
-    border-radius: 25px;
-    position: absolute;
+    align-items: center;
     flex-direction: column;
+
+    width: 10%;
+    height: 20%;
+    opacity: 1;
+    padding: 15px;
+
+    top: 30%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    
+    background-color: white;
+    color: black; 
+    border-radius: 25px;
+
+    position: absolute;
+    transition: 350ms;   
 }
+/*hover sul testo*/
 .sc-detail-center-desc-img:hover{
   display: flex;
   justify-content: center;
   align-items: center;
 
+  width: 10%;
+  height: 20%;
+  opacity: 1;
+  padding: 15px;
+
+  top: 30%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+
   background-color: white;
-  color: black; 
-  transition: all 350ms ease;
-  top:25%;
-  left:9%;
+  color: black;
   border-radius: 25px;
 
   position: absolute;
+  transition: 450ms;
 }
 
 /* ===== FOOTER ===== */
