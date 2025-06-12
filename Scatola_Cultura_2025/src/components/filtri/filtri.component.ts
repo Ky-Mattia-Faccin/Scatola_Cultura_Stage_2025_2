@@ -122,4 +122,22 @@ export class FiltriComponent implements AfterViewInit {
 
     this.applyFilter();
   }
+
+
+  //metodo per caricare le selezioni precedenti
+  private loadSelections() {
+  const disabilitaSel = sessionStorage.getItem('filtro-disabilita-selected');
+  const tipoSel = sessionStorage.getItem('filtro-tipo-selected');
+  const provinceSel = sessionStorage.getItem('filtro-province-selected');
+
+  this.DisabilitaSelectedLocal = disabilitaSel ? JSON.parse(disabilitaSel) : [];
+  this.TipiSelectedLocal = tipoSel ? JSON.parse(tipoSel) : [];
+  this.ProvinceSelectedLocal = provinceSel ? JSON.parse(provinceSel) : [];
+
+  // Aggiorna i componenti figli con le selezioni caricate
+  if(this.disabilitaComponent) this.disabilitaComponent.setSelected(this.DisabilitaSelectedLocal);
+  if(this.tipoComponent) this.tipoComponent.setSelected(this.TipiSelectedLocal);
+  if(this.provinciaComponent) this.provinciaComponent.setSelected(this.ProvinceSelectedLocal);
+  }
+  
 }
