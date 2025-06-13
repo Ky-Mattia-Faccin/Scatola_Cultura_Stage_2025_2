@@ -148,7 +148,7 @@
 
   background-color:#00b9ee;
 
-  border: 0.2em solid #e5e7eb;
+  border: 0.2em solid #ffffff;
   border-radius: 5%;
   box-shadow: 0 0.6em 1.2em rgba(0, 0, 0, 0.1);
 
@@ -187,6 +187,9 @@
 }
 .sc-navbar-dropdown-menu span:hover > .slider{
   --level-color: #00b9ee;
+}
+.sc-navbar-dropdown-menu span:hover label>label{
+  border: #323232 solid 1px;
 }
 
 
@@ -359,7 +362,8 @@
 
 .selector:checked ~ .label::before {
 
-  left: 4.5vw;
+  left: 4vw;
+  
   background-color: #00f74e;
 
 
@@ -378,11 +382,9 @@
   width: 12px;
   border-radius: 50%;
   background-color: #ff0000;
-  /*dice da dove parte*/
+
   left: 0.1vw;
-  /* -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3),
-    10px 10px 10px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3), 10px 10px 10px rgba(0, 0, 0, 0.3); */
+
 
   -webkit-transition: 0.4s;
   transition: 0.4s;

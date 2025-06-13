@@ -399,10 +399,10 @@
   position: absolute;
   bottom: 110%;
   left: 50%;
-
   transform: translateX(-50%);
-  background-color: #000;
 
+  
+  background-color: #000;
   color: white;
 
   padding: 0.4em 0.8em;
@@ -438,7 +438,7 @@
 
 .card3:hover .tooltip {
 
-  background-color: rgb(216, 63, 63);
+  background-color: #d83f3f;
 }
 
 .card4:hover .tooltip {
