@@ -43,16 +43,14 @@ export class Homepage implements OnInit {
   FiltriTipi: string[] = [];
   FiltriProvince: string[] = [];
 
-  /*
+  /** Michael
    * ngOnInit:
+   * - recupera filtri precedenti da sessionStorage, se presenti
+   * - carica strutture da sessionStorage o API
+   * - si iscrive al filtro testuale (navbar)
    */
-
-  // Grandezza testo
-  textSize!: number;
-
-
   ngOnInit(): void {
-    // carica filtri dal servizio
+     // Carica eventuali filtri salvati precedentemente
     const savedFilters = sessionStorage.getItem('filtri');
     if (savedFilters) {
       const parsed = JSON.parse(savedFilters);
@@ -61,11 +59,11 @@ export class Homepage implements OnInit {
       this.FiltriProvince = parsed.province || [];
       this.filtro = parsed.filtroTestuale || '';
     }
-    //carica strutture dal session storage
+        // Carica strutture da sessionStorage o fa chiamata API se vuoto
     this.checkSessionStorage();
 
 
-    //carica il filtro di ricerca dal servizio
+     // Si iscrive ai cambiamenti del filtro testuale (search bar)
     this.searchFilter.filtroRicerca$.subscribe((value) => {
       this.filtro = value;
       this.applySearchFilter();
@@ -89,13 +87,15 @@ export class Homepage implements OnInit {
   }
 
 
-
-  /*
-   * Metodo chiamato dal bottone 'applica filtri
+   /**
+    * Michael
+   * Metodo chiamato quando l’utente clicca "Applica Filtri"
+   * - Salva i filtri su sessionStorage
+   * - Chiama l’API per ottenere solo le strutture corrispondenti ai filtri
    */
   filtraStrutture(): void {
 
-    
+     // Salva i filtri applicati su sessionStorage
     sessionStorage.setItem(
       'filtri',
       JSON.stringify({
@@ -122,7 +122,7 @@ export class Homepage implements OnInit {
     }
     */
 
-    //chiamata API
+       // Chiamata API con i filtri correnti
 
     this.servizioStruttura
       .getStruttureFiltrate(
@@ -133,8 +133,10 @@ export class Homepage implements OnInit {
       .subscribe({
         next: (s) => {
           if (s.length === 0) {
+            // Nessun risultato trovato
             window.alert('Nessuna struttura con questi filtri trovata');
           } else {
+               // Strutture trovate, le salva e applica il filtro testuale
             this.strutture = s;
             sessionStorage.setItem('strutture', JSON.stringify(s));
             this.applySearchFilter();
@@ -150,11 +152,17 @@ export class Homepage implements OnInit {
       });
   }
 
-  //metodo per cerca le strutture in base al contenuto del "cerca" nella navbar
+  /**
+   * Michael
+   * Applica il filtro testuale alla lista di strutture già filtrate per tipo/disabilità/provincia
+   * Mostra solo quelle che contengono il testo cercato nel nomeStruttura
+   */
   private applySearchFilter() {
     if (!this.filtro) {
+       // Se il filtro è vuoto, mostra tutte le strutture
       this.struttureFiltrate = this.strutture;
     } else {
+          // Altrimenti filtra per nome (case insensitive)
       const filtroLower = this.filtro.toLowerCase();
       this.struttureFiltrate = this.strutture.filter((s) =>
         s.nomeStruttura.toLowerCase().includes(filtroLower)
@@ -162,14 +170,25 @@ export class Homepage implements OnInit {
     }
   }
 
-  //metodo per conrollare il session storage e salvare se è vuoto
+  
+  /**
+   * Michael
+   * Controlla se esistono strutture in sessionStorage:
+   * - Se sì, le carica
+   * - Se no, fa la chiamata all’API per ottenerle
+   * Tutto viene poi filtrato in base al testo cercato.
+   */
   private checkSessionStorage() {
+
     const struttureJSON = sessionStorage.getItem('strutture');
+
     if (struttureJSON && struttureJSON!=='[]') {
+       // Strutture già presenti: le carica
       this.strutture = JSON.parse(struttureJSON);
       this.struttureFiltrate = this.strutture;  
       this.applySearchFilter();
     } else {
+         // Nessuna struttura salvata: chiama l’API
       this.servizioStruttura.getStrutture().subscribe({
         next: (s) => {
           this.strutture = s;

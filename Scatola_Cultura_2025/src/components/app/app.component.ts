@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { Struttura } from '../../interfaces/Istruttura';
 import {  Observable} from 'rxjs';
 import { SearchFilterService } from '../../services/search-filter.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HttpClientModule,NavBarComponent],
+  imports: [RouterOutlet,NavBarComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -55,6 +55,7 @@ export class AppComponent {
     return this.httpClient.get<Struttura[]>('./assets/struttura.json');
 
   }
+
 
   /*
    * Applica i filtri di luminosità e contrasto alla pagina:
