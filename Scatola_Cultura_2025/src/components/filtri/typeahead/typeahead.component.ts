@@ -26,8 +26,8 @@ export class TypeaheadComponent implements OnInit, OnDestroy, AfterViewInit {
   //michael
 
   ngAfterViewInit(): void {}
-  @ViewChild('selectContainer') selectContainer?: ElementRef<HTMLElement>;
   //Riferimento al container `.select` nel template
+  @ViewChild('selectContainer') selectContainer?: ElementRef<HTMLElement>;
 
   // Nome filtro da mostrare o usare come riferimento
   @Input() nomeFiltro!: string;

@@ -13,10 +13,11 @@ export class StrutturaService {
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
   constructor(private httpClient: HttpClient) {}
 
-  /*
-   * Recupera tutte le strutture dal server tramite GET:
-   * - Effettua la richiesta all'endpoint API specificato
-   * - In caso di errore stampa l'errore su console e restituisce un array vuoto per non bloccare l'app
+  /**
+   * Recupera tutte le strutture dal backend.
+   * Endpoint: /api/DisabilitaStruttura/get
+   * Restituisce un Observable con array di oggetti Struttura.
+   * In caso di errore, stampa l'errore e ritorna un array vuoto per evitare crash.
    */
   getStrutture(): Observable<Struttura[]> {
     return this.httpClient
@@ -43,10 +44,9 @@ export class StrutturaService {
     );
   }
 
-  /*
-   * Metodo per ottenere i filtri
-   * - Riceve una stringa 'soggetto'
-   * - Esegue una chiamata GET per ottenere un array di stringhe corrispondenti
+  /*/**
+   * Metodo generico per ottenere filtri dinamici dal backend.
+   * Se il soggetto è 'Disabilita' chiama l'endpoint corrispondente, altrimenti chiama l'endpoint generico struttura.
    */
   getFiltro(soggetto: string): Observable<string[]> {
     let ret;
@@ -63,19 +63,24 @@ export class StrutturaService {
     return ret;
   }
 
+  /**
+   * Restituisce le strutture filtrate in base ai filtri selezionati dall'utente.
+   * - Costruisce dinamicamente una query string con parametri multipli per:
+   *    - Disabilità
+   *    - Province
+   *    - Ambiti (tipi)
+   * */
+
   getStruttureFiltrate(
     FiltriDisabilita: string[],
     FiltriAmbito: string[],
     FiltriProvince: string[]
   ): Observable<Struttura[]> {
-
-
-
     //http://localhost:5000/api/DisabilitaStruttura/get?Disabilita=nuovo&Disabilita=nuovo1
 
     let url = `http://192.168.123.150:5000/api/DisabilitaStruttura/get?`;
 
-
+    // Aggiunge i parametri della query per ogni filtro selezionato (con encoding)
     if (FiltriDisabilita?.length > 0 && !!FiltriDisabilita)
       FiltriDisabilita.forEach((value: string) => {
         url += `Disabilita=${encodeURIComponent(value)}&`;
@@ -91,10 +96,12 @@ export class StrutturaService {
         url += `Ambito=${encodeURIComponent(value)}&`;
       });
 
+    // Rimuove eventuale & finale dalla URL
     if (url.endsWith('&')) {
       url = url.slice(0, -1);
     }
 
+    // Esegue la chiamata GET e restituisce le strutture corrispondenti
     return this.httpClient.get<Struttura[]>(url);
   }
 }

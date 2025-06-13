@@ -38,7 +38,9 @@ export class FiltriComponent implements AfterViewInit {
   ProvinceSelectedLocal!: string[];
 
   // per inizializzare i componenti figli
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.loadSelections()
+  }
 
   /*
    * Metodi per ottenere i dati dei vari filtri
@@ -111,30 +113,47 @@ export class FiltriComponent implements AfterViewInit {
     this.ProvinceSelected.emit(this.ProvinceSelectedLocal);
   }
 
+
+  /**
+ * Metodo per resettare tutti i filtri:
+ * - Svuota gli array locali delle selezioni
+ * - Resetta i componenti figli (TypeaheadComponent)
+ * - Emette i nuovi valori vuoti verso il componente padre
+ */
   resetFilters() {
+      // Svuota le selezioni locali
     this.DisabilitaSelectedLocal = [];
     this.ProvinceSelectedLocal = [];
     this.TipiSelectedLocal = [];
 
+      // Resetta visivamente i componenti Typeahead
     this.disabilitaComponent.reset();
     this.tipoComponent.reset();
     this.provinciaComponent.reset();
 
+      // Emette i nuovi (vuoti) valori al componente padre
     this.applyFilter();
   }
 
 
-  //metodo per caricare le selezioni precedenti
+  /**
+ * Metodo per caricare le selezioni salvate in precedenza da sessionStorage:
+ * - Recupera i dati per ogni filtro
+ * - Aggiorna gli array locali
+ * - Imposta i valori nei rispettivi componenti figli
+ */
   private loadSelections() {
+    // Recupera i dati salvati in sessionStorage (se presenti)
   const disabilitaSel = sessionStorage.getItem('filtro-disabilita-selected');
   const tipoSel = sessionStorage.getItem('filtro-tipo-selected');
   const provinceSel = sessionStorage.getItem('filtro-province-selected');
 
+    // Se presenti, aggiorna gli array locali con le selezioni salvate
   this.DisabilitaSelectedLocal = disabilitaSel ? JSON.parse(disabilitaSel) : [];
   this.TipiSelectedLocal = tipoSel ? JSON.parse(tipoSel) : [];
   this.ProvinceSelectedLocal = provinceSel ? JSON.parse(provinceSel) : [];
 
-  // Aggiorna i componenti figli con le selezioni caricate
+  // Imposta le selezioni nei rispettivi componenti Typeahead (solo se già inizializzati)
   if(this.disabilitaComponent) this.disabilitaComponent.setSelected(this.DisabilitaSelectedLocal);
   if(this.tipoComponent) this.tipoComponent.setSelected(this.TipiSelectedLocal);
   if(this.provinciaComponent) this.provinciaComponent.setSelected(this.ProvinceSelectedLocal);

@@ -40,10 +40,6 @@ export class DetailTestoComponent implements OnChanges {
   ){}
 
 
-
-   // OnChanges: aggiorna il flag 'hasAccessibilita' se cambiano i dati in ingresso
-
-
   /*
    * Metodo OnChanges:
    * Viene chiamato quando cambiano gli Input
