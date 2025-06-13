@@ -3,7 +3,7 @@ import { IconeManager } from '../../../services/IconeManager';
 import { CommonModule } from '@angular/common';
 import { Struttura } from '../../../interfaces/Istruttura';
 import { SearchFilterService } from '../../../services/search-filter.service';
-
+import { TextimgTsService } from '../../../services/textimg.service';
 
 @Component({
   selector: 'app-detail-testo',
@@ -33,7 +33,10 @@ export class DetailTestoComponent implements OnChanges {
   hasAccessibilita: boolean = false;
 
    // Iniezione delle dipendenze: gestore icone
-  constructor(private iconeManager:IconeManager,private searchFilter: SearchFilterService
+  constructor(
+    private iconeManager:IconeManager,
+    private searchFilter: SearchFilterService, 
+    private textService:TextimgTsService
   ){}
 
 
@@ -64,4 +67,13 @@ export class DetailTestoComponent implements OnChanges {
     this.parentHasZoomClass = !this.parentHasZoomClass;
   }
 
+  /**
+   * Simone
+   */
+  isTextSemplifiedActive:boolean=false;
+  ngOnInit(): void {
+    this.textService.isTextSemplifiedActive$.subscribe(value=>
+      this.isTextSemplifiedActive=value
+    )
+  }
 }

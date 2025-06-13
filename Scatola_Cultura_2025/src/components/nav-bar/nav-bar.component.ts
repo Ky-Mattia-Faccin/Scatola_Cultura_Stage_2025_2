@@ -79,8 +79,8 @@ export class NavBarComponent{
    * se false lascia quello normale
    * se true imposta il font OpenDyslexic ovunque tramite "styles.css" dalla variabile --fontName 
    * variabili utilizzate:
-   *  isFontActive: boolean = imposta a false, controlla quando il checkbox va a cambiare il valore
-   *  --fontName:va a impostare su styles.css il font scelto
+   *  - isFontActive: boolean = impostato a false, controlla quando il checkbox va a cambiare il valore
+   *  - --fontName:va a impostare su styles.css il font scelto
    */
   
   isFontActive : boolean = false;
@@ -97,10 +97,13 @@ export class NavBarComponent{
    * Evento lanciato al cambiamento del checkbox, cambia il il testo normale a un test più corto e semplice, da dropdown Accessibilità
    * se false lascia il testo normale
    * altrimenti se true imposta il testo semplificato
+   * variabili utilizzate : 
+   *  -isTextSemplifiedActive : boolean = impostato a false, controlla quando il checkbox va a cambiare il valore
    */
   isTextSemplifiedActive : boolean = false;
   onTextSimplifiedCheck(){
     this.isTextSemplifiedActive=!this.isTextSemplifiedActive;
+    this.textService.textSemplifiedChange(this.isTextSemplifiedActive);
   }
 
   /***
