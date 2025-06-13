@@ -22,7 +22,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 /*contenitore dei filtri*/
 .sc-homepage-filter-container {
@@ -41,7 +43,7 @@
   height: 10vh;
 
   border-radius: 25px;
-  background-color: #f0f0f0;
+
 
 }
 /*contenitore di tutti i musei*/
@@ -61,9 +63,10 @@
 }
 /*css di ogni museo*/
 .sc-homepage-museo-card {
-  border-radius: 25px;
+ 
   width: 25vw;
   height: 47%;
+
   transition: 350ms;
   box-sizing: border-box;
   margin-bottom : 2%;
@@ -71,16 +74,31 @@
 
   background-color:#1C9CD9;
 
+
+ 
+  border-radius: 25px;
+
   border:2px solid white;
+
+  transition: 350ms;
+  margin-bottom : 2%;
+  
+  overflow: hidden;
+  
+  box-sizing: border-box;
+  background-color:#1C9CD9;
+  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 /*animazione dell'intero museo, immagine e testo*/
 .sc-homepage-museo-card:hover {
+
   background-color: #1C9CD9;
   transform: scale(1.05);
-  /* font-size: 1.05em; */
+
+
   transition: 350ms;
   cursor: pointer;
 }
@@ -227,6 +245,9 @@
 
   border-radius: 15px;
   flex-wrap: wrap;
+
+
+
   overflow-y: scroll;
   overflow-x: hidden;
 }

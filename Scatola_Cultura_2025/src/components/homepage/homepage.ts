@@ -1,3 +1,4 @@
+
 import { CommonModule } from '@angular/common';
 import { OnInit } from '@angular/core';
 import { StrutturaService } from '../../services/struttura.service';
@@ -69,11 +70,13 @@ export class Homepage implements OnInit {
       this.filtro = value;
       this.applySearchFilter();
     });
+
     //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
     this.textService.isDescriptionActive$.subscribe(value=>{
       this.isDescriptionActive=value;
     })
   }
+
 
   //simone
   //creazione del booleano
@@ -162,9 +165,9 @@ export class Homepage implements OnInit {
   //metodo per conrollare il session storage e salvare se è vuoto
   private checkSessionStorage() {
     const struttureJSON = sessionStorage.getItem('strutture');
-    if (struttureJSON) {
+    if (struttureJSON && struttureJSON!=='[]') {
       this.strutture = JSON.parse(struttureJSON);
-      this.struttureFiltrate = this.strutture;
+      this.struttureFiltrate = this.strutture;  
       this.applySearchFilter();
     } else {
       this.servizioStruttura.getStrutture().subscribe({

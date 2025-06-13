@@ -24,14 +24,22 @@
 /* Contenitore per il testo normale */
 .sc-detail-testo-text,
 .sc-detail-testo-text-accessibilita {
-  overflow-x: hidden;
-  line-height: 1.6;
   max-height: 100%;
+
+
+  overflow-x: hidden;
+
+  line-height: 1.6;
+
+  font-size: 22.5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+
 }
 
 /* Testo di accessibilità: mostrato a colonne */
 .sc-detail-testo-text-accessibilita {
   flex-flow: column wrap;
+  
   column-count: 2;      
   column-gap: 8vw;      
 }
