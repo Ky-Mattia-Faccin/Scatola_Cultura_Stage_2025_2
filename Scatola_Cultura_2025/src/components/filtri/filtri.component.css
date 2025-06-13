@@ -56,3 +56,13 @@
   color:white;
 
 }
+@media(max-width:768px){
+  
+   .sc-filters{
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+  }
+
+  
+}
