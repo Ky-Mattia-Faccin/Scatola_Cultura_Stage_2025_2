@@ -343,11 +343,11 @@
   transform: perspective(100px) rotateX(-5deg) rotateY(5deg);
 } */
 
-#checkbox {
+#selector {
   display: none;
 }
 
-#checkbox:checked ~ .label::before {
+#selector:checked ~ .label::before {
 
   left: 4.70vw;
   background-color: #00f74e;
@@ -390,7 +390,7 @@
   .label{
     width: 50px;
   }
-  #checkbox:checked ~ .label::before{
+  #selector:checked ~ .label::before{
     left:35px;
   }
   .label::before{

@@ -66,13 +66,42 @@ export class NavBarComponent{
 
   //=====SIMONE======//
 
-  //valore attuale della descrizione
+  //valore attuale della descrizione per la didascalia delle immagini
   isDescriptionActive: boolean = false;
   onCheck(){
     this.isDescriptionActive=!this.isDescriptionActive;
     this.textService.triggerChange(this.isDescriptionActive);
   }
- 
+
+  /**
+   * Simone
+   * evento lanciato al cambiamento del checkbox, cambia il font da normale a OpenDyslexic, da dropdown Accessibilità
+   * se false lascia quello normale
+   * se true imposta il font OpenDyslexic ovunque tramite "styles.css" dalla variabile --fontName 
+   * variabili utilizzate:
+   *  isFontActive: boolean = imposta a false, controlla quando il checkbox va a cambiare il valore
+   *  --fontName:va a impostare su styles.css il font scelto
+   */
+  
+  isFontActive : boolean = false;
+  onFontCheck(){
+    this.isFontActive=!this.isFontActive;
+    if(this.isFontActive===true)
+      document.documentElement.style.setProperty('--fontName','OpenDyslexic');
+    else
+      document.documentElement.style.setProperty('--fontName','Verdana');
+  }
+
+  /**
+   * Simone
+   * Evento lanciato al cambiamento del checkbox, cambia il il testo normale a un test più corto e semplice, da dropdown Accessibilità
+   * se false lascia il testo normale
+   * altrimenti se true imposta il testo semplificato
+   */
+  isTextSemplifiedActive : boolean = false;
+  onTextSimplifiedCheck(){
+    this.isTextSemplifiedActive=!this.isTextSemplifiedActive;
+  }
 
   /***
    * Simone
@@ -82,4 +111,5 @@ export class NavBarComponent{
   textSizeChange(event: Event): void {
     document.documentElement.style.setProperty('--fontSize', this.fontSize.toString() + 'px');
   }
+
 }
