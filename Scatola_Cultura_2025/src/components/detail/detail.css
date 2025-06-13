@@ -1,11 +1,8 @@
-
-
-
 /* Rimuove margini di default da tutti gli elementi */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 /* Contenitore principale della pagina dettaglio */
@@ -25,7 +22,7 @@
   background-size: cover;
 }
 /*blur della immagine*/
-.sc-detail-blur{
+.sc-detail-blur {
   height: 93vh;
   width: 100vw;
 
@@ -66,16 +63,14 @@
   position: relative;
 
   padding: 1vh 2vw;
-  
-  background-color: rgb(28, 156, 217,255);
+
+  background-color: rgb(28, 156, 217, 255);
 }
 
 /* Pulsante "indietro" */
 .sc-detail-back-button {
-
   height: 3vw;
   width: 3vw;
-
 
   display: flex;
   justify-content: center;
@@ -85,18 +80,15 @@
   border-radius: 25px;
 
   border: none;
-  
-  
+
   cursor: pointer;
-  
 
   background-color: white;
-
 }
 
 /* Effetto hover per il pulsante "indietro" */
 .sc-detail-back-button:hover {
-  background-color:white;
+  background-color: white;
   transform: translateY(-5%);
 }
 
@@ -130,20 +122,19 @@
   position: absolute;
   left: 50%;
 
-
   width: auto;
 
-
+  font-size: x-large;
   font-weight: 400;
 
   text-align: center;
 
   padding: 0.5% 2%;
-  
+
   border-radius: 2%;
 
   transform: translateX(-50%);
-  color:white
+  color: white;
 }
 
 /* ===== CENTRO ===== */
@@ -153,13 +144,12 @@
   display: flex;
 
   height: 50%;
-  
-  gap: 2vw; 
+
+  gap: 2vw;
   padding: 1.5vh 2vw;
-  
+
   border-bottom: 1px solid #eee;
-  
-  
+
   overflow: hidden;
 }
 
@@ -189,8 +179,6 @@
 
 /* Contenitore per il testo descrittivo */
 .sc-detail-center-desc {
-  
-
   flex-grow: 1;
 
   background-color: #f9f9f9;
@@ -204,7 +192,7 @@
   overflow-y: auto;
 }
 /* ====DIDASCALIA==== */
-.sc-detail-center-desc-img{
+.sc-detail-center-desc-img {
   width: 0px;
   height: 0px;
   opacity: 0;
@@ -212,31 +200,31 @@
   color: transparent;
 }
 /*hover sulla immagine*/
-.sc-detail-center-img:hover~.sc-detail-center-desc-img  {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.sc-detail-center-img:hover ~ .sc-detail-center-desc-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-    width: 10%;
-    max-width: 10%;
-    height: 20%;
-    max-height: 20%;
-    opacity: 1;
-    
-    top: 33%;
-    left: 12.1%;
-    transform: translate(-50%, -50%);
-    
-    background-color: white;
-    color: black; 
-    border-radius: 25px;
+  width: 10%;
+  height: 20%;
+  opacity: 1;
+  padding: 15px;
 
-    position: absolute;
-    transition: 350ms;   
+  top: 30%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+
+
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+
+  position: absolute;
+  transition: 350ms;
 }
 /*hover sul testo*/
-.sc-detail-center-desc-img:hover{
+.sc-detail-center-desc-img:hover {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -267,12 +255,10 @@
   justify-content: space-between;
 
   height: 50%;
-  
+
   padding: 1vh 2vw;
   gap: 2vw;
-
 }
-
 
 /* Sezione dedicata all’accessibilità */
 .sc-detail-footer-accessibility {
@@ -280,7 +266,6 @@
 
   border-radius: 1vw;
   padding: 1vw;
-
 
   background-color: #f9f9f9;
 }
@@ -291,16 +276,13 @@
   width: 100%;
 }
 
-
 /* Sezione per social/posizione */
 .sc-detail-social {
   width: 32vw;
 
-
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
 }
 
 /* Contenitori e stili per card social */
@@ -312,23 +294,21 @@
   margin-right: 7vw;
 }
 
-.up,.down {
+.up,
+.down {
   display: flex;
   flex-direction: row;
 
   gap: 0.5vw;
 }
 
-
 .card1,
 .card2,
 .card3,
 .card4 {
-
   display: flex;
   justify-content: center;
   align-items: center;
-
 
   width: 6vw;
   height: 11vh;
@@ -336,39 +316,36 @@
   outline: none;
   border: none;
 
-
   background: white;
   border-radius: 90px 5px 5px 5px;
 
-  
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
   transition: 0.2s ease-in-out;
 }
-.card2{
+.card2 {
   border-radius: 5px 90px 5px 5px;
 }
-.card3{
+.card3 {
   border-radius: 5px 5px 5px 90px;
 }
-.card4{
+.card4 {
   border-radius: 5px 5px 90px 5px;
 }
 
 .instagram {
   fill: #cc39a4;
 }
-.sito{
+.sito {
   stroke: rgb(5, 153, 5);
 }
 
 .facebook {
-  fill:  #112ed2;
+  fill: #112ed2;
   height: 30px;
   width: 30px;
 }
-
 
 .card1:hover {
   cursor: pointer;
@@ -388,7 +365,6 @@
 
 .card2:hover .facebook {
   fill: white;
- 
 }
 
 .card3:hover {
@@ -419,6 +395,56 @@
   justify-content: center;
 }
 
+.tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+
+  transform: translateX(-50%);
+  background-color: #000;
+
+  color: white;
+
+  padding: 0.4em 0.8em;
+  border-radius: 12px;
+  font-size: 0.75em;
+  white-space: nowrap;
+
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card1:hover .tooltip,
+.card2:hover .tooltip,
+.card3:hover .tooltip,
+.card4:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+
+}
+
+.card1:hover .tooltip {
+  
+  background-color: #cc39a4;
+}
+
+.card2:hover .tooltip {
+  
+  background-color: #8c9eff;
+}
+
+.card3:hover .tooltip {
+
+  background-color: rgb(216, 63, 63);
+}
+
+.card4:hover .tooltip {
+
+  background-color: #1ad81a;
+}
 
 /* ===== ZOOM ===== */
 
@@ -555,7 +581,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
 
   .instagram,
