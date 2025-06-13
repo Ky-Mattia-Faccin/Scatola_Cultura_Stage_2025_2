@@ -315,13 +315,13 @@
 
 .label {
 
-  height: 2.5vh;
-  width: 6vw;
+  height: 1.5vh;
+  width: 6.5vw;
 
 
   background-color: #ffffff;
 
-  margin-left: 4%;
+  margin-left: 2%;
 
   border-radius: 30px;
 
@@ -352,14 +352,14 @@
   transform: perspective(100px) rotateX(-5deg) rotateY(5deg);
 } */
 
-#selector {
+.selector {
   display: none;
 }
 
 
-#selector:checked ~ .label::before {
+.selector:checked ~ .label::before {
 
-  left: 4.70vw;
+  left: 4.5vw;
   background-color: #00f74e;
 
 
