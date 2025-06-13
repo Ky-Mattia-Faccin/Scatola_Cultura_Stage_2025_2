@@ -8,7 +8,10 @@
             <br>
         </div>
     </div>
-    <ng-template #normale><div  class="sc-detail-testo-text" >{{testo}}</div></ng-template>
+    <ng-template #normale>
+    <div  class="sc-detail-testo-text" *ngIf="!isTextSemplifiedActive">{{testo}}</div>
+    <div class="sc-detail-testo-text-semplified" *ngIf="isTextSemplifiedActive">Questo è un testo semplificato di prova</div>
+    </ng-template>
     <div>
          <div *ngIf="!parentHasZoomClass; else zoomOut" class="sc-detail-testo-button" (click)="onZoomClick($event)" [innerHTML]="Icone.getIcon('zoomIn')" ></div>
          <ng-template #zoomOut> 

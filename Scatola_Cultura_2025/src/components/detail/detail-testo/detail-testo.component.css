@@ -9,6 +9,17 @@
 
   overflow: hidden; 
 }
+/*Contenitore principale del testo semplificato*/
+.sc-detail-testo-text-semplified{
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+
+  height: 100%;
+  width: 97%;
+
+  overflow: hidden; 
+}
 
 /* Contenitore per il testo normale */
 .sc-detail-testo-text,
