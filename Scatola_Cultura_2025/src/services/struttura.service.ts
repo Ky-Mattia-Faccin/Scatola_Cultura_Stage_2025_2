@@ -22,7 +22,7 @@ export class StrutturaService {
   getStrutture(): Observable<Struttura[]> {
     return this.httpClient
       .get<Struttura[]>(
-        'http://192.168.123.150:5000/api/DisabilitaStruttura/get'
+        ' https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get'
       )
       .pipe(
         catchError((error) => {
@@ -40,7 +40,7 @@ export class StrutturaService {
    */
   getDisabilita(id: number): Observable<DisabilitaStruttura[]> {
     return this.httpClient.get<DisabilitaStruttura[]>(
-      'http://192.168.123.150:5000/api/Struttura/getById?id=' + `${id}`
+      ' https://dev.api.scatolacultura.it/api/Struttura/getById?id=' + `${id}`
     );
   }
 
@@ -53,11 +53,11 @@ export class StrutturaService {
 
     if (soggetto === 'Disabilita')
       ret = this.httpClient.get<string[]>(
-        'http://192.168.123.150:5000/api/Disabilita/get' + `${soggetto}`
+        ' https://dev.api.scatolacultura.it/api/Disabilita/get' + `${soggetto}`
       );
     else
       ret = this.httpClient.get<string[]>(
-        'http://192.168.123.150:5000/api/Struttura/get' + `${soggetto}`
+        ' https://dev.api.scatolacultura.it/api/Struttura/get' + `${soggetto}`
       );
 
     return ret;
@@ -78,7 +78,7 @@ export class StrutturaService {
   ): Observable<Struttura[]> {
     //http://localhost:5000/api/DisabilitaStruttura/get?Disabilita=nuovo&Disabilita=nuovo1
 
-    let url = `http://192.168.123.150:5000/api/DisabilitaStruttura/get?`;
+    let url = ` https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get?`;
 
     // Aggiunge i parametri della query per ogni filtro selezionato (con encoding)
     if (FiltriDisabilita?.length > 0 && !!FiltriDisabilita)
