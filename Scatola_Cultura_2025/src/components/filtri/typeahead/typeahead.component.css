@@ -29,10 +29,12 @@
   justify-content: center;
 }
 
-/* Input inside .selected */
+
 .selected input {
   background: transparent;
+
   border: none;
+
   outline: none;
   color: white;
   font-size: 15px;
@@ -42,45 +44,40 @@
   z-index: 1;
 }
 
-/* Keyframes for fading placeholder opacity */
-@keyframes placeholderFadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
+ 
 
-@keyframes placeholderFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 
-/* Placeholder default state */
 .selected input::placeholder {
   color: white;
+
   opacity: 1;
-  animation-fill-mode: forwards;
-  animation-duration: 250ms;
-  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  animation-name: placeholderFadeIn;
+
 }
 
-/* Placeholder fade out on focus */
+/* nasconde il placeholder */
 .selected:focus-within input::placeholder {
-  opacity: 0;  
+  animation-duration: 250ms;
+  animation: placeholderFadeOut ;
 
+  opacity: 0;
 }
 
-/* Underline animation */
+/* animazione della linea */
 .selected input::before,
 .selected input::after {
   content: "";
+
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
+
   pointer-events: none;
   transform-origin: left center;
+
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   will-change: transform;
+
   border-bottom-style: solid;
   z-index: 0;
 }
@@ -88,17 +85,17 @@
 .selected input::before {
   border-bottom-width: 1px;
   border-bottom-color: rgb(255, 255, 255);
+
   transform: scaleX(1);
 }
 
 .selected input::after {
   border-bottom-width: 2px;
-  border-bottom-color: #ffffff; /* Accent color */
+  border-bottom-color: #ffffff;
+
   transform: scaleX(0);
 }
 
-/* Because pseudo elements on inputs don’t work well,
-   we need to use wrapper to do it. So instead: */
 
 .selected {
   position: relative;
@@ -134,11 +131,14 @@
 .selected::after {
   border-bottom-width: 2px;
   border-bottom-color: #ffffff;
+
+  transition: 500ms;
   transform: scaleX(0);
 }
 
-/* Animate on focus of input inside .selected */
+/*animazione focus*/
 .selected:focus-within::after {
+  transition: 500ms;
   transform: scaleX(1);
 }
 
@@ -227,11 +227,15 @@
 }
 
 .options label:hover {
-  background-color: #e0f0ff; /* soft light blue */
-  color: #2563eb;           /* vibrant blue text */
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2); /* subtle blue shadow */
+  background-color: #e0f0ff; 
+  color: #2563eb;     
+
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+
   border-radius: 5px;
+
   cursor: pointer;
+
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 

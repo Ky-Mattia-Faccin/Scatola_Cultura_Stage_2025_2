@@ -32,7 +32,6 @@
     <!-- Lista strutture filtrate -->
     <div
       class="sc-homepage-musei-container"
-      *ngIf="struttureFiltrate.length > 0; else nessunaStruttura"
     >
       <div
         class="sc-homepage-museo-card"
@@ -57,10 +56,5 @@
         </div>
       </div>
     </div>
-
-    <!-- Nessuna struttura -->
-    <ng-template #nessunaStruttura>
-      <p>Nessuna struttura con i filtri selezionati</p>
-    </ng-template>
   </div>
 </div>
