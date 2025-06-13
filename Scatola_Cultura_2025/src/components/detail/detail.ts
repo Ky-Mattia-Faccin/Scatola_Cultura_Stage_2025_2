@@ -29,6 +29,7 @@ export class Detail implements OnInit {
      - ActivatedRoute per leggere i parametri dalla URL
      - HttpClient per effettuare richieste HTTP
      - StrutturaService per recuperare dati strutture e disabilità
+     - TextService per recuperare il booleano per testi semplici e per la didascalia
   */
   constructor(
     private iconeManager: IconeManager,
@@ -107,12 +108,14 @@ export class Detail implements OnInit {
     if (!element)
       element = container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
   }
-
+  /**
+   * Simone
+   * Se il booleano è vero mostra la didascalia se con il muose si passa sopra alla fotoaltrimenti non la mosta
+   */
   toggleMenu(){
     const dropDownImg  = document.querySelector('.sc-detail-center-desc-img');
     dropDownImg?.classList.toggle('hidden');
   }
-  //da sistemare in base a come viene sistemato in homepage
 
   //proprietà calcolate per collegare i link (da completare appena si avranno i dati)
 
