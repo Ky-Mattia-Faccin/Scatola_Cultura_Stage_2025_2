@@ -153,7 +153,9 @@
   transition: 350ms;
 
   width: 80%;
+  max-width: 80%;
   height: 40%;
+  max-height: 40%;
   opacity: 1;
   padding: 15px;
 
@@ -172,7 +174,9 @@
   align-items: center;
 
   width: 80%;
+  max-width: 80%;
   height: 40%;
+  max-height: 40%;
   opacity: 1;
   padding: 15px;
 

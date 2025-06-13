@@ -219,12 +219,14 @@
     flex-direction: column;
 
     width: 10%;
+    max-width: 10%;
     height: 20%;
+    max-height: 20%;
     opacity: 1;
     padding: 15px;
 
-    top: 30%;
-    left: 15%;
+    top: 33%;
+    left: 12.1%;
     transform: translate(-50%, -50%);
     
     background-color: white;
@@ -241,12 +243,14 @@
   align-items: center;
 
   width: 10%;
+  max-width: 10%;
   height: 20%;
+  max-height: 20%;
   opacity: 1;
   padding: 15px;
 
-  top: 30%;
-  left: 15%;
+  top: 33%;
+  left: 12.1%;
   transform: translate(-50%, -50%);
 
   background-color: white;
