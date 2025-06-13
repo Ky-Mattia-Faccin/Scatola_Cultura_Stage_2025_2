@@ -69,6 +69,7 @@ export class DetailTestoComponent implements OnChanges {
 
   /**
    * Simone
+   * va a prendere il valore booleano che serve per modificare il testo con un testo semplice se è vero se è false lascia il testo semplice
    */
   isTextSemplifiedActive:boolean=false;
   ngOnInit(): void {
