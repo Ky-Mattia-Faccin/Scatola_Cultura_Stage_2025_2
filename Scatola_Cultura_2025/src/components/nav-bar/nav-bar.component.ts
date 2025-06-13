@@ -1,4 +1,4 @@
-import { Component,Renderer2, EventEmitter, HostListener, OnChanges, Output, SimpleChanges, ViewChild,Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnChanges, Output, SimpleChanges, ViewChild,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { Router, RouterLink } from '@angular/router';
@@ -13,7 +13,10 @@ import { TextimgTsService } from '../../services/textimg.service';
   styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent{
-  constructor(public searchService:SearchFilterService, private textService:TextimgTsService,private renderer:Renderer2){}
+  constructor(
+    public searchService:SearchFilterService,
+    private textService:TextimgTsService
+  ){}
 
   //michael
 

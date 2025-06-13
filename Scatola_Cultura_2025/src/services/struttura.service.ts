@@ -44,7 +44,7 @@ export class StrutturaService {
     );
   }
 
-  /*/**
+  /*
    * Metodo generico per ottenere filtri dinamici dal backend.
    * Se il soggetto è 'Disabilita' chiama l'endpoint corrispondente, altrimenti chiama l'endpoint generico struttura.
    */
