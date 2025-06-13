@@ -1,32 +1,38 @@
 <div class="sc-homepage-start">
   <div class="sc-homepage-blur">
     <div class="sc-homepage-filter-container">
-      <div class="sc-homepage-filter">
+      <!-- Bottone mobile per mostrare/nascondere i filtri -->
+      <div class="mobileButton">
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          width="30px"
+          height="30px"
+          class="arrow"
+          (click)="toggleMobileFilters()"
+        >
+          <path
+            fill="white"
+            d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+          ></path>
+        </svg>
+      </div>
+
+      <!-- Filtri, visibili solo se abilitati -->
+      <div class="sc-homepage-filter hiddenMobile" [class.hiddenMobile]="!flgFiltriMobile">
         <app-filtri
           (DisabilitaSelected)="FiltriDisabilita = $event"
           (TipiSelected)="FiltriTipi = $event"
           (ProvinceSelected)="FiltriProvince = $event; filtraStrutture()"
         ></app-filtri>
       </div>
-        </div>
-        <div class="sc-homepage-musei-container" >
-            <div class="sc-homepage-museo-card" *ngFor="let item of strutture" [routerLink]="['/detail', item.idStruttura]" >
-                <div class="sc-homepage-card-img" >
-                    <img [src]="" alt="{{item.nomeStruttura}}" width="300">
-                </div>
-                <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">                    
-                    <span>Questa è una breve descrizione di 8 parole</span>
-                </div>
-                <div class="sc-homepage-card-title">
-                    <span>{{ item.nomeStruttura }}</span>
-                </div>
-                <div class="sc-homepage-card-info"></div>
-            </div>
-        </div>
     </div>
+
+    <!-- Lista strutture filtrate -->
     <div
       class="sc-homepage-musei-container"
-      *ngIf="strutture.length > 0; else nessunaStruttura"
+      *ngIf="struttureFiltrate.length > 0; else nessunaStruttura"
     >
       <div
         class="sc-homepage-museo-card"
@@ -35,15 +41,26 @@
         role="button"
       >
         <div class="sc-homepage-card-img">
-          <img [src]="" alt="{{item.nomeStruttura}}" width="300" />
+          <img [src]="item.immagineUrl || 'https://via.placeholder.com/300'" alt="{{ item.nomeStruttura }}" width="300" />
         </div>
+
+        <!-- Breve descrizione se abilitata -->
+        <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">
+          <span>Questa è una breve descrizione di 8 parole</span>
+        </div>
+
         <div class="sc-homepage-card-title">
           <span>{{ item.nomeStruttura }}</span>
         </div>
-        <div class="sc-homepage-card-info"></div>
+        <div class="sc-homepage-card-info">
+          <!-- Info aggiuntive opzionali -->
+        </div>
       </div>
     </div>
+
+    <!-- Nessuna struttura -->
     <ng-template #nessunaStruttura>
-      <p>nessuna struttura con i filtri selezionati</p>
+      <p>Nessuna struttura con i filtri selezionati</p>
     </ng-template>
   </div>
+</div>

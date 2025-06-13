@@ -11,6 +11,8 @@
   position: relative;
   
   transition: 300ms;
+
+
 }
 
 /* Container principale del select personalizzato */
@@ -67,6 +69,8 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 300ms ease, visibility 300ms ease;
+
+   z-index: 9999;
 }
 /* Etichette delle opzioni (testo + checkbox) */
 .options label {
@@ -75,6 +79,7 @@
   align-items: center;      
 
   width: 100%;
+
 }
 
 /* Quando si passa sopra il select: mostra le opzioni */
@@ -123,4 +128,16 @@
   display: none;
 }
 
-  
+@media (max-width: 768px) {
+  .select {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .selected,
+  .options {
+    font-size: 14px;
+    padding: 10px 12px;
+    max-width: 100%;
+  }
+}

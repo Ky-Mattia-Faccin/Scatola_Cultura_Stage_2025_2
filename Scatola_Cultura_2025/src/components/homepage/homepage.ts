@@ -206,6 +206,20 @@ export class Homepage implements OnInit {
       });
     }
   }
+
+
+  //flag per la visualizzazione della selezione dei filtri in mobile
+  flgFiltriMobile=false
+
+  /*metodo per visualizzare la selezione dei filtri in mobile
+  * aggiunge la classe hidden ai filtri
+  */
+  toggleMobileFilters(){
+
+    const contenitoreFiltri=document.querySelector('.sc-homepage-filter');
+    contenitoreFiltri?.classList.toggle('hiddenMobile');
+  }
+
 }
 /*
 toggleMenu() {
