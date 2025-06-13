@@ -31,10 +31,10 @@
 
   width: 100%;
 }
-/* Input di testo all'interno della selezione */
+/* Input di testo all'interno della selezione 
 .selected input{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+  
+}*/
 
 /* Icona freccia per l'espansione delle opzioni */
 .arrow {
