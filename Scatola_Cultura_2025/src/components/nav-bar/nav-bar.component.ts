@@ -24,7 +24,7 @@ export class NavBarComponent{
   contrast!: number;
 
   //Valore attuale del textsize : Simone
-  fontSize! : number;
+  fontSize : number = 28;
 
 
   // Output: emette il nuovo valore di luminosità verso il componente genitore

@@ -77,8 +77,13 @@
             (input)="textSizeChange($event)"
             placeholder=".."
           />
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-type" viewBox="0 0 16 16">
-            <path d="..." />
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="25" height="25" 
+            fill="currentColor" 
+            class="bi bi-type" 
+            viewBox="0 0 16 16">
+              <path d="m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081zm2.7-7.923L6.34 9.314H3.51l1.4-4.156zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525"/>
           </svg>
         </label>
       </span>
@@ -95,9 +100,16 @@
             placeholder=".."
           />
           <label for="checkbox" class="label"></label>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
-            <path d="..." />
-          </svg>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="25" height="25" 
+              fill="currentColor" 
+              class="bi bi-chat-square-text" 
+              viewBox="0 0 16 16">
+
+                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+            </svg>
         </label>
       </span>
 
@@ -113,12 +125,38 @@
             placeholder=".."
           />
           <label for="checkboxFont" class="label"></label>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-fonts" viewBox="0 0 16 16">
-            <path d="..." />
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="25" height="25" 
+            fill="currentColor" 
+            class="bi bi-fonts" 
+            viewBox="0 0 16 16">
+              <path d="M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479z"/>
           </svg>
         </label>
       </span>
-
+      <!--Testo semplice-->
+      <span>
+        <label class="slider">
+          <input
+            type="checkbox"
+            id="checkboxText"
+            value="isFontActive"
+            (change)="onTextSimplifiedCheck()"
+            class="selector"
+            placeholder=".."
+          />
+          <label for="checkboxText" class="label"></label>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="25" height="25" 
+            fill="currentColor" 
+            class="bi bi-fonts" 
+            viewBox="0 0 16 16">
+              <path d="M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479z"/>
+          </svg>
+        </label>
+      </span>
     </div>
   </div>
 </div>
