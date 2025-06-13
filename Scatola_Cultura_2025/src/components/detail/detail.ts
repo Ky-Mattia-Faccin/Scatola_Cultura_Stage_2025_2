@@ -128,7 +128,7 @@ export class Detail implements OnInit {
     return
   }
 
-  get linkTwitter(){
+  get linkFacebook(){
     return
   }
 
