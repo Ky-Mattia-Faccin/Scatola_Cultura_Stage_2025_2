@@ -64,9 +64,6 @@ export class Homepage implements OnInit {
       this.isDescriptionActive=value;
       }
     )
-    this.searchFilter.textSize$.subscribe(value=>{
-      this.textSize = value;
-    })
 
     this.servizioStruttura.getStrutture().subscribe((s) => {
       this.strutture = s;
