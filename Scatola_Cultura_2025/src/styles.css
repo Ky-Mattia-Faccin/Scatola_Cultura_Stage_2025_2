@@ -1,12 +1,20 @@
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('assets/fonts/otf/OpenDyslexic-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 :root{
     --fontSize: 16px;
+    --fontName: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body{
     margin: 0px;
     height: 100%;
     width: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    font-family: var(--fontName);
     font-size: var(--fontSize);
 }
 
