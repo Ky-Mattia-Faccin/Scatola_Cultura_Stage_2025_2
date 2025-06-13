@@ -64,13 +64,4 @@ export class DetailTestoComponent implements OnChanges {
     this.parentHasZoomClass = !this.parentHasZoomClass;
   }
 
-
-  //=====SIMONE=====//
-  //prende il valore di text size
-  textSize !:number;
-  ngOnInit(): void {
-    this.searchFilter.textSize$.subscribe(value=>{
-      this.textSize = value;
-  })
-}
 }
