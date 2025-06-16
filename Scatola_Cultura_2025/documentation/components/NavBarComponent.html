@@ -1,0 +1,1359 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>scatola-cultura-2025 documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">scatola-cultura-2025 documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NavBarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/components/nav-bar/nav-bar.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-nav-bar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>FormsModule</code>
+                            <code>RouterLink</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./nav-bar.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./nav-bar.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#brightness" >brightness</a>
+                            </li>
+                            <li>
+                                <a href="#contrast" >contrast</a>
+                            </li>
+                            <li>
+                                <a href="#FiltroInput" >FiltroInput</a>
+                            </li>
+                            <li>
+                                <a href="#fontSize" >fontSize</a>
+                            </li>
+                            <li>
+                                <a href="#isDescriptionActive" >isDescriptionActive</a>
+                            </li>
+                            <li>
+                                <a href="#isFontActive" >isFontActive</a>
+                            </li>
+                            <li>
+                                <a href="#isTextSemplifiedActive" >isTextSemplifiedActive</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#searchService" >searchService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onCheck" >onCheck</a>
+                            </li>
+                            <li>
+                                <a href="#onFontCheck" >onFontCheck</a>
+                            </li>
+                            <li>
+                                <a href="#onInputChange" >onInputChange</a>
+                            </li>
+                            <li>
+                                <a href="#onTextSimplifiedCheck" >onTextSimplifiedCheck</a>
+                            </li>
+                            <li>
+                                <a href="#textSizeChange" >textSizeChange</a>
+                            </li>
+                            <li>
+                                <a href="#toggleMenu" >toggleMenu</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#brightnessChanged" >brightnessChanged</a>
+                            </li>
+                            <li>
+                                <a href="#contrastChanged" >contrastChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(searchService: <a href="../injectables/SearchFilterService.html" target="_self">SearchFilterService</a>, textService: <a href="../injectables/TextimgTsService.html" target="_self">TextimgTsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>searchService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SearchFilterService.html" target="_self" >SearchFilterService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>textService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TextimgTsService.html" target="_self" >TextimgTsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="brightnessChanged"></a>
+                        <b>brightnessChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="contrastChanged"></a>
+                        <b>contrastChanged</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCheck"></a>
+                    <span class="name">
+                        <span ><b>onCheck</b></span>
+                        <a href="#onCheck"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCheck()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFontCheck"></a>
+                    <span class="name">
+                        <span ><b>onFontCheck</b></span>
+                        <a href="#onFontCheck"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFontCheck()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onInputChange"></a>
+                    <span class="name">
+                        <span ><b>onInputChange</b></span>
+                        <a href="#onInputChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onInputChange(evento: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>evento</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTextSimplifiedCheck"></a>
+                    <span class="name">
+                        <span ><b>onTextSimplifiedCheck</b></span>
+                        <a href="#onTextSimplifiedCheck"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTextSimplifiedCheck()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:107</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="textSizeChange"></a>
+                    <span class="name">
+                        <span ><b>textSizeChange</b></span>
+                        <a href="#textSizeChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>textSizeChange(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:117</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Simone
+Evento lanciato al cambiamento della dimensione del testo, da dropdown Accessibilità.
+Ottiene il valore e lo imposta sulla variabile CSS: &quot;--font-size&quot;</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleMenu"></a>
+                    <span class="name">
+                        <span ><b>toggleMenu</b></span>
+                        <a href="#toggleMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleMenu()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="brightness"></a>
+                    <span class="name">
+                        <span ><b>brightness</b></span>
+                        <a href="#brightness"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contrast"></a>
+                    <span class="name">
+                        <span ><b>contrast</b></span>
+                        <a href="#contrast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FiltroInput"></a>
+                    <span class="name">
+                        <span ><b>FiltroInput</b></span>
+                        <a href="#FiltroInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fontSize"></a>
+                    <span class="name">
+                        <span ><b>fontSize</b></span>
+                        <a href="#fontSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>28</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDescriptionActive"></a>
+                    <span class="name">
+                        <span ><b>isDescriptionActive</b></span>
+                        <a href="#isDescriptionActive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isFontActive"></a>
+                    <span class="name">
+                        <span ><b>isFontActive</b></span>
+                        <a href="#isFontActive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Simone
+evento lanciato al cambiamento del checkbox, cambia il font da normale a OpenDyslexic, da dropdown Accessibilità
+se false lascia quello normale
+se true imposta il font OpenDyslexic ovunque tramite &quot;styles.css&quot; dalla variabile --fontName
+variabili utilizzate:</p>
+<ul>
+<li>isFontActive: boolean = impostato a false, controlla quando il checkbox va a cambiare il valore</li>
+<li>--fontName:va a impostare su styles.css il font scelto</li>
+</ul>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isTextSemplifiedActive"></a>
+                    <span class="name">
+                        <span ><b>isTextSemplifiedActive</b></span>
+                        <a href="#isTextSemplifiedActive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Simone
+Evento lanciato al cambiamento del checkbox, cambia il il testo normale a un test più corto e semplice, da dropdown Accessibilità
+se false lascia il testo normale
+altrimenti se true imposta il testo semplificato
+variabili utilizzate :
+ -isTextSemplifiedActive : boolean = impostato a false, controlla quando il checkbox va a cambiare il valore</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>searchService</b></span>
+                        <a href="#searchService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/SearchFilterService.html" target="_self" >SearchFilterService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/components/nav-bar/nav-bar.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, HostListener, OnChanges, Output, SimpleChanges, ViewChild,Input } from &#x27;@angular/core&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { SearchFilterService } from &#x27;../../services/search-filter.service&#x27;;
+import { Router, RouterLink } from &#x27;@angular/router&#x27;;
+
+import { TextimgTsService } from &#x27;../../services/textimg.service&#x27;;
+
+@Component({
+  selector: &#x27;app-nav-bar&#x27;,
+  standalone: true,
+  imports: [FormsModule, RouterLink],
+  templateUrl: &#x27;./nav-bar.component.html&#x27;,
+  styleUrl: &#x27;./nav-bar.component.css&#x27;,
+})
+export class NavBarComponent{
+  constructor(
+    public searchService:SearchFilterService,
+    private textService:TextimgTsService
+  ){}
+
+  //michael
+
+   // Valore della luminosità impostato tramite slider
+  brightness!: number;
+
+   // Valore del contrasto impostato tramite slider
+  contrast!: number;
+
+  //Valore attuale del textsize : Simone
+  fontSize : number &#x3D; 28;
+
+
+  // Output: emette il nuovo valore di luminosità verso il componente genitore
+
+  @Output() brightnessChanged &#x3D; new EventEmitter&lt;number&gt;();
+
+  // Output: emette il nuovo valore di contrasto per il componente genitore
+  @Output() contrastChanged &#x3D; new EventEmitter&lt;number&gt;();
+
+
+  // Iniezione del servizio SearchFilterService per aggiornare il filtro di ricerca
+
+
+  // Testo inserito dall&#x27;utente nel campo input della barra di ricerca
+  FiltroInput!: string;
+
+   /*
+   * - Gestisce l’evento di input della barra di ricerca
+   * - Recupera il valore digitato
+   * - Invia il filtro aggiornato al servizio condiviso
+   */
+  onInputChange(evento: Event) {
+    const target &#x3D; evento.target as HTMLInputElement;
+
+    this.searchService.setSearchFilter(target.value);
+  }
+
+
+   /*
+   * - Mostra o nasconde il menu a discesa (dropdown)
+   * - Agisce sull&#x27;elemento con classe ‘sc-navbar-dropdown-menu’
+   * - Aggiunge/rimuove la classe &#x27;hidden&#x27; per gestire la visibilità
+   */
+  toggleMenu() {
+    const dropDownMenu &#x3D; document.querySelector(&#x27;.sc-navbar-dropdown-menu&#x27;);
+    dropDownMenu?.classList.toggle(&#x27;hidden&#x27;);
+  }
+
+
+  //&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;SIMONE&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;//
+
+  //valore attuale della descrizione per la didascalia delle immagini
+  isDescriptionActive: boolean &#x3D; false;
+  onCheck(){
+    this.isDescriptionActive&#x3D;!this.isDescriptionActive;
+    this.textService.triggerChange(this.isDescriptionActive);
+  }
+
+  /**
+   * Simone
+   * evento lanciato al cambiamento del checkbox, cambia il font da normale a OpenDyslexic, da dropdown Accessibilità
+   * se false lascia quello normale
+   * se true imposta il font OpenDyslexic ovunque tramite &quot;styles.css&quot; dalla variabile --fontName 
+   * variabili utilizzate:
+   *  - isFontActive: boolean &#x3D; impostato a false, controlla quando il checkbox va a cambiare il valore
+   *  - --fontName:va a impostare su styles.css il font scelto
+   */
+  
+  isFontActive : boolean &#x3D; false;
+  onFontCheck(){
+    this.isFontActive&#x3D;!this.isFontActive;
+    if(this.isFontActive&#x3D;&#x3D;&#x3D;true)
+      document.documentElement.style.setProperty(&#x27;--fontName&#x27;,&#x27;OpenDyslexic&#x27;);
+    else
+      document.documentElement.style.setProperty(&#x27;--fontName&#x27;,&#x27;Verdana&#x27;);
+  }
+
+  /**
+   * Simone
+   * Evento lanciato al cambiamento del checkbox, cambia il il testo normale a un test più corto e semplice, da dropdown Accessibilità
+   * se false lascia il testo normale
+   * altrimenti se true imposta il testo semplificato
+   * variabili utilizzate : 
+   *  -isTextSemplifiedActive : boolean &#x3D; impostato a false, controlla quando il checkbox va a cambiare il valore
+   */
+  isTextSemplifiedActive : boolean &#x3D; false;
+  onTextSimplifiedCheck(){
+    this.isTextSemplifiedActive&#x3D;!this.isTextSemplifiedActive;
+    this.textService.textSemplifiedChange(this.isTextSemplifiedActive);
+  }
+
+  /***
+   * Simone
+   * Evento lanciato al cambiamento della dimensione del testo, da dropdown Accessibilità.
+   * Ottiene il valore e lo imposta sulla variabile CSS: &quot;--font-size&quot;
+   */
+  textSizeChange(event: Event): void {
+    document.documentElement.style.setProperty(&#x27;--fontSize&#x27;, this.fontSize.toString() + &#x27;px&#x27;);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;sc-navbar&quot;&gt;
+  &lt;div class&#x3D;&quot;sc-navbar-logo-space&quot;&gt;
+    &lt;img src&#x3D;&quot;&#x27;../../assets/logo1.png&quot; alt&#x3D;&quot;Logo 1&quot; class&#x3D;&quot;logo&quot; aria-hidden&#x3D;&quot;true&quot; /&gt;
+    &lt;img src&#x3D;&quot;&quot; alt&#x3D;&quot;Logo 2&quot; class&#x3D;&quot;logo&quot; aria-hidden&#x3D;&quot;true&quot; /&gt;
+    &lt;img src&#x3D;&quot;&quot; alt&#x3D;&quot;Logo 3&quot; class&#x3D;&quot;logo&quot; aria-hidden&#x3D;&quot;true&quot; /&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;sc-navbar-search-container&quot;&gt;
+    &lt;input
+      type&#x3D;&quot;text&quot;
+      placeholder&#x3D;&quot;Cerca...&quot;
+      class&#x3D;&quot;sc-navbar-search-input&quot;
+      (input)&#x3D;&quot;onInputChange($event)&quot;
+    /&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;sc-navbar-home&quot;&gt;
+    &lt;a routerLink&#x3D;&quot;/homepage&quot;&gt;Home&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;sc-navbar-dropdown-wrapper&quot;&gt;
+    &lt;div
+      class&#x3D;&quot;sc-navbar-dropdown-button&quot;
+      (click)&#x3D;&quot;toggleMenu()&quot;
+      role&#x3D;&quot;button&quot;
+      tabindex&#x3D;&quot;0&quot;
+    &gt;
+      Accessibilità
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;sc-navbar-dropdown-menu hidden&quot;&gt;
+      &lt;!-- Brightness slider --&gt;
+      &lt;span&gt;
+        &lt;label class&#x3D;&quot;slider&quot;&gt;
+          &lt;input
+            type&#x3D;&quot;range&quot;
+            class&#x3D;&quot;level&quot;
+            min&#x3D;&quot;50&quot;
+            max&#x3D;&quot;150&quot;
+            [(ngModel)]&#x3D;&quot;brightness&quot;
+            (input)&#x3D;&quot;brightnessChanged.emit(brightness)&quot;
+            placeholder&#x3D;&quot;..&quot;
+          /&gt;
+          &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; width&#x3D;&quot;30&quot; height&#x3D;&quot;30&quot; fill&#x3D;&quot;currentColor&quot; class&#x3D;&quot;bi bi-sun&quot; viewBox&#x3D;&quot;0 0 16 16&quot;&gt;
+            &lt;path d&#x3D;&quot;M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8...&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/label&gt;
+      &lt;/span&gt;
+
+      &lt;!-- Contrast slider --&gt;
+      &lt;span&gt;
+        &lt;label class&#x3D;&quot;slider&quot;&gt;
+          &lt;input
+            type&#x3D;&quot;range&quot;
+            class&#x3D;&quot;level&quot;
+            min&#x3D;&quot;50&quot;
+            max&#x3D;&quot;150&quot;
+            [(ngModel)]&#x3D;&quot;contrast&quot;
+            (input)&#x3D;&quot;contrastChanged.emit(contrast)&quot;
+            placeholder&#x3D;&quot;..&quot;
+          /&gt;
+          &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; width&#x3D;&quot;30&quot; height&#x3D;&quot;30&quot; fill&#x3D;&quot;currentColor&quot; class&#x3D;&quot;bi bi-circle-half&quot; viewBox&#x3D;&quot;0 0 16 16&quot;&gt;
+            &lt;path d&#x3D;&quot;M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/label&gt;
+      &lt;/span&gt;
+
+      &lt;!-- Font size slider --&gt;
+      &lt;span&gt;
+        &lt;label class&#x3D;&quot;slider&quot;&gt;
+          &lt;input
+            type&#x3D;&quot;range&quot;
+            class&#x3D;&quot;level&quot;
+            min&#x3D;&quot;14&quot;
+            max&#x3D;&quot;40&quot;
+            [(ngModel)]&#x3D;&quot;fontSize&quot;
+            [value]&#x3D;&quot;fontSize&quot;
+            (input)&#x3D;&quot;textSizeChange($event)&quot;
+            placeholder&#x3D;&quot;..&quot;
+          /&gt;
+          &lt;svg 
+            xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; 
+            width&#x3D;&quot;25&quot; height&#x3D;&quot;25&quot; 
+            fill&#x3D;&quot;currentColor&quot; 
+            class&#x3D;&quot;bi bi-type&quot; 
+            viewBox&#x3D;&quot;0 0 16 16&quot;&gt;
+              &lt;path d&#x3D;&quot;m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081zm2.7-7.923L6.34 9.314H3.51l1.4-4.156zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525&quot;/&gt;
+          &lt;/svg&gt;
+        &lt;/label&gt;
+      &lt;/span&gt;
+
+      &lt;!-- Checkbox: text description --&gt;
+      &lt;span&gt;
+        &lt;label class&#x3D;&quot;slider&quot;&gt;
+          &lt;input
+            type&#x3D;&quot;checkbox&quot;
+            id&#x3D;&quot;checkbox&quot;
+            value&#x3D;&quot;isDescriptionActive&quot;
+            (change)&#x3D;&quot;onCheck()&quot;
+            class&#x3D;&quot;selector&quot;
+            placeholder&#x3D;&quot;..&quot;
+          /&gt;
+          &lt;label for&#x3D;&quot;checkbox&quot; class&#x3D;&quot;label&quot;&gt;&lt;/label&gt;
+            &lt;svg 
+              xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; 
+              width&#x3D;&quot;25&quot; 
+              height&#x3D;&quot;25&quot; 
+              fill&#x3D;&quot;currentColor&quot; 
+              class&#x3D;&quot;bi bi-badge-cc&quot; 
+              viewBox&#x3D;&quot;0 0 16 16&quot;&gt;
+                &lt;path d&#x3D;&quot;M3.708 7.755c0-1.111.488-1.753 1.319-1.753.681 0 1.138.47 1.186 1.107H7.36V7c-.052-1.186-1.024-2-2.342-2C3.414 5 2.5 6.05 2.5 7.751v.747c0 1.7.905 2.73 2.518 2.73 1.314 0 2.285-.792 2.342-1.939v-.114H6.213c-.048.615-.496 1.05-1.186 1.05-.84 0-1.319-.62-1.319-1.727zm6.14 0c0-1.111.488-1.753 1.318-1.753.682 0 1.139.47 1.187 1.107H13.5V7c-.053-1.186-1.024-2-2.342-2C9.554 5 8.64 6.05 8.64 7.751v.747c0 1.7.905 2.73 2.518 2.73 1.314 0 2.285-.792 2.342-1.939v-.114h-1.147c-.048.615-.497 1.05-1.187 1.05-.839 0-1.318-.62-1.318-1.727z&quot;/&gt;
+                &lt;path d&#x3D;&quot;M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z&quot;/&gt;
+            &lt;/svg&gt;
+        &lt;/label&gt;
+        &lt;span class&#x3D;&quot;tooltip&quot;&gt;Didascalia immagine&lt;/span&gt;
+      &lt;/span&gt;
+
+      &lt;!-- Checkbox: font type toggle --&gt;
+      &lt;span&gt;
+        &lt;label class&#x3D;&quot;slider&quot;&gt;
+          &lt;input
+            type&#x3D;&quot;checkbox&quot;
+            id&#x3D;&quot;checkboxFont&quot;
+            value&#x3D;&quot;isFontActive&quot;
+            (change)&#x3D;&quot;onFontCheck()&quot;
+            class&#x3D;&quot;selector&quot;
+            placeholder&#x3D;&quot;..&quot;
+          /&gt;
+          &lt;label for&#x3D;&quot;checkboxFont&quot; class&#x3D;&quot;label&quot;&gt;&lt;/label&gt;
+          &lt;svg 
+            xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; 
+            width&#x3D;&quot;25&quot; height&#x3D;&quot;25&quot; 
+            fill&#x3D;&quot;currentColor&quot; 
+            class&#x3D;&quot;bi bi-fonts&quot; 
+            viewBox&#x3D;&quot;0 0 16 16&quot;&gt;
+              &lt;path d&#x3D;&quot;M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479z&quot;/&gt;
+          &lt;/svg&gt;
+        &lt;/label&gt;
+        &lt;span class&#x3D;&quot;tooltip&quot;&gt;Font per dislessia&lt;/span&gt;
+      &lt;/span&gt;
+      &lt;!--Testo semplice--&gt;
+      &lt;span&gt;
+        &lt;label class&#x3D;&quot;slider&quot;&gt;
+          &lt;input
+            type&#x3D;&quot;checkbox&quot;
+            id&#x3D;&quot;checkboxText&quot;
+            value&#x3D;&quot;isFontActive&quot;
+            (change)&#x3D;&quot;onTextSimplifiedCheck()&quot;
+            class&#x3D;&quot;selector&quot;
+            placeholder&#x3D;&quot;..&quot;
+          /&gt;
+          &lt;label for&#x3D;&quot;checkboxText&quot; class&#x3D;&quot;label&quot;&gt;&lt;/label&gt;
+            &lt;svg 
+              xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; 
+              width&#x3D;&quot;25&quot; height&#x3D;&quot;25&quot; 
+              fill&#x3D;&quot;currentColor&quot; 
+              class&#x3D;&quot;bi bi-card-text&quot; 
+              viewBox&#x3D;&quot;0 0 16 16&quot;&gt;
+                &lt;path d&#x3D;&quot;M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z&quot;/&gt;
+                &lt;path d&#x3D;&quot;M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5&quot;/&gt;
+            &lt;/svg&gt;
+        &lt;/label&gt;
+        &lt;span class&#x3D;&quot;tooltip&quot;&gt;Testo Semplice&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="sc-navbar">  <div class="sc-navbar-logo-space">    <img src="\'../../assets/logo1.png" alt="Logo 1" class="logo" aria-hidden="true" />    <img src="" alt="Logo 2" class="logo" aria-hidden="true" />    <img src="" alt="Logo 3" class="logo" aria-hidden="true" />  </div>  <div class="sc-navbar-search-container">    <input      type="text"      placeholder="Cerca..."      class="sc-navbar-search-input"      (input)="onInputChange($event)"    />  </div>  <div class="sc-navbar-home">    <a routerLink="/homepage">Home</a>  </div>  <div class="sc-navbar-dropdown-wrapper">    <div      class="sc-navbar-dropdown-button"      (click)="toggleMenu()"      role="button"      tabindex="0"    >      Accessibilità    </div>    <div class="sc-navbar-dropdown-menu hidden">      <!-- Brightness slider -->      <span>        <label class="slider">          <input            type="range"            class="level"            min="50"            max="150"            [(ngModel)]="brightness"            (input)="brightnessChanged.emit(brightness)"            placeholder=".."          />          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-sun" viewBox="0 0 16 16">            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8..." />          </svg>        </label>      </span>      <!-- Contrast slider -->      <span>        <label class="slider">          <input            type="range"            class="level"            min="50"            max="150"            [(ngModel)]="contrast"            (input)="contrastChanged.emit(contrast)"            placeholder=".."          />          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16">            <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16" />          </svg>        </label>      </span>      <!-- Font size slider -->      <span>        <label class="slider">          <input            type="range"            class="level"            min="14"            max="40"            [(ngModel)]="fontSize"            [value]="fontSize"            (input)="textSizeChange($event)"            placeholder=".."          />          <svg             xmlns="http://www.w3.org/2000/svg"             width="25" height="25"             fill="currentColor"             class="bi bi-type"             viewBox="0 0 16 16">              <path d="m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081zm2.7-7.923L6.34 9.314H3.51l1.4-4.156zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525"/>          </svg>        </label>      </span>      <!-- Checkbox: text description -->      <span>        <label class="slider">          <input            type="checkbox"            id="checkbox"            value="isDescriptionActive"            (change)="onCheck()"            class="selector"            placeholder=".."          />          <label for="checkbox" class="label"></label>            <svg               xmlns="http://www.w3.org/2000/svg"               width="25"               height="25"               fill="currentColor"               class="bi bi-badge-cc"               viewBox="0 0 16 16">                <path d="M3.708 7.755c0-1.111.488-1.753 1.319-1.753.681 0 1.138.47 1.186 1.107H7.36V7c-.052-1.186-1.024-2-2.342-2C3.414 5 2.5 6.05 2.5 7.751v.747c0 1.7.905 2.73 2.518 2.73 1.314 0 2.285-.792 2.342-1.939v-.114H6.213c-.048.615-.496 1.05-1.186 1.05-.84 0-1.319-.62-1.319-1.727zm6.14 0c0-1.111.488-1.753 1.318-1.753.682 0 1.139.47 1.187 1.107H13.5V7c-.053-1.186-1.024-2-2.342-2C9.554 5 8.64 6.05 8.64 7.751v.747c0 1.7.905 2.73 2.518 2.73 1.314 0 2.285-.792 2.342-1.939v-.114h-1.147c-.048.615-.497 1.05-1.187 1.05-.839 0-1.318-.62-1.318-1.727z"/>                <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>            </svg>        </label>        <span class="tooltip">Didascalia immagine</span>      </span>      <!-- Checkbox: font type toggle -->      <span>        <label class="slider">          <input            type="checkbox"            id="checkboxFont"            value="isFontActive"            (change)="onFontCheck()"            class="selector"            placeholder=".."          />          <label for="checkboxFont" class="label"></label>          <svg             xmlns="http://www.w3.org/2000/svg"             width="25" height="25"             fill="currentColor"             class="bi bi-fonts"             viewBox="0 0 16 16">              <path d="M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479z"/>          </svg>        </label>        <span class="tooltip">Font per dislessia</span>      </span>      <!--Testo semplice-->      <span>        <label class="slider">          <input            type="checkbox"            id="checkboxText"            value="isFontActive"            (change)="onTextSimplifiedCheck()"            class="selector"            placeholder=".."          />          <label for="checkboxText" class="label"></label>            <svg               xmlns="http://www.w3.org/2000/svg"               width="25" height="25"               fill="currentColor"               class="bi bi-card-text"               viewBox="0 0 16 16">                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>                <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>            </svg>        </label>        <span class="tooltip">Testo Semplice</span>      </span>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'Detail', 'selector': 'app-detail'},{'name': 'DetailTestoComponent', 'selector': 'app-detail-testo'},{'name': 'FiltriComponent', 'selector': 'app-filtri'},{'name': 'Homepage', 'selector': 'app-homepage'},{'name': 'NavBarComponent', 'selector': 'app-nav-bar'},{'name': 'TypeaheadComponent', 'selector': 'app-typeahead'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NavBarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NavBarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

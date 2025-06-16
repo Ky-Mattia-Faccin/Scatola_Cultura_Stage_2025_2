@@ -60,9 +60,10 @@ export class Detail implements OnInit {
    * - Recupera l'ID della struttura dalla route
    * - Carica la struttura dal localStorage
    * - Esegue richiesta HTTP per ottenere i dati delle disabilità (decidere se va usato)
+   * riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
   */
   ngOnInit(): void {
-     //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
+     //Simone: 
     this.textService.isDescriptionActive$.subscribe(value=>{
       this.isDescriptionActive=value;
       }

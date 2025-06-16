@@ -1,0 +1,1277 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>scatola-cultura-2025 documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">scatola-cultura-2025 documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Homepage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/components/homepage/homepage.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-homepage</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterModule</code>
+                            <code>CommonModule</code>
+                                <code><a href="../components/FiltriComponent.html" target="_self" >FiltriComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./homepage.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./homepage.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#FiltriDisabilita" >FiltriDisabilita</a>
+                            </li>
+                            <li>
+                                <a href="#FiltriProvince" >FiltriProvince</a>
+                            </li>
+                            <li>
+                                <a href="#FiltriTipi" >FiltriTipi</a>
+                            </li>
+                            <li>
+                                <a href="#filtro" >filtro</a>
+                            </li>
+                            <li>
+                                <a href="#flgFiltriMobile" >flgFiltriMobile</a>
+                            </li>
+                            <li>
+                                <a href="#isDescriptionActive" >isDescriptionActive</a>
+                            </li>
+                            <li>
+                                <a href="#strutture" >strutture</a>
+                            </li>
+                            <li>
+                                <a href="#struttureFiltrate" >struttureFiltrate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#applySearchFilter" >applySearchFilter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#checkSessionStorage" >checkSessionStorage</a>
+                            </li>
+                            <li>
+                                <a href="#filtraStrutture" >filtraStrutture</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggleMenu" >toggleMenu</a>
+                            </li>
+                            <li>
+                                <a href="#toggleMobileFilters" >toggleMobileFilters</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(searchFilter: <a href="../injectables/SearchFilterService.html" target="_self">SearchFilterService</a>, servizioStruttura: <a href="../injectables/StrutturaService.html" target="_self">StrutturaService</a>, textService: <a href="../injectables/TextimgTsService.html" target="_self">TextimgTsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/components/homepage/homepage.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>searchFilter</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SearchFilterService.html" target="_self" >SearchFilterService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>servizioStruttura</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StrutturaService.html" target="_self" >StrutturaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>textService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TextimgTsService.html" target="_self" >TextimgTsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applySearchFilter"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>applySearchFilter</b></span>
+                        <a href="#applySearchFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>applySearchFilter()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/components/homepage/homepage.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Michael
+Applica il filtro testuale alla lista di strutture già filtrate per tipo/disabilità/provincia
+Mostra solo quelle che contengono il testo cercato nel nomeStruttura</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkSessionStorage"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>checkSessionStorage</b></span>
+                        <a href="#checkSessionStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkSessionStorage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="181"
+                                    class="link-to-prism">src/components/homepage/homepage.ts:181</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Michael
+Controlla se esistono strutture in sessionStorage:</p>
+<ul>
+<li>Se sì, le carica</li>
+<li>Se no, fa la chiamata all’API per ottenerle
+Tutto viene poi filtrato in base al testo cercato.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtraStrutture"></a>
+                    <span class="name">
+                        <span ><b>filtraStrutture</b></span>
+                        <a href="#filtraStrutture"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filtraStrutture()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/components/homepage/homepage.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Michael
+Metodo chiamato quando l’utente clicca &quot;Applica Filtri&quot;</p>
+<ul>
+<li>Salva i filtri su sessionStorage</li>
+<li>Chiama l’API per ottenere solo le strutture corrispondenti ai filtri</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/components/homepage/homepage.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Michael
+ngOnInit:</p>
+<ul>
+<li>recupera filtri precedenti da sessionStorage, se presenti</li>
+<li>carica strutture da sessionStorage o API</li>
+<li>si iscrive al filtro testuale (navbar)</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleMenu"></a>
+                    <span class="name">
+                        <span ><b>toggleMenu</b></span>
+                        <a href="#toggleMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleMenu()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/components/homepage/homepage.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleMobileFilters"></a>
+                    <span class="name">
+                        <span ><b>toggleMobileFilters</b></span>
+                        <a href="#toggleMobileFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleMobileFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="217"
+                                    class="link-to-prism">src/components/homepage/homepage.ts:217</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FiltriDisabilita"></a>
+                    <span class="name">
+                        <span ><b>FiltriDisabilita</b></span>
+                        <a href="#FiltriDisabilita"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/components/homepage/homepage.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FiltriProvince"></a>
+                    <span class="name">
+                        <span ><b>FiltriProvince</b></span>
+                        <a href="#FiltriProvince"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/components/homepage/homepage.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FiltriTipi"></a>
+                    <span class="name">
+                        <span ><b>FiltriTipi</b></span>
+                        <a href="#FiltriTipi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/components/homepage/homepage.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtro"></a>
+                    <span class="name">
+                        <span ><b>filtro</b></span>
+                        <a href="#filtro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/components/homepage/homepage.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flgFiltriMobile"></a>
+                    <span class="name">
+                        <span ><b>flgFiltriMobile</b></span>
+                        <a href="#flgFiltriMobile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="212" class="link-to-prism">src/components/homepage/homepage.ts:212</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDescriptionActive"></a>
+                    <span class="name">
+                        <span ><b>isDescriptionActive</b></span>
+                        <a href="#isDescriptionActive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/components/homepage/homepage.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="strutture"></a>
+                    <span class="name">
+                        <span ><b>strutture</b></span>
+                        <a href="#strutture"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Struttura.html" target="_self" >Struttura[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/components/homepage/homepage.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="struttureFiltrate"></a>
+                    <span class="name">
+                        <span ><b>struttureFiltrate</b></span>
+                        <a href="#struttureFiltrate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Struttura.html" target="_self" >Struttura[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.strutture</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/components/homepage/homepage.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { OnInit } from &#x27;@angular/core&#x27;;
+import { StrutturaService } from &#x27;../../services/struttura.service&#x27;;
+import { FiltriComponent } from &#x27;../filtri/filtri.component&#x27;;
+import { Component,OnChanges, SimpleChanges } from &#x27;@angular/core&#x27;;
+import { RouterModule } from &#x27;@angular/router&#x27;;
+import { Struttura } from &#x27;../../interfaces/Istruttura&#x27;;
+import { SearchFilterService } from &#x27;../../services/search-filter.service&#x27;;
+import { TextimgTsService } from &#x27;../../services/textimg.service&#x27;;
+
+
+@Component({
+  standalone: true,
+  selector: &#x27;app-homepage&#x27;,
+  imports: [RouterModule, CommonModule, FiltriComponent],
+  templateUrl: &#x27;./homepage.html&#x27;,
+  styleUrl: &#x27;./homepage.css&#x27;,
+})
+export class Homepage implements OnInit {
+
+  // michael: Iniezione del servizio per la gestione del filtro di ricerca
+  //simone:  Iniezione del servizio per la geststione del booleano per la descrizione
+  constructor(
+    private searchFilter: SearchFilterService,
+    private servizioStruttura: StrutturaService,
+    private textService: TextimgTsService
+  ) {}
+
+  // Lista completa delle strutture ottenute da API
+  strutture: Struttura[] &#x3D; [];
+
+  // Lista filtrata da mostrare nell&#x27;interfaccia
+  struttureFiltrate: Struttura[] &#x3D; this.strutture;
+
+  // Valore corrente del filtro testuale (ricerca)
+  filtro!: string;
+
+
+  // Filtri selezionati dai componenti figli
+
+  FiltriDisabilita: string[] &#x3D; [];
+  FiltriTipi: string[] &#x3D; [];
+  FiltriProvince: string[] &#x3D; [];
+
+  /** Michael
+   * ngOnInit:
+   * - recupera filtri precedenti da sessionStorage, se presenti
+   * - carica strutture da sessionStorage o API
+   * - si iscrive al filtro testuale (navbar)
+   */
+  ngOnInit(): void {
+     // Carica eventuali filtri salvati precedentemente
+    const savedFilters &#x3D; sessionStorage.getItem(&#x27;filtri&#x27;);
+    if (savedFilters) {
+      const parsed &#x3D; JSON.parse(savedFilters);
+      this.FiltriDisabilita &#x3D; parsed.disabilita || [];
+      this.FiltriTipi &#x3D; parsed.tipi || [];
+      this.FiltriProvince &#x3D; parsed.province || [];
+      this.filtro &#x3D; parsed.filtroTestuale || &#x27;&#x27;;
+    }
+        // Carica strutture da sessionStorage o fa chiamata API se vuoto
+    this.checkSessionStorage();
+
+
+     // Si iscrive ai cambiamenti del filtro testuale (search bar)
+    this.searchFilter.filtroRicerca$.subscribe((value) &#x3D;&gt; {
+      this.filtro &#x3D; value;
+      this.applySearchFilter();
+    });
+
+    //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull&#x27;immagine
+    this.textService.isDescriptionActive$.subscribe(value&#x3D;&gt;{
+      this.isDescriptionActive&#x3D;value;
+    })
+  }
+
+
+  //simone
+  //creazione del booleano
+  isDescriptionActive:boolean&#x3D;false;
+
+  //al cambiamento del checkbox se false non deve mostare la descrizione altrimenti al passaggio sopra una immagine (hover) deve inviare il valore
+  toggleMenu(){
+    const dropDownImg  &#x3D; document.querySelector(&#x27;.sc-homepage-card-img-text&#x27;);
+    dropDownImg?.classList.toggle(&#x27;hidden&#x27;);
+  }
+
+
+   /**
+    * Michael
+   * Metodo chiamato quando l’utente clicca &quot;Applica Filtri&quot;
+   * - Salva i filtri su sessionStorage
+   * - Chiama l’API per ottenere solo le strutture corrispondenti ai filtri
+   */
+  filtraStrutture(): void {
+
+     // Salva i filtri applicati su sessionStorage
+    sessionStorage.setItem(
+      &#x27;filtri&#x27;,
+      JSON.stringify({
+        disabilita: this.FiltriDisabilita,
+        tipi: this.FiltriTipi,
+        province: this.FiltriProvince,
+        filtroTestuale: this.filtro,
+      })
+    );
+
+    /*
+    const filtriVuoti &#x3D;
+      this.FiltriDisabilita.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp;
+      this.FiltriTipi.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp;
+      this.FiltriProvince.length &#x3D;&#x3D;&#x3D; 0;
+
+    if (filtriVuoti) {
+      const struttureJSON &#x3D; sessionStorage.getItem(&#x27;strutture&#x27;);
+      if (struttureJSON) {
+        this.strutture &#x3D; JSON.parse(struttureJSON);
+        this.applySearchFilter();
+        return;
+      }
+    }
+    */
+
+       // Chiamata API con i filtri correnti
+
+    this.servizioStruttura
+      .getStruttureFiltrate(
+        this.FiltriDisabilita,
+        this.FiltriTipi,
+        this.FiltriProvince
+      )
+      .subscribe({
+        next: (s) &#x3D;&gt; {
+          if (s.length &#x3D;&#x3D;&#x3D; 0) {
+            // Nessun risultato trovato
+            window.alert(&#x27;Nessuna struttura con questi filtri trovata&#x27;);
+          } else {
+               // Strutture trovate, le salva e applica il filtro testuale
+            this.strutture &#x3D; s;
+            sessionStorage.setItem(&#x27;strutture&#x27;, JSON.stringify(s));
+            this.applySearchFilter();
+          }
+        } /* gestione errore */,
+        error: (err) &#x3D;&gt; {
+          console.error(&#x27;Errore nel caricamento delle strutture&#x27;);
+          const riprova &#x3D; window.confirm(
+            &#x27;Errore nel caricamento delle strutture, vuoi riprovare?&#x27;
+          );
+          if (riprova) this.filtraStrutture();
+        },
+      });
+  }
+
+  /**
+   * Michael
+   * Applica il filtro testuale alla lista di strutture già filtrate per tipo/disabilità/provincia
+   * Mostra solo quelle che contengono il testo cercato nel nomeStruttura
+   */
+  private applySearchFilter() {
+    if (!this.filtro) {
+       // Se il filtro è vuoto, mostra tutte le strutture
+      this.struttureFiltrate &#x3D; this.strutture;
+    } else {
+          // Altrimenti filtra per nome (case insensitive)
+      const filtroLower &#x3D; this.filtro.toLowerCase();
+      this.struttureFiltrate &#x3D; this.strutture.filter((s) &#x3D;&gt;
+        s.nomeStruttura.toLowerCase().includes(filtroLower)
+      );
+    }
+  }
+
+  
+  /**
+   * Michael
+   * Controlla se esistono strutture in sessionStorage:
+   * - Se sì, le carica
+   * - Se no, fa la chiamata all’API per ottenerle
+   * Tutto viene poi filtrato in base al testo cercato.
+   */
+  private checkSessionStorage() {
+
+    const struttureJSON &#x3D; sessionStorage.getItem(&#x27;strutture&#x27;);
+
+    if (struttureJSON &amp;&amp; struttureJSON!&#x3D;&#x3D;&#x27;[]&#x27;) {
+       // Strutture già presenti: le carica
+      this.strutture &#x3D; JSON.parse(struttureJSON);
+      this.struttureFiltrate &#x3D; this.strutture;  
+      this.applySearchFilter();
+    } else {
+         // Nessuna struttura salvata: chiama l’API
+      this.servizioStruttura.getStrutture().subscribe({
+        next: (s) &#x3D;&gt; {
+          this.strutture &#x3D; s;
+          this.struttureFiltrate &#x3D; s;
+          sessionStorage.setItem(&#x27;strutture&#x27;, JSON.stringify(s));
+          this.applySearchFilter();
+        } /* gestire l&#x27;errore*/,
+        error: (err) &#x3D;&gt; {
+          console.error(err);
+          const riprova &#x3D; window.confirm(
+            &#x27;errore nel caricamento delle strutture, riprovare&#x27;
+          );
+          if (riprova) this.checkSessionStorage();
+        },
+      });
+    }
+  }
+
+
+  //flag per la visualizzazione della selezione dei filtri in mobile
+  flgFiltriMobile&#x3D;false
+
+  /*metodo per visualizzare la selezione dei filtri in mobile
+  * aggiunge la classe hidden ai filtri
+  */
+  toggleMobileFilters(){
+
+    const contenitoreFiltri&#x3D;document.querySelector(&#x27;.sc-homepage-filter&#x27;);
+    contenitoreFiltri?.classList.toggle(&#x27;hiddenMobile&#x27;);
+  }
+
+}
+/*
+toggleMenu() {
+    const dropDownMenu &#x3D; document.querySelector(&#x27;.sc-navbar-dropdown-menu&#x27;);
+    dropDownMenu?.classList.toggle(&#x27;hidden&#x27;);
+  }
+*/
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;sc-homepage-start&quot;&gt;
+  &lt;div class&#x3D;&quot;sc-homepage-blur&quot;&gt;
+    &lt;div class&#x3D;&quot;sc-homepage-filter-container&quot;&gt;
+      &lt;!-- Bottone mobile per mostrare/nascondere i filtri --&gt;
+      &lt;div class&#x3D;&quot;mobileButton&quot;&gt;
+        &lt;svg
+          aria-hidden&#x3D;&quot;true&quot;
+          xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;
+          viewBox&#x3D;&quot;0 0 512 512&quot;
+          width&#x3D;&quot;30px&quot;
+          height&#x3D;&quot;30px&quot;
+          class&#x3D;&quot;arrow&quot;
+          (click)&#x3D;&quot;toggleMobileFilters()&quot;
+        &gt;
+          &lt;path
+            fill&#x3D;&quot;white&quot;
+            d&#x3D;&quot;M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z&quot;
+          &gt;&lt;/path&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Filtri, visibili solo se abilitati --&gt;
+      &lt;div class&#x3D;&quot;sc-homepage-filter hiddenMobile&quot; [class.hiddenMobile]&#x3D;&quot;!flgFiltriMobile&quot;&gt;
+        &lt;app-filtri
+          (DisabilitaSelected)&#x3D;&quot;FiltriDisabilita &#x3D; $event&quot;
+          (TipiSelected)&#x3D;&quot;FiltriTipi &#x3D; $event&quot;
+          (ProvinceSelected)&#x3D;&quot;FiltriProvince &#x3D; $event; filtraStrutture()&quot;
+        &gt;&lt;/app-filtri&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Lista strutture filtrate --&gt;
+    &lt;div
+      class&#x3D;&quot;sc-homepage-musei-container&quot;
+      *ngIf&#x3D;&quot;struttureFiltrate.length &gt; 0; else nessunaStruttura&quot;
+    &gt;
+      &lt;div
+        class&#x3D;&quot;sc-homepage-museo-card&quot;
+        *ngFor&#x3D;&quot;let item of struttureFiltrate&quot;
+        [routerLink]&#x3D;&quot;[&#x27;/detail&#x27;, item.idStruttura]&quot;
+        role&#x3D;&quot;button&quot;
+      &gt;
+        &lt;div class&#x3D;&quot;sc-homepage-card-img&quot;&gt;
+          &lt;img [src]&#x3D;&quot;&#x27;https://via.placeholder.com/300&#x27;&quot; alt&#x3D;&quot;{{ item.nomeStruttura }}&quot; width&#x3D;&quot;300&quot; /&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Breve descrizione se abilitata --&gt;
+        &lt;div class&#x3D;&quot;sc-homepage-card-img-text&quot; *ngIf&#x3D;&quot;isDescriptionActive&quot;&gt;
+          &lt;span&gt;{{item.DidascaliaImmagine}}&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;sc-homepage-card-title&quot;&gt;
+          &lt;span&gt;{{ item.nomeStruttura }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;sc-homepage-card-info&quot;&gt;
+          &lt;!-- Info aggiuntive opzionali --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Nessuna struttura --&gt;
+    &lt;ng-template #nessunaStruttura&gt;
+      &lt;p&gt;Nessuna struttura con i filtri selezionati&lt;/p&gt;
+    &lt;/ng-template&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="sc-homepage-start">  <div class="sc-homepage-blur">    <div class="sc-homepage-filter-container">      <!-- Bottone mobile per mostrare/nascondere i filtri -->      <div class="mobileButton">        <svg          aria-hidden="true"          xmlns="http://www.w3.org/2000/svg"          viewBox="0 0 512 512"          width="30px"          height="30px"          class="arrow"          (click)="toggleMobileFilters()"        >          <path            fill="white"            d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"          ></path>        </svg>      </div>      <!-- Filtri, visibili solo se abilitati -->      <div class="sc-homepage-filter hiddenMobile" [class.hiddenMobile]="!flgFiltriMobile">        <app-filtri          (DisabilitaSelected)="FiltriDisabilita = $event"          (TipiSelected)="FiltriTipi = $event"          (ProvinceSelected)="FiltriProvince = $event; filtraStrutture()"        ></app-filtri>      </div>    </div>    <!-- Lista strutture filtrate -->    <div      class="sc-homepage-musei-container"      *ngIf="struttureFiltrate.length > 0; else nessunaStruttura"    >      <div        class="sc-homepage-museo-card"        *ngFor="let item of struttureFiltrate"        [routerLink]="[\'/detail\', item.idStruttura]"        role="button"      >        <div class="sc-homepage-card-img">          <img [src]="\'https://via.placeholder.com/300\'" alt="{{ item.nomeStruttura }}" width="300" />        </div>        <!-- Breve descrizione se abilitata -->        <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">          <span>{{item.DidascaliaImmagine}}</span>        </div>        <div class="sc-homepage-card-title">          <span>{{ item.nomeStruttura }}</span>        </div>        <div class="sc-homepage-card-info">          <!-- Info aggiuntive opzionali -->        </div>      </div>    </div>    <!-- Nessuna struttura -->    <ng-template #nessunaStruttura>      <p>Nessuna struttura con i filtri selezionati</p>    </ng-template>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'Detail', 'selector': 'app-detail'},{'name': 'DetailTestoComponent', 'selector': 'app-detail-testo'},{'name': 'FiltriComponent', 'selector': 'app-filtri'},{'name': 'Homepage', 'selector': 'app-homepage'},{'name': 'NavBarComponent', 'selector': 'app-nav-bar'},{'name': 'TypeaheadComponent', 'selector': 'app-typeahead'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Homepage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Homepage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

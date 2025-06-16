@@ -27,7 +27,7 @@ export class FiltriComponent implements AfterViewInit {
   @ViewChild('tipoComp') tipoComponent!: TypeaheadComponent;
   @ViewChild('provinciaComp') provinciaComponent!: TypeaheadComponent;
 
-  // Output: emette le selezioni effettuate dagli utenit al componente padre
+  // Output: emette le selezioni effettuate dagli utenti al componente padre
   @Output() DisabilitaSelected = new EventEmitter<string[]>();
   @Output() TipiSelected = new EventEmitter<string[]>();
   @Output() ProvinceSelected = new EventEmitter<string[]>();

@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,NavBarComponent],
-  templateUrl: './app.component.html',
+   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -20,10 +20,9 @@ export class AppComponent {
   // Titolo dell'applicazione
   title = 'Scatola_Cultura_2025';
 
-  // Valori dei filtri di luminosità e contrasto (di default 100%), valore di text size (Default:18)
+  // Valori dei filtri di luminosità e contrasto (di default 100%)
   brightness: number = 100;
   contrast: number = 100;
-  textsize: number = 18;
 
   // Array per contenere le strutture caricate dal file JSON/localStorage
   strutture: Struttura[] = [];

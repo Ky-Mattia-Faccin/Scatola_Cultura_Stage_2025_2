@@ -36,7 +36,6 @@ export class Homepage implements OnInit {
   // Valore corrente del filtro testuale (ricerca)
   filtro!: string;
 
-
   // Filtri selezionati dai componenti figli
 
   FiltriDisabilita: string[] = [];
@@ -221,11 +220,3 @@ export class Homepage implements OnInit {
   }
 
 }
-/*
-toggleMenu() {
-    const dropDownMenu = document.querySelector('.sc-navbar-dropdown-menu');
-    dropDownMenu?.classList.toggle('hidden');
-  }
-*/
-
-
