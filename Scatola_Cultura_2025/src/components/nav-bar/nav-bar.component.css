@@ -441,7 +441,7 @@
     width: 50px;
   }
   #selector:checked ~ .label::before{
-    left:35px;
+    left:40px;
   }
   .label::before{
     left:0px;
