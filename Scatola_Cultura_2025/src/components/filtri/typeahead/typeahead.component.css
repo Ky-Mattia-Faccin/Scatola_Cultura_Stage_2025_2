@@ -167,7 +167,6 @@
   top: 100%;
   left: 0;
   width: 95%;
-  z-index: 1;
 
   display: flex;
   flex-direction: column;
@@ -180,17 +179,57 @@
   transition: opacity 300ms ease, visibility 300ms ease;
 
   z-index: 9999;
+
+
 }
 
 /* Etichette delle opzioni (testo + checkbox) */
 .options label {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   align-content: flex-start;
 
   width: 100%;
+
 }
+.options label span{
+  width: 90%;
+  max-width: 90%;
+}
+.options label input{
+  max-width: 10%;
+  max-height:10% ;
+}
+
+.ng-star-inserted{
+  padding: 2%;
+  
+
+}
+.ng-star-inserted span{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+}
+.ng-star-inserted:hover{
+  background-color: #e0f0ff; 
+  color: #2563eb;     
+
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+
+     
+}
+
+
 
 /* Quando si passa sopra il select: mostra le opzioni */
 .select:hover > .options,
@@ -215,6 +254,8 @@
   transition: 300ms;
 
   background-color: #47b4e7;
+
+
 }
 
 /* Effetto hover su una singola opzione */
@@ -227,18 +268,6 @@
   display: none;
 }
 
-.options label:hover {
-  background-color: #e0f0ff; 
-  color: #2563eb;     
-
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
-
-  border-radius: 5px;
-
-  cursor: pointer;
-
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
 
 /* Mostra il testo dell'opzione tramite attributo custom */
 .options label::before {
