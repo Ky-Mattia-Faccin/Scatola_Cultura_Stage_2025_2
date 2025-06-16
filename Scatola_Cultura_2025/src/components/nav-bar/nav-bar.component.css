@@ -93,8 +93,10 @@
 }
 
 .sc-navbar-home:hover {
-  color: #3b82f6;
   background-color: #00b9ee;
+}
+.sc-navbar-home:hover a{
+  color: white;
 }
 
 /* Wrapper per il pulsante a discesa */
@@ -448,4 +450,16 @@
   .label::before{
     left:0px;
   }
+
+  .sc-navbar-dropdown-menu{
+    width: 160%;
+  }
+  .sc-navbar-dropdown-menu .label{
+  width: 100px;
+  height: 25px;
+
+  margin-left: auto;
+  margin-right: auto;
+  }
 }
+

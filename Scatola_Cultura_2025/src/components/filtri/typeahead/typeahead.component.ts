@@ -22,10 +22,11 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './typeahead.component.html',
   styleUrl: './typeahead.component.css',
 })
-export class TypeaheadComponent implements OnInit, OnDestroy, AfterViewInit {
+export class TypeaheadComponent implements OnInit, OnDestroy {
+
+  
   //michael
 
-  ngAfterViewInit(): void {}
   //Riferimento al container `.select` nel template
   @ViewChild('selectContainer') selectContainer?: ElementRef<HTMLElement>;
 

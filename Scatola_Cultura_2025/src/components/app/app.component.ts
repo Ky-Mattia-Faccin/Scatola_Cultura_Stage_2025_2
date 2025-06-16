@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { Struttura } from '../../interfaces/Istruttura';
 import {  Observable} from 'rxjs';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { HttpClient } from '@angular/common/http';
+import {  slideAnimation } from './route-transition';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,NavBarComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations:[slideAnimation]
 })
 export class AppComponent {
 
@@ -29,7 +31,8 @@ export class AppComponent {
   strutture: Struttura[] = [];
 
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
-  constructor(private httpClient: HttpClient) {}
+  //iniezione del servizio ActivatedRoute per conoscere la rotta attiva (utilizzato per l'animazione)
+  constructor(private httpClient: HttpClient, protected route:ActivatedRoute) {}
 
   /*
    * OnInit:

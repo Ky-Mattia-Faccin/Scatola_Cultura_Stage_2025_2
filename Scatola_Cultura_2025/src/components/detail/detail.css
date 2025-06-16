@@ -401,7 +401,6 @@
   left: 50%;
   transform: translateX(-50%);
 
-  
   background-color: #000;
   color: white;
 
@@ -423,26 +422,21 @@
 .card4:hover .tooltip {
   opacity: 1;
   transform: translateX(-50%) translateY(-5px);
-
 }
 
 .card1:hover .tooltip {
-  
   background-color: #cc39a4;
 }
 
 .card2:hover .tooltip {
-  
   background-color: #8c9eff;
 }
 
 .card3:hover .tooltip {
-
   background-color: #d83f3f;
 }
 
 .card4:hover .tooltip {
-
   background-color: #1ad81a;
 }
 
@@ -513,14 +507,14 @@
     padding: 1em;
 
     flex-direction: column;
-    max-height: 40%;
+    max-height: 50%;
 
     align-items: center;
   }
 
   .sc-detail-center-img {
-    max-width: 80%;
-    max-height: 40%;
+    max-width: 90%;
+    max-height: 60%;
   }
 
   .sc-detail-center-desc {
@@ -564,8 +558,8 @@
   .card2,
   .card3,
   .card4 {
-    width: 30%;
-    height: 60%;
+    width: 52%;
+    height: 70%;
 
     outline: none;
     border: none;
@@ -582,12 +576,26 @@
     align-items: center;
     justify-content: center;
   }
+  .up,
+  .down {
+    height: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5%;
+  }
 
   .instagram,
-  .twitter,
+  .facebook
   .card3 svg,
   .card4 svg {
-    height: 60%;
-    width: 60%;
+    height: 80%;
+    width: 80%;
+  }
+  .facebook{
+    height: 70%;
+    width: 70%;
   }
 }
