@@ -274,6 +274,96 @@
   opacity: 0;
  }
 
+/* card in caso di nessuna struttura trovata*/
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 85vw;
+  width: 25vw;
+  padding: 1rem 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #1c9cd9; 
+  border-radius: 25px;
+  border: 2px solid white; 
+
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: center;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card .desc {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.card .actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.card .reset {
+  padding: 0.5rem 1.25rem;
+
+  border-radius: 25px;
+  
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+
+
+.content {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+
+.card .reset:hover {
+  background-color: #ffffff40;
+  border-color: #ffffff99;
+  box-shadow: 0 6px 16px #0000004d;
+
+  transform: scale(1.03);
+}
+
+
+
+
+
+
+
+
+
+
 /*responsive*/
 @media (max-width: 768px) {
   /*contenitore di tutta la pagina*/

@@ -1,14 +1,12 @@
-
 import { CommonModule } from '@angular/common';
-import { OnInit } from '@angular/core';
+import { OnInit, ViewChild } from '@angular/core';
 import { StrutturaService } from '../../services/struttura.service';
 import { FiltriComponent } from '../filtri/filtri.component';
-import { Component,OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { TextimgTsService } from '../../services/textimg.service';
-
 
 @Component({
   standalone: true,
@@ -18,7 +16,6 @@ import { TextimgTsService } from '../../services/textimg.service';
   styleUrl: './homepage.css',
 })
 export class Homepage implements OnInit {
-
   // michael: Iniezione del servizio per la gestione del filtro di ricerca
   //simone:  Iniezione del servizio per la geststione del booleano per la descrizione
   constructor(
@@ -36,12 +33,19 @@ export class Homepage implements OnInit {
   // Valore corrente del filtro testuale (ricerca)
   filtro!: string;
 
+  //flag per capire se non sono stati trovati musei
+  flgTrovati: boolean = true;
 
   // Filtri selezionati dai componenti figli
-
   FiltriDisabilita: string[] = [];
   FiltriTipi: string[] = [];
   FiltriProvince: string[] = [];
+
+
+  //componente dei filtri
+  @ViewChild(FiltriComponent)  filtriComponent!:FiltriComponent
+
+
 
   /** Michael
    * ngOnInit:
@@ -50,7 +54,7 @@ export class Homepage implements OnInit {
    * - si iscrive al filtro testuale (navbar)
    */
   ngOnInit(): void {
-     // Carica eventuali filtri salvati precedentemente
+    // Carica eventuali filtri salvati precedentemente
     const savedFilters = sessionStorage.getItem('filtri');
     if (savedFilters) {
       const parsed = JSON.parse(savedFilters);
@@ -59,43 +63,39 @@ export class Homepage implements OnInit {
       this.FiltriProvince = parsed.province || [];
       this.filtro = parsed.filtroTestuale || '';
     }
-        // Carica strutture da sessionStorage o fa chiamata API se vuoto
+    // Carica strutture da sessionStorage o fa chiamata API se vuoto
     this.checkSessionStorage();
 
-
-     // Si iscrive ai cambiamenti del filtro testuale (search bar)
+    // Si iscrive ai cambiamenti del filtro testuale (search bar)
     this.searchFilter.filtroRicerca$.subscribe((value) => {
       this.filtro = value;
       this.applySearchFilter();
     });
 
     //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
-    this.textService.isDescriptionActive$.subscribe(value=>{
-      this.isDescriptionActive=value;
-    })
+    this.textService.isDescriptionActive$.subscribe((value) => {
+      this.isDescriptionActive = value;
+    });
   }
-
 
   //simone
   //creazione del booleano
-  isDescriptionActive:boolean=false;
+  isDescriptionActive: boolean = false;
 
   //al cambiamento del checkbox se false non deve mostare la descrizione altrimenti al passaggio sopra una immagine (hover) deve inviare il valore
-  toggleMenu(){
-    const dropDownImg  = document.querySelector('.sc-homepage-card-img-text');
+  toggleMenu() {
+    const dropDownImg = document.querySelector('.sc-homepage-card-img-text');
     dropDownImg?.classList.toggle('hidden');
   }
 
-
-   /**
-    * Michael
+  /**
+   * Michael
    * Metodo chiamato quando l’utente clicca "Applica Filtri"
    * - Salva i filtri su sessionStorage
    * - Chiama l’API per ottenere solo le strutture corrispondenti ai filtri
    */
   filtraStrutture(): void {
-
-     // Salva i filtri applicati su sessionStorage
+    // Salva i filtri applicati su sessionStorage
     sessionStorage.setItem(
       'filtri',
       JSON.stringify({
@@ -106,23 +106,7 @@ export class Homepage implements OnInit {
       })
     );
 
-    /*
-    const filtriVuoti =
-      this.FiltriDisabilita.length === 0 &&
-      this.FiltriTipi.length === 0 &&
-      this.FiltriProvince.length === 0;
-
-    if (filtriVuoti) {
-      const struttureJSON = sessionStorage.getItem('strutture');
-      if (struttureJSON) {
-        this.strutture = JSON.parse(struttureJSON);
-        this.applySearchFilter();
-        return;
-      }
-    }
-    */
-
-       // Chiamata API con i filtri correnti
+    // Chiamata API con i filtri correnti
 
     this.servizioStruttura
       .getStruttureFiltrate(
@@ -134,12 +118,14 @@ export class Homepage implements OnInit {
         next: (s) => {
           if (s.length === 0) {
             // Nessun risultato trovato
-            window.alert('Nessuna struttura con questi filtri trovata');
+            this.flgTrovati = false;
           } else {
-               // Strutture trovate, le salva e applica il filtro testuale
+            // Strutture trovate, le salva e applica il filtro testuale
             this.strutture = s;
             sessionStorage.setItem('strutture', JSON.stringify(s));
             this.applySearchFilter();
+
+            this.flgTrovati = true;
           }
         } /* gestione errore */,
         error: (err) => {
@@ -159,10 +145,10 @@ export class Homepage implements OnInit {
    */
   private applySearchFilter() {
     if (!this.filtro) {
-       // Se il filtro è vuoto, mostra tutte le strutture
+      // Se il filtro è vuoto, mostra tutte le strutture
       this.struttureFiltrate = this.strutture;
     } else {
-          // Altrimenti filtra per nome (case insensitive)
+      // Altrimenti filtra per nome (case insensitive)
       const filtroLower = this.filtro.toLowerCase();
       this.struttureFiltrate = this.strutture.filter((s) =>
         s.nomeStruttura.toLowerCase().includes(filtroLower)
@@ -170,7 +156,6 @@ export class Homepage implements OnInit {
     }
   }
 
-  
   /**
    * Michael
    * Controlla se esistono strutture in sessionStorage:
@@ -179,16 +164,15 @@ export class Homepage implements OnInit {
    * Tutto viene poi filtrato in base al testo cercato.
    */
   private checkSessionStorage() {
-
     const struttureJSON = sessionStorage.getItem('strutture');
 
-    if (struttureJSON && struttureJSON!=='[]') {
-       // Strutture già presenti: le carica
+    if (struttureJSON && struttureJSON !== '[]') {
+      // Strutture già presenti: le carica
       this.strutture = JSON.parse(struttureJSON);
-      this.struttureFiltrate = this.strutture;  
+      this.struttureFiltrate = this.strutture;
       this.applySearchFilter();
     } else {
-         // Nessuna struttura salvata: chiama l’API
+      // Nessuna struttura salvata: chiama l’API
       this.servizioStruttura.getStrutture().subscribe({
         next: (s) => {
           this.strutture = s;
@@ -207,18 +191,23 @@ export class Homepage implements OnInit {
     }
   }
 
-
   //flag per la visualizzazione della selezione dei filtri in mobile
-  flgFiltriMobile=false
+  flgFiltriMobile = false;
 
   /*metodo per visualizzare la selezione dei filtri in mobile
-  * aggiunge la classe hidden ai filtri
-  */
-  toggleMobileFilters(){
-
-    const contenitoreFiltri=document.querySelector('.sc-homepage-filter');
+   * aggiunge la classe hidden ai filtri
+   */
+  toggleMobileFilters() {
+    const contenitoreFiltri = document.querySelector('.sc-homepage-filter');
     contenitoreFiltri?.classList.toggle('hiddenMobile');
   }
+
+  resetFiltri() {
+  this.filtriComponent.resetFilters()
+  this.checkSessionStorage();
+}
+
+
 
 }
 /*
@@ -227,5 +216,3 @@ toggleMenu() {
     dropDownMenu?.classList.toggle('hidden');
   }
 */
-
-
