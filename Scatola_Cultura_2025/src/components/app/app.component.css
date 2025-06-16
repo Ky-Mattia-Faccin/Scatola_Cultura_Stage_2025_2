@@ -20,5 +20,5 @@ html, body {
   flex-direction: column;
 
   background-size: cover;
-  background-image: url(../../assets/sc-background.webp);
+  background-image: url(../../assets/sc-background-blurred.png);
 }

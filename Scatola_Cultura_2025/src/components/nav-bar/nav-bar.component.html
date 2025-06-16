@@ -5,8 +5,9 @@
     <img src="" alt="Logo 3" class="logo" aria-hidden="true" />
   </div>
 
-  <div class="sc-navbar-search-container">
+  <div   class="sc-navbar-search-container">
     <input
+    *ngIf="showSearch"
       type="text"
       placeholder="Cerca..."
       class="sc-navbar-search-input"
@@ -14,18 +15,18 @@
     />
   </div>
 
-  <div class="sc-navbar-home" routerLink="/homepage">
-    <a>Home</a>
+  <div class="sc-navbar-home sc-navbar-button" routerLink="/homepage">
+    <span><a>Home</a></span>
   </div>
 
   <div class="sc-navbar-dropdown-wrapper">
     <div
-      class="sc-navbar-dropdown-button"
+      class="sc-navbar-dropdown-button sc-navbar-button"
       (click)="toggleMenu()"
       role="button"
       tabindex="0"
     >
-      Accessibilità
+      <span>Accessibilità</span>
     </div>
     <div class="sc-navbar-dropdown-menu hidden">
       <!-- Brightness slider -->
@@ -88,6 +89,7 @@
             class="level"
             min="14"
             max="40"
+            value="14"
             [(ngModel)]="fontSize"
             [value]="fontSize"
             (input)="textSizeChange($event)"
