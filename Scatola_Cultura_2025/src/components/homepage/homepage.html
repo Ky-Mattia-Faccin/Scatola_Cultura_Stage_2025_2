@@ -1,7 +1,5 @@
 <div class="sc-homepage-start">
-  <div class="sc-homepage-blur">
     <div class="sc-homepage-filter-container">
-      <!-- Bottone mobile per mostrare/nascondere i filtri -->
       <div class="mobileButton">
         <svg
           aria-hidden="true"
@@ -19,7 +17,6 @@
         </svg>
       </div>
 
-      <!-- Filtri, visibili solo se abilitati -->
       <div class="sc-homepage-filter hiddenMobile" [class.hiddenMobile]="!flgFiltriMobile">
         <app-filtri
           (DisabilitaSelected)="FiltriDisabilita = $event"
@@ -29,7 +26,6 @@
       </div>
     </div>
 
-    <!-- Lista strutture filtrate -->
     <div
       class="sc-homepage-musei-container"
     >
@@ -43,7 +39,7 @@
           <img [src]="'https://via.placeholder.com/300'" alt="{{ item.nomeStruttura }}" width="300" />
         </div>
 
-        <!-- Breve descrizione se abilitata -->
+
         <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">
           <span>{{item.DidascaliaImmagine}}</span>
         </div>
@@ -52,9 +48,8 @@
           <span>{{ item.nomeStruttura }}</span>
         </div>
         <div class="sc-homepage-card-info">
-          <!-- Info aggiuntive opzionali -->
+
         </div>
       </div>
     </div>
-  </div>
 </div>

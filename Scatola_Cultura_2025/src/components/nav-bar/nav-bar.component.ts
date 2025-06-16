@@ -1,24 +1,26 @@
-import { Component, EventEmitter, HostListener, OnChanges, Output, SimpleChanges, ViewChild,Input } from '@angular/core';
+
+import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { SearchFilterService } from '../../services/search-filter.service';
-import { Router, RouterLink } from '@angular/router';
-
+import { NavigationEnd, Router, RouterLink, Event as RouterEvent } from '@angular/router';
 import { TextimgTsService } from '../../services/textimg.service';
+import { CommonModule } from '@angular/common';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink,CommonModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })
-export class NavBarComponent{
-  constructor(
-    public searchService:SearchFilterService,
-    private textService:TextimgTsService
-  ){}
 
-  //michael
+export class NavBarComponent implements OnInit{
+  constructor(public searchService:SearchFilterService, private textService:TextimgTsService, private router:Router){}
+  
+
+  //========michael=========0
 
    // Valore della luminosità impostato tramite slider
   brightness!: number;
@@ -44,6 +46,10 @@ export class NavBarComponent{
   // Testo inserito dall'utente nel campo input della barra di ricerca
   FiltroInput!: string;
 
+    // Variabile di bind in template, controlla visibilità della search bar
+   showSearch:Boolean= true;
+
+
    /*
    * - Gestisce l’evento di input della barra di ricerca
    * - Recupera il valore digitato
@@ -64,6 +70,18 @@ export class NavBarComponent{
   toggleMenu() {
     const dropDownMenu = document.querySelector('.sc-navbar-dropdown-menu');
     dropDownMenu?.classList.toggle('hidden');
+  }
+
+  //nasconde o mostra la barra di ricerca in base alla rotta attiva
+  ngOnInit(): void {
+    this.router.events
+      .pipe(
+        filter((event: RouterEvent): event is NavigationEnd => event instanceof NavigationEnd)
+      )
+      .subscribe((event: NavigationEnd) => {
+        const url = event.urlAfterRedirects;
+        this.showSearch = !url.startsWith('/detail/');
+      });
   }
 
 

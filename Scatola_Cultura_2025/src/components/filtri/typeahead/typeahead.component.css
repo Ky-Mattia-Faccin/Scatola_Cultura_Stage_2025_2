@@ -1,6 +1,6 @@
 /* Container principale del select personalizzato */
 .select {
-  width: fit-content;
+  width: 18vw;
 
   cursor: pointer;
   color: #ffffff;
@@ -187,6 +187,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-content: flex-start;
 
   width: 100%;
 }

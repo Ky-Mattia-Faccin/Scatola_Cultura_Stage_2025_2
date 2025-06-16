@@ -1,4 +1,3 @@
-
 /* ====== NAVBAR PRINCIPALE ====== */
 
 .sc-navbar {
@@ -17,15 +16,13 @@
 }
 
 /* Spazio per il logo e relativo layout */
-.sc-navbar-logo-space{
+.sc-navbar-logo-space {
   height: 8vh;
   width: 10vw;
   display: flex;
   align-items: center;
-  justify-content:space-between ;
+  justify-content: space-between;
 }
-
-
 
 /* Contenitore della barra di ricerca */
 .sc-navbar-search-container {
@@ -39,23 +36,19 @@
   align-items: center;
 }
 
-
-
 /* Input per la barra di ricerca */
 .sc-navbar-search-input {
   background-color: #f3f4f6;
-
 
   width: 98%;
   height: 50%;
 
   padding: 1%;
-  
+
   border-radius: 2em;
   border: solid #d1d5db;
   transition: border-color 0.5s;
 }
-
 
 /* Stile dell’input quando attivo */
 .sc-navbar-search-input:focus {
@@ -66,41 +59,78 @@
   box-shadow: 0 0 0.2em #3b82f640;
 }
 
-
 /* Contenitore per il link alla home */
 .sc-navbar-home {
-  background-color: #f9f9f9;
+
+  width: 10%;
+}
+
+/* stile dei bottoni*/
+.sc-navbar-button {
+  position: relative;
+
+  overflow: hidden;
 
   height: 70%;
-  width: 10%;
+  
+  font-size: clamp(16px, 16px, 24px);
+  font-style: normal;
+
+
+  color: #2b2a2a;
+  background-color: white;
+
+  border: 2px solid #00b9ee;
+   border-radius: 2em;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   cursor: pointer;
-  border:2px solid #00b9ee;
-  border-radius: 2em;
+}
+
+.sc-navbar-button::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+   width: 100%;
+   height: 100%;
+
+  border-radius: inherit; 
+
+  background: #00b9ee;
+
+  transform: scaleX(0);
+   transform-origin: 0 50%;
+
+   transition: all 0.475s;
+   z-index: 0;
+}
+
+.sc-navbar-button:hover{
+  color:white;
+}
+
+.sc-navbar-button:hover::before{
+  transform: scaleX(1);
+}
+
+.sc-navbar-button span{
+  z-index: 1;
 }
 
 
-/* Link testuale per la home */
-.sc-navbar-home a {
-  font-style: normal;
-  color: black;
-  text-decoration: none;
-  transition: color 0.5s;
-}
 
-.sc-navbar-home:hover {
-  background-color: #00b9ee;
-}
-.sc-navbar-home:hover a{
-  color: white;
-}
+
+
+
+
+
 
 /* Wrapper per il pulsante a discesa */
-
 .sc-navbar-dropdown-wrapper {
   height: 100%;
   width: 10%;
@@ -111,32 +141,9 @@
   position: relative;
 }
 
-
 /* Bottone del menu a discesa */
 .sc-navbar-dropdown-button {
-  background-color: #f3f4f6;
-
-  cursor: pointer;
-
-  height: 70%;
   width: 100%;
-
-  border-radius: 2em;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: background-color 0.3s;
-
-  border:2px solid #00b9ee;
-
-}
-
-.sc-navbar-dropdown-button:hover {
-  transform: translateY(-5%);
-  background-color: #00b9ee;
-  color:white;
 }
 
 
@@ -148,7 +155,7 @@
 
   width: 100%;
 
-  background-color:#00b9ee;
+  background-color: #00b9ee;
 
   border: 0.2em solid #ffffff;
   border-radius: 5%;
@@ -164,10 +171,9 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-
-.sc-navbar-dropdown-menu>span {
+.sc-navbar-dropdown-menu > span {
   padding: 6% 10%;
-  /* font-size: 90%; */
+
   color: #1f2937;
 
   cursor: pointer;
@@ -176,10 +182,8 @@
   display: flex;
 }
 
-
 .sc-navbar-dropdown-menu span:hover {
   background-color: #fafafa;
-
 
   color: #2563eb;
 
@@ -187,13 +191,12 @@
 
   border-left: 3% solid #2563eb;
 }
-.sc-navbar-dropdown-menu span:hover > .slider{
+.sc-navbar-dropdown-menu span:hover > .slider {
   --level-color: #00b9ee;
 }
-.sc-navbar-dropdown-menu span:hover label>label{
+.sc-navbar-dropdown-menu span:hover label > label {
   border: #323232 solid 1px;
 }
-
 
 /* Nascondi elementi */
 
@@ -201,13 +204,12 @@
   display: none;
 }
 
-.sc-navbar-logo-space img{
+.sc-navbar-logo-space img {
   height: 50%;
   width: 40%;
 }
 
 /*===== menu accessibilita===*/
-
 
 .slider {
   /* slider */
@@ -217,7 +219,7 @@
   --slider-border-radius: 999px;
   /* level */
   --level-color: #ffffff;
-  --level-transition-duration: .1s;
+  --level-transition-duration: 0.1s;
   /* icon */
   --icon-margin: 15px;
   --icon-color: var(--slider-bg);
@@ -241,13 +243,10 @@
   align-items: center;
 }
 
-
 /* Icona */
-.slider svg{
+.slider svg {
   margin-right: 15%;
 }
-
-
 
 /* Contenitore dell’icona */
 .slider .volume {
@@ -260,7 +259,6 @@
 
   height: auto;
 }
-
 
 /* Slider */
 .slider .level {
@@ -296,10 +294,8 @@
   box-shadow: -200px 0 0 200px var(--level-color);
 }
 
-
 /* Effetto hover: slider più spesso */
 .slider:hover .level {
-
   height: calc(var(--slider-height) * 2);
 }
 
@@ -316,12 +312,10 @@
   }
 }
 
-
-
 .label {
 
-  height: 1.5vh;
-  width: 6.5vw;
+  height: 2.5vh;
+  width: 6vw;
 
 
   background-color: #ffffff;
@@ -335,8 +329,6 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-
-
 
   cursor: pointer;
 
@@ -361,14 +353,10 @@
   display: none;
 }
 
-
 .selector:checked ~ .label::before {
-
   left: 4vw;
   
   background-color: #00f74e;
-
-
 
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -377,7 +365,7 @@
 .label::before {
   position: absolute;
   left: 0vw;
-  
+
   content: "";
 
   height: 12px;
@@ -386,7 +374,6 @@
   background-color: #ff0000;
 
   left: 0.1vw;
-
 
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -428,38 +415,42 @@
 
 
 @media (max-width: 768px) {
-  
-  .sc-navbar{
+  .sc-navbar {
     width: 98%;
   }
-  .sc-navbar-dropdown-wrapper{
+  .sc-navbar-dropdown-wrapper {
     width: 25%;
   }
-  .sc-navbar-logo-space{
+  .sc-navbar-logo-space {
     width: 20%;
   }
-  .sc-navbar-search-input{
+  .sc-navbar-search-input {
     width: 70%;
   }
-  .label{
+  .label {
     width: 50px;
   }
-  #selector:checked ~ .label::before{
-    left:40px;
+  #selector:checked ~ .label::before {
+    left: 35px;
   }
-  .label::before{
-    left:0px;
+  .label::before {
+    left: 0px;
   }
 
-  .sc-navbar-dropdown-menu{
+  .sc-navbar-home{
+    width: 15vw;
+  }
+
+
+  .sc-navbar-dropdown-menu {
     width: 160%;
   }
-  .sc-navbar-dropdown-menu .label{
-  width: 100px;
-  height: 25px;
+  .sc-navbar-dropdown-menu .label {
+    width: 100px;
+    height: 25px;
 
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
