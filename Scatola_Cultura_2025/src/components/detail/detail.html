@@ -19,11 +19,12 @@
           <img src="https://picsum.photos/seed/picsum/200/300" alt="(to-do)" />
         </div>
         <div class="sc-detail-center-desc-img" *ngIf="isDescriptionActive">
-          <span>Questa è una rapida descrizione</span>
+          <span>{{this.struttura.DidascaliaImmagine}}</span>
         </div>
         <div class="sc-detail-center-desc">
           <app-detail-testo
             [testo]="this.struttura.descrizione"
+            [testoSemplificato]="this.struttura.TestoSemplificato"
             class="sc-detail-testo"
             (zoomClicked)="toggleZoom($event)"
             tabindex="0"

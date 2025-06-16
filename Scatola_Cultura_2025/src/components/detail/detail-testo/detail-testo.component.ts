@@ -23,6 +23,9 @@ export class DetailTestoComponent implements OnChanges {
   // Input: testo da visualizzare nel componente
   @Input() testo: string = '';
 
+  // Input : testo semplificato da visualizzzare nel componenete
+  @Input () testoSemplificato : string  = '';
+
   // Input: struttura per cui mostrare eventuali dati di accessibilità/disabilità
   @Input() struttura: Struttura | null = null;
 

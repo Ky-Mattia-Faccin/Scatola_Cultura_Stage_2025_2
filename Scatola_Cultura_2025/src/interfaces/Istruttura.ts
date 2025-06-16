@@ -9,5 +9,7 @@ export interface Struttura {
   ambito: string;
   disabilita:[
     {categoria:string, descrizione:string}
-  ]
+  ];
+  DidascaliaImmagine:string;
+  TestoSemplificato:string;
 }
