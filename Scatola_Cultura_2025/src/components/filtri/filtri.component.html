@@ -1,5 +1,6 @@
 <div class="sc-filters-container">
   <div class="sc-filters">
+    
     <app-typeahead
       #disabilitaComp
       nomeFiltro="Disabilita"
@@ -7,6 +8,7 @@
       [Array$]="DatiDisabilita"
       (ArrayChecked)="setDisabilitaSelected($event)"
     ></app-typeahead>
+
     <app-typeahead
       #tipoComp
       nomeFiltro="Tipo"
@@ -14,6 +16,7 @@
       [Array$]="DatiTipo"
       (ArrayChecked)="setTipiSelected($event)"
     ></app-typeahead>
+
     <app-typeahead
       #provinciaComp
       nomeFiltro="Province"
