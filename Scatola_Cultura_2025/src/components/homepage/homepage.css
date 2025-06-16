@@ -10,7 +10,6 @@
   max-width: 100vw;
   max-height: 93vh;
 
-  background-image: url("../../assets/sc-background.webp");
   background-size: cover;
 }
 /*sfuocata del schermo figlio che permette di vedere la foto*/
@@ -22,8 +21,6 @@
   flex-direction: column;
   align-items: center;
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 /*contenitore dei filtri*/
 .sc-homepage-filter-container {

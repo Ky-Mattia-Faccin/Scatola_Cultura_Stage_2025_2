@@ -16,10 +16,6 @@
 
   overflow: hidden;
   box-sizing: border-box;
-
-  /* Immagine di sfondo della pagina */
-  background-image: url("../../assets/sc-background.webp");
-  background-size: cover;
 }
 /*blur della immagine*/
 .sc-detail-blur {
@@ -32,9 +28,6 @@
 
   overflow: hidden;
   box-sizing: border-box;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 /* Contenitore interno con card bianca */
