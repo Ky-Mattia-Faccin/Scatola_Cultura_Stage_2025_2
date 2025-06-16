@@ -22,13 +22,13 @@ export const slideAnimation=trigger('slideTransition', [
     group([
 
       query(':leave', [
-        animate('600ms ease', style({ transform: 'translateX(-100%)', opacity: 0 }))
+        animate('450ms ease', style({ transform: 'translateY(-100%)', opacity: 0 }))
       ], { optional: true }),
 
 
       query(':enter', [
-        style({ transform: 'translateX(100%)', opacity: 0 }),
-        animate('600ms ease', style({ transform: 'translateX(0)', opacity: 1 }))
+        style({ transform: 'translateY(100%)', opacity: 0 }),
+        animate('600ms ease', style({ transform: 'translateY(0)', opacity: 1 }))
       ], { optional: true })
     ])
   ])
