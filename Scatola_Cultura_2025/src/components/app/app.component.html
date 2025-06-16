@@ -3,5 +3,7 @@
   (brightnessChanged)="brightness=$event; applyFilter()"
   (contrastChanged)="contrast=$event; applyFilter()"
   ></app-nav-bar>
-  <router-outlet></router-outlet>
+  <div [@slideTransition]="route.snapshot.data" style="display: contents;">
+    <router-outlet></router-outlet>
+  </div>
 </div>

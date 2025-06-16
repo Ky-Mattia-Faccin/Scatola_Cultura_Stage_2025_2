@@ -18,6 +18,7 @@ import { TextimgTsService } from '../../services/textimg.service';
   imports: [RouterModule, RouterLink, CommonModule, DetailTestoComponent, HttpClientModule],
   templateUrl: './detail.html',
   styleUrls: ['./detail.css'],
+  
 })
 export class Detail implements OnInit {
 
