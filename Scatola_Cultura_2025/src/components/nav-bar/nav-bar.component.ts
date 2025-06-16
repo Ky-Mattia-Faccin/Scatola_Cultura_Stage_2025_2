@@ -1,9 +1,21 @@
 
-import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { SearchFilterService } from '../../services/search-filter.service';
-import { NavigationEnd, Router, RouterLink, Event as RouterEvent } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  Event as RouterEvent,
+} from '@angular/router';
 import { TextimgTsService } from '../../services/textimg.service';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
@@ -11,26 +23,31 @@ import { filter } from 'rxjs';
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [FormsModule, RouterLink,CommonModule],
+  imports: [FormsModule, RouterLink, CommonModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })
+export class NavBarComponent implements OnInit {
+  constructor(
+    public searchService: SearchFilterService,
+    private textService: TextimgTsService,
+    private router: Router
+  ) {}
 
-export class NavBarComponent implements OnInit{
-  constructor(public searchService:SearchFilterService, private textService:TextimgTsService, private router:Router){}
-  
 
   //========michael=========0
 
-   // Valore della luminosità impostato tramite slider
+  // Valore della luminosità impostato tramite slider
   brightness!: number;
 
-   // Valore del contrasto impostato tramite slider
+  // Valore del contrasto impostato tramite slider
   contrast!: number;
 
   //Valore attuale del textsize : Simone
 
+
   fontSize : number=14;
+
 
 
 
@@ -41,18 +58,15 @@ export class NavBarComponent implements OnInit{
   // Output: emette il nuovo valore di contrasto per il componente genitore
   @Output() contrastChanged = new EventEmitter<number>();
 
-
   // Iniezione del servizio SearchFilterService per aggiornare il filtro di ricerca
-
 
   // Testo inserito dall'utente nel campo input della barra di ricerca
   FiltroInput!: string;
 
-    // Variabile di bind in template, controlla visibilità della search bar
-   showSearch:Boolean= true;
+  // Variabile di bind in template, controlla visibilità della search bar
+  showSearch: Boolean = true;
 
-
-   /*
+  /*
    * - Gestisce l’evento di input della barra di ricerca
    * - Recupera il valore digitato
    * - Invia il filtro aggiornato al servizio condiviso
@@ -63,8 +77,7 @@ export class NavBarComponent implements OnInit{
     this.searchService.setSearchFilter(target.value);
   }
 
-
-   /*
+  /*
    * - Mostra o nasconde il menu a discesa (dropdown)
    * - Agisce sull'elemento con classe ‘sc-navbar-dropdown-menu’
    * - Aggiunge/rimuove la classe 'hidden' per gestire la visibilità
@@ -78,7 +91,10 @@ export class NavBarComponent implements OnInit{
   ngOnInit(): void {
     this.router.events
       .pipe(
-        filter((event: RouterEvent): event is NavigationEnd => event instanceof NavigationEnd)
+        filter(
+          (event: RouterEvent): event is NavigationEnd =>
+            event instanceof NavigationEnd
+        )
       )
       .subscribe((event: NavigationEnd) => {
         const url = event.urlAfterRedirects;
@@ -86,13 +102,13 @@ export class NavBarComponent implements OnInit{
       });
   }
 
-
   //=====SIMONE======//
 
   //valore attuale della descrizione per la didascalia delle immagini
   isDescriptionActive: boolean = false;
-  onCheck(){
-    this.isDescriptionActive=!this.isDescriptionActive;
+  
+  onCheck() {
+    this.isDescriptionActive = !this.isDescriptionActive;
     this.textService.triggerChange(this.isDescriptionActive);
   }
 
@@ -100,19 +116,18 @@ export class NavBarComponent implements OnInit{
    * Simone
    * evento lanciato al cambiamento del checkbox, cambia il font da normale a OpenDyslexic, da dropdown Accessibilità
    * se false lascia quello normale
-   * se true imposta il font OpenDyslexic ovunque tramite "styles.css" dalla variabile --fontName 
+   * se true imposta il font OpenDyslexic ovunque tramite "styles.css" dalla variabile --fontName
    * variabili utilizzate:
    *  - isFontActive: boolean = impostato a false, controlla quando il checkbox va a cambiare il valore
    *  - --fontName:va a impostare su styles.css il font scelto
    */
-  
-  isFontActive : boolean = false;
-  onFontCheck(){
-    this.isFontActive=!this.isFontActive;
-    if(this.isFontActive===true)
-      document.documentElement.style.setProperty('--fontName','OpenDyslexic');
-    else
-      document.documentElement.style.setProperty('--fontName','Verdana');
+
+  isFontActive: boolean = false;
+  onFontCheck() {
+    this.isFontActive = !this.isFontActive;
+    if (this.isFontActive === true)
+      document.documentElement.style.setProperty('--fontName', 'OpenDyslexic');
+    else document.documentElement.style.setProperty('--fontName', 'Verdana');
   }
 
   /**
@@ -120,12 +135,12 @@ export class NavBarComponent implements OnInit{
    * Evento lanciato al cambiamento del checkbox, cambia il il testo normale a un test più corto e semplice, da dropdown Accessibilità
    * se false lascia il testo normale
    * altrimenti se true imposta il testo semplificato
-   * variabili utilizzate : 
+   * variabili utilizzate :
    *  -isTextSemplifiedActive : boolean = impostato a false, controlla quando il checkbox va a cambiare il valore
    */
-  isTextSemplifiedActive : boolean = false;
-  onTextSimplifiedCheck(){
-    this.isTextSemplifiedActive=!this.isTextSemplifiedActive;
+  isTextSemplifiedActive: boolean = false;
+  onTextSimplifiedCheck() {
+    this.isTextSemplifiedActive = !this.isTextSemplifiedActive;
     this.textService.textSemplifiedChange(this.isTextSemplifiedActive);
   }
 
@@ -135,7 +150,9 @@ export class NavBarComponent implements OnInit{
    * Ottiene il valore e lo imposta sulla variabile CSS: "--font-size"
    */
   textSizeChange(event: Event): void {
-    document.documentElement.style.setProperty('--fontSize', this.fontSize.toString() + 'px');
+    document.documentElement.style.setProperty(
+      '--fontSize',
+      this.fontSize.toString() + 'px'
+    );
   }
-
 }

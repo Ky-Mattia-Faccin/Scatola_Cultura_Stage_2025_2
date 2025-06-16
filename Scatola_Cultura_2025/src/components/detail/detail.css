@@ -353,7 +353,7 @@
 .card2:hover {
   cursor: pointer;
   scale: 1.1;
-  background-color: #8c9eff;
+  background-color: #3f59ee;
 }
 
 .card2:hover .facebook {
@@ -394,7 +394,7 @@
   left: 50%;
   transform: translateX(-50%);
 
-  background-color: #000;
+  background-color:transparent;
   color: white;
 
   padding: 0.4em 0.8em;
@@ -422,7 +422,7 @@
 }
 
 .card2:hover .tooltip {
-  background-color: #8c9eff;
+  background-color: #3f59ee;
 }
 
 .card3:hover .tooltip {
