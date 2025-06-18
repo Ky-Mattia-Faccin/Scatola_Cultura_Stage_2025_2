@@ -42,6 +42,7 @@
       <div class="sc-homepage-card-img">
         <img
           [src]="'https://via.placeholder.com/300'"
+          (error)="onImageError($event)"
           alt="{{ item.nomeStruttura }}"
           aria-hidden="true"
           width="300"
