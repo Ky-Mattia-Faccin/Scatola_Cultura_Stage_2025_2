@@ -17,12 +17,14 @@
 
 /* Spazio per il logo e relativo layout */
 .sc-navbar-logo-space {
-  height: 8vh;
-  width: 10vw;
+  height: 10vh;
+  width: auto; /* puoi anche usare 100% o una larghezza fissa */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem; /* questo aggiunge spazio tra i loghi */
+  padding: 0 1rem; /* opzionale: spazio interno ai lati */
 }
+
 
 /* Contenitore della barra di ricerca */
 .sc-navbar-search-container {
