@@ -12,11 +12,10 @@
 
   background-size: cover;
 
-      display: flex
-;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 /*contenitore dei filtri*/
@@ -64,21 +63,13 @@
   overflow: hidden;
 
   background-color:#1C9CD9;
-
-
  
   border-radius: 25px;
 
   border:2px solid white;
 
-
-  transition: 350ms;
-  margin-bottom: 2%;
-
   overflow: hidden;
 
-  box-sizing: border-box;
-  background-color: #1c9cd9;
 
   display: flex;
   flex-direction: column;
