@@ -24,8 +24,7 @@ export class AppComponent {
 
   // Valori dei filtri di luminosità e contrasto (di default 100%), valore di text size (Default:18)
   brightness: number = 100;
-  contrast: number = 100;
-  textsize: number = 18;
+  contrast: number = 100; 
 
   // Array per contenere le strutture caricate dal file JSON/localStorage
   strutture: Struttura[] = [];
