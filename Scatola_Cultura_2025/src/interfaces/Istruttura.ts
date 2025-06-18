@@ -7,9 +7,19 @@ export interface Struttura {
   provincia: string;
   via: string;
   ambito: string;
+  social1:string;
+  social2:string;
+  posizione:string;
+  sitoWeb:string;
+  testoSemplificato:string;
+  flgDisabilita:boolean;
+  immagine:{
+    nomeImmagine:string;
+    byteImmagine:number;
+    didascaliaImmagine:string;
+  };
+  immagineUrl?:string;
   disabilita:[
     {categoria:string, descrizione:string}
   ];
-  DidascaliaImmagine:string;
-  TestoSemplificato:string;
 }

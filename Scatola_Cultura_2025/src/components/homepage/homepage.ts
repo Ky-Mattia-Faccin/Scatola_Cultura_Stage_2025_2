@@ -54,6 +54,7 @@ export class Homepage implements OnInit {
    * - si iscrive al filtro testuale (navbar)
    */
   ngOnInit(): void {
+    
     // Carica eventuali filtri salvati precedentemente
     const savedFilters = sessionStorage.getItem('filtri');
     if (savedFilters) {
@@ -206,6 +207,14 @@ export class Homepage implements OnInit {
   this.filtriComponent.resetFilters()
   this.checkSessionStorage();
 }
+
+  /**
+   * Simone
+   */
+  iconClick(){
+    const contPartner = document.querySelector('.sc-homepage-partner-info') as HTMLElement;
+    contPartner?.classList.toggle('hidden');
+  }
 }
 /*
 toggleMenu() {

@@ -13,6 +13,7 @@ export class StrutturaService {
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
   constructor(private httpClient: HttpClient) {}
 
+  strutture: Struttura[] = [];
   /**
    * Recupera tutte le strutture dal backend.
    * Endpoint: /api/DisabilitaStruttura/get
@@ -22,14 +23,14 @@ export class StrutturaService {
   getStrutture(): Observable<Struttura[]> {
     return this.httpClient
       .get<Struttura[]>(
-        ' https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get'
-      )
-      .pipe(
+        //' https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get'
+        'http://192.168.123.150:5000/api/DisabilitaStruttura/get'
+      ).pipe(
         catchError((error) => {
           console.error('Errore nel recupero delle strutture:', error);
           return of([]); // Ritorna un array vuoto in caso di errore
         })
-      );
+      )
   }
 
   /*
@@ -78,7 +79,8 @@ export class StrutturaService {
   ): Observable<Struttura[]> {
     //http://localhost:5000/api/DisabilitaStruttura/get?Disabilita=nuovo&Disabilita=nuovo1
 
-    let url = ` https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get?`;
+    let url = 'http://192.168.123.150:5000/api/DisabilitaStruttura/get'; 
+    //` https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get?`;
 
     // Aggiunge i parametri della query per ogni filtro selezionato (con encoding)
     if (FiltriDisabilita?.length > 0 && !!FiltriDisabilita)
