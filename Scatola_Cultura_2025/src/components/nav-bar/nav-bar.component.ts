@@ -19,6 +19,7 @@ import {
 import { TextimgTsService } from '../../services/textimg.service';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-nav-bar',
@@ -31,7 +32,8 @@ export class NavBarComponent implements OnInit {
   constructor(
     public searchService: SearchFilterService,
     private textService: TextimgTsService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
 
 
@@ -154,5 +156,31 @@ export class NavBarComponent implements OnInit {
       '--fontSize',
       this.fontSize.toString() + 'px'
     );
+  }
+
+  /**
+   * Simone
+   * quando viene premuto il pulsante Manuale CAA passa per qui per prende il file;
+   * crea il file nella nuova scheda aprendolo;
+   * e gli mette come nome nella tab in alto il nome Manuale CAA
+   */
+   openManual() {
+    this.http.get('assets/CAA.pdf', { responseType: 'blob' }).subscribe(blob => {
+      const fileURL = URL.createObjectURL(blob);
+
+      const newWindow = window.open();
+      if (newWindow) {
+        const html = `
+          <html>
+            <head><title>Manuale CAA</title></head>
+            <body style="margin:0">
+              <iframe src="${fileURL}" frameborder="0" style="width:100vw;height:100vh;"></iframe>
+            </body>
+          </html>
+        `;
+        newWindow.document.write(html);
+        newWindow.document.close();
+      }
+    });
   }
 }
