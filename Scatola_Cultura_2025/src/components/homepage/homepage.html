@@ -1,4 +1,30 @@
 <div class="sc-homepage-start">
+  <div 
+    (click)="iconClick()"
+    role="button"
+    tabindex="0"
+    class="sc-homepage-partner-info-svg"
+  >
+    <svg
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        width="30px"
+        height="30px"
+        class="sc-homepage-icon"
+        
+      >
+        <path
+          fill="white"
+          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+        ></path>
+    </svg>
+    <div class="sc-homepage-partner-info hidden">
+      <img src="../../assets/logo1.png" alt="Logo 1" class="logo" aria-hidden="true" />
+      <img src="../../assets/kymos.png" alt="Logo 2" class="logo" aria-hidden="true" />
+      <img src="../../assets/autismoveneto.png" alt="Logo 3" class="logo" aria-hidden="true" />
+    </div>
+  </div>
   <div class="sc-homepage-filter-container">
     <div class="mobileButton">
       <svg
@@ -40,20 +66,15 @@
       role="button"
     >
       <div class="sc-homepage-card-img">
-        <img
-          [src]="'https://via.placeholder.com/300'"
-          alt="{{ item.nomeStruttura }}"
-          aria-hidden="true"
-          width="300"
-        />
+        <img [src]="'data:image/jpeg;base64,' + item.immagine?.byteImmagine"  alt="{{ item.nomeStruttura }}" style="max-width:200px;"/>
       </div>
 
       <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">
-        <span>{{item.DidascaliaImmagine}}</span>
+        <span>{{item.immagine.didascaliaImmagine}}</span>
       </div>
 
       <div class="sc-homepage-card-title">
-        <span>{{ item.nomeStruttura }}</span>
+        <span>{{item.nomeStruttura}}</span>
       </div>
       <div class="sc-homepage-card-info"></div>
     </div>
