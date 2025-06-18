@@ -16,7 +16,7 @@
 
       <div class="sc-detail-center">
         <div class="sc-detail-center-img">
-          <img src="https://picsum.photos/seed/picsum/200/300" alt="(to-do)" />
+          <img src="" alt="(to-do)"  (error)="onImageError($event)"/>
         </div>
         <div class="sc-detail-center-desc-img" *ngIf="isDescriptionActive">
           <span>{{this.struttura.DidascaliaImmagine}}</span>

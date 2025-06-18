@@ -137,6 +137,10 @@ export class Detail implements OnInit {
   }
 
 
+  onImageError(event: Event): void {
+    const target = event.target as HTMLImageElement;
+    target.src = 'assets/placeholder.jpg'; 
+  }
 
 
 }
