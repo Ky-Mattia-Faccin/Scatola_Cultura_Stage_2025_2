@@ -150,8 +150,8 @@
 .sc-homepage-card-img-text {
   /* display: none; */
   /* font-size: 1.05em; */
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   opacity: 0;
   overflow: hidden;
   color: transparent;
@@ -173,7 +173,7 @@
   height: 80%;
   max-height: 80%;
   opacity: 1;
-  padding: 15px;
+  padding: 2vh;
 
   top: 50%;
   left: 50%;
@@ -194,7 +194,7 @@
   height: 80%;
   max-height: 80%;
   opacity: 1;
-  padding: 15px;
+  padding: 2vh;
 
   top: 50%;
   left: 50%;
@@ -552,8 +552,8 @@
   }
 
   .mobileButton .arrow {
-    width: 20px;
-    height: 20px;
+    width: 2vh;
+    height: 2vh;
   }
 
   .sc-homepage-filter {
