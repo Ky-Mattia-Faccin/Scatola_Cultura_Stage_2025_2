@@ -229,6 +229,8 @@
 
 .sc-navbar-dropdown-menu > span {
   padding: 6% 10%;
+  padding-top: 0px;
+  padding-bottom: 0px;
 
   color: #1f2937;
 
@@ -263,6 +265,34 @@
 .sc-navbar-logo-space img {
   height: 10vh;
   width: 8vw;
+}
+
+/*===Più/ Meno Slider===*/
+
+.sc-navbar-button-range{
+  display: flex;
+  padding-left: 3.2vw;
+  padding-right: 1.5vw;
+  justify-content: space-between;
+  height: 5px;
+  z-index: 9999;
+  margin-bottom: 3%;
+}
+
+.sc-navbar-button-range input[type="range"] {
+  flex: 1;
+}
+
+.sc-navbar-button-range button {
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  height: 12px;
+
+  border: none;
+  background-color: #00b9ee;
 }
 
 /*===== menu accessibilita===*/
@@ -302,6 +332,7 @@
 /* Icona */
 .slider svg {
   margin-right: 15%;
+  
 }
 
 /* Contenitore dell’icona */
@@ -369,7 +400,7 @@
 }
 
 .label {
-
+  margin-top:1%;
   height: 2.5vh;
   width: 6vw;
 
