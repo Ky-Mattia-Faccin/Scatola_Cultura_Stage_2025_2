@@ -66,7 +66,7 @@
     >
       <div class="sc-homepage-card-img">
         <img  [src]="
-    item.immagine?.byteImmagine
+    item.immagine.byteImmagine
       ? 'data:image/jpeg;base64,' + item.immagine.byteImmagine
       : 'assets/placeholder.png'
   "  alt="{{ item.nomeStruttura }}" style="max-width:29%; max-height: auto;"/>

@@ -199,14 +199,14 @@
   align-items: center;
   flex-direction: column;
 
-  width: 10vw;
-  max-width: 10vw;
-  height: 14vh;
-  max-height: 14vh;
+  width: 15vw;
+  max-width: 15vw;
+  height: 17vh;
+  max-height: 17vh;
   opacity: 1;
   padding: 15px;
 
-  top: 37.5vh;
+  top: 38vh;
   left: 16.5vw;
   transform: translate(-50%, -50%);
 
@@ -224,14 +224,14 @@
     justify-content: center;
     align-items: center;
     
-    width: 10vw;
-    max-width: 10vw;
-    height: 14vh;
-    max-height: 14vh;
+    width: 15vw;
+    max-width: 15vw;
+    height: 17vh;
+    max-height: 17vh;
     opacity: 1;
     padding: 15px;
     
-    top: 37.5vh;
+    top: 38vh;
     left: 16.5vw;
     
     transform: translate(-50%, -50%);
