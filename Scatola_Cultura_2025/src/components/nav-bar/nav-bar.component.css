@@ -385,7 +385,7 @@
 }
 
 .selector:checked ~ .label::before {
-  left: 4vw;
+  left: 3.8vw;
   
   background-color: #00f74e;
 
@@ -399,8 +399,8 @@
 
   content: "";
 
-  height: 12px;
-  width: 12px;
+  height: 1.5vh;
+  width: 1.5vh;
   border-radius: 50%;
   background-color: #ff0000;
 
@@ -462,15 +462,31 @@
     width: 18vw;
     height: 10vh;
   }
-  .label {
-    width: 50px;
+
+  .sc-navbar-dropdown-menu .label {
+    width: 25vw;
+    height: 2vh;
+
+    margin-left: auto;
+    margin-right: auto;
   }
+
+  .label {
+    width: 100%;
+  }
+
   .selector:checked ~ .label::before {
     left: 15vw;
   }
-  .label::before {
-    left: 0px;
+  label .label::before {
+    left: 0;
   }
+
+  
+  .selector:checked ~ .label::before {
+     left: 16.5vw ;
+  }
+  
 
   .sc-navbar-home{
     width: 15vw;

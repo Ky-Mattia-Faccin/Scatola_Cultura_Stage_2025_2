@@ -121,5 +121,8 @@
     height: 10vh;
   }
 
-  
+  .filters-button-apply,.filters-button-reset{
+    width: 100%;
+    height: 17%;
+  }
 }
