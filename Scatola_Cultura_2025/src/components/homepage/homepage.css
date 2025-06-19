@@ -23,7 +23,6 @@
   top: 10px;      /* o quanto vuoi dal top */
   right: 10px;    /* o 0 per estrema destra */
   z-index: 1000;
-
   cursor: pointer;
 }
 
@@ -119,8 +118,6 @@
 
   border:2px solid white;
 
-  overflow: hidden;
-
 
   display: flex;
   flex-direction: column;
@@ -143,7 +140,7 @@
   width: 0px;
   height: 0px;
   opacity: 0;
-
+  overflow: hidden;
   color: transparent;
 }
 /*hover sulla immagine*/
@@ -152,14 +149,16 @@
   justify-content: center;
   align-items: center;
 
+  overflow: hidden;
+  
   background-color: white;
   color: black; 
   transition: 350ms;
 
   width: 80%;
   max-width: 80%;
-  height: 40%;
-  max-height: 40%;
+  height: 80%;
+  max-height: 80%;
   opacity: 1;
   padding: 15px;
 
@@ -179,8 +178,8 @@
 
   width: 80%;
   max-width: 80%;
-  height: 40%;
-  max-height: 40%;
+  height: 80%;
+  max-height: 80%;
   opacity: 1;
   padding: 15px;
 
@@ -194,6 +193,8 @@
 
   position: absolute;
   transition: 450ms;
+
+  overflow: hidden;
 }
 
 /*configurazione titolo immagine*/
