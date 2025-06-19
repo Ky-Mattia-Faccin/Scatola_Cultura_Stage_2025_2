@@ -213,8 +213,24 @@
   justify-content: center;
   height: 20vh;
   align-items: center;
-  /* font-size: var(--font-size); */
+  text-align: center;
 }
+
+
+.sc-homepage-card-title span {
+  display: -webkit-box; /* Necessario per il clamping */
+
+  -webkit-box-orient: vertical;/* Imposta orientamento verticale */
+
+  overflow: hidden;/* Nasconde il testo in eccesso */
+
+  text-overflow: ellipsis;/* Mostra i "..." alla fine */
+
+  -webkit-line-clamp: 2;/* Limita a 2 righe */
+
+  max-height: calc(1.2em * 2);/* Altezza massima per 2 righe */
+}
+
 
 
 

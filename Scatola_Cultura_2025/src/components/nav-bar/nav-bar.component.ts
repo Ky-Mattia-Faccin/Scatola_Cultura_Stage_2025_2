@@ -48,7 +48,7 @@ export class NavBarComponent implements OnInit {
   //Valore attuale del textsize : Simone
 
 
-  fontSize : number=14;
+  fontSize : number=20;
 
 
 
