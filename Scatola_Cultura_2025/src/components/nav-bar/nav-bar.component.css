@@ -231,6 +231,7 @@
   padding: 6% 10%;
   padding-top: 0px;
   padding-bottom: 0px;
+  margin-top: 3%;
 
   color: #1f2937;
 
@@ -238,6 +239,7 @@
 
   transition: background-color 0.3s, color 0.3s;
   display: flex;
+  
 }
 
 .sc-navbar-dropdown-menu span:hover {
@@ -480,7 +482,7 @@
   background-color: #000;
   color: white;
 
-  padding: 0.4em 0.8em;
+  right: 2vw;
   border-radius: 12px;
   font-size: 0.75em;
   white-space: nowrap;
