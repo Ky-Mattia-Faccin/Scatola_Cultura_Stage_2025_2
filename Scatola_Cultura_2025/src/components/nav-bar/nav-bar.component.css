@@ -548,5 +548,22 @@
   .sc-navbar-buttonCAA{
     padding:0px;
   }
+  .sc-navbar-button-range{
+  display: flex;
+  padding-left: 8vw;
+  justify-content: space-around;
+  height: 5px;
+  z-index: 9999;
+  margin-bottom: 3%;
+  }
+
+  .tooltip {
+    display: none;
+    visibility: hidden;
+    overflow: hidden;
+  }
+  .hidden{
+    display: none;
+  }
 }
 
