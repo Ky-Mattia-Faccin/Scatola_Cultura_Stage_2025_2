@@ -45,7 +45,7 @@ ngOnInit(): void {
         ...s,
         immagineUrl: s.immagine?.byteImmagine
           ? `data:image/jpeg;base64,${s.immagine.byteImmagine}`
-          : '../assets/placeholder.jpg' // oppure puoi usare un URL placeholder qui
+          : '' // oppure puoi usare un URL placeholder qui
       }));
 
       // Se vuoi salvare i dati nel localStorage per usi futuri:
