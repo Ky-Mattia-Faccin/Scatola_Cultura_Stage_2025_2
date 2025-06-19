@@ -186,11 +186,12 @@ export class NavBarComponent implements OnInit {
 
 /**
  * Simone
- * quando vengono cliccati i pulsanti sopra allo slider in base a quale viene premuto aumenta il valore o diminuisce di quella variabile
+ * quando vengono cliccati i pulsanti sopra allo slider in base a quale viene premuto chiamata questo metodo con il nome della proprietà e con il valore da aggiungere, min e max
+ * aumenta il valore o diminuisce in base a quale proprietà viene passata
  * se brightness : aumenta di 10 o diminuisce di 10 la luminosità della pagina
  * se contrast : aumenta di 10 o diminuisce di 10 il contrasto
  * se textSize: aumenta di 2 o diminuisce di 2 la grandezza dei testi
- * Passa il valore amibato all'output emitter
+ * Passa il valore cambiato all'output emitter se brightness o contrast altrimenti al --fontSize sullo styles.css generale
  */
   changeValue(
     property: 'brightness'| 'contrast' | 'fontSize',
