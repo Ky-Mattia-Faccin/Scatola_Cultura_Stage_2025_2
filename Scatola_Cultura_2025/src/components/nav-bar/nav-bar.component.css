@@ -18,10 +18,9 @@
 /* Spazio per il logo e relativo layout */
 .sc-navbar-logo-space {
   height: 10vh;
-  width: auto; /* puoi anche usare 100% o una larghezza fissa */
+  width: 15%; /* puoi anche usare 100% o una larghezza fissa */
   display: flex;
   align-items: center;
-  gap: 1rem; /* questo aggiunge spazio tra i loghi */
 }
 
 
@@ -262,7 +261,7 @@
 }
 
 .sc-navbar-logo-space img {
-  height: 50%;
+  height: 60%;
   width: 40%;
 }
 

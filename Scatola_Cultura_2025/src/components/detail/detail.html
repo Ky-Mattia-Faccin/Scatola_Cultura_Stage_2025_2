@@ -16,7 +16,7 @@
 
       <div class="sc-detail-center">
         <div class="sc-detail-center-img">
-          <img src="https://picsum.photos/seed/picsum/200/300" alt="(to-do)"/>
+          <img [src]="'data:image/jpeg;base64,' + this.struttura.immagine.byteImmagine"  alt="{{ this.struttura.nomeStruttura }}"/>
         </div>
         <div class="sc-detail-center-desc-img" *ngIf="isDescriptionActive">
           <span>{{this.struttura.immagine.didascaliaImmagine}}</span>
