@@ -210,10 +210,17 @@ export class Homepage implements OnInit {
 
   /**
    * Simone
+   * quando viene premuta la icona svg della freccia apre un menu con all'interno i partner e quando viene ripremuta chiude la finestra;
+   * quando vine premuta la icona si gira di 180° e quando viene premuta per uscire ritorna a 90°.
    */
   iconClick(){
     const contPartner = document.querySelector('.sc-homepage-partner-info') as HTMLElement;
     contPartner?.classList.toggle('hidden');
+
+    const icon = document.querySelector('.sc-homepage-icon');
+    if (icon) {
+      icon.classList.toggle('rotated');
+    }
   }
 }
 /*

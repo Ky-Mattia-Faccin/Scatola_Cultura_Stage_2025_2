@@ -12,10 +12,9 @@
         width="30px"
         height="30px"
         class="sc-homepage-icon"
-        
       >
         <path
-          fill="white"
+          fill="red"
           d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
         ></path>
     </svg>
@@ -66,7 +65,7 @@
       role="button"
     >
       <div class="sc-homepage-card-img">
-        <img [src]="'data:image/jpeg;base64,' + item.immagine?.byteImmagine"  alt="{{ item.nomeStruttura }}" style="max-width:200px;"/>
+        <img [src]="'data:image/jpeg;base64,' + item.immagine.byteImmagine"  alt="{{ item.nomeStruttura }}" style="max-width:300px;"/>
       </div>
 
       <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">

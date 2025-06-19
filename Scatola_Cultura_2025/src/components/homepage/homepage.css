@@ -25,22 +25,21 @@
   z-index: 1000;
 
   cursor: pointer;
-
 }
 
 .sc-homepage-icon{
   transform: rotate(90deg);
+  transition: transform 0.3s ease;
   position: absolute;
   top: 10px;      /* o quanto vuoi dal top */
   right: 10px;    /* o 0 per estrema destra */
-  z-index: 1000;
-
+  z-index: 9999;
 }
 
 .sc-homepage-partner-info{
   position: absolute;
   top: 120%;
-  transform:translate(-40vw,0);
+  transform:translate(-41vw,0);
 
   width: 40vw;
   height: 90vh;
@@ -63,6 +62,12 @@
   height: 10%;
   width: 25%;
 }
+
+.sc-homepage-icon.rotated {
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease;
+}
+
 
 /*contenitore dei filtri*/
 .sc-homepage-filter-container {
