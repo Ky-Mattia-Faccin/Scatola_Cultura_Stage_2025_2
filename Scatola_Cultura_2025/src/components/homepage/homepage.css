@@ -31,7 +31,7 @@
   transform: rotate(90deg);
   transition: transform 0.3s ease;
   position: absolute;
-  top: 10px;      /* o quanto vuoi dal top */
+  top: 450px;      /* o quanto vuoi dal top */
   right: 10px;    /* o 0 per estrema destra */
   z-index: 9999;
 }
@@ -105,7 +105,7 @@
 /*css di ogni museo*/
 .sc-homepage-museo-card {
   width: 25vw;
-  height: 47%;
+  height: 45vh;
 
 
   transition: 350ms;
@@ -131,30 +131,19 @@
   display: flex;
 
   justify-content: flex-start;
-  width: 26.5vw;
 
-  height: 22vh;
-  max-width: 26.5vw;
-  max-height: 22vh;
 }
 /*configurazione dell'immagine*/
 .sc-homepage-card-img img {
   object-fit: cover;
 
-  width: 26.5vw;
-  height: 22vh;
-  max-width: 26.5vw;
-  max-height: 22vh;
+
 }
 
 /*configurazione div delle immagini*/
 .sc-homepage-card-img div {
   overflow: hidden;
 
-  width: 26.5vw;
-  height: 22vh;
-  max-width: 26.5vw;
-  max-height: 22vh;
 }
 /*configurazione della descrizione*/
 .sc-homepage-card-img-text {
@@ -229,26 +218,6 @@
 
 
 
-/*css di ogni museo*/
-.sc-homepage-museo-card {
-  border-radius: 5%;
-
-  display: flex;
-  flex-direction: column;
-
-  width: 26vw;
-  height: 40vh;
-
-  transition: 350ms;
-
-  box-sizing: border-box;
-
-  margin-bottom : 7%;
-  margin-left: 2vw;
-
-  overflow: hidden;
-  cursor: pointer;
-}
 
 
 /*configurazione div delle immagini*/
