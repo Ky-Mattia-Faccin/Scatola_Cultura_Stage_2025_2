@@ -40,10 +40,10 @@ export class NavBarComponent implements OnInit {
   //========michael=========0
 
   // Valore della luminosità impostato tramite slider
-  brightness!: number;
+  brightness: number = 100;
 
   // Valore del contrasto impostato tramite slider
-  contrast!: number;
+  contrast: number = 100;
 
   //Valore attuale del textsize : Simone
 
@@ -183,6 +183,15 @@ export class NavBarComponent implements OnInit {
       }
     });
   }
+
+/**
+ * Simone
+ * quando vengono cliccati i pulsanti sopra allo slider in base a quale viene premuto aumenta il valore o diminuisce di quella variabile
+ * se brightness : aumenta di 10 o diminuisce di 10 la luminosità della pagina
+ * se contrast : aumenta di 10 o diminuisce di 10 il contrasto
+ * se textSize: aumenta di 2 o diminuisce di 2 la grandezza dei testi
+ * Passa il valore amibato all'output emitter
+ */
 increaseBrightness() {
   this.brightness = Math.min(150, this.brightness + 10);
   this.brightnessChanged.emit(this.brightness);
@@ -192,6 +201,27 @@ decreaseBrightness() {
   this.brightness = Math.max(50, this.brightness - 10);
   this.brightnessChanged.emit(this.brightness);
 }
+increaseContrast() {
+  this.contrast = Math.min(150, this.contrast + 10);
+  this.contrastChanged.emit(this.contrast);
+}
 
-
+decreaseContrast() {
+  this.contrast = Math.max(50, this.contrast - 10);
+  this.contrastChanged.emit(this.contrast);
+}
+increaseTextSize(){
+  this.fontSize = Math.min(40, this.fontSize + 2);
+  document.documentElement.style.setProperty(
+      '--fontSize',
+      this.fontSize.toString() + 'px'
+    );
+}
+decreaseTextSize(){
+  this.fontSize = Math.max(14, this.fontSize - 2);
+  document.documentElement.style.setProperty(
+      '--fontSize',
+      this.fontSize.toString() + 'px'
+    );
+}
 }
