@@ -121,68 +121,10 @@
 .sc-navbar-button span{
   z-index: 1;
 }
-
-
 .sc-navbar-buttonCAA{
-  position: relative;
-
-  overflow: hidden;
-
-  width: 100%;
-  height: 70%;
-  padding: 1vh 1vw;
-  
-  font-size: clamp(16px, 16px, 24px);
-  font-style: normal;
-
-
-  color: #2b2a2a;
-  background-color: white;
-
-  border: 2px solid #00b9ee;
-   border-radius: 2em;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  cursor: pointer;
+  height: 4vh;
+  width: 8vw;
 }
-
-.sc-navbar-buttonCAA::before{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-
-   width: 100%;
-   height: 100%;
-
-  border-radius: inherit; 
-
-  background: #00b9ee;
-
-  transform: scaleX(0);
-   transform-origin: 0 50%;
-
-   transition: all 0.475s;
-   z-index: 0;
-}
-
-.sc-navbar-buttonCAA:hover{
-  color:white;
-}
-
-.sc-navbar-buttonCAA:hover::before{
-  transform: scaleX(1);
-}
-
-.sc-navbar-buttonCAA span{
-  z-index: 1;
-}
-
-
-
 
 /* Wrapper per il pulsante a discesa */
 .sc-navbar-dropdown-wrapper {
