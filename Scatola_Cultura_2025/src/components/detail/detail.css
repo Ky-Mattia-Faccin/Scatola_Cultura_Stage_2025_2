@@ -191,6 +191,9 @@
   opacity: 0;
 
   color: transparent;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 /*hover sulla immagine*/
 .sc-detail-center-img:hover ~ .sc-detail-center-desc-img {
@@ -199,15 +202,15 @@
   align-items: center;
   flex-direction: column;
 
-  width: 15vw;
-  max-width: 15vw;
-  height: 17vh;
-  max-height: 17vh;
+  width: 20vw;
+  max-width: 20vw;
+  height: 25vh;
+  max-height: 25vh;
   opacity: 1;
   padding: 15px;
 
   top: 38vh;
-  left: 16.5vw;
+  left: 18vw;
   transform: translate(-50%, -50%);
 
 
@@ -217,6 +220,9 @@
 
   position: absolute;
   transition: 350ms;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 /*hover sul testo*/
 .sc-detail-center-desc-img:hover {
@@ -224,15 +230,15 @@
     justify-content: center;
     align-items: center;
     
-    width: 15vw;
-    max-width: 15vw;
-    height: 17vh;
-    max-height: 17vh;
+    width: 20vw;
+    max-width: 20vw;
+    height: 25vh;
+    max-height: 25vh;
     opacity: 1;
     padding: 15px;
     
     top: 38vh;
-    left: 16.5vw;
+    left: 18vw;
     
     transform: translate(-50%, -50%);
     background-color: white;
@@ -241,6 +247,9 @@
     
     position: absolute;
     transition: 450ms;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 /* ===== FOOTER ===== */
