@@ -519,8 +519,8 @@
   .label {
     width: 50px;
   }
-  #selector:checked ~ .label::before {
-    left: 35px;
+  .selector:checked ~ .label::before {
+    left: 15vw;
   }
   .label::before {
     left: 0px;
