@@ -23,13 +23,13 @@
     <div class="sc-navbar-dropdown-menu hidden">
       <!-- Brightness slider -->
       <div class="sc-navbar-button-range">
-        <button type="button" class="buttonminor" (click)="decreaseBrightness()" aria-label="Diminuisci luminosità">
+        <button type="button" class="buttonminor" (click)="changeValue('brightness', -10, 50, 150)" aria-label="Diminuisci luminosità">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash"
             viewBox="0 0 16 12">
             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
           </svg>
         </button>
-        <button type="button" class="buttonplus" (click)="increaseBrightness()" aria-label="Aumenta luminosità">
+        <button type="button" class="buttonplus" (click)="changeValue('brightness', 10, 50, 150)" aria-label="Aumenta luminosità">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus"
             viewBox="0 0 16 12">
             <path
@@ -53,13 +53,13 @@
 
       <!-- Contrast slider -->
        <div class="sc-navbar-button-range">
-        <button type="button" class="buttonminor" (click)="decreaseContrast()" aria-label="Diminuisci luminosità">
+        <button type="button" class="buttonminor" (click)="changeValue('contrast', -10, 50, 150)" aria-label="Diminuisci contrasto">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash"
             viewBox="0 0 16 12">
             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
           </svg>
         </button>
-        <button type="button" class="buttonplus" (click)="increaseContrast()" aria-label="Aumenta luminosità">
+        <button type="button" class="buttonplus" (click)="changeValue('contrast', 10, 50, 150)" aria-label="Aumenta contrasto">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus"
             viewBox="0 0 16 12">
             <path
@@ -80,13 +80,13 @@
 
       <!-- Font size slider -->
        <div class="sc-navbar-button-range">
-        <button type="button" class="buttonminor" (click)="decreaseTextSize()" aria-label="Diminuisci luminosità">
+        <button type="button" class="buttonminor" (click)="changeValue('fontSize', -2, 14, 40)" aria-label="Diminuisci grandezza testo">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash"
             viewBox="0 0 16 12">
             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
           </svg>
         </button>
-        <button type="button" class="buttonplus" (click)="increaseTextSize()" aria-label="Aumenta luminosità">
+        <button type="button" class="buttonplus" (click)="changeValue('fontSize', 2, 14, 40)" aria-label="Aumenta grandezza testo">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus"
             viewBox="0 0 16 12">
             <path

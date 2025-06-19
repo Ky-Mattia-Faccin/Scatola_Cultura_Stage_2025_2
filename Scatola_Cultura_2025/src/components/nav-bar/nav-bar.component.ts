@@ -192,36 +192,33 @@ export class NavBarComponent implements OnInit {
  * se textSize: aumenta di 2 o diminuisce di 2 la grandezza dei testi
  * Passa il valore amibato all'output emitter
  */
-increaseBrightness() {
-  this.brightness = Math.min(150, this.brightness + 10);
-  this.brightnessChanged.emit(this.brightness);
-}
+  changeValue(
+    property: 'brightness'| 'contrast' | 'fontSize',
+    valueToAdd : number,
+    min : number,
+    max : number,
+    onChange?: (value: number) => void
+  ){
+    this[property]=Math.min(max, Math.max(min, this[property] +valueToAdd));
 
-decreaseBrightness() {
-  this.brightness = Math.max(50, this.brightness - 10);
-  this.brightnessChanged.emit(this.brightness);
-}
-increaseContrast() {
-  this.contrast = Math.min(150, this.contrast + 10);
-  this.contrastChanged.emit(this.contrast);
-}
+    if(onChange){
+      onChange(this[property])
+    }
 
-decreaseContrast() {
-  this.contrast = Math.max(50, this.contrast - 10);
-  this.contrastChanged.emit(this.contrast);
-}
-increaseTextSize(){
-  this.fontSize = Math.min(40, this.fontSize + 2);
-  document.documentElement.style.setProperty(
-      '--fontSize',
-      this.fontSize.toString() + 'px'
-    );
-}
-decreaseTextSize(){
-  this.fontSize = Math.max(14, this.fontSize - 2);
-  document.documentElement.style.setProperty(
-      '--fontSize',
-      this.fontSize.toString() + 'px'
-    );
-}
+    switch (property) {
+    case 'brightness':
+      this.brightnessChanged.emit(this.brightness);
+      break;
+    case 'contrast':
+      this.contrastChanged.emit(this.contrast);
+      break;
+    case 'fontSize':
+      document.documentElement.style.setProperty(
+        '--fontSize',
+        this.fontSize + 'px'
+      );
+      break;
+   }
+  }
+
 }
