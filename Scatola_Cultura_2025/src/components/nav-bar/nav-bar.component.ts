@@ -183,4 +183,15 @@ export class NavBarComponent implements OnInit {
       }
     });
   }
+increaseBrightness() {
+  this.brightness = Math.min(150, this.brightness + 10);
+  this.brightnessChanged.emit(this.brightness);
+}
+
+decreaseBrightness() {
+  this.brightness = Math.max(50, this.brightness - 10);
+  this.brightnessChanged.emit(this.brightness);
+}
+
+
 }
