@@ -133,18 +133,9 @@
   justify-content: flex-start;
 
 }
-/*configurazione dell'immagine*/
-.sc-homepage-card-img img {
-  object-fit: cover;
 
 
-}
 
-/*configurazione div delle immagini*/
-.sc-homepage-card-img div {
-  overflow: hidden;
-
-}
 /*configurazione della descrizione*/
 .sc-homepage-card-img-text {
   /* display: none; */
@@ -238,12 +229,11 @@
 
 
 /*configurazione div delle immagini*/
-.sc-homepage-card-img div{
+.sc-homepage-card-img{
   overflow: hidden;
+  object-fit: contain;
 
-  min-width: 80vw;
-  min-height: 30vh;
-  max-width: 80vw;
+  min-width: 25vw;
   max-height: 30vh;
 }
 
@@ -260,25 +250,10 @@
   cursor : pointer
 }
 
-
-/*div della immagine*/
-.sc-homepage-card-img{
-  display: flex;
-  justify-content: flex-start;
-
-  width: 90vw;
-  height: 30vh;
-  max-width: 90vw;
-  max-height: 30vh;
-
-}
-
 /*configurazione dell'immagine*/
 .sc-homepage-card-img img{
-  object-fit: cover;
-  max-width: 90vw;
-  max-height: 30vh;
-  width:90vw;
+  object-fit:cover;
+  width: 100%;
 }
 
 
@@ -422,9 +397,55 @@
     padding-bottom: 3vh;
   }
 
-  .sc-homepage-blur {
-    align-items: flex-start;
+  .sc-homepage-partner-info-svg{
+    position: absolute;
+
+    top: 10px;      /* o quanto vuoi dal top */
+    z-index: 1000;
+
+    cursor: pointer;
   }
+
+  .sc-homepage-icon{
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+
+    position: absolute;
+
+    top: 300px; 
+    z-index: 9999;
+  }
+
+  .sc-homepage-partner-info{
+  position: absolute;
+  transform:translate(-100vw,0);
+
+  width: 100vw;
+  height: 90vh;
+
+  background-color: #ffffff;
+
+  border: 0.2em solid #ffffff;
+  border-radius: 5%;
+  box-shadow: 0 0.6em 1.2em rgba(0, 0, 0, 0.1);
+
+  padding: 2% 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  z-index: 1000;
+}
+.sc-homepage-partner-info img{
+  height: 10%;
+  width: 25%;
+}
+
+.sc-homepage-icon.rotated {
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease;
+}
 
   /*contenitore di tutti i musei*/
   .sc-homepage-musei-container {
@@ -463,15 +484,12 @@
     overflow: hidden;
     cursor: pointer;
   }
+  
+  
 
   /*configurazione div delle immagini*/
   .sc-homepage-card-img div {
     overflow: hidden;
-
-    min-width: 80vw;
-    min-height: 30vh;
-    max-width: 80vw;
-    max-height: 30vh;
   }
 
   /*animazione dell'intero museo, immagine e testo*/
@@ -489,19 +507,12 @@
   .sc-homepage-card-img {
     display: flex;
     justify-content: flex-start;
-
-    width: 90vw;
-    height: 30vh;
-    max-width: 90vw;
-    max-height: 30vh;
   }
 
   /*configurazione dell'immagine*/
   .sc-homepage-card-img img {
     object-fit: cover;
-    max-width: 90vw;
-    max-height: 30vh;
-    width: 90vw;
+
   }
 
   /*configurazione titolo immagine*/
@@ -541,5 +552,8 @@
     display: none;
   }
 
+  .hidden{
+  display: none;
+}
 }
 

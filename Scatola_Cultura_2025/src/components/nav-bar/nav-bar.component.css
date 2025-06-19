@@ -516,6 +516,10 @@
   .sc-navbar-search-input {
     width: 70%;
   }
+  .sc-navbar-logo-space img{
+    width: 18vw;
+    height: 10vh;
+  }
   .label {
     width: 50px;
   }
