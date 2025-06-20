@@ -20,28 +20,33 @@
 
 .sc-homepage-partner-info-svg{
   position: absolute;
-  top: 10px;      /* o quanto vuoi dal top */
-  right: 10px;    /* o 0 per estrema destra */
-  z-index: 1000;
+  
+  width: 0.5%;
+  height: 80%;
+  top: 12%;
+  right: 2px;
+  
   cursor: pointer;
+  
+  border-radius: 15px;
+  background-color: #ffffff;
 }
 
 .sc-homepage-icon{
   transform: rotate(90deg);
   transition: transform 0.3s ease;
   position: absolute;
-  top: 475px;      /* o quanto vuoi dal top */
-  right: 10px;    /* o 0 per estrema destra */
+  top: 300px;     
   z-index: 9999;
 }
 
 .sc-homepage-partner-info{
   position: absolute;
-  top: 120%;
+  top:0%;
   transform:translate(-41vw,0);
 
   width: 40vw;
-  height: 90vh;
+  height: 75vh;
 
   background-color: #ffffff;
 
