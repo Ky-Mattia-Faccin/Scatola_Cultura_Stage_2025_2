@@ -476,15 +476,10 @@
   }
 
   .selector:checked ~ .label::before {
-    left: 15vw;
+    left: 16.5vw;
   }
   label .label::before {
     left: 0;
-  }
-
-  
-  .selector:checked ~ .label::before {
-     left: 16.5vw ;
   }
   
 
