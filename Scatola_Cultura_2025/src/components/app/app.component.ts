@@ -35,61 +35,6 @@ export class AppComponent {
   constructor(private httpClient: HttpClient, protected route:ActivatedRoute,private servizioStruttura:StrutturaService) {}
 
   /*
-   * OnInit:
-   * - Carica le strutture dal localStorage
-  */
-ngOnInit(): void {
-  this.servizioStruttura.getStrutture()
-    .subscribe(data => {
-      this.strutture = data.map(s => ({
-        ...s,
-        immagineUrl: s.immagine?.byteImmagine
-          ? `data:image/jpeg;base64,${s.immagine.byteImmagine}`
-          : '' // oppure puoi usare un URL placeholder qui
-      }));
-
-      // Se vuoi salvare i dati nel localStorage per usi futuri:
-      localStorage.setItem('strutture', JSON.stringify(data));
-    });
-
-
-    
-    
-    /*subscribe(dati => {
-      this.strutture = dati;
-      this.strutture = dati.map(s => ({
-          ...s,
-          immagineUrl: s.immagine?.byteImmagine
-            ? `data:image/jpeg;base64,${s.immagine.byteImmagine}`
-            : '../assets/placeholder.jpg';
-        }));
-        console.log
-
-      // Serializzazione in JSON e salvataggio nel localStorage
-      const strutturaJson = JSON.stringify(this.strutture);
-      if (strutturaJson != null)
-        localStorage.setItem('strutture', strutturaJson);
-    });
-*/
-  }
-  /*
-  .subscribe(data => {
-        this.strutture = data.map(s => ({
-          ...s,
-          immagineUrl: s.immagine?.byteImmagine
-            ? `data:image/jpeg;base64,${s.immagine.byteImmagine}`
-            : ''  // o una immagine placeholder se vuoi
-        }));
-      })*/
-
-  // Metodo per ottenere le strutture dal file JSON locale
-  /*.3s
-  getStrutture(): Observable<Struttura[]> {
-    return this.httpClient.get<Struttura[]>('http://192.168.123.150:5000/api/DisabilitaStruttura/get');
-  }*/
-
-
-  /*
    * Applica i filtri di luminosità e contrasto alla pagina:
    * - Seleziona l'elemento con classe 'sc-pagina'
    * - Imposta i valori CSS filter in base ai controlli utente
