@@ -17,7 +17,7 @@
       <div class="sc-detail-center">
         <div class="sc-detail-center-img">
           <img [src]="
-    this.struttura.immagine.byteImmagine
+    this.struttura.immagine?.byteImmagine
       ? 'data:image/jpeg;base64,' + this.struttura.immagine.byteImmagine
       : 'assets/placeholder.png'"  alt="{{ this.struttura.nomeStruttura }}"/>
         </div>
