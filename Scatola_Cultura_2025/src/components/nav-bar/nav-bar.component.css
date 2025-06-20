@@ -18,7 +18,7 @@
 /* Spazio per il logo e relativo layout */
 .sc-navbar-logo-space {
   height: 10vh;
-  width: 15%; /* puoi anche usare 100% o una larghezza fissa */
+  width: 15%;
   display: flex;
   align-items: center;
 }
@@ -81,7 +81,7 @@
   background-color: white;
 
   border: 2px solid #00b9ee;
-   border-radius: 2em;
+  border-radius: 2em;
 
   display: flex;
   justify-content: center;
@@ -96,18 +96,18 @@
   top: 0;
   left: 0;
 
-   width: 100%;
-   height: 100%;
+  width: 100%;
+  height: 100%;
 
   border-radius: inherit; 
 
   background: #00b9ee;
 
   transform: scaleX(0);
-   transform-origin: 0 50%;
+  transform-origin: 0 50%;
 
-   transition: all 0.475s;
-   z-index: 0;
+  transition: all 0.475s;
+  z-index: 0;
 }
 
 .sc-navbar-button:hover{
@@ -121,10 +121,23 @@
 .sc-navbar-button span{
   z-index: 1;
 }
-.sc-navbar-buttonCAA{
+.sc-navbar-buttonCAA {
+  font-family: var(--fontName) !important;
+
   height: 4vh;
   width: 8vw;
+
+  box-sizing: border-box;
+
+  white-space: nowrap;        /* testo su una riga sola */
+  overflow: hidden;           /* taglia il testo */
+  text-overflow: ellipsis;    /* mostra i puntini se il testo non ci sta */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 
 /* Wrapper per il pulsante a discesa */
 .sc-navbar-dropdown-wrapper {
@@ -455,12 +468,19 @@
   .sc-navbar-logo-space {
     width: 20%;
   }
+  .sc-navbar-search-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20%;
+  }
   .sc-navbar-search-input {
-    width: 70%;
+    width:100%;
+    display: inline-block;
   }
   .sc-navbar-logo-space img{
-    width: 18vw;
-    height: 10vh;
+    width: 15vw;
+    height: 8vh;
   }
 
   .sc-navbar-dropdown-menu .label {
@@ -487,6 +507,9 @@
     width: 15vw;
   }
 
+  .sc-navbar-div-manual{
+    width: 20%;
+  }
 
   .sc-navbar-dropdown-menu {
     width: 160%;
@@ -500,14 +523,22 @@
   }
   .sc-navbar-buttonCAA{
     padding:0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .sc-navbar-buttonCAA  span{
+    width: 20%;
   }
   .sc-navbar-button-range{
-  display: flex;
-  padding-left: 8vw;
-  justify-content: space-around;
-  height: 5px;
-  z-index: 9999;
-  margin-bottom: 3%;
+    display: flex;
+    justify-content: space-around;
+    height: 5px;
+    z-index: 9999;
+    margin-bottom: 3%;
   }
 
   .tooltip {
