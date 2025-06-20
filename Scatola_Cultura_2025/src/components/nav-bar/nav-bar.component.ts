@@ -186,7 +186,7 @@ export class NavBarComponent implements OnInit {
 
 /**
  * Simone
- * quando vengono cliccati i pulsanti sopra allo slider in base a quale viene premuto chiamata questo metodo con il nome della proprietà e con il valore da aggiungere, min e max
+ * quando vengono cliccati i pulsanti sopra allo slider, in base a quale viene premuto chiamata questo metodo con il nome della proprietà e con il valore da aggiungere, min e max
  * aumenta il valore o diminuisce in base a quale proprietà viene passata
  * se brightness : aumenta di 10 o diminuisce di 10 la luminosità della pagina
  * se contrast : aumenta di 10 o diminuisce di 10 il contrasto
