@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { Struttura } from '../../interfaces/Istruttura';
-import { DisabilitaStruttura } from '../../interfaces/IDisabilitàStruttura';
+import { Disabilita } from '../../interfaces/Istruttura';
 import { IconeManager } from '../../services/IconeManager';
 import { DetailTestoComponent } from './detail-testo/detail-testo.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -50,7 +50,7 @@ export class Detail implements OnInit {
   struttura!: Struttura;
 
   // Array contenente i dati di accessibilità/disabilità della struttura
-  disabilitaStruttura!: DisabilitaStruttura[];
+  disabilitaStruttura!: Disabilita[];
 
   //simone
   //creazione del booleano

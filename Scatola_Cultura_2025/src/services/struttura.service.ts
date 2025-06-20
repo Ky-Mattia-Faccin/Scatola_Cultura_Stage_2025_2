@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { Struttura } from '../interfaces/Istruttura';
 import { HttpClient } from '@angular/common/http';
-import { DisabilitaStruttura } from '../interfaces/IDisabilitàStruttura';
+import { Disabilita } from '../interfaces/Istruttura';
 
 @Injectable({
   providedIn: 'root',
@@ -39,8 +39,8 @@ export class StrutturaService {
    * - Restituisce un Observable con i dati delle disabilità associati a quella struttura
    * - da decidere su utilizzare o no
    */
-  getDisabilita(id: number): Observable<DisabilitaStruttura[]> {
-    return this.httpClient.get<DisabilitaStruttura[]>(
+  getDisabilita(id: number): Observable<Disabilita[]> {
+    return this.httpClient.get<Disabilita[]>(
       ' https://dev.api.scatolacultura.it/api/Struttura/getById?id=' + `${id}`
     );
   }
