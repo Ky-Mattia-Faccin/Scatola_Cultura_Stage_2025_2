@@ -23,8 +23,7 @@ export class StrutturaService {
   getStrutture(): Observable<Struttura[]> {
     return this.httpClient
       .get<Struttura[]>(
-        //' https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get'
-        'http://192.168.123.150:5000/api/DisabilitaStruttura/get'
+        ' https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get'
       ).pipe(
         catchError((error) => {
           console.error('Errore nel recupero delle strutture:', error);

@@ -41,7 +41,8 @@ export class Homepage implements OnInit {
   FiltriTipi: string[] = [];
   FiltriProvince: string[] = [];
 
-  // flag per vedere 
+  // flag per vedere se la disabilità 
+  flgDisabilita! : boolean;
 
   //componente dei filtri
   @ViewChild(FiltriComponent)  filtriComponent!:FiltriComponent
@@ -144,6 +145,9 @@ export class Homepage implements OnInit {
    * Michael
    * Applica il filtro testuale alla lista di strutture già filtrate per tipo/disabilità/provincia
    * Mostra solo quelle che contengono il testo cercato nel nomeStruttura
+   * 
+   * Simone
+   * controlla se il flgDisabilita è false quindi inserisce la struttura altrimenti se true non inserisce la struttura
    */
   private applySearchFilter() {
     if (!this.filtro) {
@@ -153,20 +157,9 @@ export class Homepage implements OnInit {
       // Altrimenti filtra per nome (case insensitive)
       const filtroLower = this.filtro.toLowerCase();
       this.struttureFiltrate = this.strutture.filter((s) =>
-        s.nomeStruttura.toLowerCase().includes(filtroLower)
+        s.nomeStruttura.toLowerCase().includes(filtroLower) && !s.flgDisabilita
       );
     }
-  }
-
-  /**
-   * Simone
-   * Controllo se il flg disabilità è attivato o disattivato
-   * se attivato non deve mostrato la struttura
-   * se disattivata deve mostrare la struttura
-   */
-
-  private DisabilitàStruttura(){
-
   }
   /**
    * Michael
@@ -174,36 +167,53 @@ export class Homepage implements OnInit {
    * - Se sì, le carica
    * - Se no, fa la chiamata all’API per ottenerle
    * Tutto viene poi filtrato in base al testo cercato.
-   * se il flag disalibità è attivato la struttura non deve essere mostrata mostrata
+   * 
+   * Simone
+   * se il flag disalibità è attivato la struttura non viene mostrata
+   * non carica le immagini nel sessionStorage perchè è troppo pesante
    */
   private checkSessionStorage() {
-    const struttureJSON = sessionStorage.getItem('strutture');
+  const struttureJSON = sessionStorage.getItem('strutture');
 
-    if (struttureJSON && struttureJSON !== '[]') {
-      // Strutture già presenti: le carica
-      this.strutture = JSON.parse(struttureJSON);
-      this.struttureFiltrate = this.strutture;
+  if (struttureJSON && struttureJSON !== '[]') {
+    this.strutture = JSON.parse(struttureJSON);
+    this.applySearchFilter();
+  } else {
+    this.servizioStruttura.getStrutture().subscribe({
+      next: (s) => {
+        this.strutture = s;
 
-      this.applySearchFilter();
-    } else {
-      // Nessuna struttura salvata: chiama l’API
-      this.servizioStruttura.getStrutture().subscribe({
-        next: (s) => {
-          this.strutture = s;
-          this.struttureFiltrate = s;
-          sessionStorage.setItem('strutture', JSON.stringify(s));
-          this.applySearchFilter();
-        } /* gestire l'errore*/,
-        error: (err) => {
-          console.error(err);
-          const riprova = window.confirm(
-            'errore nel caricamento delle strutture, riprovare'
-          );
-          if (riprova) this.checkSessionStorage();
-        },
-      });
-    }
+        // Rimuove byteImmagine prima del salvataggio
+        const struttureDaSalvare = s.map(struttura => {
+          const { immagine, ...rest } = struttura;
+          return {
+            ...rest,
+            immagine: {
+              ...immagine,
+              byteImmagine: undefined
+            }
+          };
+        });
+
+        try {
+          sessionStorage.setItem('strutture', JSON.stringify(struttureDaSalvare));
+        } catch (e) {
+          console.warn('⚠️ Errore nel salvataggio su sessionStorage:', e);
+        }
+
+        this.applySearchFilter();
+      },
+      error: (err) => {
+        console.error(err);
+        const riprova = window.confirm(
+          'Errore nel caricamento delle strutture, riprovare?'
+        );
+        if (riprova) this.checkSessionStorage();
+      },
+    });
   }
+}
+
 
   //flag per la visualizzazione della selezione dei filtri in mobile
   flgFiltriMobile = false;
