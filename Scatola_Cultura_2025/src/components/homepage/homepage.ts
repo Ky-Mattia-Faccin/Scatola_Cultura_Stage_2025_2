@@ -163,6 +163,7 @@ export class Homepage implements OnInit {
    * - Se sì, le carica
    * - Se no, fa la chiamata all’API per ottenerle
    * Tutto viene poi filtrato in base al testo cercato.
+   * se il flag disalibità è attivato la struttura non deve essere mostrata mostrata
    */
   private checkSessionStorage() {
     const struttureJSON = sessionStorage.getItem('strutture');

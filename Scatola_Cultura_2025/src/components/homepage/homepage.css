@@ -141,7 +141,15 @@
   display: flex;
 
   justify-content: flex-start;
+
+
+  overflow: hidden;
+  object-fit: contain;
   height: 25vh;
+  min-width: 25vw;
+
+  background-color: white;
+
 }
 
 
@@ -236,21 +244,6 @@
 
   max-height: calc(1.2em * 2);/* Altezza massima per 2 righe */
 }
-
-
-
-
-
-
-/*configurazione div delle immagini*/
-.sc-homepage-card-img{
-  overflow: hidden;
-  object-fit: contain;
-
-  min-width: 25vw;
-  max-height: 30vh;
-}
-
 
 /*animazione dell'intero museo, immagine e testo*/
 .sc-homepage-museo-card:hover {
