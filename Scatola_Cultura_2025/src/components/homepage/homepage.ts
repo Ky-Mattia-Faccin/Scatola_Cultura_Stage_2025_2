@@ -47,11 +47,13 @@ export class Homepage implements OnInit {
   FiltriTipi: string[] = [];
   FiltriProvince: string[] = [];
 
+
   // flag per vedere se la disabilità 
   flgDisabilita!: boolean;
 
   //flag immagini
   flgImmagini: boolean = false;
+
 
   //componente dei filtri
   @ViewChild(FiltriComponent) filtriComponent!: FiltriComponent
@@ -170,25 +172,29 @@ export class Homepage implements OnInit {
         s.nomeStruttura.toLowerCase().includes(filtroLower) && !s.flgDisabilita
       );
     }
-
-
   }
+
   /**
    * Michael
    * Controlla se esistono strutture in sessionStorage:
    * - Se sì, le carica
    * - Se no, fa la chiamata all’API per ottenerle
    * Tutto viene poi filtrato in base al testo cercato.
+
    * 
    * Simone
    * se il flag disalibità è attivato la struttura non viene mostrata
    * non carica le immagini nel sessionStorage perchè è troppo pesante
+d6b (css)
    */
   private checkSessionStorage() {
     const struttureJSON = sessionStorage.getItem('strutture');
 
     if (struttureJSON && struttureJSON !== '[]') {
       this.strutture = JSON.parse(struttureJSON);
+
+      this.struttureFiltrate = this.strutture;
+
       this.applySearchFilter();
     } else {
       this.servizioStruttura.getStrutture().subscribe({

@@ -242,8 +242,6 @@
 
   line-clamp: 2;
   -webkit-line-clamp: 2;/* Limita a 2 righe */
-
-  max-height: calc(1.2em * 2);/* Altezza massima per 2 righe */
 }
 
 /*animazione dell'intero museo, immagine e testo*/
