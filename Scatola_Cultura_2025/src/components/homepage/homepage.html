@@ -49,11 +49,15 @@
           <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive && item.immagine?.didascaliaImmagine">
             <span>{{ item.immagine?.didascaliaImmagine }}</span>
           </div>
-          <!-- <img [src]="
-            item.immagine?.byteImmagine
-            ? 'data:image/jpeg;base64,' + item.immagine.byteImmagine
-            : 'assets/placeholder.png'
-            " alt="{{ item.nomeStruttura }}" /> -->
+            <img
+            [src]="
+              item.immagine?.immagineFisicaUrl
+                ? item.immagine?.immagineFisicaUrl
+                : 'assets/placeholder.png'
+            "
+            alt="{{ item.nomeStruttura }}"
+            loading="lazy"
+          />
         </div>
 
         <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">
