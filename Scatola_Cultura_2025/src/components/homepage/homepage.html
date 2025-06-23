@@ -45,15 +45,19 @@
       [routerLink]="['/detail', item.idStruttura]" role="button">
       <div class="sc-homepage-card-img-border">
         <div class="sc-homepage-card-img">
-          <img [src]="
+
+          <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive && item.immagine?.didascaliaImmagine">
+            <span>{{ item.immagine?.didascaliaImmagine }}</span>
+          </div>
+          <!-- <img [src]="
             item.immagine?.byteImmagine
             ? 'data:image/jpeg;base64,' + item.immagine.byteImmagine
             : 'assets/placeholder.png'
-            " alt="{{ item.nomeStruttura }}" />
+            " alt="{{ item.nomeStruttura }}" /> -->
         </div>
 
         <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive">
-          <span>{{item.immagine.didascaliaImmagine}}</span>
+          <span>{{item.immagine?.didascaliaImmagine}}</span>
         </div>
       </div>
       <div class="sc-homepage-card-title">

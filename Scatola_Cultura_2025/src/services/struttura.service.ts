@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
-import { Struttura } from '../interfaces/Istruttura';
+import { ImmagineDTO, Struttura } from '../interfaces/Istruttura';
 import { HttpClient } from '@angular/common/http';
 import { Disabilita } from '../interfaces/Istruttura';
 
@@ -101,13 +101,16 @@ export class StrutturaService {
     if (url.endsWith('&')) {
       url = url.slice(0, -1);
     }
-/*
-  getImmagineStruttura(idStruttura: number): Observable<number> {
-    return this.http.get<number>(`/api/strutture/${idStruttura}/immagine`);
-  }
-*/
     
     // Esegue la chiamata GET e restituisce le strutture corrispondenti
     return this.httpClient.get<Struttura[]>(url);
   }
+     
+  getImmagineStruttura(): Observable<ImmagineDTO[]> {
+  return this.httpClient.get<ImmagineDTO[]>(
+    'http://192.168.123.150:5000/api/Immagine/lista'
+    );
+  }
+
+
 }
