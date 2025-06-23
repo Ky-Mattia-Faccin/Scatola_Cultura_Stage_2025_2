@@ -47,6 +47,9 @@ export class Homepage implements OnInit {
   // flag per vedere se la disabilità 
   flgDisabilita!: boolean;
 
+  //flag immagini
+  flgImmagini: boolean = false;
+
   //componente dei filtri
   @ViewChild(FiltriComponent) filtriComponent!: FiltriComponent
 
@@ -166,14 +169,16 @@ export class Homepage implements OnInit {
     }
 
 
-    
-    this.servizioStruttura.getImmagini().subscribe(immagini => {
-      this.struttureFiltrate = this.struttureFiltrate.map(struttura => {
-        const immagine = immagini.find(img => img.idStruttura === struttura.idStruttura);
-        console.log(immagine)
-        return { ...struttura, immagine: immagine};
+    if(!this.flgImmagini)
+    { 
+      this.servizioStruttura.getImmagini().subscribe(immagini => {
+        this.struttureFiltrate = this.struttureFiltrate.map(struttura => {
+          const immagine = immagini.find(img => img.idStruttura === struttura.idStruttura);
+          return { ...struttura, immagine: immagine};
+        });
       });
-    });
+      this.flgImmagini=true;
+    }
   }
   /**
    * Michael
