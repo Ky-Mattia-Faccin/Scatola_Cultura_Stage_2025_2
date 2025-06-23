@@ -4,7 +4,7 @@ import { StrutturaService } from '../../services/struttura.service';
 import { FiltriComponent } from '../filtri/filtri.component';
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Struttura } from '../../interfaces/Istruttura';
+import { ImmagineDTO, Struttura } from '../../interfaces/Istruttura';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { TextimgTsService } from '../../services/textimg.service';
 
@@ -26,6 +26,9 @@ export class Homepage implements OnInit {
 
   // Lista completa delle strutture ottenute da API
   strutture: Struttura[] = [];
+
+  //lista per le immagini
+  immagini: ImmagineDTO [] = [];
 
   // Lista filtrata da mostrare nell'interfaccia
   struttureFiltrate: Struttura[] = this.strutture;
@@ -79,6 +82,9 @@ export class Homepage implements OnInit {
     this.textService.isDescriptionActive$.subscribe((value) => {
       this.isDescriptionActive = value;
     });
+
+    //Carica le immagini 
+    this.uploadPhoto();
   }
 
   //simone
@@ -250,21 +256,20 @@ export class Homepage implements OnInit {
    * metodo con foreach che carica le immagini delle strutture
    * intanto le strutture sono già caricate all'apertura
    */
-  uploadPhoto() {/*
-  this.struttureFiltrate.forEach((struttura) => {
-    this.servizioStruttura.getImmagineStruttura(struttura.idStruttura).subscribe({
-      next: (imgValore: number) => {
-        struttura.immagine.byteImmagine = imgValore;
-      },
-
-      error: (err: unknown) => {
-        if (err instanceof Error) {
-          console.error(`Errore immagine struttura ID ${struttura.idStruttura}: ${err.message}`);
-        } else {
-          console.error(`Errore sconosciuto per struttura ID ${struttura.idStruttura}:`, err);
+  uploadPhoto() {
+  this.servizioStruttura.getImmagineStruttura().subscribe({
+    next: (immagini: ImmagineDTO[]) => {
+      immagini.forEach((img) => {
+        const struttura = this.strutture.find(s => s.idStruttura === img.idStruttura);
+        if (struttura) {
+          struttura.immagine = img;
         }
-      }
-    });
-  });*/
-  }
+      });
+    },
+    error: (err) => {
+      console.error('Errore nel caricamento delle immagini:', err);
+    }
+  });
+}
+
 }

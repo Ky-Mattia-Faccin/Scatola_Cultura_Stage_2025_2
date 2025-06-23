@@ -17,12 +17,12 @@
       <div class="sc-detail-center">
         <div class="sc-detail-center-img">
           <img [src]="
-    this.struttura.immagine?.byteImmagine
-      ? 'data:image/jpeg;base64,' + this.struttura.immagine.byteImmagine
+    this.struttura.immagine
+      ? 'data:image/jpeg;base64,' + this.struttura.immagine
       : 'assets/placeholder.png'"  alt="{{ this.struttura.nomeStruttura }}"/>
         </div>
         <div class="sc-detail-center-desc-img" *ngIf="isDescriptionActive">
-          <span>{{this.struttura.immagine.didascaliaImmagine}}</span>
+          <span>{{this.struttura.nomeStruttura}}</span>
         </div>
         <div class="sc-detail-center-desc">
           <app-detail-testo

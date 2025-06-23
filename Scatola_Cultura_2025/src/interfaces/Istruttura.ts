@@ -13,12 +13,8 @@ export interface Struttura {
   sitoWeb:string;
   testoSemplificato:string;
   flgDisabilita:boolean;
-  immagine:{
-    nomeImmagine:string;
-    byteImmagine:number | string;
-    didascaliaImmagine:string;
-  };
-  disabilita:Disabilita[]
+  disabilita:Disabilita[];
+  immagine?: ImmagineDTO;
 }
 
 
@@ -37,4 +33,13 @@ export interface Disabilita{
   flgDisabilita:boolean;
   disabilitaStruttura:number;
   flgWarning:boolean;
+}
+
+export interface ImmagineDTO {
+  idImmagine: number;
+  idStruttura: number;
+  nomeImmagine: string;
+  immagineUrl: string | null;
+  didascaliaImmagine: string | null;
+  immagineFisicaUrl: string | null;
 }
