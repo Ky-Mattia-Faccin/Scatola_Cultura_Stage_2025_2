@@ -179,10 +179,11 @@
 
   width: 80%;
   max-width: 80%;
-  height: 80%;
-  max-height: 80%;
+  height: 40%;
+  max-height: 40%;
   opacity: 1;
-  padding: 2vh;
+  padding: 2vh; 
+  font-size: 22px !important;
 
   top: 50%;
   left: 50%;
@@ -200,10 +201,11 @@
 
   width: 80%;
   max-width: 80%;
-  height: 80%;
-  max-height: 80%;
+  height: 40%;
+  max-height: 40%;
   opacity: 1;
   padding: 2vh;
+  font-size: 22px !important;
 
   top: 50%;
   left: 50%;
