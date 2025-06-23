@@ -44,6 +44,7 @@
     <div class="sc-homepage-museo-card" *ngFor="let item of struttureFiltrate"
       [routerLink]="['/detail', item.idStruttura]" role="button">
       <div class="sc-homepage-card-img-border">
+
         <div class="sc-homepage-card-img" >
           <ng-container *ngIf="getImmagine(item.idStruttura) as img">
           <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive && img.didascaliaImmagine ">
@@ -57,6 +58,7 @@
             loading="lazy"
           />
           </ng-container>
+
         </div>
       </div>
       <div class="sc-homepage-card-title">

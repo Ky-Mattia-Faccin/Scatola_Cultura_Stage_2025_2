@@ -166,6 +166,9 @@
   overflow: hidden;
   color: transparent;
 }
+.sc-homepage-card-title span{
+  width: 90%;
+}
 /*hover sulla immagine*/
 .sc-homepage-card-img:hover ~ .sc-homepage-card-img-text{
   display: flex;

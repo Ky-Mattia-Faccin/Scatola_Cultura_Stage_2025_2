@@ -20,6 +20,7 @@ import { TextimgTsService } from '../../services/textimg.service';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { eventListeners } from '@popperjs/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -221,5 +222,21 @@ export class NavBarComponent implements OnInit {
       break;
    }
   }
-
+  ResetAll(){
+    this.isDescriptionActive = false;
+    this.onCheck();
+    this.brightness = 100;
+    this.brightnessChanged.emit(this.brightness);
+    this.contrast = 100;
+    this.contrastChanged.emit(this.contrast);
+    this.isFontActive = false;
+    this.onFontCheck();
+    this.isTextSemplifiedActive = false;
+    this.onTextSimplifiedCheck();
+    this.fontSize = 20;
+    document.documentElement.style.setProperty(
+        '--fontSize',
+        this.fontSize + 'px'
+      );
+  }
 }
