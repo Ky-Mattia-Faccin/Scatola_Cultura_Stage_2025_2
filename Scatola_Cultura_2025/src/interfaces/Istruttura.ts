@@ -15,6 +15,7 @@ export interface Struttura {
   flgDisabilita:boolean;
   disabilita:Disabilita[];
   immagine?: ImmagineDTO;
+
 }
 
 
@@ -34,6 +35,7 @@ export interface Disabilita{
   disabilitaStruttura:number;
   flgWarning:boolean;
 }
+
 
 export interface ImmagineDTO {
   idImmagine: number;
