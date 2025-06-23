@@ -22,13 +22,13 @@ export class Homepage implements OnInit {
     private searchFilter: SearchFilterService,
     private servizioStruttura: StrutturaService,
     private textService: TextimgTsService
-  ) {}
+  ) { }
 
   // Lista completa delle strutture ottenute da API
   strutture: Struttura[] = [];
 
   //lista per le immagini
-  immagini: ImmagineDTO [] = [];
+  immagini: ImmagineDTO[] = [];
 
   // Lista filtrata da mostrare nell'interfaccia
   struttureFiltrate: Struttura[] = this.strutture;
@@ -45,10 +45,10 @@ export class Homepage implements OnInit {
   FiltriProvince: string[] = [];
 
   // flag per vedere se la disabilità 
-  flgDisabilita! : boolean;
+  flgDisabilita!: boolean;
 
   //componente dei filtri
-  @ViewChild(FiltriComponent)  filtriComponent!:FiltriComponent
+  @ViewChild(FiltriComponent) filtriComponent!: FiltriComponent
 
 
 
@@ -59,7 +59,7 @@ export class Homepage implements OnInit {
    * - si iscrive al filtro testuale (navbar)
    */
   ngOnInit(): void {
-    
+
     // Carica eventuali filtri salvati precedentemente
     const savedFilters = sessionStorage.getItem('filtri');
     if (savedFilters) {
@@ -83,8 +83,6 @@ export class Homepage implements OnInit {
       this.isDescriptionActive = value;
     });
 
-    //Carica le immagini 
-    this.uploadPhoto();
   }
 
   //simone
@@ -166,6 +164,16 @@ export class Homepage implements OnInit {
         s.nomeStruttura.toLowerCase().includes(filtroLower) && !s.flgDisabilita
       );
     }
+
+
+    
+    this.servizioStruttura.getImmagini().subscribe(immagini => {
+      this.struttureFiltrate = this.struttureFiltrate.map(struttura => {
+        const immagine = immagini.find(img => img.idStruttura === struttura.idStruttura);
+        console.log(immagine)
+        return { ...struttura, immagine: immagine};
+      });
+    });
   }
   /**
    * Michael
@@ -179,46 +187,46 @@ export class Homepage implements OnInit {
    * non carica le immagini nel sessionStorage perchè è troppo pesante
    */
   private checkSessionStorage() {
-  const struttureJSON = sessionStorage.getItem('strutture');
+    const struttureJSON = sessionStorage.getItem('strutture');
 
-  if (struttureJSON && struttureJSON !== '[]') {
-    this.strutture = JSON.parse(struttureJSON);
-    this.applySearchFilter();
-  } else {
-    this.servizioStruttura.getStrutture().subscribe({
-      next: (s) => {
-        this.strutture = s;
+    if (struttureJSON && struttureJSON !== '[]') {
+      this.strutture = JSON.parse(struttureJSON);
+      this.applySearchFilter();
+    } else {
+      this.servizioStruttura.getStrutture().subscribe({
+        next: (s) => {
+          this.strutture = s;
 
-        // Rimuove byteImmagine prima del salvataggio
-        const struttureDaSalvare = s.map(struttura => {
-          const { immagine, ...rest } = struttura;
-          return {
-            ...rest,
-            immagine: {
-              ...immagine,
-              byteImmagine: undefined
-            }
-          };
-        });
+          // Rimuove byteImmagine prima del salvataggio
+          const struttureDaSalvare = s.map(struttura => {
+            const { immagine, ...rest } = struttura;
+            return {
+              ...rest,
+              immagine: {
+                ...immagine,
+                byteImmagine: undefined
+              }
+            };
+          });
 
-        try {
-          sessionStorage.setItem('strutture', JSON.stringify(struttureDaSalvare));
-        } catch (e) {
-          console.warn('⚠️ Errore nel salvataggio su sessionStorage:', e);
-        }
+          try {
+            sessionStorage.setItem('strutture', JSON.stringify(struttureDaSalvare));
+          } catch (e) {
+            console.warn('⚠️ Errore nel salvataggio su sessionStorage:', e);
+          }
 
-        this.applySearchFilter();
-      },
-      error: (err) => {
-        console.error(err);
-        const riprova = window.confirm(
-          'Errore nel caricamento delle strutture, riprovare?'
-        );
-        if (riprova) this.checkSessionStorage();
-      },
-    });
+          this.applySearchFilter();
+        },
+        error: (err) => {
+          console.error(err);
+          const riprova = window.confirm(
+            'Errore nel caricamento delle strutture, riprovare?'
+          );
+          if (riprova) this.checkSessionStorage();
+        },
+      });
+    }
   }
-}
 
 
   //flag per la visualizzazione della selezione dei filtri in mobile
@@ -233,16 +241,16 @@ export class Homepage implements OnInit {
   }
 
   resetFiltri() {
-  this.filtriComponent.resetFilters()
-  this.checkSessionStorage();
-}
+    this.filtriComponent.resetFilters()
+    this.checkSessionStorage();
+  }
 
   /**
    * Simone
    * quando viene premuta la icona svg della freccia apre un menu con all'interno i partner e quando viene ripremuta chiude la finestra;
    * quando vine premuta la icona si gira di 180° e quando viene premuta per uscire ritorna a 90°.
    */
-  iconClick(){
+  iconClick() {
     const contPartner = document.querySelector('.sc-homepage-partner-info') as HTMLElement;
     contPartner?.classList.toggle('hidden');
 
@@ -251,25 +259,4 @@ export class Homepage implements OnInit {
       icon.classList.toggle('rotated');
     }
   }
-  /**
-   * Simone
-   * metodo con foreach che carica le immagini delle strutture
-   * intanto le strutture sono già caricate all'apertura
-   */
-  uploadPhoto() {
-  this.servizioStruttura.getImmagineStruttura().subscribe({
-    next: (immagini: ImmagineDTO[]) => {
-      immagini.forEach((img) => {
-        const struttura = this.strutture.find(s => s.idStruttura === img.idStruttura);
-        if (struttura) {
-          struttura.immagine = img;
-        }
-      });
-    },
-    error: (err) => {
-      console.error('Errore nel caricamento delle immagini:', err);
-    }
-  });
-}
-
-}
+  }
