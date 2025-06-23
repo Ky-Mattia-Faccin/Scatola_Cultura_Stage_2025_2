@@ -154,7 +154,7 @@
   justify-content: center;
   align-items: center;
 
-  border-radius: 1.11vw;
+  border-radius: 15px;
 
   overflow: hidden;
 }
@@ -167,7 +167,7 @@
 
   object-fit: cover;
 
-  border-radius: 1vw;
+  border-radius: 15px;
 }
 
 /* Contenitore per il testo descrittivo */
@@ -178,7 +178,7 @@
 
   padding: 1vw;
 
-  border-radius: 1w;
+  border-radius: 15px;
 
   box-sizing: border-box;
 
@@ -266,9 +266,9 @@
 
 /* Sezione dedicata all’accessibilità */
 .sc-detail-footer-accessibility {
-  width: 65vw;
+  width: 80%;
 
-  border-radius: 1vw;
+  border-radius: 15px;
   padding: 1vw;
 
   background-color: #f9f9f9;
@@ -282,7 +282,7 @@
 
 /* Sezione per social/posizione */
 .sc-detail-social {
-  width: 32vw;
+  width: 20%;
 
   display: flex;
   align-items: center;
@@ -295,7 +295,7 @@
   flex-direction: column;
 
   gap: 0.5vw;
-  margin-right: 7vw;
+  margin-right: 1vw;
 }
 
 .up,
@@ -410,7 +410,6 @@
 
   padding: 0.4em 0.8em;
   border-radius: 12px;
-  font-size: 0.75em;
   white-space: nowrap;
 
   opacity: 0;
@@ -423,11 +422,23 @@
 .card1:hover .tooltip,
 .card2:hover .tooltip,
 .card3:hover .tooltip,
-.card4:hover .tooltip {
+.card4:hover .tooltip
+{
   opacity: 1;
   transform: translateX(-50%) translateY(-5px);
 }
-
+.sc-detail-back-button .tooltip{
+  overflow: hidden;
+}
+.sc-detail-back-button:hover .tooltip {
+  opacity: 1;
+  transform: translateX(32%) translateY(120%);
+  overflow: auto;
+  font-size: x-large;
+  background-color: white;
+  color:black;
+  border-radius: 15px;
+}
 .card1:hover .tooltip {
   background-color: #cc39a4;
 }
