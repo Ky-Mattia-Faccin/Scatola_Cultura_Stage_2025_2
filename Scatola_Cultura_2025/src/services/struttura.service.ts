@@ -11,7 +11,7 @@ export class StrutturaService {
   //michael
 
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private http:HttpClient) {}
 
   strutture: Struttura[] = [];
   /**
@@ -101,7 +101,12 @@ export class StrutturaService {
     if (url.endsWith('&')) {
       url = url.slice(0, -1);
     }
-
+/*
+  getImmagineStruttura(idStruttura: number): Observable<number> {
+    return this.http.get<number>(`/api/strutture/${idStruttura}/immagine`);
+  }
+*/
+    
     // Esegue la chiamata GET e restituisce le strutture corrispondenti
     return this.httpClient.get<Struttura[]>(url);
   }

@@ -245,10 +245,26 @@ export class Homepage implements OnInit {
       icon.classList.toggle('rotated');
     }
   }
-}
-/*
-toggleMenu() {
-    const dropDownMenu = document.querySelector('.sc-navbar-dropdown-menu');
-    dropDownMenu?.classList.toggle('hidden');
+  /**
+   * Simone
+   * metodo con foreach che carica le immagini delle strutture
+   * intanto le strutture sono già caricate all'apertura
+   */
+  uploadPhoto() {/*
+  this.struttureFiltrate.forEach((struttura) => {
+    this.servizioStruttura.getImmagineStruttura(struttura.idStruttura).subscribe({
+      next: (imgValore: number) => {
+        struttura.immagine.byteImmagine = imgValore;
+      },
+
+      error: (err: unknown) => {
+        if (err instanceof Error) {
+          console.error(`Errore immagine struttura ID ${struttura.idStruttura}: ${err.message}`);
+        } else {
+          console.error(`Errore sconosciuto per struttura ID ${struttura.idStruttura}:`, err);
+        }
+      }
+    });
+  });*/
   }
-*/
+}
