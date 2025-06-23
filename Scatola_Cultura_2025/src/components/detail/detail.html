@@ -7,7 +7,7 @@
           routerLink="/homepage"
           aria-label="torna alla homepage"
         >
-          <span class="tooltip">Home</span>
+        <span class="tooltip">Home</span>
           <div [innerHTML]="Icone.getIcon('BackArrow')"></div>
         </button>
         <div class="sc-detail-header-title" tabindex="0">
@@ -21,7 +21,8 @@
               immagine?.immagineUrl || 'assets/placeholder.png'
             "
             alt="{{ this.struttura.nomeStruttura }}"
-            loading="lazy">
+            loading="lazy"/>
+
         </div>
         <div class="sc-detail-center-desc-img" *ngIf="isDescriptionActive">
           <span>{{immagine?.didascaliaImmagine}}</span>
