@@ -149,7 +149,7 @@
       <span>
         <label class="slider">
           <input type="checkbox" id="checkboxFont" value="isFontActive" (change)="onFontCheck()" class="selector"
-            (keypress)="onFontCheck()" tabindex="0" aria-label="Attiva o disattiva il font per la dislessia" />
+            (keypress)="onFontCheck()" tabindex="0" aria-label="Attiva o disattiva il font per la dislessia" [checked]="isFontActive"/>
           <label class="label" for="checkboxFont"></label>
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-fonts"
             viewBox="0 0 16 16" aria-hidden="true">
@@ -167,6 +167,7 @@
             id="checkboxText"
             value="isFontActive"
             (change)="onTextSimplifiedCheck()"
+            [checked]="isTextSemplifiedActive"
             class="selector"
             aria-label="attiva o disattiva i testi semplici"
           />

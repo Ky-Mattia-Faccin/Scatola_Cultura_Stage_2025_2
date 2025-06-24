@@ -223,16 +223,20 @@ export class NavBarComponent implements OnInit {
    }
   }
   ResetAll(){
-    this.isDescriptionActive = false;
-    this.onCheck();
-    this.brightness = 100;
+    if(this.isDescriptionActive)
+      this.onCheck();
+    if(this.isFontActive)  
+      this.onFontCheck();
+    if(this.isTextSemplifiedActive)  
+    this.onTextSimplifiedCheck();
+  
+  
+  this.brightness = 100;
     this.brightnessChanged.emit(this.brightness);
     this.contrast = 100;
     this.contrastChanged.emit(this.contrast);
-    this.isFontActive = false;
-    this.onFontCheck();
-    this.isTextSemplifiedActive = false;
-    this.onTextSimplifiedCheck();
+    
+  
     this.fontSize = 20;
     document.documentElement.style.setProperty(
         '--fontSize',
