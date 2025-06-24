@@ -162,19 +162,16 @@ export class Homepage implements OnInit {
    * controlla se il flgDisabilita è false quindi inserisce la struttura altrimenti se true non inserisce la struttura
    */
   private applySearchFilter() {
-    if (!this.filtro) {
-      // Se il filtro è vuoto, mostra tutte le strutture
-      this.struttureFiltrate = this.strutture;
-    } else {
-      // Altrimenti filtra per nome (case insensitive)
-      const filtroLower = this.filtro.toLowerCase();
-      this.struttureFiltrate = this.strutture.filter((s) =>
-        s.nomeStruttura.toLowerCase().includes(filtroLower) && !s.flgDisabilita
-      );
-    }
-  }
 
-  /**
+  const filtroLower = this.filtro ? this.filtro.toLowerCase() : '';
+  this.struttureFiltrate = this.strutture.filter((s) =>
+    // Se filtroLower è vuoto, include comunque la struttura; 
+    // altrimenti la include solo se il nome contiene filtroLower
+    (!filtroLower || s.nomeStruttura.toLowerCase().includes(filtroLower)) 
+    && !s.flgDisabilita // esclude sempre strutture disabilitate
+  );
+}
+/**
    * Michael
    * Controlla se esistono strutture in sessionStorage:
    * - Se sì, le carica
