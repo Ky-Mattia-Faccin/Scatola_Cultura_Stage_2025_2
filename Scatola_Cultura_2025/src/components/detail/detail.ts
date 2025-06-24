@@ -131,7 +131,7 @@ export class Detail implements OnInit {
   }
 
   get linkSito(){
-    return this.struttura.social2
+    return this.struttura.sitoWeb
   }
 
   get linkPosizione(){
@@ -139,7 +139,7 @@ export class Detail implements OnInit {
   }
 
   get linkFacebook(){
-    return this.struttura.sitoWeb
+    return this.struttura.social2
   }
 
 }
