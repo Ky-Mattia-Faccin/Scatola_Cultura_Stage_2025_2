@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ImmagineDTO, Struttura } from '../../interfaces/Istruttura';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { TextimgTsService } from '../../services/textimg.service';
+import { ImmaginiService } from '../../services/immagini.service';
 
 @Component({
   standalone: true,
@@ -21,7 +22,8 @@ export class Homepage implements OnInit {
   constructor(
     private searchFilter: SearchFilterService,
     private servizioStruttura: StrutturaService,
-    private textService: TextimgTsService
+    private textService: TextimgTsService,
+    private imgService: ImmaginiService
   ) { }
 
   // Lista completa delle strutture ottenute da API
@@ -29,6 +31,7 @@ export class Homepage implements OnInit {
 
   //lista per le immagini
   immagini: ImmagineDTO[] = [];
+
 
   // Lista filtrata da mostrare nell'interfaccia
   struttureFiltrate: Struttura[] = this.strutture;
@@ -62,7 +65,7 @@ export class Homepage implements OnInit {
    * - si iscrive al filtro testuale (navbar)
    */
   ngOnInit(): void {
-
+    this.immagini = this.imgService.getImmagini()
     // Carica eventuali filtri salvati precedentemente
     const savedFilters = sessionStorage.getItem('filtri');
     if (savedFilters) {
@@ -169,16 +172,6 @@ export class Homepage implements OnInit {
     }
 
 
-    if(!this.flgImmagini)
-    { 
-      this.servizioStruttura.getImmagini().subscribe(immagini => {
-        this.struttureFiltrate = this.struttureFiltrate.map(struttura => {
-          const immagine = immagini.find(img => img.idStruttura === struttura.idStruttura);
-          return { ...struttura, immagine: immagine};
-        });
-      });
-      this.flgImmagini=true;
-    }
   }
   /**
    * Michael
@@ -264,4 +257,16 @@ export class Homepage implements OnInit {
       icon.classList.toggle('rotated');
     }
   }
+
+  getImmagine(id: number): ImmagineDTO {
+    const img = this.imgService.getImmagine(id);
+    return img ?? {
+      idImmagine:0,
+    idStruttura: id,
+    nomeImmagine:'placeholder',
+    immagineUrl:'assets/placeholder.png',
+    immagineFisicaUrl: 'assets/placeholder.png',
+    didascaliaImmagine: ''
+  };
   }
+}
