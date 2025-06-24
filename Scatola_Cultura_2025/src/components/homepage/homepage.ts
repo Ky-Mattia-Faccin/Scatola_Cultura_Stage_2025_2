@@ -265,7 +265,6 @@ export class Homepage implements OnInit {
     idStruttura: id,
     nomeImmagine:'placeholder',
     immagineUrl:'assets/placeholder.png',
-    immagineFisicaUrl: 'assets/placeholder.png',
     didascaliaImmagine: ''
   };
   }

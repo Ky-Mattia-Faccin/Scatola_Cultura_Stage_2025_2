@@ -41,5 +41,4 @@ export interface ImmagineDTO {
   nomeImmagine: string;
   immagineUrl: string | null;
   didascaliaImmagine: string | null;
-  immagineFisicaUrl: string | null;
 }
