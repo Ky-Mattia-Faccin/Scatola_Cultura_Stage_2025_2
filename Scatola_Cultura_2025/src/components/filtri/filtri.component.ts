@@ -4,6 +4,7 @@ import { StrutturaService } from '../../services/struttura.service';
 import { Observable, EMPTY, catchError, of, tap } from 'rxjs';
 import { ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { TextimgTsService } from '../../services/textimg.service';
 
 @Component({
   selector: 'app-filtri',
@@ -16,7 +17,7 @@ export class FiltriComponent implements AfterViewInit {
   //michael
 
   // Iniezione del servizio per recuperare i dati dei filtri
-  constructor(private servizioStruttura: StrutturaService) {}
+  constructor(private servizioStruttura: StrutturaService, private textService : TextimgTsService) {}
 
   // Observable che conterranno i dati da mostrare nei filtri
   DatiDisabilita: Observable<string[]> = EMPTY;
@@ -27,7 +28,7 @@ export class FiltriComponent implements AfterViewInit {
   @ViewChild('tipoComp') tipoComponent!: TypeaheadComponent;
   @ViewChild('provinciaComp') provinciaComponent!: TypeaheadComponent;
 
-  // Output: emette le selezioni effettuate dagli utenit al componente padre
+  // Output: emette le selezioni effettuate dagli utentix al componente padre
   @Output() DisabilitaSelected = new EventEmitter<string[]>();
   @Output() TipiSelected = new EventEmitter<string[]>();
   @Output() ProvinceSelected = new EventEmitter<string[]>();
@@ -157,6 +158,5 @@ export class FiltriComponent implements AfterViewInit {
   if(this.disabilitaComponent) this.disabilitaComponent.setSelected(this.DisabilitaSelectedLocal);
   if(this.tipoComponent) this.tipoComponent.setSelected(this.TipiSelectedLocal);
   if(this.provinciaComponent) this.provinciaComponent.setSelected(this.ProvinceSelectedLocal);
-  }
-  
+  } 
 }
