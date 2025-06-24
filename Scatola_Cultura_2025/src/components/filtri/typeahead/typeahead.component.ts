@@ -14,6 +14,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
+import { TextimgTsService } from '../../../services/textimg.service';
 
 @Component({
   selector: 'app-typeahead',
@@ -24,7 +25,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class TypeaheadComponent implements OnInit, OnDestroy {
 
-  
+  constructor(private textService : TextimgTsService){}
   //michael
 
   //Riferimento al container `.select` nel template
