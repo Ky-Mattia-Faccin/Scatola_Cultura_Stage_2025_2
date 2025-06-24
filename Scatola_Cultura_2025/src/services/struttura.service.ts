@@ -78,7 +78,7 @@ export class StrutturaService {
   ): Observable<Struttura[]> {
     //http://localhost:5000/api/DisabilitaStruttura/get?Disabilita=nuovo&Disabilita=nuovo1
 
-    let url = 'http://192.168.123.150:5000/api/DisabilitaStruttura/get'; 
+    let url = 'http://192.168.123.150:5000/api/DisabilitaStruttura/get?'; 
     //` https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get?`;
 
     // Aggiunge i parametri della query per ogni filtro selezionato (con encoding)
