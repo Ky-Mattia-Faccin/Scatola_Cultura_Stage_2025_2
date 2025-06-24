@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
-import { Struttura } from '../../interfaces/Istruttura';
+import { ImmagineDTO, Struttura } from '../../interfaces/Istruttura';
 import { Disabilita } from '../../interfaces/Istruttura';
 import { IconeManager } from '../../services/IconeManager';
 import { DetailTestoComponent } from './detail-testo/detail-testo.component';
@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { StrutturaService } from '../../services/struttura.service';
 
 import { TextimgTsService } from '../../services/textimg.service';
+import { ImmaginiService } from '../../services/immagini.service';
 
 @Component({
   standalone: true,
@@ -36,7 +37,7 @@ export class Detail implements OnInit {
     private iconeManager: IconeManager,
     private route: ActivatedRoute,
     private httpsClient: HttpClient,
-
+    private imgService:ImmaginiService,
     private servizioStruttura: StrutturaService,
 
     private textService: TextimgTsService
@@ -55,6 +56,9 @@ export class Detail implements OnInit {
   //simone
   //creazione del booleano
   isDescriptionActive:boolean=false
+
+
+  immagine?:ImmagineDTO 
 
   /*
    * OnInit:
@@ -80,8 +84,10 @@ export class Detail implements OnInit {
       // Ricerca della struttura con l'ID specificato
       const trovata = strutture.find((s: Struttura) => s.idStruttura === this.idStruttura);
 
-      if (trovata)
+      if (trovata){
         this.struttura = trovata;
+        this.immagine=this.imgService.getImmagine(this.idStruttura);
+      }
       else {
         console.error(`Struttura con id: ${this.idStruttura} non trovata`);
       }
@@ -121,19 +127,19 @@ export class Detail implements OnInit {
   //proprietà calcolate per collegare i link (da completare appena si avranno i dati)
 
   get linkInstagram(){
-    return 
+    return this.struttura.social1
   }
 
   get linkSito(){
-    return
+    return this.struttura.social2
   }
 
   get linkPosizione(){
-    return
+    return this.struttura.posizione
   }
 
   get linkFacebook(){
-    return
+    return this.struttura.sitoWeb
   }
 
 }
