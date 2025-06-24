@@ -1,7 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { IconeManager } from '../../../services/IconeManager';
 import { CommonModule } from '@angular/common';
-import { Struttura } from '../../../interfaces/Istruttura';
+import { Disabilita, Struttura } from '../../../interfaces/Istruttura';
 import { SearchFilterService } from '../../../services/search-filter.service';
 import { TextimgTsService } from '../../../services/textimg.service';
 
@@ -10,12 +17,10 @@ import { TextimgTsService } from '../../../services/textimg.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './detail-testo.component.html',
-  styleUrl: './detail-testo.component.css'
+  styleUrl: './detail-testo.component.css',
 })
 export class DetailTestoComponent implements OnChanges {
-
-
-  //michael 
+  //michael
 
   // Flag per indicare se il container genitore ha la classe 'zoomed'
   parentHasZoomClass = false;
@@ -24,10 +29,10 @@ export class DetailTestoComponent implements OnChanges {
   @Input() testo: string = '';
 
   // Input : testo semplificato da visualizzzare nel componenete
-  @Input () testoSemplificato : string  = '';
+  @Input() testoSemplificato: string = '';
 
   // Input: struttura per cui mostrare eventuali dati di accessibilità/disabilità
-  @Input() struttura: Struttura | null = null;
+  @Input() disabilita:Disabilita[] | null = null;
 
   // Output: emette l'elemento container genitore quando viene cliccato il pulsante zoom
   @Output() zoomClicked = new EventEmitter<HTMLElement>();
@@ -35,13 +40,12 @@ export class DetailTestoComponent implements OnChanges {
   // Flag per indicare se esistono dati di accessibilità (struttura non nulla)
   hasAccessibilita: boolean = false;
 
-   // Iniezione delle dipendenze: gestore icone
+  // Iniezione delle dipendenze: gestore icone
   constructor(
-    private iconeManager:IconeManager,
-    private searchFilter: SearchFilterService, 
-    private textService:TextimgTsService
-  ){}
-
+    private iconeManager: IconeManager,
+    private searchFilter: SearchFilterService,
+    private textService: TextimgTsService
+  ) {}
 
   /*
    * Metodo OnChanges:
@@ -49,7 +53,8 @@ export class DetailTestoComponent implements OnChanges {
    * aggiorna il flag hasAccessibilita in base alla presenza o meno di struttura
    */
   ngOnChanges(changes: SimpleChanges): void {
-    this.hasAccessibilita = !!this.struttura;
+    this.hasAccessibilita = !!this.disabilita;
+    console.log('DISABILITà:', this.disabilita);
   }
 
   // Accesso alle icone tramite IconeManager
@@ -61,7 +66,9 @@ export class DetailTestoComponent implements OnChanges {
    * Inoltre inverte il flag parentHasZoomClass per aggiornare la UI in base allo stato zoom
    */
   onZoomClick(event: MouseEvent) {
-    let parent = (event.target as HTMLElement).closest('.sc-detail-testo-container');
+    let parent = (event.target as HTMLElement).closest(
+      '.sc-detail-testo-container'
+    );
     this.zoomClicked.emit(parent as HTMLElement);
     this.parentHasZoomClass = !this.parentHasZoomClass;
   }
@@ -70,10 +77,10 @@ export class DetailTestoComponent implements OnChanges {
    * Simone
    * va a prendere il valore booleano che serve per modificare il testo con un testo semplice se è vero se è false lascia il testo semplice
    */
-  isTextSemplifiedActive:boolean=false;
-  ngOnInit(): void {
-    this.textService.isTextSemplifiedActive$.subscribe(value=>
-      this.isTextSemplifiedActive=value
-    )
+  isTextSemplifiedActive: boolean = false;
+  ngOnInit(): void {;
+    this.textService.isTextSemplifiedActive$.subscribe(
+      (value) => (this.isTextSemplifiedActive = value)
+    );
   }
 }

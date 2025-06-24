@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { OnInit, ViewChild, ElementRef, HostListener, Component } from '@angular/core';
+import {
+  OnInit,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  Component,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ImmagineDTO, Struttura } from '../../interfaces/Istruttura';
 import { StrutturaService } from '../../services/struttura.service';
@@ -14,7 +20,8 @@ import { ImmaginiService } from '../../services/immagini.service';
   selector: 'app-homepage',
   imports: [RouterModule, CommonModule, FiltriComponent],
   templateUrl: './homepage.html',
-  styleUrl: './homepage.css'
+
+  styleUrl: './homepage.css',
 })
 export class Homepage implements OnInit {
   /** Costruttore con iniezione dei servizi necessari */
@@ -49,17 +56,11 @@ export class Homepage implements OnInit {
   /** Flag per gestione visualizzazione mobile dei filtri */
   flgFiltriMobile: boolean = false;
 
-
-
-
   //flag immagini
   flgImmagini: boolean = false;
 
-
   //componente dei filtri
-  @ViewChild(FiltriComponent) filtriComponent!: FiltriComponent
-
-
+  @ViewChild(FiltriComponent) filtriComponent!: FiltriComponent;
 
   /** Michael
    * ngOnInit:
@@ -67,7 +68,6 @@ export class Homepage implements OnInit {
    * - carica strutture da sessionStorage o API
    * - si iscrive al filtro testuale (navbar)
    */
-
 
   /** Inizializza il componente recuperando i filtri salvati e caricando le strutture */
   ngOnInit(): void {
@@ -94,15 +94,18 @@ export class Homepage implements OnInit {
    * @param id ID della struttura
    * @returns ImmagineDTO
    */
+
   getImmagine(id: number): ImmagineDTO {
     const img = this.imgService.getImmagine(id);
-    return img ?? {
-      idImmagine: 0,
-      idStruttura: id,
-      nomeImmagine: 'placeholder',
-      immagineUrl: 'assets/placeholder.png',
-      didascaliaImmagine: ''
-    };
+    return (
+      img ?? {
+        idImmagine: 0,
+        idStruttura: id,
+        nomeImmagine: 'placeholder',
+        immagineUrl: 'assets/placeholder.png',
+        didascaliaImmagine: '',
+      }
+    );
   }
 
   /** Alterna la visibilità dei filtri su dispositivi mobili */
@@ -120,7 +123,9 @@ export class Homepage implements OnInit {
   /** Gestisce il click sull’icona per mostrare/nascondere informazioni partner */
   iconClick() {
     this.partnerInfoOpen = !this.partnerInfoOpen;
-    const contPartner = document.querySelector('.sc-homepage-partner-info') as HTMLElement;
+    const contPartner = document.querySelector(
+      '.sc-homepage-partner-info'
+    ) as HTMLElement;
     contPartner?.classList.toggle('hidden');
     const icon = document.querySelector('.sc-homepage-icon');
     if (icon) {
@@ -134,21 +139,38 @@ export class Homepage implements OnInit {
    */
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: MouseEvent) {
-    if (!this.eRef.nativeElement.querySelector('.sc-homepage-partner-info-svg')?.contains(event.target as Node)) {
+    if (
+      !this.eRef.nativeElement
+        .querySelector('.sc-homepage-partner-info-svg')
+        ?.contains(event.target as Node)
+    ) {
       this.partnerInfoOpen = false;
     }
   }
 
+  /*
+toggleMenu() {
+    const dropDownMenu = document.querySelector('.sc-navbar-dropdown-menu');
+    dropDownMenu?.classList.toggle('hidden');
+  }
+
   /** Applica i filtri selezionati e aggiorna le strutture da mostrare */
   filtraStrutture(): void {
-    sessionStorage.setItem('filtri', JSON.stringify({
-      disabilita: this.FiltriDisabilita,
-      tipi: this.FiltriTipi,
-      province: this.FiltriProvince,
-      filtroTestuale: this.filtro,
-    }));
+    sessionStorage.setItem(
+      'filtri',
+      JSON.stringify({
+        disabilita: this.FiltriDisabilita,
+        tipi: this.FiltriTipi,
+        province: this.FiltriProvince,
+        filtroTestuale: this.filtro,
+      })
+    );
     this.servizioStruttura
-      .getStruttureFiltrate(this.FiltriDisabilita, this.FiltriTipi, this.FiltriProvince)
+      .getStruttureFiltrate(
+        this.FiltriDisabilita,
+        this.FiltriTipi,
+        this.FiltriProvince
+      )
       .subscribe({
         next: (s) => {
           this.flgTrovati = s.length > 0;
@@ -158,24 +180,29 @@ export class Homepage implements OnInit {
         },
         error: (err) => {
           console.error('Errore nel caricamento delle strutture');
-          if (window.confirm('Errore nel caricamento delle strutture, vuoi riprovare?')) {
+          if (
+            window.confirm(
+              'Errore nel caricamento delle strutture, vuoi riprovare?'
+            )
+          ) {
             this.filtraStrutture();
           }
-        }
+        },
       });
   }
 
   /** Applica il filtro testuale alle strutture e aggiorna la lista mostrata */
   private applySearchFilter() {
-  const filtroLower = this.filtro ? this.filtro.toLowerCase() : '';
-  this.struttureFiltrate = this.strutture.filter((s) =>
-    // Se filtroLower è vuoto, include comunque la struttura; 
-    // altrimenti la include solo se il nome contiene filtroLower
-    (!filtroLower || s.nomeStruttura.toLowerCase().includes(filtroLower)) 
-    && !s.flgDisabilita // esclude sempre strutture disabilitate
-  );
-}
-/**
+    const filtroLower = this.filtro ? this.filtro.toLowerCase() : '';
+    this.struttureFiltrate = this.strutture.filter(
+      (s) =>
+        // Se filtroLower è vuoto, include comunque la struttura;
+        // altrimenti la include solo se il nome contiene filtroLower
+        (!filtroLower || s.nomeStruttura.toLowerCase().includes(filtroLower)) &&
+        !s.flgDisabilita // esclude sempre strutture disabilitate
+    );
+  }
+  /**
    * Michael
    * Controlla se esistono strutture in sessionStorage:
    * - Se sì, le carica
@@ -188,7 +215,6 @@ export class Homepage implements OnInit {
    * non carica le immagini nel sessionStorage perchè è troppo pesante
 d6b (css)
    */
-
 
   /** Verifica se ci sono strutture in sessionStorage, altrimenti le carica dal server */
   private checkSessionStorage() {
@@ -205,10 +231,13 @@ d6b (css)
           this.strutture = s;
           const struttureDaSalvare = s.map(({ immagine, ...rest }) => ({
             ...rest,
-            immagine: { ...immagine, byteImmagine: undefined }
+            immagine: { ...immagine, byteImmagine: undefined },
           }));
           try {
-            sessionStorage.setItem('strutture', JSON.stringify(struttureDaSalvare));
+            sessionStorage.setItem(
+              'strutture',
+              JSON.stringify(struttureDaSalvare)
+            );
           } catch (e) {
             console.warn('⚠️ Errore nel salvataggio su sessionStorage:', e);
           }
@@ -216,10 +245,12 @@ d6b (css)
         },
         error: (err) => {
           console.error(err);
-          if (window.confirm('Errore nel caricamento delle strutture, riprovare?')) {
+          if (
+            window.confirm('Errore nel caricamento delle strutture, riprovare?')
+          ) {
             this.checkSessionStorage();
           }
-        }
+        },
       });
     }
   }

@@ -1,146 +1,215 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+
 import { ImmagineDTO, Struttura } from '../../interfaces/Istruttura';
 import { Disabilita } from '../../interfaces/Istruttura';
+
 import { IconeManager } from '../../services/IconeManager';
 import { DetailTestoComponent } from './detail-testo/detail-testo.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable, shareReplay, tap } from 'rxjs';
 
 import { StrutturaService } from '../../services/struttura.service';
 
 import { TextimgTsService } from '../../services/textimg.service';
 import { ImmaginiService } from '../../services/immagini.service';
 
+// Interfaccia che descrive la struttura dati che arriva dal backend per le disabilità
+export interface DisabilitaBackend {
+  idStruttura: number;
+  descrizione: string;
+  flgDisabilita: boolean;
+  disabilitaStruttura: number;
+  testoSemplificato: string;
+  disabilita: {
+    categoria: string;
+    descrizione: string;
+    flgDisabilita: boolean;
+  };
+  flgWarning: boolean;
+}
+
 @Component({
   standalone: true,
   selector: 'app-detail',
-  imports: [RouterModule, RouterLink, CommonModule, DetailTestoComponent, HttpClientModule],
+  imports: [
+    RouterModule,
+    RouterLink,
+    CommonModule,
+    DetailTestoComponent,
+    HttpClientModule,
+  ],
   templateUrl: './detail.html',
   styleUrls: ['./detail.css'],
-  
 })
 export class Detail implements OnInit {
+  // Array di disabilità associate alla struttura
+  disabilita: Disabilita[] = [];
 
-  //michael
-
-
-  /* Costruttore con dipendenze iniettate:
-     - IconeManager per gestire le icone
-     - ActivatedRoute per leggere i parametri dalla URL
-     - HttpClient per effettuare richieste HTTP
-     - StrutturaService per recuperare dati strutture e disabilità
-     - TextService per recuperare il booleano per testi semplici e per la didascalia
+  /*
+    Costruttore con dependency injection:
+    - IconeManager: gestisce le icone usate nel template
+    - ActivatedRoute: per leggere i parametri dalla URL
+    - HttpClient: per richieste HTTP (non usato direttamente qui)
+    - StrutturaService: per recuperare dati relativi a strutture e disabilità
+    - TextimgTsService: per ricevere il valore booleano che indica se attivare descrizioni semplificate
   */
   constructor(
     private iconeManager: IconeManager,
     private route: ActivatedRoute,
     private httpsClient: HttpClient,
-    private imgService:ImmaginiService,
+    private imgService: ImmaginiService,
+
     private servizioStruttura: StrutturaService,
-
     private textService: TextimgTsService
-
   ) {}
 
-  // ID della struttura corrente (ottenuto dalla route)
+  // ID della struttura corrente preso dalla route
   idStruttura!: number;
 
-  // Oggetto Struttura da visualizzare nel dettaglio
+  // Oggetto struttura con i dati da visualizzare nel dettaglio
   struttura!: Struttura;
 
   // Array contenente i dati di accessibilità/disabilità della struttura
   disabilitaStruttura!: Disabilita[];
 
-  //simone
-  //creazione del booleano
-  isDescriptionActive:boolean=false
+  // Booleano per mostrare/nascondere la descrizione semplificata (es. didascalia immagine)
+  isDescriptionActive: boolean = false;
 
-
-  immagine?:ImmagineDTO 
+  immagine?: ImmagineDTO;
 
   /*
-   * OnInit:
-   * - Recupera l'ID della struttura dalla route
-   * - Carica la struttura dal localStorage
-   * - Esegue richiesta HTTP per ottenere i dati delle disabilità (decidere se va usato)
-  */
+   * Metodo OnInit:
+   * - Recupera l'ID della struttura dai parametri della URL
+   * - Carica la struttura dal sessionStorage
+   * - Se esiste, carica le disabilità della struttura dal backend (con caching in sessionStorage)
+   * - Si iscrive al servizio textService per ricevere il booleano isDescriptionActive
+   */
   ngOnInit(): void {
-     //Simone: riceve il booleano dalla navbar e lo usa per inserire una descrizione sull'immagine
-    this.textService.isDescriptionActive$.subscribe(value=>{
-      this.isDescriptionActive=value;
-      }
-    )
+    // Sottoscrizione al servizio che fornisce il booleano per testi semplici/didascalia
+    this.textService.isDescriptionActive$.subscribe((value) => {
+      this.isDescriptionActive = value;
+    });
 
+    // Legge l'id struttura dai parametri della route
     const parametroId = this.route.snapshot.paramMap.get('id');
 
     if (parametroId != null) {
       this.idStruttura = parseInt(parametroId, 10);
 
-      // Caricamento delle strutture dal localStorage
-      const strutture: Struttura[] = JSON.parse(sessionStorage.getItem('strutture') || '[]');
+      // Carica le strutture dalla sessionStorage
+      const strutture: Struttura[] = JSON.parse(
+        sessionStorage.getItem('strutture') || '[]'
+      );
 
-      // Ricerca della struttura con l'ID specificato
-      const trovata = strutture.find((s: Struttura) => s.idStruttura === this.idStruttura);
+      // Cerca la struttura con l'id specificato
+      const trovata = strutture.find(
+        (s: Struttura) => s.idStruttura === this.idStruttura
+      );
 
-      if (trovata){
+      if (trovata) {
         this.struttura = trovata;
-        this.immagine=this.imgService.getImmagine(this.idStruttura);
-      }
-      else {
+        console.log(this.struttura);
+
+        // Se non esiste il caching in sessionStorage per le disabilità di questa struttura
+        if (!sessionStorage.getItem(`disabilità${this.idStruttura}`)) {
+          // Chiamata HTTP per ottenere le disabilità dal backend, poi mapparle nel formato corretto
+          this.servizioStruttura
+            .getDisabilitàStruttura(this.idStruttura)
+            .pipe(
+              map((dataFromBackend: DisabilitaBackend[]): Disabilita[] =>
+                dataFromBackend.map(
+                  (item: DisabilitaBackend): Disabilita => ({
+                    idStruttura: item.idStruttura,
+                    categoria: {
+                      nome: item.disabilita.categoria,
+                      descrizione: item.disabilita.descrizione,
+                      flgDisabilita: item.disabilita.flgDisabilita,
+                    },
+                    descrizione: item.descrizione,
+                    testoSemplice: item.testoSemplificato,
+                    flgDisabilita: item.flgDisabilita,
+                    disabilitaStruttura: item.disabilitaStruttura,
+                    flgWarning: item.flgWarning,
+                  })
+                )
+              ),
+              tap((mappedDisabilita: Disabilita[]) => {
+                this.disabilita = mappedDisabilita;
+                // Salvo in sessionStorage per caching
+                sessionStorage.setItem(
+                  `disabilità${this.idStruttura}`,
+                  JSON.stringify(this.disabilita)
+                );
+                // Aggiorna anche la proprietà disabilita della struttura, se usata altrove
+                this.struttura.disabilita = mappedDisabilita;
+              }),
+              shareReplay(1)
+            )
+            .subscribe({
+              next: () => {
+                /* caricamento completato */
+              },
+              error: (err) => {
+                console.error('Errore nel caricamento disabilità:', err);
+              },
+            });
+        } else {
+          // Se già presente il caching, lo recupero da sessionStorage per evitare chiamate HTTP
+          const Json = sessionStorage.getItem(`disabilità${this.idStruttura}`);
+          this.disabilita = JSON.parse(Json!);
+        }
+      } else {
         console.error(`Struttura con id: ${this.idStruttura} non trovata`);
       }
-
-      // Recupero dei dati di accessibilità/disabilità associati alla struttura
-      /* in caso di seconda chiamata per ricevere le disabilità
-      this.servizioStruttura.getDisabilita(this.idStruttura).subscribe(dato => {
-        this.disabilitaStruttura = dato;
-      });
-      */
     } else {
       console.error(`La struttura con id: ${this.idStruttura} non esiste`);
     }
   }
 
-  // Accesso alle icone tramite IconeManager
+  // Espongo le icone tramite IconeManager per usarle nel template
   Icone = this.iconeManager;
 
   /*
-   * Metodo per attivare/disattivare lo zoom sui contenitori di dettaglio.
-   * Cerca il contenitore padre più vicino con classi specifiche e ne attiva/disattiva la classe 'sc-zoomed'
+   * Metodo per attivare/disattivare lo zoom sui contenitori di dettaglio:
+   * - Cerca il contenitore padre più vicino con classi specifiche
+   * - Attiva/disattiva la classe 'sc-zoomed' per il zoom visivo
    */
   toggleZoom(container: HTMLElement) {
-    let element = container.closest('.sc-detail-center-desc')?.classList.toggle('sc-zoomed');
+    let element = container
+      .closest('.sc-detail-center-desc')
+      ?.classList.toggle('sc-zoomed');
     if (!element)
-      element = container.closest('.sc-detail-footer-accessibility')?.classList.toggle('sc-zoomed');
+      element = container
+        .closest('.sc-detail-footer-accessibility')
+        ?.classList.toggle('sc-zoomed');
   }
+
   /**
-   * Simone
-   * Se il booleano è vero mostra la didascalia se con il muose si passa sopra alla fotoaltrimenti non la mosta
+   * Metodo per mostrare/nascondere la didascalia immagine se il booleano isDescriptionActive è true.
+   * Il trigger è un passaggio del mouse sopra l'immagine
    */
-  toggleMenu(){
-    const dropDownImg  = document.querySelector('.sc-detail-center-desc-img');
+  toggleMenu() {
+    const dropDownImg = document.querySelector('.sc-detail-center-desc-img');
     dropDownImg?.classList.toggle('hidden');
   }
 
   //proprietà calcolate per collegare i link (da completare appena si avranno i dati)
 
-  get linkInstagram(){
-    return this.struttura.social1
+  get linkInstagram() {
+    return this.struttura.social1;
   }
 
-  get linkSito(){
-    return this.struttura.sitoWeb
+  get linkSito() {
+    return this.struttura.sitoWeb;
   }
 
-  get linkPosizione(){
-    return this.struttura.posizione
+  get linkPosizione() {
+    return this.struttura.posizione;
   }
 
-  get linkFacebook(){
-    return this.struttura.social2
+  get linkFacebook() {
+    return this.struttura.social2;
   }
-
 }
-

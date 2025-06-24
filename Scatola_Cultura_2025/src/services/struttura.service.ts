@@ -38,10 +38,18 @@ export class StrutturaService {
    * - Restituisce un Observable con i dati delle disabilità associati a quella struttura
    * - da decidere su utilizzare o no
    */
-  getDisabilita(id: number): Observable<Disabilita[]> {
-    return this.httpClient.get<Disabilita[]>(
-      ' https://dev.api.scatolacultura.it/api/Struttura/getById?id=' + `${id}`
-    );
+
+  getDisabilitàStruttura(id: number): Observable<any[]> {
+    return this.httpClient
+      .get<any[]>(
+        `http://192.168.123.150:5000/api/DisabilitaStruttura/getByID/${id}`
+      )
+      .pipe(
+        catchError((error) => {
+          console.error('Errore nel recupero delle disabilità:', error);
+          return of([]);
+        })
+      );
   }
 
   /*
