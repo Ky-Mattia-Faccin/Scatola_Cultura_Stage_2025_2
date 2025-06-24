@@ -1,9 +1,9 @@
 <div class="sc-detail-testo-container">
   <div *ngIf="hasAccessibilita; else normale" class="sc-detail-testo-text-accessibilita">
-    <div *ngFor="let disabilita of struttura?.disabilita">
-      <span [innerHTML]="Icone.getIcon(disabilita.categoria.nome)"></span>
-      <span *ngIf="!isTextSemplifiedActive"> {{ disabilita.categoria.nome }} - {{ disabilita.descrizione }}</span>
-      <span *ngIf="isTextSemplifiedActive"> {{ disabilita.categoria.nome }} - {{struttura?.testoSemplificato}} </span>
+    <div *ngFor="let d of disabilita">
+      <span [innerHTML]="Icone.getIcon(d.categoria.nome)"></span>
+      <span *ngIf="!isTextSemplifiedActive"> {{ d.categoria.nome }} - {{ d.descrizione }}</span>
+      <span *ngIf="isTextSemplifiedActive"> {{ d.categoria.nome }} - {{d.testoSemplice}} </span>
       <br aria-hidden="true" />
     </div>
   </div>
