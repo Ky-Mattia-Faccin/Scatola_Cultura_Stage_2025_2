@@ -198,18 +198,40 @@ export class Detail implements OnInit {
   //proprietà calcolate per collegare i link (da completare appena si avranno i dati)
 
   get linkInstagram() {
-    return this.struttura.social1;
+
+    const raw=this.struttura.social1.trim();
+
+    if(!raw || raw==='')
+      return null
+
+    return raw
   }
 
   get linkSito() {
-    return this.struttura.sitoWeb;
+    const raw=this.struttura.sitoWeb.trim();
+
+    if(!raw || raw==='')
+      return null
+
+    return raw
   }
 
   get linkPosizione() {
-    return this.struttura.posizione;
+    const raw=this.struttura.posizione.trim();
+
+    if(!raw || raw==='')
+      return null
+
+    return raw
   }
 
   get linkFacebook() {
-    return this.struttura.social2;
+    const raw=this.struttura.social2.trim();
+
+    if(!raw || raw==='')
+      return null
+
+    return raw
+
   }
 }
