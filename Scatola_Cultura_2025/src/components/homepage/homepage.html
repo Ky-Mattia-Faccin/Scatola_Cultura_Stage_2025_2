@@ -44,19 +44,14 @@
     <div class="sc-homepage-museo-card" *ngFor="let item of struttureFiltrate"
       [routerLink]="['/detail', item.idStruttura]" role="button">
       <div class="sc-homepage-card-img-border">
+        <div class="sc-homepage-card-img">
 
-        <div class="sc-homepage-card-img" >
           <ng-container *ngIf="getImmagine(item.idStruttura) as img">
-          <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive && img.didascaliaImmagine ">
-            <span>{{ img.didascaliaImmagine }}</span>
-          </div>
-            <img
-            [src]="
-              img?.immagineUrl || 'assets/placeholder.png'
-            "
-            alt="{{ item.nomeStruttura }}"
-            loading="lazy"
-          />
+            <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive && img.didascaliaImmagine ">
+              <span>{{ img.didascaliaImmagine }}</span>
+            </div>
+            <img [src]="img.immagineUrl" (error)="img.immagineUrl = 'assets/placeholder.png'"
+              alt="{{ item.nomeStruttura }}" loading="lazy" />
           </ng-container>
 
         </div>
