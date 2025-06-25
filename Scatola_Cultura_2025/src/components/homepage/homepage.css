@@ -41,11 +41,13 @@
 
 .sc-homepage-partner-info {
   position: absolute;
+
   top: 0%;
   transform: translate(-51vw, 0);
 
-  width: 50vw;
-  height: 55vh;
+
+  width: 40vw;
+  height: 50vh;
 
   background-color: #ffffff;
 
@@ -224,7 +226,7 @@
   align-self: center;
   color: white;
   justify-content: center;
-  height: 20vh;
+  width: 90%;
   align-items: center;
   text-align: center;
 }
