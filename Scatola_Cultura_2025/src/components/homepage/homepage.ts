@@ -263,7 +263,14 @@ d6b (css)
       icon.classList.toggle('rotated');
     }
   }
-
+  /**
+  * Restituisce l'immagine associata a un dato ID.
+  * Se l'immagine non è trovata (ossia `null` o `undefined`), ritorna un oggetto di default
+  * con valori placeholder, per evitare errori in assenza dell'immagine.
+  *
+  * @param id ID numerico dell'immagine da recuperare.
+  * @returns Un oggetto ImmagineDTO contenente i dati dell'immagine o i valori di default.
+  */
   getImmagine(id: number): ImmagineDTO {
     const img = this.imgService.getImmagine(id);
     return img ?? {
@@ -274,6 +281,14 @@ d6b (css)
     didascaliaImmagine: ''
   };
   }
+  /**
+  * Listener globale per i click sul documento.
+  * Verifica se il click è avvenuto al di fuori dell'elemento con classe
+  * '.sc-homepage-partner-info-svg'. Se sì, imposta la variabile `partnerInfoOpen`
+  * a false per chiudere o nascondere la sezione delle info partner.
+  *
+  * @param event Evento MouseEvent generato dal click sull'intero documento.
+  */
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: MouseEvent) {
     if (!this.eRef.nativeElement.querySelector('.sc-homepage-partner-info-svg')?.contains(event.target as Node)) {
