@@ -6,6 +6,8 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ElementRef,
+  HostListener
 } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
@@ -34,8 +36,9 @@ export class NavBarComponent implements OnInit {
     public searchService: SearchFilterService,
     private textService: TextimgTsService,
     private router: Router,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private eRef: ElementRef
+  ) { }
 
 
   //========michael=========0
@@ -49,7 +52,7 @@ export class NavBarComponent implements OnInit {
   //Valore attuale del textsize : Simone
 
 
-  fontSize : number=20;
+  fontSize: number = 20;
 
 
 
@@ -85,9 +88,11 @@ export class NavBarComponent implements OnInit {
    * - Agisce sull'elemento con classe ‘sc-navbar-dropdown-menu’
    * - Aggiunge/rimuove la classe 'hidden' per gestire la visibilità
    */
+  isMenuOpen = false;
   toggleMenu() {
     const dropDownMenu = document.querySelector('.sc-navbar-dropdown-menu');
     dropDownMenu?.classList.toggle('hidden');
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   //nasconde o mostra la barra di ricerca in base alla rotta attiva
@@ -109,7 +114,7 @@ export class NavBarComponent implements OnInit {
 
   //valore attuale della descrizione per la didascalia delle immagini
   isDescriptionActive: boolean = false;
-  
+
   onCheck() {
     this.isDescriptionActive = !this.isDescriptionActive;
     this.textService.triggerChange(this.isDescriptionActive);
@@ -165,7 +170,7 @@ export class NavBarComponent implements OnInit {
    * crea il file nella nuova scheda aprendolo;
    * e gli mette come nome nella tab in alto il nome Manuale CAA
    */
-   openManual() {
+  openManual() {
     this.http.get('assets/CAA.pdf', { responseType: 'blob' }).subscribe(blob => {
       const fileURL = URL.createObjectURL(blob);
 
@@ -185,42 +190,56 @@ export class NavBarComponent implements OnInit {
     });
   }
 
-/**
- * Simone
- * quando vengono cliccati i pulsanti sopra allo slider, in base a quale viene premuto chiamata questo metodo con il nome della proprietà e con il valore da aggiungere, min e max
- * aumenta il valore o diminuisce in base a quale proprietà viene passata
- * se brightness : aumenta di 10 o diminuisce di 10 la luminosità della pagina
- * se contrast : aumenta di 10 o diminuisce di 10 il contrasto
- * se textSize: aumenta di 2 o diminuisce di 2 la grandezza dei testi
- * Passa il valore cambiato all'output emitter se brightness o contrast altrimenti al --fontSize sullo styles.css generale
- */
+  /**
+   * Simone
+   * quando vengono cliccati i pulsanti sopra allo slider, in base a quale viene premuto chiamata questo metodo con il nome della proprietà e con il valore da aggiungere, min e max
+   * aumenta il valore o diminuisce in base a quale proprietà viene passata
+   * se brightness : aumenta di 10 o diminuisce di 10 la luminosità della pagina
+   * se contrast : aumenta di 10 o diminuisce di 10 il contrasto
+   * se textSize: aumenta di 2 o diminuisce di 2 la grandezza dei testi
+   * Passa il valore cambiato all'output emitter se brightness o contrast altrimenti al --fontSize sullo styles.css generale
+   */
   changeValue(
-    property: 'brightness'| 'contrast' | 'fontSize',
-    valueToAdd : number,
-    min : number,
-    max : number,
+    property: 'brightness' | 'contrast' | 'fontSize',
+    valueToAdd: number,
+    min: number,
+    max: number,
     onChange?: (value: number) => void
-  ){
-    this[property]=Math.min(max, Math.max(min, this[property] +valueToAdd));
+  ) {
+    this[property] = Math.min(max, Math.max(min, this[property] + valueToAdd));
 
-    if(onChange){
+    if (onChange) {
       onChange(this[property])
     }
 
     switch (property) {
-    case 'brightness':
-      this.brightnessChanged.emit(this.brightness);
-      break;
-    case 'contrast':
-      this.contrastChanged.emit(this.contrast);
-      break;
-    case 'fontSize':
-      document.documentElement.style.setProperty(
-        '--fontSize',
-        this.fontSize + 'px'
-      );
-      break;
-   }
+      case 'brightness':
+        this.brightnessChanged.emit(this.brightness);
+        break;
+      case 'contrast':
+        this.contrastChanged.emit(this.contrast);
+        break;
+      case 'fontSize':
+        document.documentElement.style.setProperty(
+          '--fontSize',
+          this.fontSize + 'px'
+        );
+        break;
+    }
+  }
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent): void {
+    const dropdownButton = this.eRef.nativeElement.querySelector('.sc-navbar-dropdown-button');
+    const dropdownMenu = this.eRef.nativeElement.querySelector('.sc-navbar-dropdown-menu');
+
+    const target = event.target as Node;
+
+    const clickedInside = dropdownButton.contains(target) || dropdownMenu.contains(target);
+
+    if (!clickedInside && this.isMenuOpen) {
+      dropdownMenu?.classList.add('hidden');
+      this.isMenuOpen = false;
+    }
   }
   ResetAll(){
     if(this.isDescriptionActive)
