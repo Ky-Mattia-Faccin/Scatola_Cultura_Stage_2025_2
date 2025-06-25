@@ -149,7 +149,7 @@
 /* Contenitore per l'immagine */
 .sc-detail-center-img {
   max-width: 30vw;
-
+  min-width: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
