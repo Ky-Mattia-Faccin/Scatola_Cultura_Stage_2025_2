@@ -8,12 +8,11 @@ import { Disabilita } from '../../interfaces/Istruttura';
 import { IconeManager } from '../../services/IconeManager';
 import { DetailTestoComponent } from './detail-testo/detail-testo.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { map, Observable, shareReplay, tap } from 'rxjs';
 
 import { StrutturaService } from '../../services/struttura.service';
-
 import { TextimgTsService } from '../../services/textimg.service';
-import { ImmaginiService } from '../../services/immagini.service';
 
 // Interfaccia che descrive la struttura dati che arriva dal backend per le disabilità
 export interface DisabilitaBackend {
@@ -59,8 +58,6 @@ export class Detail implements OnInit {
     private iconeManager: IconeManager,
     private route: ActivatedRoute,
     private httpsClient: HttpClient,
-    private imgService: ImmaginiService,
-
     private servizioStruttura: StrutturaService,
     private textService: TextimgTsService
   ) {}
@@ -76,9 +73,6 @@ export class Detail implements OnInit {
 
   // Booleano per mostrare/nascondere la descrizione semplificata (es. didascalia immagine)
   isDescriptionActive: boolean = false;
-
-  immagine?: ImmagineDTO;
-
   /*
    * Metodo OnInit:
    * - Recupera l'ID della struttura dai parametri della URL

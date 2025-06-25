@@ -12,7 +12,6 @@ import { StrutturaService } from '../../services/struttura.service';
 import { FiltriComponent } from '../filtri/filtri.component';
 import { SearchFilterService } from '../../services/search-filter.service';
 import { TextimgTsService } from '../../services/textimg.service';
-import { ImmaginiService } from '../../services/immagini.service';
 
 /** Componente principale della homepage. Gestisce la visualizzazione, il filtraggio e l'interazione con le strutture. */
 @Component({
@@ -29,9 +28,8 @@ export class Homepage implements OnInit {
     private searchFilter: SearchFilterService,
     private servizioStruttura: StrutturaService,
     private textService: TextimgTsService,
-    private imgService: ImmaginiService,
     private eRef: ElementRef
-  ) {}
+  ) { }
 
   /** Flag per mostrare/nascondere il box informazioni partner */
   partnerInfoOpen: boolean = false;
@@ -87,25 +85,6 @@ export class Homepage implements OnInit {
     this.textService.isDescriptionActive$.subscribe((value) => {
       this.isDescriptionActive = value;
     });
-  }
-
-  /**
-   * Restituisce l'immagine associata alla struttura, o un placeholder se non presente
-   * @param id ID della struttura
-   * @returns ImmagineDTO
-   */
-
-  getImmagine(id: number): ImmagineDTO {
-    const img = this.imgService.getImmagine(id);
-    return (
-      img ?? {
-        idImmagine: 0,
-        idStruttura: id,
-        nomeImmagine: 'placeholder',
-        immagineUrl: 'assets/placeholder.png',
-        didascaliaImmagine: '',
-      }
-    );
   }
 
   /** Alterna la visibilità dei filtri su dispositivi mobili */
@@ -191,17 +170,6 @@ toggleMenu() {
       });
   }
 
-  /** Applica il filtro testuale alle strutture e aggiorna la lista mostrata */
-  private applySearchFilter() {
-    const filtroLower = this.filtro ? this.filtro.toLowerCase() : '';
-    this.struttureFiltrate = this.strutture.filter(
-      (s) =>
-        // Se filtroLower è vuoto, include comunque la struttura;
-        // altrimenti la include solo se il nome contiene filtroLower
-        (!filtroLower || s.nomeStruttura.toLowerCase().includes(filtroLower)) &&
-        !s.flgDisabilita // esclude sempre strutture disabilitate
-    );
-  }
   /**
    * Michael
    * Controlla se esistono strutture in sessionStorage:
@@ -213,8 +181,17 @@ toggleMenu() {
    * Simone
    * se il flag disalibità è attivato la struttura non viene mostrata
    * non carica le immagini nel sessionStorage perchè è troppo pesante
-d6b (css)
    */
+  private applySearchFilter() {
+    const filtroLower = this.filtro ? this.filtro.toLowerCase() : '';
+    this.struttureFiltrate = this.strutture.filter((s) =>
+      // Se filtroLower è vuoto, include comunque la struttura; 
+      // altrimenti la include solo se il nome contiene filtroLower
+      (!filtroLower || s.nomeStruttura.toLowerCase().includes(filtroLower))
+      && !s.flgDisabilita // esclude sempre strutture disabilitate
+    );
+  }
+
 
   /** Verifica se ci sono strutture in sessionStorage, altrimenti le carica dal server */
   private checkSessionStorage() {

@@ -113,16 +113,4 @@ export class StrutturaService {
     // Esegue la chiamata GET e restituisce le strutture corrispondenti
     return this.httpClient.get<Struttura[]>(url);
   }
-  /** 
-  * Effettua una richiesta HTTP GET per ottenere la lista di immagini dal backend.
-  * Restituisce un Observable che emette un array di `ImmagineDTO`.
-  * L'osservabile deve essere sottoscritto per ricevere i dati.
-  * @returns Observable<ImmagineDTO[]> con la lista delle immagini. 
-  */  
-  getImmagini(): Observable<ImmagineDTO[]> {
-  return this.httpClient.get<ImmagineDTO[]>(
-    'http://192.168.123.150:5000/api/Immagine/lista'
-    );
-  }
-
 }
