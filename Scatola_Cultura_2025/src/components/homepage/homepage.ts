@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { OnInit, ViewChild } from '@angular/core';
+import { OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { StrutturaService } from '../../services/struttura.service';
 import { FiltriComponent } from '../filtri/filtri.component';
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
@@ -23,9 +23,11 @@ export class Homepage implements OnInit {
     private searchFilter: SearchFilterService,
     private servizioStruttura: StrutturaService,
     private textService: TextimgTsService,
-    private imgService: ImmaginiService
+    private imgService: ImmaginiService,
+    private eRef: ElementRef
   ) { }
 
+  partnerInfoOpen : boolean = false;
   // Lista completa delle strutture ottenute da API
   strutture: Struttura[] = [];
 
@@ -252,6 +254,7 @@ d6b (css)
    * quando vine premuta la icona si gira di 180° e quando viene premuta per uscire ritorna a 90°.
    */
   iconClick() {
+    this.partnerInfoOpen = !this.partnerInfoOpen;
     const contPartner = document.querySelector('.sc-homepage-partner-info') as HTMLElement;
     contPartner?.classList.toggle('hidden');
 
@@ -270,5 +273,11 @@ d6b (css)
     immagineUrl:'assets/placeholder.png',
     didascaliaImmagine: ''
   };
+  }
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: MouseEvent) {
+    if (!this.eRef.nativeElement.querySelector('.sc-homepage-partner-info-svg')?.contains(event.target as Node)) {
+      this.partnerInfoOpen = false;
+    }
   }
 }
