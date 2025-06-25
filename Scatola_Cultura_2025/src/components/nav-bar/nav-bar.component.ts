@@ -227,6 +227,22 @@ export class NavBarComponent implements OnInit {
         break;
     }
   }
+  /**
+  * Simone 
+  * Questo metodo serve per chiudere automaticamente il menu dropdown
+  * quando l'utente clicca fuori dal menu o dal suo pulsante.
+  *
+  * Viene eseguito ogni volta che si fa click da qualsiasi parte della pagina.
+  * Controlla se il click è avvenuto all'interno del pulsante del menu o del menu stesso.
+  * Se il click è avvenuto fuori e il menu è aperto, allora:
+  *  - nasconde il menu aggiungendo la classe 'hidden'
+  *  - imposta la variabile `isMenuOpen` su false per indicare che è stato chiuso
+  *
+  * Questo migliora l'usabilità del menu, evitando che resti aperto inutilmente.
+  *
+  * @param event L'evento del click, usato per sapere dove ha cliccato l’utente.
+  */
+
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent): void {
     const dropdownButton = this.eRef.nativeElement.querySelector('.sc-navbar-dropdown-button');
