@@ -1,6 +1,7 @@
 <div class="sc-detail-testo-container">
   <div *ngIf="hasAccessibilita; else normale" class="sc-detail-testo-text-accessibilita">
     <div *ngFor="let d of disabilita">
+      <span *ngIf="d.flgWarning"  [innerHTML]="Icone.getIcon('warning')"></span>
       <span [innerHTML]="Icone.getIcon(d.categoria.nome)"></span>
       <span *ngIf="!isTextSemplifiedActive"> {{ d.categoria.nome }} - {{ d.descrizione }}</span>
       <span *ngIf="isTextSemplifiedActive"> {{ d.categoria.nome }} - {{d.testoSemplice}} </span>
