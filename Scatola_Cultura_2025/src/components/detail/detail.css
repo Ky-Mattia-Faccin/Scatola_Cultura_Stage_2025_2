@@ -482,6 +482,20 @@
   letter-spacing: 0.12em;
 }
 
+.disabled:hover{
+  background-color: gray;
+  cursor: default;
+  scale: 1;
+}
+
+.disabled:hover .tooltip{
+  background-color: gray;
+}
+
+
+
+
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   .sc-detail-container {
