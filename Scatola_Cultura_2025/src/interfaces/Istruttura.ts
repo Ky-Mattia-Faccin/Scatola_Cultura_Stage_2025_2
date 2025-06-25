@@ -38,8 +38,8 @@ export interface Disabilita{
 
 
 export interface ImmagineDTO {
-  idImmagine: number;
-  idStruttura: number;
+  //idImmagine: number;
+  //idStruttura: number;
   nomeImmagine: string;
   immagineUrl: string | null;
   didascaliaImmagine: string | null;

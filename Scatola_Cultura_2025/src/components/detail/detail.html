@@ -18,14 +18,14 @@
       <div class="sc-detail-center">
         <div class="sc-detail-center-img">
           <img [src]="
-              immagine?.immagineUrl || 'assets/placeholder.png'
+              this.struttura.immagine?.immagineUrl ?? 'assets/placeholder.png'
             "
             alt="{{ this.struttura.nomeStruttura }}"
             loading="lazy"/>
 
         </div>
         <div class="sc-detail-center-desc-img" *ngIf="isDescriptionActive">
-          <span>{{immagine?.didascaliaImmagine}}</span>
+          <span>{{this.struttura.immagine?.didascaliaImmagine}}</span>
 
         </div>
         <div class="sc-detail-center-desc">
