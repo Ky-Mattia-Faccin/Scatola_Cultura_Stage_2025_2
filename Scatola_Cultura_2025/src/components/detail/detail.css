@@ -432,7 +432,7 @@
 }
 .sc-detail-back-button:hover .tooltip {
   opacity: 1;
-  transform: translateX(32%) translateY(120%);
+  transform: translateX(32%) translateY(100%);
   overflow: auto;
   font-size: x-large;
   background-color: white;
