@@ -8,6 +8,7 @@ import { SearchFilterService } from '../../services/search-filter.service';
 import { TextimgTsService } from '../../services/textimg.service';
 import { ImmaginiService } from '../../services/immagini.service';
 
+/** Componente principale della homepage. Gestisce la visualizzazione, il filtraggio e l'interazione con le strutture. */
 @Component({
   standalone: true,
   selector: 'app-homepage',
@@ -16,6 +17,7 @@ import { ImmaginiService } from '../../services/immagini.service';
   styleUrl: './homepage.css'
 })
 export class Homepage implements OnInit {
+  /** Costruttore con iniezione dei servizi necessari */
   constructor(
     private searchFilter: SearchFilterService,
     private servizioStruttura: StrutturaService,
@@ -24,17 +26,29 @@ export class Homepage implements OnInit {
     private eRef: ElementRef
   ) {}
 
+  /** Flag per mostrare/nascondere il box informazioni partner */
   partnerInfoOpen: boolean = false;
+  /** Elenco completo delle strutture */
   strutture: Struttura[] = [];
+  /** Elenco filtrato delle strutture */
   struttureFiltrate: Struttura[] = [];
+  /** Testo del filtro testuale */
   filtro: string = '';
+  /** Flag che indica se sono state trovate strutture */
   flgTrovati: boolean = true;
+  /** Filtri attivi per disabilità */
   FiltriDisabilita: string[] = [];
+  /** Filtri attivi per tipo */
   FiltriTipi: string[] = [];
+  /** Filtri attivi per provincia */
   FiltriProvince: string[] = [];
+  /** Flag per filtrare strutture disabilitate */
   flgDisabilita: boolean = false;
+  /** Flag per mostrare descrizioni delle immagini */
   isDescriptionActive: boolean = false;
+  /** Flag per gestione visualizzazione mobile dei filtri */
   flgFiltriMobile: boolean = false;
+
 
 
 
@@ -54,6 +68,8 @@ export class Homepage implements OnInit {
    * - si iscrive al filtro testuale (navbar)
    */
 
+
+  /** Inizializza il componente recuperando i filtri salvati e caricando le strutture */
   ngOnInit(): void {
     const savedFilters = sessionStorage.getItem('filtri');
     if (savedFilters) {
@@ -63,19 +79,21 @@ export class Homepage implements OnInit {
       this.FiltriProvince = parsed.province || [];
       this.filtro = parsed.filtroTestuale || '';
     }
-
     this.checkSessionStorage();
-
     this.searchFilter.filtroRicerca$.subscribe((value) => {
       this.filtro = value;
       this.applySearchFilter();
     });
-
     this.textService.isDescriptionActive$.subscribe((value) => {
       this.isDescriptionActive = value;
     });
   }
 
+  /**
+   * Restituisce l'immagine associata alla struttura, o un placeholder se non presente
+   * @param id ID della struttura
+   * @returns ImmagineDTO
+   */
   getImmagine(id: number): ImmagineDTO {
     const img = this.imgService.getImmagine(id);
     return img ?? {
@@ -87,16 +105,19 @@ export class Homepage implements OnInit {
     };
   }
 
+  /** Alterna la visibilità dei filtri su dispositivi mobili */
   toggleMobileFilters() {
     const contenitoreFiltri = document.querySelector('.sc-homepage-filter');
     contenitoreFiltri?.classList.toggle('hiddenMobile');
   }
 
+  /** Reset dei filtri e ricaricamento delle strutture */
   resetFiltri() {
     this.filtriComponent.resetFilters();
     this.checkSessionStorage();
   }
 
+  /** Gestisce il click sull’icona per mostrare/nascondere informazioni partner */
   iconClick() {
     this.partnerInfoOpen = !this.partnerInfoOpen;
     const contPartner = document.querySelector('.sc-homepage-partner-info') as HTMLElement;
@@ -107,6 +128,10 @@ export class Homepage implements OnInit {
     }
   }
 
+  /**
+   * Listener globale per chiudere il box partner cliccando fuori
+   * @param event Evento di click
+   */
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: MouseEvent) {
     if (!this.eRef.nativeElement.querySelector('.sc-homepage-partner-info-svg')?.contains(event.target as Node)) {
@@ -114,6 +139,7 @@ export class Homepage implements OnInit {
     }
   }
 
+  /** Applica i filtri selezionati e aggiorna le strutture da mostrare */
   filtraStrutture(): void {
     sessionStorage.setItem('filtri', JSON.stringify({
       disabilita: this.FiltriDisabilita,
@@ -121,7 +147,6 @@ export class Homepage implements OnInit {
       province: this.FiltriProvince,
       filtroTestuale: this.filtro,
     }));
-
     this.servizioStruttura
       .getStruttureFiltrate(this.FiltriDisabilita, this.FiltriTipi, this.FiltriProvince)
       .subscribe({
@@ -140,6 +165,7 @@ export class Homepage implements OnInit {
       });
   }
 
+  /** Applica il filtro testuale alle strutture e aggiorna la lista mostrata */
   private applySearchFilter() {
   const filtroLower = this.filtro ? this.filtro.toLowerCase() : '';
   this.struttureFiltrate = this.strutture.filter((s) =>
@@ -164,6 +190,7 @@ d6b (css)
    */
 
 
+  /** Verifica se ci sono strutture in sessionStorage, altrimenti le carica dal server */
   private checkSessionStorage() {
     const struttureJSON = sessionStorage.getItem('strutture');
     if (struttureJSON && struttureJSON !== '[]') {
