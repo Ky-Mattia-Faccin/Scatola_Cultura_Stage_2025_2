@@ -23,7 +23,6 @@
   align-items: center;
 }
 
-
 /* Contenitore della barra di ricerca */
 .sc-navbar-search-container {
   background-color: #f9f9f9;
@@ -61,8 +60,16 @@
 
 /* Contenitore per il link alla home */
 .sc-navbar-home {
-
   width: 10%;
+}
+.sc-navbar-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  position: relative;
+
+  width: 30%;
 }
 
 /* stile dei bottoni*/
@@ -71,11 +78,11 @@
 
   overflow: hidden;
 
-  height: 70%;
-  
+  height: 4vh;
+  width: 8vw;
+
   font-size: clamp(16px, 16px, 24px);
   font-style: normal;
-
 
   color: #2b2a2a;
   background-color: white;
@@ -90,7 +97,7 @@
   cursor: pointer;
 }
 
-.sc-navbar-button::before{
+.sc-navbar-button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -99,7 +106,7 @@
   width: 100%;
   height: 100%;
 
-  border-radius: inherit; 
+  border-radius: inherit;
 
   background: #00b9ee;
 
@@ -110,39 +117,34 @@
   z-index: 0;
 }
 
-.sc-navbar-button:hover{
-  color:white;
+.sc-navbar-button:hover {
+  color: white;
 }
 
-.sc-navbar-button:hover::before{
+.sc-navbar-button:hover::before {
   transform: scaleX(1);
 }
 
-.sc-navbar-button span{
+.sc-navbar-button span {
   z-index: 1;
 }
 .sc-navbar-buttonCAA {
   font-family: var(--fontName) !important;
 
-  height: 4vh;
-  width: 11vw;
-
   box-sizing: border-box;
 
-  white-space: nowrap;        /* testo su una riga sola */
-  overflow: hidden;           /* taglia il testo */
-  text-overflow: ellipsis;    /* mostra i puntini se il testo non ci sta */
+  white-space: nowrap; /* testo su una riga sola */
+  overflow: hidden; /* taglia il testo */
+  text-overflow: ellipsis; /* mostra i puntini se il testo non ci sta */
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
 /* Wrapper per il pulsante a discesa */
 .sc-navbar-dropdown-wrapper {
-  height: 100%;
-  width: 10%;
+  width: 30%;
 
   display: flex;
   justify-content: center;
@@ -155,14 +157,14 @@
   width: 100%;
 }
 
-
 /* Menu dropdown visibile al click */
 .sc-navbar-dropdown-menu {
   position: absolute;
+
   top: 120%;
   right: 0;
 
-  width: 100%;
+  width: 30%;
 
   background-color: #00b9ee;
 
@@ -178,8 +180,6 @@
   z-index: 1000;
 
   animation: fadeIn 0.3s ease-in-out;
-
-
 }
 
 .sc-navbar-dropdown-menu > span {
@@ -194,7 +194,6 @@
 
   transition: background-color 0.3s, color 0.3s;
   display: flex;
-  
 }
 
 .sc-navbar-dropdown-menu span:hover {
@@ -226,7 +225,7 @@
 
 /*===Più/ Meno Slider===*/
 
-.sc-navbar-button-range{
+.sc-navbar-button-range {
   display: flex;
   padding-left: 3.2vw;
   padding-right: 1.5vw;
@@ -289,7 +288,6 @@
 /* Icona */
 .slider svg {
   margin-right: 15%;
-  
 }
 
 /* Contenitore dell’icona */
@@ -357,10 +355,9 @@
 }
 
 .label {
-  margin-top:1%;
+  margin-top: 1%;
   height: 2.5vh;
   width: 6vw;
-
 
   background-color: #ffffff;
 
@@ -399,7 +396,7 @@
 
 .selector:checked ~ .label::before {
   left: 3.8vw;
-  
+
   background-color: #00f74e;
 
   -webkit-transition: 0.4s;
@@ -425,7 +422,7 @@
 
 /*=====DESCRIZIONE ACCESSIBILITÀ======*/
 
-.sc-navbar-dropdown-menu span{
+.sc-navbar-dropdown-menu span {
   position: relative;
 }
 .tooltip {
@@ -433,7 +430,6 @@
   bottom: 100%;
   transform: translateX(-50%);
 
-  
   background-color: #000;
   color: white;
 
@@ -458,16 +454,15 @@
 
 /*====PULSANTE RESETTA=====*/
 .sc-navbar-reset-options {
-  margin-top:1vh;
+  margin-top: 1vh;
   position: relative;
 
   overflow: hidden;
 
   height: 70%;
-  
+
   font-size: clamp(16px, 16px, 24px);
   font-style: normal;
-
 
   color: #2b2a2a;
   background-color: #00b9ee;
@@ -489,7 +484,7 @@
   margin-right: 5%;
 }
 
-.sc-navbar-reset-options::before{
+.sc-navbar-reset-options::before {
   content: "";
   position: absolute;
   top: 0;
@@ -498,7 +493,7 @@
   width: 100%;
   height: 100%;
 
-  border-radius: inherit; 
+  border-radius: inherit;
 
   background: white;
 
@@ -509,41 +504,52 @@
   z-index: 0;
 }
 
-.sc-navbar-reset-options:hover{
-  color:#00b9ee;
+.sc-navbar-reset-options:hover {
+  color: #00b9ee;
 }
 
-.sc-navbar-reset-options:hover::before{
+.sc-navbar-reset-options:hover::before {
   transform: scaleX(1);
 }
 
-.sc-navbar-reset-options span{
+.sc-navbar-reset-options span {
   z-index: 1;
 }
 
-
+.sc-navbar-mobile-wrapper.open {
+  display: flex;
+}
+.sc-navbar-mobile-hamburger {
+  display: none;
+}
+.sc-navbar-mobile-wrapper {
+  display: none;
+}
+.mobile-buttons{
+  display: none;
+}
 
 @media (max-width: 768px) {
   .sc-navbar {
     width: 98%;
   }
   .sc-navbar-dropdown-wrapper {
-    width: 25%;
+    width: 100%;
   }
   .sc-navbar-logo-space {
     width: 20%;
   }
-  .sc-navbar-search-container{
+  .sc-navbar-search-container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 20%;
+    width: 40%;
   }
   .sc-navbar-search-input {
-    width:100%;
+    width: 100%;
     display: inline-block;
   }
-  .sc-navbar-logo-space img{
+  .sc-navbar-logo-space img {
     width: 15vw;
     height: 8vh;
   }
@@ -566,18 +572,12 @@
   label .label::before {
     left: 0;
   }
-  
-
-  .sc-navbar-home{
-    width: 15vw;
-  }
-
-  .sc-navbar-div-manual{
-    width: 20%;
-  }
 
   .sc-navbar-dropdown-menu {
-    width: 160%;
+    width: 85%;
+
+    top: 78%;
+    right: 100%;
   }
   .sc-navbar-dropdown-menu .label {
     width: 100px;
@@ -586,19 +586,8 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .sc-navbar-buttonCAA{
-    padding:0px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  .sc-navbar-buttonCAA  span{
-    width: 20%;
-  }
-  .sc-navbar-button-range{
+
+  .sc-navbar-button-range {
     display: flex;
     justify-content: space-around;
     height: 5px;
@@ -611,8 +600,48 @@
     visibility: hidden;
     overflow: hidden;
   }
-  .hidden{
+  .hidden {
     display: none;
   }
-}
 
+  .sc-navbar-mobile-hamburger {
+    display: flex;
+
+    cursor: pointer;
+  }
+  .sc-navbar-mobile-hamburger:hover {
+    scale: 1.1;
+  }
+  .sc-navbar-buttons {
+    display: none;
+  }
+  .sc-navbar-mobile-wrapper {
+    position: absolute;
+    top: 7%;
+    right: 2%;
+
+    height: 25vh;
+    width: 40vw;
+
+    background: white;
+    z-index: 1;
+  }
+  .sc-navbar-div-manual {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mobile-buttons {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .sc-navbar-button {
+    width: 80%;
+  }
+}

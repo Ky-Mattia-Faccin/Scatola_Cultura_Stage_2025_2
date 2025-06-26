@@ -278,4 +278,12 @@ export class NavBarComponent implements OnInit {
         this.fontSize + 'px'
       );
   }
+
+
+  isMobileMenuOpen = false;
+
+toggleMobileMenu() {
+  this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  
+}
 }
