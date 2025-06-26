@@ -58,8 +58,10 @@
 .sc-detail-testo-text-accessibilita {
   flex-flow: column wrap;
 
-  column-count: 2;
-  column-gap: 8vw;
+  column-count: 2;      
+  column-gap: 8vw;  
+  width: 100%;    
+
 }
 
 /* Pulsante per zoomare il testo */
