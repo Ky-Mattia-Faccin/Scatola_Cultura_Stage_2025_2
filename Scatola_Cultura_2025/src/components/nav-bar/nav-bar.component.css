@@ -88,7 +88,7 @@
   background-color: white;
 
   border: 2px solid #00b9ee;
-  border-radius: 2em;
+  border-radius: 25px;
 
   display: flex;
   justify-content: center;
@@ -550,7 +550,7 @@
     display: inline-block;
   }
   .sc-navbar-logo-space img {
-    width: 15vw;
+    width: 20vw;
     height: 8vh;
   }
 
@@ -593,6 +593,8 @@
     height: 5px;
     z-index: 9999;
     margin-bottom: 3%;
+    padding-left: 7vw;
+    padding-right: 0vw;
   }
 
   .tooltip {
