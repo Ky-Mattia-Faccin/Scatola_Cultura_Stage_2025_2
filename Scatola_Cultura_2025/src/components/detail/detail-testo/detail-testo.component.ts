@@ -54,7 +54,6 @@ export class DetailTestoComponent implements OnChanges {
    */
   ngOnChanges(changes: SimpleChanges): void {
     this.hasAccessibilita = !!this.disabilita;
-    console.log('DISABILITà:', this.disabilita);
   }
 
   // Accesso alle icone tramite IconeManager
