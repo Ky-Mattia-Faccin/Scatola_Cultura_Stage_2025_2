@@ -1,8 +1,7 @@
 <div class="sc-pagina">
-  <app-nav-bar
-  (brightnessChanged)="brightness=$event; applyFilter()"
-  (contrastChanged)="contrast=$event; applyFilter()"
-  ></app-nav-bar>
+  <app-nav-bar 
+    (brightnessChanged)="brightness=$event; applyFilter()"
+    (contrastChanged)="contrast=$event; applyFilter()"></app-nav-bar>
   <div [@slideTransition]="route.snapshot.data" style="display: contents;">
     <router-outlet></router-outlet>
   </div>

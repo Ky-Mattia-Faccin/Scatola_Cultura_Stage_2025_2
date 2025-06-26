@@ -29,7 +29,6 @@
   justify-content: center;
 }
 
-
 .selected input {
   background: transparent;
 
@@ -42,24 +41,19 @@
   padding: 5px 0;
   position: relative;
   z-index: 1;
-  font-family: var(--fontName) !important
-
+  font-family: var(--fontName) !important;
 }
-
- 
-
 
 .selected input::placeholder {
   color: white;
 
   opacity: 1;
-
 }
 
 /* nasconde il placeholder */
 .selected:focus-within input::placeholder {
   animation-duration: 250ms;
-  animation: placeholderFadeOut ;
+  animation: placeholderFadeOut;
 
   opacity: 0;
 }
@@ -97,7 +91,6 @@
 
   transform: scaleX(0);
 }
-
 
 .selected {
   position: relative;
@@ -151,7 +144,7 @@
 /* Icona freccia per l'espansione delle opzioni */
 .arrow {
   position: relative;
-  top:0.1vh;
+  top: 0.1vh;
   right: 0px;
   height: 30px;
   width: 30px;
@@ -181,8 +174,6 @@
   transition: opacity 300ms ease, visibility 300ms ease;
 
   z-index: 9999;
-
-
 }
 
 /* Etichette delle opzioni (testo + checkbox) */
@@ -193,32 +184,29 @@
   align-content: flex-start;
 
   width: 100%;
-
 }
-.options label span{
+.options label span {
   width: 90%;
   max-width: 90%;
 }
-.options label input{
+.options label input {
   max-width: 10%;
-  max-height:10% ;
+  max-height: 10%;
 }
 
-.ng-star-inserted{
+.ng-star-inserted {
   padding: 2%;
-  
-
 }
-.ng-star-inserted span{
+.ng-star-inserted span {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   display: block;
   width: 100%;
 }
-.ng-star-inserted:hover{
-  background-color: #e0f0ff; 
-  color: #2563eb;     
+.ng-star-inserted:hover {
+  background-color: #e0f0ff;
+  color: #2563eb;
 
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 
@@ -227,11 +215,7 @@
   cursor: pointer;
 
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-
-     
 }
-
-
 
 /* Quando si passa sopra il select: mostra le opzioni */
 .select:hover > .options,
@@ -256,8 +240,6 @@
   transition: 300ms;
 
   background-color: #47b4e7;
-
-
 }
 
 /* Effetto hover su una singola opzione */
@@ -270,7 +252,6 @@
   display: none;
 }
 
-
 /* Mostra il testo dell'opzione tramite attributo custom */
 .options label::before {
   content: attr(data-txt);
@@ -280,7 +261,6 @@
 .options input[type="radio"]:checked + label {
   display: none;
 }
-
 
 @media (max-width: 768px) {
   .select {
@@ -293,7 +273,7 @@
     font-size: 14px;
     padding: 10px 12px;
   }
-  .options{
+  .options {
     width: 86%;
   }
 
