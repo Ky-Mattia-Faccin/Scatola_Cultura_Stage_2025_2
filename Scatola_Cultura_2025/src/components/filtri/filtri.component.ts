@@ -49,7 +49,6 @@ export class FiltriComponent implements AfterViewInit {
    */
 
   getDatiDisabilita(nome: string) {
-     console.log('getDatiDisabilita chiamato con:', nome);
     this.DatiDisabilita = this.loadFilter(nome, 'filtro-disabilita');
   }
 

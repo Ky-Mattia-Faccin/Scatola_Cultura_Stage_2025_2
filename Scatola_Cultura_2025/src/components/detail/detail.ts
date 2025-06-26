@@ -104,7 +104,6 @@ export class Detail implements OnInit {
 
       if (trovata) {
         this.struttura = trovata;
-        console.log(this.struttura);
 
         // Se non esiste il caching in sessionStorage per le disabilità di questa struttura
         if (!sessionStorage.getItem(`disabilità${this.idStruttura}`)) {
