@@ -212,7 +212,6 @@
   left: 18vw;
   transform: translate(-50%, -50%);
 
-
   background-color: white;
   color: black;
   border-radius: 25px;
@@ -225,30 +224,30 @@
 }
 /*hover sul testo*/
 .sc-detail-center-desc-img:hover {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    width: 20vw;
-    max-width: 20vw;
-    height: 25vh;
-    max-height: 25vh;
-    opacity: 1;
-    padding: 15px;
-    
-    top: 38vh;
-    left: 18vw;
-    
-    transform: translate(-50%, -50%);
-    background-color: white;
-    color: black;
-    border-radius: 25px;
-    
-    position: absolute;
-    transition: 450ms;
-    overflow: hidden;
-    overflow-y: scroll;
-    overflow-x: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 20vw;
+  max-width: 20vw;
+  height: 25vh;
+  max-height: 25vh;
+  opacity: 1;
+  padding: 15px;
+
+  top: 38vh;
+  left: 18vw;
+
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+
+  position: absolute;
+  transition: 450ms;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 
 /* ===== FOOTER ===== */
@@ -405,7 +404,7 @@
   left: 50%;
   transform: translateX(-50%);
 
-  background-color:transparent;
+  background-color: transparent;
   color: white;
 
   padding: 0.4em 0.8em;
@@ -422,12 +421,11 @@
 .card1:hover .tooltip,
 .card2:hover .tooltip,
 .card3:hover .tooltip,
-.card4:hover .tooltip
-{
+.card4:hover .tooltip {
   opacity: 1;
   transform: translateX(-50%) translateY(-5px);
 }
-.sc-detail-back-button .tooltip{
+.sc-detail-back-button .tooltip {
   overflow: hidden;
 }
 .sc-detail-back-button:hover .tooltip {
@@ -436,7 +434,7 @@
   overflow: auto;
   font-size: x-large;
   background-color: white;
-  color:black;
+  color: black;
   border-radius: 15px;
 }
 .card1:hover .tooltip {
@@ -482,19 +480,15 @@
   letter-spacing: 0.12em;
 }
 
-.disabled:hover{
+.disabled:hover {
   background-color: gray;
   cursor: default;
   scale: 1;
 }
 
-.disabled:hover .tooltip{
+.disabled:hover .tooltip {
   background-color: gray;
 }
-
-
-
-
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
@@ -608,7 +602,7 @@
   .up,
   .down {
     height: 50%;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -617,13 +611,12 @@
   }
 
   .instagram,
-  .facebook
-  .card3 svg,
+  .facebook .card3 svg,
   .card4 svg {
     height: 80%;
     width: 80%;
   }
-  .facebook{
+  .facebook {
     height: 70%;
     width: 70%;
   }

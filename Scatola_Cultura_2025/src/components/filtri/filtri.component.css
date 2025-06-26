@@ -19,79 +19,80 @@
   align-items: center;
   justify-content: space-around;
 }
-.buttons{
+.buttons {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
   max-height: 100%;
-
-
 }
 
-
 /* Bottone dei filtri*/
-.filters-button-apply,.filters-button-reset {
+.filters-button-apply,
+.filters-button-reset {
   height: 10%;
   width: 80%;
-  
-  padding: 0.8vw ;
-  
+
+  padding: 0.8vw;
+
   cursor: pointer;
-  
-  font-size: clamp(16px,16px,30px);
+
+  font-size: clamp(16px, 16px, 30px);
 
   color: white;
   background-color: #f3f4f6;
-  border:2px solid #00b9ee;
+  border: 2px solid #00b9ee;
   color: black;
-  
+
   border-radius: 8px;
-  transition:all 200ms;
-  
+  transition: all 200ms;
+
   display: flex;
   align-items: center;
-  justify-content: space-around; 
-
+  justify-content: space-around;
 }
 
-
-
-.filters-button-reset span,.filters-button-apply span{
+.filters-button-reset span,
+.filters-button-apply span {
   display: block;
   margin-left: 0.3em;
   transition: all 0.3s ease-in-out;
 }
-.filters-button-apply svg, .filters-button-reset svg{
+.filters-button-apply svg,
+.filters-button-reset svg {
   transition: transform 0.3s ease-in-out;
   transform-origin: center center;
 }
 
 /* Effetto hover sul bottone:*/
-.filters-button-apply:hover,.filters-button-reset:hover {
-    transform: translateY(-5%);
+.filters-button-apply:hover,
+.filters-button-reset:hover {
+  transform: translateY(-5%);
   background-color: #00b9ee;
-  color:white;
+  color: white;
   overflow: hidden;
 }
 
-.filters-button-reset:hover .svg-wrapper, .filters-button-apply:hover .svg-wrapper{
+.filters-button-reset:hover .svg-wrapper,
+.filters-button-apply:hover .svg-wrapper {
   animation: fly-1 0.6s ease-in-out infinite alternate;
 }
 
 .filters-button-reset:hover svg {
   transform: translateX(190%) rotate(45deg) scale(1.1);
 }
-.filters-button-apply:hover svg{
+.filters-button-apply:hover svg {
   transform: translateX(110%);
 }
 
-.filters-button-reset:hover span,.filters-button-apply:hover span {
+.filters-button-reset:hover span,
+.filters-button-apply:hover span {
   transform: translateX(5em);
   color: transparent;
 }
 
-.filters-button-reset:active,.filters-button-apply:active {
+.filters-button-reset:active,
+.filters-button-apply:active {
   transform: scale(0.95);
 }
 
@@ -102,7 +103,6 @@
   transition: all 0.3s;
 }
 
-
 @keyframes fly-1 {
   from {
     transform: translateY(0.1em);
@@ -112,17 +112,15 @@
   }
 }
 
-
-
-@media(max-width:768px){
-  
-   .sc-filters{
+@media (max-width: 768px) {
+  .sc-filters {
     display: flex;
     flex-direction: column;
     height: 10vh;
   }
 
-  .filters-button-apply,.filters-button-reset{
+  .filters-button-apply,
+  .filters-button-reset {
     width: 100%;
     height: 17%;
   }
