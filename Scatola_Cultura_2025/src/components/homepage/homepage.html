@@ -1,5 +1,5 @@
 <div class="sc-homepage-start">
-  <div (click)="iconClick()" role="button" tabindex="0" class="sc-homepage-partner-info-svg">
+  <div (click)="iconClick()" role="button" tabindex="0" class="sc-homepage-partner-info-svg" aria-label="Sezione Partner">
     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px" height="30px"
       class="sc-homepage-icon">
       <path fill="black"
@@ -63,7 +63,7 @@
   <ng-template #nessunaStruttura>
     <div class="card">
       <div class="content" tabindex="0">
-        <div class="desc">nessuna struttura trovata</div>
+        <div class="desc">nessuna struttura trovata con questi filtri</div>
         <div class="actions">
           <div>
             <div class="reset" role="button" (click)="resetFiltri()" tabindex="0">resetta i filtri</div>
