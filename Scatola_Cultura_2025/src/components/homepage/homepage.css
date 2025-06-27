@@ -577,4 +577,7 @@
   .hidden {
     display: none;
   }
+  .sc-homepage-arrow{
+    display: none;
+  }
 }
