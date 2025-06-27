@@ -108,8 +108,21 @@
   height: 75vh;
   width: 90vw;
 
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+/*Chrome,Edge e Safari*/
+.sc-homepage-musei-container::-webkit-scrollbar{
+  width: 6px;
+  background: transparent;
+}
+/* Chrome, Edge, Safari: rende invisibile il "thumb" della scrollbar */
+.sc-homepage-musei-container::-webkit-scrollbar-thumb {
+  background: transparent;
 }
 /*css di ogni museo*/
 .sc-homepage-museo-card {
@@ -144,6 +157,7 @@
 
 .sc-homepage-card-img > img {
   border-radius: 15px;
+  background-color: white;
 }
 
 .sc-homepage-card-img-border {
