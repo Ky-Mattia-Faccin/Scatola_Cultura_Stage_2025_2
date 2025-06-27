@@ -7,10 +7,10 @@
   height: 100%;
   width: 97%;
 
-  overflow: hidden; 
+  overflow: hidden;
 }
 /*Contenitore principale del testo semplificato*/
-.sc-detail-testo-text-semplified{
+.sc-detail-testo-text-semplified {
   position: relative;
   display: flex;
   flex-flow: row wrap;
@@ -18,7 +18,7 @@
   height: 100%;
   width: 97%;
 
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 /* Contenitore per il testo normale */
@@ -29,12 +29,11 @@
 
   overflow-x: hidden;
   overflow-y: auto;
-  
+
   line-height: 1.6;
   /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
-
 }
 /* Chrome, Edge, Safari */
 .sc-detail-testo-text::-webkit-scrollbar,
@@ -58,18 +57,18 @@
 /* Testo di accessibilità: mostrato a colonne */
 .sc-detail-testo-text-accessibilita {
   flex-flow: column wrap;
-  
-  column-count: 2;      
-  column-gap: 8vw;      
+
+  column-count: 2;
+  column-gap: 8vw;
 }
 
 /* Pulsante per zoomare il testo */
 .sc-detail-testo-button {
-  position: absolute;     
+  position: absolute;
   bottom: 2%;
   right: 1%;
-  
-  border-radius: 12%;    
+
+  border-radius: 12%;
   cursor: pointer;
 
   height: 15%;
@@ -88,7 +87,7 @@
 /* Versione responsive per schermi piccoli */
 @media (max-width: 768px) {
   .sc-detail-testo-button {
-    height: 8%;   
+    height: 8%;
     width: 7%;
   }
 

@@ -17,6 +17,36 @@
   justify-content: flex-start;
   position: relative;
 }
+.sc-homepage-arrow{
+    position: absolute;
+    top: 75vh;
+    right: 0.2%;
+    
+    border-radius: 25px;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+}
+.sc-homepage-arrow svg{
+  animation: bounce-fade-down 3s ease-in-out infinite;
+  color: #FF3B3B;
+}
+
+/* Animazione: discesa + dissolvenza */
+@keyframes bounce-fade-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  95% {
+    transform: translateY(12vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
 
 .sc-homepage-partner-info-svg {
   position: absolute;
@@ -43,11 +73,10 @@
   position: absolute;
 
   top: 0%;
-  transform: translate(-51vw, 0);
+  transform: translate(-52vw, 0);
 
-
-  width: 40vw;
-  height: 50vh;
+  width: 50vw;
+  height: 55vh;
 
   background-color: #ffffff;
 
@@ -109,8 +138,21 @@
   height: 75vh;
   width: 90vw;
 
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+/*Chrome,Edge e Safari*/
+.sc-homepage-musei-container::-webkit-scrollbar{
+  width: 6px;
+  background: transparent;
+}
+/* Chrome, Edge, Safari: rende invisibile il "thumb" della scrollbar */
+.sc-homepage-musei-container::-webkit-scrollbar-thumb {
+  background: transparent;
 }
 /*css di ogni museo*/
 .sc-homepage-museo-card {
@@ -145,6 +187,7 @@
 
 .sc-homepage-card-img > img {
   border-radius: 15px;
+  background-color: white;
 }
 
 .sc-homepage-card-img-border {
@@ -532,6 +575,9 @@
   }
 
   .hidden {
+    display: none;
+  }
+  .sc-homepage-arrow{
     display: none;
   }
 }
