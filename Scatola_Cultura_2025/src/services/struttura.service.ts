@@ -13,6 +13,9 @@ export class StrutturaService {
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
   constructor(private httpClient: HttpClient, private http:HttpClient) {}
 
+
+  baseUrl='http://192.168.123.150:5000/api';
+
   strutture: Struttura[] = [];
   /**
    * Recupera tutte le strutture dal backend.
@@ -23,7 +26,7 @@ export class StrutturaService {
   getStrutture(): Observable<Struttura[]> {
     return this.httpClient
       .get<Struttura[]>(
-        ' http://192.168.123.150:5000/api/DisabilitaStruttura/get'
+        `${this.baseUrl}/DisabilitaStruttura/get`
       ).pipe(
         catchError((error) => {
           console.error('Errore nel recupero delle strutture:', error);
@@ -42,7 +45,7 @@ export class StrutturaService {
   getDisabilitàStruttura(id: number): Observable<any[]> {
     return this.httpClient
       .get<any[]>(
-        `http://192.168.123.150:5000/api/DisabilitaStruttura/getByID/${id}`
+        `${this.baseUrl}/DisabilitaStruttura/getByID/${id}`
       )
       .pipe(
         catchError((error) => {
@@ -61,11 +64,11 @@ export class StrutturaService {
 
     if (soggetto === 'Disabilita')
       ret = this.httpClient.get<string[]>(
-        ' https://dev.api.scatolacultura.it/api/Disabilita/get' + `${soggetto}`
+        `${this.baseUrl}/Disabilita/get${soggetto}`
       );
     else
       ret = this.httpClient.get<string[]>(
-        ' https://dev.api.scatolacultura.it/api/Struttura/get' + `${soggetto}`
+        `${this.baseUrl}/Struttura/get${soggetto}`
       );
 
     return ret;
@@ -84,10 +87,9 @@ export class StrutturaService {
     FiltriAmbito: string[],
     FiltriProvince: string[]
   ): Observable<Struttura[]> {
-    //http://localhost:5000/api/DisabilitaStruttura/get?Disabilita=nuovo&Disabilita=nuovo1
+  
 
-    let url = 'http://192.168.123.150:5000/api/DisabilitaStruttura/get?'; 
-    //` https://dev.api.scatolacultura.it/api/DisabilitaStruttura/get?`;
+    let url = `${this.baseUrl}/DisabilitaStruttura/get?`;
 
     // Aggiunge i parametri della query per ogni filtro selezionato (con encoding)
     if (FiltriDisabilita?.length > 0 && !!FiltriDisabilita)
