@@ -104,7 +104,7 @@ export class StrutturaService {
 
     if (FiltriAmbito?.length > 0 && !!FiltriAmbito)
       FiltriAmbito.forEach((value) => {
-        url += `Ambito=${encodeURIComponent(value)}&`;
+        url += `Tipo=${encodeURIComponent(value)}&`;
       });
 
     // Rimuove eventuale & finale dalla URL
