@@ -27,7 +27,7 @@ export class AppComponent {
   brightness: number = 100;
   contrast: number = 100;
 
-  // Array per contenere le strutture caricate dal file JSON/localStorage
+  // Array per contenere le strutture caricate dal file JSON
   strutture: Struttura[] = [];
 
   // Iniezione del servizio HttpClient per effettuare richieste HTTP

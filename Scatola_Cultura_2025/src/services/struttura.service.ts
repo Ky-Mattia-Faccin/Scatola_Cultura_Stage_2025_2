@@ -14,7 +14,7 @@ export class StrutturaService {
   constructor(private httpClient: HttpClient, private http:HttpClient) {}
 
 
-  baseUrl='http://192.168.123.150:5000/api';
+  baseUrl='https://dev.api.scatolacultura.it/api';
 
   strutture: Struttura[] = [];
   /**

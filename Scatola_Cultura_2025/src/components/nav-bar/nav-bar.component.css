@@ -561,6 +561,9 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .didascalia{
+    display: none;
+  }
 
   .label {
     width: 100%;
@@ -622,11 +625,16 @@
     top: 7%;
     right: 2%;
 
-    height: 25vh;
+    height: 20vh;
     width: 40vw;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
 
     background: white;
     z-index: 1;
+
+    border-radius: 25px;
   }
   .sc-navbar-div-manual {
     width: 100%;

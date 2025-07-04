@@ -183,6 +183,7 @@
   overflow: hidden;
   width: 100%;
   border-radius: 5px;
+  position: relative;
 }
 
 .sc-homepage-card-img > img {
@@ -208,7 +209,7 @@
   width: 90%;
 }
 /*hover sulla immagine*/
-.sc-homepage-card-img:hover ~ .sc-homepage-card-img-text {
+.sc-homepage-card-img:hover .sc-homepage-card-img-text {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,6 +235,10 @@
   border-radius: 25px;
 
   position: absolute;
+
+
+  z-index: 1000000;
+
 }
 /*hover sulla card*/
 .sc-homepage-card-img-text:hover {
