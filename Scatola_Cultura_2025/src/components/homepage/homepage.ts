@@ -216,7 +216,7 @@ toggleMenu() {
               JSON.stringify(struttureDaSalvare)
             );
           } catch (e) {
-            console.warn('⚠️ Errore nel salvataggio su sessionStorage:', e);
+            console.warn( 'Errore nel salvataggio su sessionStorage:', e);
           }
           this.applySearchFilter();
         },
