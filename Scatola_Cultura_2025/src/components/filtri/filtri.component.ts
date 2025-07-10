@@ -5,6 +5,7 @@ import { Observable, EMPTY, catchError, of, tap } from 'rxjs';
 import { ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { TextimgTsService } from '../../services/textimg.service';
+import { SearchFilterService } from '../../services/search-filter.service';
 
 @Component({
   selector: 'app-filtri',
@@ -17,7 +18,11 @@ export class FiltriComponent implements AfterViewInit {
   //michael
 
   // Iniezione del servizio per recuperare i dati dei filtri
-  constructor(private servizioStruttura: StrutturaService, private textService : TextimgTsService) {}
+  constructor(
+    private servizioStruttura: StrutturaService,
+    private textService: TextimgTsService,
+    private searchService:SearchFilterService
+  ) {}
 
   // Observable che conterranno i dati da mostrare nei filtri
   DatiDisabilita: Observable<string[]> = EMPTY;
@@ -40,7 +45,7 @@ export class FiltriComponent implements AfterViewInit {
 
   // per inizializzare i componenti figli
   ngAfterViewInit(): void {
-    this.loadSelections()
+    this.loadSelections();
   }
 
   /*
@@ -60,32 +65,32 @@ export class FiltriComponent implements AfterViewInit {
     this.DatiProvince = this.loadFilter(nome, 'filtro-province');
   }
 
-
-
   /**
    * Metodo generico per caricare un filtro.
    * Se i dati sono già presenti in sessionStorage, li usa direttamente.
    * Altrimenti li recupera dal servizio, con gestione errori.
    */
- private loadFilter(nome: string, chiave: string): Observable<string[]> {
-  const datiSalvati = sessionStorage.getItem(chiave);
-  if (datiSalvati) {
-    return of(JSON.parse(datiSalvati));
-  }
+  private loadFilter(nome: string, chiave: string): Observable<string[]> {
+    const datiSalvati = sessionStorage.getItem(chiave);
+    if (datiSalvati) {
+      return of(JSON.parse(datiSalvati));
+    }
 
-  return this.servizioStruttura.getFiltro(nome).pipe(
-    tap(val => {
-      sessionStorage.setItem(chiave, JSON.stringify(val));
-    }),
-    catchError(err => {
-      const riprova = window.confirm(`Errore nel caricamento del filtro ${nome}. Vuoi riprovare?`);
-      if (riprova) {
-        return this.loadFilter(nome, chiave);
-      }
-      return EMPTY;
-    })
-  );
-}
+    return this.servizioStruttura.getFiltro(nome).pipe(
+      tap((val) => {
+        sessionStorage.setItem(chiave, JSON.stringify(val));
+      }),
+      catchError((err) => {
+        const riprova = window.confirm(
+          `Errore nel caricamento del filtro ${nome}. Vuoi riprovare?`
+        );
+        if (riprova) {
+          return this.loadFilter(nome, chiave);
+        }
+        return EMPTY;
+      })
+    );
+  }
 
   /*
    * Metodi per aggiornare i valori locali dei filtri selezionati
@@ -113,49 +118,54 @@ export class FiltriComponent implements AfterViewInit {
     this.ProvinceSelected.emit(this.ProvinceSelectedLocal);
   }
 
-
   /**
- * Metodo per resettare tutti i filtri:
- * - Svuota gli array locali delle selezioni
- * - Resetta i componenti figli (TypeaheadComponent)
- * - Emette i nuovi valori vuoti verso il componente padre
- */
+   * Metodo per resettare tutti i filtri:
+   * - Svuota gli array locali delle selezioni
+   * - Resetta i componenti figli (TypeaheadComponent)
+   * - Emette i nuovi valori vuoti verso il componente padre
+   */
   resetFilters() {
-      // Svuota le selezioni locali
+    // Svuota le selezioni locali
     this.DisabilitaSelectedLocal = [];
     this.ProvinceSelectedLocal = [];
     this.TipiSelectedLocal = [];
 
-      // Resetta visivamente i componenti Typeahead
+    // Resetta visivamente i componenti Typeahead
     this.disabilitaComponent.reset();
     this.tipoComponent.reset();
     this.provinciaComponent.reset();
 
-      // Emette i nuovi (vuoti) valori al componente padre
+    this.searchService  .emitReset(true);
+
+    // Emette i nuovi (vuoti) valori al componente padre
     this.applyFilter();
   }
 
-
   /**
- * Metodo per caricare le selezioni salvate in precedenza da sessionStorage:
- * - Recupera i dati per ogni filtro
- * - Aggiorna gli array locali
- * - Imposta i valori nei rispettivi componenti figli
- */
+   * Metodo per caricare le selezioni salvate in precedenza da sessionStorage:
+   * - Recupera i dati per ogni filtro
+   * - Aggiorna gli array locali
+   * - Imposta i valori nei rispettivi componenti figli
+   */
   private loadSelections() {
     // Recupera i dati salvati in sessionStorage (se presenti)
-  const disabilitaSel = sessionStorage.getItem('filtro-disabilita-selected');
-  const tipoSel = sessionStorage.getItem('filtro-tipo-selected');
-  const provinceSel = sessionStorage.getItem('filtro-province-selected');
+    const disabilitaSel = sessionStorage.getItem('filtro-disabilita-selected');
+    const tipoSel = sessionStorage.getItem('filtro-tipo-selected');
+    const provinceSel = sessionStorage.getItem('filtro-province-selected');
 
     // Se presenti, aggiorna gli array locali con le selezioni salvate
-  this.DisabilitaSelectedLocal = disabilitaSel ? JSON.parse(disabilitaSel) : [];
-  this.TipiSelectedLocal = tipoSel ? JSON.parse(tipoSel) : [];
-  this.ProvinceSelectedLocal = provinceSel ? JSON.parse(provinceSel) : [];
+    this.DisabilitaSelectedLocal = disabilitaSel
+      ? JSON.parse(disabilitaSel)
+      : [];
+    this.TipiSelectedLocal = tipoSel ? JSON.parse(tipoSel) : [];
+    this.ProvinceSelectedLocal = provinceSel ? JSON.parse(provinceSel) : [];
 
-  // Imposta le selezioni nei rispettivi componenti Typeahead (solo se già inizializzati)
-  if(this.disabilitaComponent) this.disabilitaComponent.setSelected(this.DisabilitaSelectedLocal);
-  if(this.tipoComponent) this.tipoComponent.setSelected(this.TipiSelectedLocal);
-  if(this.provinciaComponent) this.provinciaComponent.setSelected(this.ProvinceSelectedLocal);
-  } 
+    // Imposta le selezioni nei rispettivi componenti Typeahead (solo se già inizializzati)
+    if (this.disabilitaComponent)
+      this.disabilitaComponent.setSelected(this.DisabilitaSelectedLocal);
+    if (this.tipoComponent)
+      this.tipoComponent.setSelected(this.TipiSelectedLocal);
+    if (this.provinciaComponent)
+      this.provinciaComponent.setSelected(this.ProvinceSelectedLocal);
+  }
 }

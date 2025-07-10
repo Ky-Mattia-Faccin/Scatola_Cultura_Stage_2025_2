@@ -56,10 +56,26 @@
 .sc-navbar-search-input:focus {
   outline: none;
 
-  border-color: #3b82f6;
+  border-color:#00b9ee;
   background-color: #ffffff;
   box-shadow: 0 0 0.2em #3b82f640;
 }
+.sc-navbar-search-input.pulse{
+  animation: pulse 2s infinite ease-in-out;
+}
+
+
+@keyframes pulse{
+   0%,
+  100% {
+    box-shadow: 0 0 20px  #3b82f6 ;
+  }
+  50% {
+    box-shadow: 0 0 30px 15px #00b9ee;
+  }
+}
+
+
 
 /* Contenitore per il link alla home */
 .sc-navbar-home {
@@ -365,7 +381,6 @@
   background-color: white;
 
 }
-
 
 
 
