@@ -1,4 +1,3 @@
-
 import {
   Component,
   EventEmitter,
@@ -7,7 +6,8 @@ import {
   Output,
   SimpleChanges,
   ElementRef,
-  HostListener
+  HostListener,
+  OnDestroy,
 } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ import {
 } from '@angular/router';
 import { TextimgTsService } from '../../services/textimg.service';
 import { CommonModule } from '@angular/common';
-import { filter } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { eventListeners } from '@popperjs/core';
 
@@ -31,15 +31,14 @@ import { eventListeners } from '@popperjs/core';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, OnDestroy {
   constructor(
     public searchService: SearchFilterService,
     private textService: TextimgTsService,
     private router: Router,
     private http: HttpClient,
     private eRef: ElementRef
-  ) { }
-
+  ) {}
 
   //========michael=========0
 
@@ -51,11 +50,7 @@ export class NavBarComponent implements OnInit {
 
   //Valore attuale del textsize : Simone
 
-
   fontSize: number = 20;
-
-
-
 
   // Output: emette il nuovo valore di luminosità verso il componente genitore
 
@@ -71,6 +66,8 @@ export class NavBarComponent implements OnInit {
 
   // Variabile di bind in template, controlla visibilità della search bar
   showSearch: Boolean = true;
+
+  private sub!: Subscription;
 
   /*
    * - Gestisce l’evento di input della barra di ricerca
@@ -107,6 +104,25 @@ export class NavBarComponent implements OnInit {
       .subscribe((event: NavigationEnd) => {
         const url = event.urlAfterRedirects;
         this.showSearch = !url.startsWith('/detail/');
+      });
+
+    this.sub = this.searchService.reseted$
+      .pipe(filter((val) => val === true)) // solo quando è true
+      .subscribe(() => {
+        const searchbar = document.querySelector('.sc-navbar-search-input') as HTMLElement;
+        if (searchbar) {
+          // Rimuovi classe se presente
+          searchbar.classList.remove('pulse');  
+          // Forza il reflow
+          void searchbar.offsetWidth;
+          // Riaggiungi la classe per far ripartire l'animazione
+          searchbar.classList.add('pulse');
+        }
+
+        setTimeout(() => {
+          searchbar?.classList.remove('pulse');
+          this.searchService.emitReset(false); // resetti dopo l'effetto
+        }, 3000);
       });
   }
 
@@ -171,12 +187,14 @@ export class NavBarComponent implements OnInit {
    * e gli mette come nome nella tab in alto il nome Manuale CAA
    */
   openManual() {
-    this.http.get('assets/CAA.pdf', { responseType: 'blob' }).subscribe(blob => {
-      const fileURL = URL.createObjectURL(blob);
+    this.http
+      .get('assets/CAA.pdf', { responseType: 'blob' })
+      .subscribe((blob) => {
+        const fileURL = URL.createObjectURL(blob);
 
-      const newWindow = window.open();
-      if (newWindow) {
-        const html = `
+        const newWindow = window.open();
+        if (newWindow) {
+          const html = `
           <html>
             <head><title>Manuale CAA</title></head>
             <body style="margin:0">
@@ -184,10 +202,10 @@ export class NavBarComponent implements OnInit {
             </body>
           </html>
         `;
-        newWindow.document.write(html);
-        newWindow.document.close();
-      }
-    });
+          newWindow.document.write(html);
+          newWindow.document.close();
+        }
+      });
   }
 
   /**
@@ -209,7 +227,7 @@ export class NavBarComponent implements OnInit {
     this[property] = Math.min(max, Math.max(min, this[property] + valueToAdd));
 
     if (onChange) {
-      onChange(this[property])
+      onChange(this[property]);
     }
 
     switch (property) {
@@ -228,62 +246,64 @@ export class NavBarComponent implements OnInit {
     }
   }
   /**
-  * Simone 
-  * Questo metodo serve per chiudere automaticamente il menu dropdown
-  * quando l'utente clicca fuori dal menu o dal suo pulsante.
-  *
-  * Viene eseguito ogni volta che si fa click da qualsiasi parte della pagina.
-  * Controlla se il click è avvenuto all'interno del pulsante del menu o del menu stesso.
-  * Se il click è avvenuto fuori e il menu è aperto, allora:
-  *  - nasconde il menu aggiungendo la classe 'hidden'
-  *  - imposta la variabile `isMenuOpen` su false per indicare che è stato chiuso
-  *
-  * Questo migliora l'usabilità del menu, evitando che resti aperto inutilmente.
-  *
-  * @param event L'evento del click, usato per sapere dove ha cliccato l’utente.
-  */
+   * Simone
+   * Questo metodo serve per chiudere automaticamente il menu dropdown
+   * quando l'utente clicca fuori dal menu o dal suo pulsante.
+   *
+   * Viene eseguito ogni volta che si fa click da qualsiasi parte della pagina.
+   * Controlla se il click è avvenuto all'interno del pulsante del menu o del menu stesso.
+   * Se il click è avvenuto fuori e il menu è aperto, allora:
+   *  - nasconde il menu aggiungendo la classe 'hidden'
+   *  - imposta la variabile `isMenuOpen` su false per indicare che è stato chiuso
+   *
+   * Questo migliora l'usabilità del menu, evitando che resti aperto inutilmente.
+   *
+   * @param event L'evento del click, usato per sapere dove ha cliccato l’utente.
+   */
 
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent): void {
-    const dropdownButton = this.eRef.nativeElement.querySelector('.sc-navbar-dropdown-button');
-    const dropdownMenu = this.eRef.nativeElement.querySelector('.sc-navbar-dropdown-menu');
+    const dropdownButton = this.eRef.nativeElement.querySelector(
+      '.sc-navbar-dropdown-button'
+    );
+    const dropdownMenu = this.eRef.nativeElement.querySelector(
+      '.sc-navbar-dropdown-menu'
+    );
 
     const target = event.target as Node;
 
-    const clickedInside = dropdownButton.contains(target) || dropdownMenu.contains(target);
+    const clickedInside =
+      dropdownButton.contains(target) || dropdownMenu.contains(target);
 
     if (!clickedInside && this.isMenuOpen) {
       dropdownMenu?.classList.add('hidden');
       this.isMenuOpen = false;
     }
   }
-  ResetAll(){
-    if(this.isDescriptionActive)
-      this.onCheck();
-    if(this.isFontActive)  
-      this.onFontCheck();
-    if(this.isTextSemplifiedActive)  
-    this.onTextSimplifiedCheck();
-  
-  
-  this.brightness = 100;
+  ResetAll() {
+    if (this.isDescriptionActive) this.onCheck();
+    if (this.isFontActive) this.onFontCheck();
+    if (this.isTextSemplifiedActive) this.onTextSimplifiedCheck();
+
+    this.brightness = 100;
     this.brightnessChanged.emit(this.brightness);
     this.contrast = 100;
     this.contrastChanged.emit(this.contrast);
-    
-  
+
     this.fontSize = 20;
     document.documentElement.style.setProperty(
-        '--fontSize',
-        this.fontSize + 'px'
-      );
+      '--fontSize',
+      this.fontSize + 'px'
+    );
   }
-
 
   isMobileMenuOpen = false;
 
-toggleMobileMenu() {
-  this.isMobileMenuOpen = !this.isMobileMenuOpen;
-  
-}
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 }

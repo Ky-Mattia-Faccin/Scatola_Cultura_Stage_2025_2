@@ -347,12 +347,12 @@ width: 25vw;
   align-items: center;
   justify-content: center;
 
-  background-color: #1c9cd9;
+  background-color: white;
   border-radius: 25px;
-  border: 2px solid white;
+  border: 2px solid #1c9cd9;
 
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  color: white;
+  color: #1c9cd9;
   text-align: center;
 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -366,7 +366,7 @@ width: 25vw;
 .card .desc {
   font-size: 0.95rem;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: black;
 }
 
 .card .actions {
@@ -385,12 +385,13 @@ width: 25vw;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 
-  color: white;
+  color: black;
   border: 2px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 1px solid #1c9cd9;
 }
 
 .content {

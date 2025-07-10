@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 
 interface Filters {
@@ -21,21 +21,26 @@ export class SearchFilterService {
 
   private filters: Filters = {};
 
-
-
+  
   constructor() { }
-
+  
    // BehaviorSubject mantiene lo stato attuale del filtro di ricerca (stringa)
-  // Inizializzato con stringa vuota (nessun filtro)
-  private oggettoRicerca=new BehaviorSubject<string>('');
+   // Inizializzato con stringa vuota (nessun filtro)
+   private oggettoRicerca=new BehaviorSubject<string>('');
+   
+   // BehaviorSubject con filtro iniziale vuoto
+   private filtroRicercaSubject = new BehaviorSubject<string>('');  
+   
+   // Observable pubblico a cui i componenti possono iscriversi per ricevere aggiornamenti
+   filtroRicerca$=this.oggettoRicerca.asObservable()
+   
+   
+   private reseted=new  BehaviorSubject<boolean>(false);
+  reseted$=this.reseted.asObservable()
 
-  // BehaviorSubject con filtro iniziale vuoto
-  private filtroRicercaSubject = new BehaviorSubject<string>('');  
-
-  // Observable pubblico a cui i componenti possono iscriversi per ricevere aggiornamenti
-  filtroRicerca$=this.oggettoRicerca.asObservable()
-
-
+  emitReset(value:boolean){
+    this.reseted.next(value)
+  }
 
   
   //aggionrna il filtro testuale 
@@ -55,5 +60,6 @@ export class SearchFilterService {
     if(Filtri.filtroTestuale!==undefined)
       this.filtroRicercaSubject.next(Filtri.filtroTestuale)
   }
+  
 
 }
