@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { Struttura } from '../../interfaces/Istruttura';
@@ -14,14 +14,13 @@ import { StrutturaService } from '../../services/struttura.service';
   imports: [RouterOutlet, NavBarComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [slideAnimation]
+  animations: [slideAnimation],
 })
-export class AppComponent {
-
+export class AppComponent implements OnChanges {
   //michael
 
   // Titolo dell'applicazione
-  title = 'Scatola_Cultura_2025';
+  title = 'Cultura_senza_Barriere';
 
   // Valori dei filtri di luminosità e contrasto (di default 100%), valore di text size (Default:18)
   brightness: number = 100;
@@ -32,19 +31,26 @@ export class AppComponent {
 
   // Iniezione del servizio HttpClient per effettuare richieste HTTP
   //iniezione del servizio ActivatedRoute per conoscere la rotta attiva (utilizzato per l'animazione)
-  constructor(private httpClient: HttpClient, protected route: ActivatedRoute, private servizioStruttura: StrutturaService) { }
+  constructor(
+    private httpClient: HttpClient,
+    protected route: ActivatedRoute,
+    private servizioStruttura: StrutturaService
+  ) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    const minWidth = window.innerWidth + 'px';
+    document.documentElement.style.minWidth = minWidth;
+  }
 
   /*
    * Applica i filtri di luminosità e contrasto alla pagina:
    * - Seleziona l'elemento con classe 'sc-pagina'
    * - Imposta i valori CSS filter in base ai controlli utente
-  */
+   */
   applyFilter() {
     const pagina = document.querySelector('.sc-pagina') as HTMLElement;
 
     if (pagina) {
       pagina.style.filter = `brightness(${this.brightness}%) contrast(${this.contrast}%) `;
-
     }
   }
 }

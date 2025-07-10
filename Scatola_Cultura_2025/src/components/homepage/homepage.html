@@ -1,67 +1,134 @@
 <div class="sc-homepage-start">
   <div class="sc-homepage-arrow">
-    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" viewBox="0 0 24 24">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="80"
+      height="80"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
       <!-- Linea verticale -->
       <rect x="10" y="-1" width="4" height="20" />
 
       <!-- Triangolo pieno in basso -->
       <path d="M6 16l6 6 6-6H6z" />
     </svg>
-
   </div>
-  <div (click)="iconClick()" role="button" tabindex="0" class="sc-homepage-partner-info-svg"
-    aria-label="Sezione Partner">
-    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px" height="30px"
-      class="sc-homepage-icon">
-      <path fill="black"
-        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z">
-      </path>
+  <div
+    (click)="iconClick()"
+    role="button"
+    tabindex="0"
+    class="sc-homepage-partner-info-svg"
+    aria-label="Sezione Partner"
+  >
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      width="30px"
+      height="30px"
+      class="sc-homepage-icon"
+    >
+      <path
+        fill="black"
+        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+      ></path>
     </svg>
-    <div class="sc-homepage-partner-info hidden" [class.hidden]="!partnerInfoOpen">
-      <div class="sc-homepage-partner-info-text">
-        <img src="../../assets/logo1.png" alt="Logo 1" class="logo" aria-hidden="true" />
-        <img src="../../assets/kymos.png" alt="Logo 2" class="logo" aria-hidden="true" />
-        <img src="../../assets/autismoveneto.png" alt="Logo 3" class="logo" aria-hidden="true" />
+    <div
+      class="sc-homepage-partner-info hidden"
+      [class.hidden]="!partnerInfoOpen"
+    >
+      <div class="sc-homepage-partner-info-img">
+        <a target="_blank" href="https://www.scatolacultura.it/">
+        <img
+          src="../../assets/logo1.png"
+          alt="Logo 1"
+          class="logo"
+          aria-hidden="true"
+        />
+        </a>
+        <a   href="https://kymos.eu" target="_blank">
+        <img
+          src="../../assets/kymos.png"
+          alt="Logo 2"
+          class="logo"
+          aria-hidden="true"  
+        />
+        </a>
+        <a target="_blank" href="https://www.autismotriveneto.it" >
+        <img
+          src="../../assets/autismoveneto.png"
+          alt="Logo 3"
+          class="logo"
+          aria-hidden="true"
+        />
+        </a>
       </div>
       <div class="sc-homepage-partner-info-testo">
         <span>
-          Scatola Cultura
-
-          Scatola Cultura S.p.A. - Società di diritto italiano con sede legale in via Emilia Est n. 1163, Modena,
-          Italia, numero del Registro Imprese di Modena, P. IVA e codice fiscale 00159560366 e capitale sociale di Euro
-          20.260.000
-          Copyright 2025 - All rights reserved
+          <strong>Cultura Società Cooperativa Sociale</strong><br>Via Faggiana 11 - 36072 -
+          Chiampo (VI)<br>P.Iva C.F. 04033830243<br> <br>Il portale è stato realizzato con
+          la collaborazione tecnica di Kymos Srl SB e la consulenza di Autismo
+          Triveneto<br>Vuoi segnalare informazioni da integrare nel sito?<br> Scrivici a <a href="mailto:info@scatolacultura.it">info&#64;scatolacultura.it</a> 
         </span>
       </div>
     </div>
   </div>
   <div class="sc-homepage-filter-container">
     <div class="mobileButton">
-      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30px" height="30px"
-        class="arrow" (click)="toggleMobileFilters()">
-        <path fill="white"
-          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z">
-        </path>
+      <svg
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        width="30px"
+        height="30px"
+        class="arrow"
+        (click)="toggleMobileFilters()"
+      >
+        <path
+          fill="white"
+          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+        ></path>
       </svg>
     </div>
 
-    <div class="sc-homepage-filter hiddenMobile" [class.hiddenMobile]="!flgFiltriMobile">
-      <app-filtri (DisabilitaSelected)="FiltriDisabilita = $event" (TipiSelected)="FiltriTipi = $event"
-        (ProvinceSelected)="FiltriProvince = $event; filtraStrutture()"></app-filtri>
+    <div
+      class="sc-homepage-filter hiddenMobile"
+      [class.hiddenMobile]="!flgFiltriMobile"
+    >
+      <app-filtri
+        (DisabilitaSelected)="FiltriDisabilita = $event"
+        (TipiSelected)="FiltriTipi = $event"
+        (ProvinceSelected)="FiltriProvince = $event; filtraStrutture()"
+      ></app-filtri>
     </div>
   </div>
 
-  <div *ngIf="flgTrovati; else nessunaStruttura" class="sc-homepage-musei-container">
-    <div class="sc-homepage-museo-card" *ngFor="let item of struttureFiltrate"
-      [routerLink]="['/detail', item.idStruttura]" role="button">
+  <div
+    *ngIf="flgTrovati; else nessunaStruttura"
+    class="sc-homepage-musei-container"
+  >
+    <div
+      class="sc-homepage-museo-card"
+      *ngFor="let item of struttureFiltrate"
+      [routerLink]="['/detail', item.idStruttura]"
+      role="button"
+    >
       <div class="sc-homepage-card-img-border">
         <div class="sc-homepage-card-img">
-          <div class="sc-homepage-card-img-text" *ngIf="isDescriptionActive && item.immagine?.didascaliaImmagine ">
+          <div
+            class="sc-homepage-card-img-text"
+            *ngIf="isDescriptionActive && item.immagine?.didascaliaImmagine "
+          >
             <span>{{ item.immagine?.didascaliaImmagine }}</span>
           </div>
-          <img [src]="
+          <img
+            [src]="
               item.immagine?.immagineUrl ?? 'assets/placeholder.png'
-            " alt="{{ item.nomeStruttura }}" loading="lazy" />
+            "
+            alt="{{ item.nomeStruttura }}"
+            loading="lazy"
+          />
         </div>
       </div>
       <div class="sc-homepage-card-title">
@@ -77,7 +144,14 @@
         <div class="desc">nessuna struttura trovata con questi filtri</div>
         <div class="actions">
           <div>
-            <div class="reset" role="button" (click)="resetFiltri()" tabindex="0">resetta i filtri</div>
+            <div
+              class="reset"
+              role="button"
+              (click)="resetFiltri()"
+              tabindex="0"
+            >
+              resetta i filtri
+            </div>
           </div>
         </div>
       </div>

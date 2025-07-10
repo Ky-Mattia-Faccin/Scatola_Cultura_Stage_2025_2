@@ -3,18 +3,21 @@
   width: 18vw;
 
   cursor: pointer;
-  color: #ffffff;
+  color: #151515;
   overflow: visible;
 
   display: inline-block;
   position: relative;
 
   transition: 300ms ease-in-out;
+
+  --sfondo: #ffffff;
+  --testo: #00b9ee;
 }
 
 /* Container principale del select personalizzato */
 .selected {
-  background-color: #47b4e7;
+  background-color:var(--sfondo);
 
   padding: 5px;
   margin-bottom: 3px;
@@ -27,6 +30,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border: 1px solid var(--testo);
 }
 
 .selected input {
@@ -35,7 +40,7 @@
   border: none;
 
   outline: none;
-  color: white;
+  color: var(--testo);
   font-size: 15px;
   width: 100%;
   padding: 5px 0;
@@ -45,7 +50,7 @@
 }
 
 .selected input::placeholder {
-  color: white;
+  color: #333;
 
   opacity: 1;
 }
@@ -80,14 +85,14 @@
 
 .selected input::before {
   border-bottom-width: 1px;
-  border-bottom-color: rgb(255, 255, 255);
+  border-bottom-color:var(--testo);
 
   transform: scaleX(1);
 }
 
 .selected input::after {
   border-bottom-width: 2px;
-  border-bottom-color: #ffffff;
+  border-bottom-color:var(--testo);
 
   transform: scaleX(0);
 }
@@ -119,13 +124,14 @@
 
 .selected::before {
   border-bottom-width: 1px;
-  border-bottom-color: rgba(255, 255, 255, 0.42);
+  /* border-bottom-color: rgba(255, 255, 255, 0.42); */
+  border-bottom-color: #19c2f0; 
   transform: scaleX(1);
 }
 
 .selected::after {
   border-bottom-width: 2px;
-  border-bottom-color: #ffffff;
+  border-bottom-color: var(--testo);
 
   transition: 500ms;
   transform: scaleX(0);
@@ -138,7 +144,7 @@
 }
 
 .selected:focus-within::before {
-  border-bottom-color: #ffffff;
+  border-bottom-color: var(--testo);
 }
 
 /* Icona freccia per l'espansione delle opzioni */
@@ -149,7 +155,7 @@
   height: 30px;
   width: 30px;
 
-  fill: white;
+  fill: #333;
 
   z-index: 100000;
   transition: 300ms;
@@ -167,7 +173,7 @@
   flex-direction: column;
   border-radius: 5px;
   padding: 5px;
-  background-color: #47b4e7;
+  background-color: var(--sfondo);
 
   opacity: 0;
   visibility: hidden;

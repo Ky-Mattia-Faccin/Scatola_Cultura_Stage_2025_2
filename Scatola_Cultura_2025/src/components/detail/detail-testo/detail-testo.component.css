@@ -32,7 +32,7 @@
 
   line-height: 1.6;
   /* Firefox */
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-color: transparent transparent;
 }
 /* Chrome, Edge, Safari */

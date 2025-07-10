@@ -17,10 +17,13 @@
 
 /* Spazio per il logo e relativo layout */
 .sc-navbar-logo-space {
-  height: 10vh;
-  width: 15%;
+  height: 9vh;
+  width: 6vw;
   display: flex;
   align-items: center;
+}
+.sc-navbar-logo-space img.logo{
+  width: 90%;
 }
 
 /* Contenitore della barra di ricerca */
@@ -127,7 +130,14 @@
 
 .sc-navbar-button span {
   z-index: 1;
+  max-width: 100%;
+  max-height: 100%;
+  text-overflow: ellipsis;
+  font-size:1em;
 }
+
+
+
 .sc-navbar-buttonCAA {
   font-family: var(--fontName) !important;
 
@@ -165,6 +175,7 @@
   right: 0;
 
   width: 30%;
+  min-width: 5em;
 
   background-color: #00b9ee;
 
@@ -341,6 +352,28 @@
   height: calc(var(--slider-height) * 2);
 }
 
+.sc-navbar-accessibility{
+  background-color: #00b9ee;
+  color: white;
+  border: none;
+}
+.sc-navbar-accessibility:hover{
+  border: 2px solid #00b9ee;
+  color: black;
+}
+.sc-navbar-accessibility::before{
+  background-color: white;
+
+}
+
+
+
+
+
+
+
+
+
 /* ====== ANIMAZIONE MENU ====== */
 
 @keyframes fadeIn {
@@ -425,6 +458,7 @@
 .sc-navbar-dropdown-menu span {
   position: relative;
 }
+
 .tooltip {
   position: absolute;
   bottom: 100%;
@@ -447,9 +481,14 @@
 
 .sc-navbar-dropdown-menu span:hover .tooltip {
   opacity: 1;
-  transform: translateX(-80%) translateY(-100%);
+  transform: translateX(-70%) translateY(-100%);
   background-color: white;
   color: black;
+  height: 4vh;
+  width: 18vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*====PULSANTE RESETTA=====*/
