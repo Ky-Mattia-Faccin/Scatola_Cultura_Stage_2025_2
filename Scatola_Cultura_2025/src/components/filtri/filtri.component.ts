@@ -82,7 +82,7 @@ export class FiltriComponent implements AfterViewInit {
       }),
       catchError((err) => {
         const riprova = window.confirm(
-          `Errore nel caricamento del filtro ${nome}. Vuoi riprovare?`
+          `Errore nel caricamento del filtro ${nome==='Disabilita'?'Facilitazione':nome}. Vuoi riprovare?`
         );
         if (riprova) {
           return this.loadFilter(nome, chiave);

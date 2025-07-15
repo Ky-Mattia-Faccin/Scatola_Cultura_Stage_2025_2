@@ -9,9 +9,12 @@
       name="option"
       type="text"
       checked=""
-      [placeholder]=" ArrayCheckedLocal.length > 0
-      ? ArrayCheckedLocal.join(', ')
-      : 'ricerca per ' + nomeFiltro"
+      [placeholder]="
+        ArrayCheckedLocal.length > 0
+          ? ArrayCheckedLocal.join(', ')
+          : 'ricerca per ' +
+            (nomeFiltro === 'Disabilita' ? 'Facilitazione' : nomeFiltro)
+      "
       [(ngModel)]="filtro"
       (input)="onFiltroChange(); openMenu()"
       (focus)="InviaEvento(nomeFiltro); openMenu()"
