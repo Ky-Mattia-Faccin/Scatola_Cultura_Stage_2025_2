@@ -211,6 +211,7 @@ width: 25vw;
 .sc-homepage-card-title span {
   width: 90%;
   color: black;
+  text-align: center  ;
 }
 /*hover sulla immagine*/
 .sc-homepage-card-img:hover .sc-homepage-card-img-text {
@@ -278,7 +279,7 @@ width: 25vw;
   align-self: center;
   color: white;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   align-items: center;
   text-align: center;
 }
